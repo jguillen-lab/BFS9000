@@ -55,6 +55,6 @@ Con el tiempo pensé que esa sensación de “echar de menos” el Sofle se me p
 
 ## Licencia
 
-Pendiente de definir.
+**ES:** Este repositorio utiliza **múltiples licencias**. La(s) licencia(s) aplicable(s) a cada componente se incluyen en un fichero `LICENSE` dentro del **directorio correspondiente**.
 
 ![Sofle y BFO9000](media/sofle_n_bfo9000.png)

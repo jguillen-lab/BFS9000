@@ -55,6 +55,6 @@ I thought that missing the Sofle would fade with time… but it didn’t. That�
 
 ## License
 
-To be defined.
+**EN:** This repository uses **multiple licenses**. The applicable license(s) for each component are included in a `LICENSE` file within the **relevant directory**.
 
 ![Sofle y BFO9000](media/sofle_n_bfo9000.png)

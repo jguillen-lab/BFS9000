@@ -1,0 +1,99 @@
+{
+  "manufacturer": "jguillen-lab",
+  "keyboard_name": "Marquichuelo",
+  "maintainer": "jguillen-lab",
+  "processor": "RP2040",
+  "bootloader": "rp2040",
+  "diode_direction": "COL2ROW",
+  "usb": {
+    "vid": "0xFEED",
+    "pid": "0x0000",
+    "device_version": "0.0.1"
+  },
+  "features": {
+    "bootmagic": true,
+    "extrakey": true,
+    "mousekey": true,
+    "nkro": true,
+    "rgb_matrix": true
+  },
+  "matrix_pins": {
+    "direct": [
+      [
+        "GP2",
+        "GP3",
+        "GP4"
+      ]
+    ]
+  },
+  "ws2812": {
+    "driver": "vendor",
+    "pin": "GP28"
+  },
+  "rgb_matrix": {
+    "driver": "ws2812",
+    "layout": [
+      {
+        "matrix": [
+          0,
+          0
+        ],
+        "x": 0,
+        "y": 0,
+        "flags": 4
+      },
+      {
+        "matrix": [
+          0,
+          1
+        ],
+        "x": 20,
+        "y": 0,
+        "flags": 4
+      },
+      {
+        "matrix": [
+          0,
+          2
+        ],
+        "x": 40,
+        "y": 0,
+        "flags": 4
+      }
+    ],
+    "sleep": false
+  },
+  "layouts": {
+    "LAYOUT": {
+      "layout": [
+        {
+          "label": "K00",
+          "matrix": [
+            0,
+            0
+          ],
+          "x": 0,
+          "y": 0
+        },
+        {
+          "label": "K01",
+          "matrix": [
+            0,
+            1
+          ],
+          "x": 1,
+          "y": 0
+        },
+        {
+          "label": "K02",
+          "matrix": [
+            0,
+            2
+          ],
+          "x": 2,
+          "y": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+# MARCOntroller — English translations
+# Keys are referenced in code via t!("key", param = value)
+
+ok:
+  off:          "Lighting OFF"
+  set_effect:   "Set effect id=%{id} speed=%{speed} hsv=(%{h},%{s},%{v})"
+  solid_color:  "SOLID_COLOR rgb=(%{r},%{g},%{b}) -> hsv=(%{h},%{s},%{v}) speed=%{speed}"
+  solid_hsv:    "SOLID_COLOR hsv=(%{h},%{s},%{v}) speed=%{speed}"
+  brightness:   "Brightness set to %{v} (mode=%{mode} speed=%{speed} h=%{h} s=%{s})"
+  direct_all:   "DIRECT — all %{n} LEDs set to hsv=(%{h},%{s},%{v}) speed=%{speed}"
+  direct_led:   "DIRECT — LED %{index} set to hsv=(%{h},%{s},%{v})"
+
+err:
+  hidapi_init:          "Could not initialise HIDAPI"
+  no_device:            "No HID device found for %{vid}:%{pid} (or serial mismatch)"
+  unexpected_response:  "Unexpected response from keyboard: %{bytes}"
+  write:                "HID write failed: wrote %{wrote} bytes, expected %{expected}"
+  read:                 "HID read failed: read %{read} bytes, expected %{expected}"
+  fastset_too_many:     "fastset supports at most 9 LEDs per packet (got %{got})"
+  hex_invalid:          "Invalid hex value '%{value}'"
+  open_device:          "Could not open device at path %{path}"
+  ambiguous_interface:  "Could not identify the RAW HID interface. Run `marcontroller list` and paste the output."
+
+label:
+  devices:          "HID devices for %{vid}:%{pid}"
+  supported_ids:    "Supported VialRGB effect IDs (%{count})"
+  protocol_version: "VialRGB protocol version: %{version}"
+  max_brightness:   "RGB_MATRIX_MAXIMUM_BRIGHTNESS: %{value}"
+  mode:             "mode: %{value}"
+  speed:            "speed: %{value}"
+  h:                "h: %{value}"
+  s:                "s: %{value}"
+  v:                "v: %{value}"
+  led_count:        "RGB_MATRIX_LED_COUNT: %{value}"
+  led_info:         "LED %{index}: x=%{x} y=%{y} flags=0x%{flags} matrix=%{row},%{col}"

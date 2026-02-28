@@ -1,0 +1,12 @@
+﻿# MARCOntroller
+/software/MARCOntroller/target/
+
+# JetBrains / RustRover (MARCOntroller)
+/software/MARCOntroller/.idea/
+/software/MARCOntroller/*.iml
+/software/MARCOntroller/*.ipr
+/software/MARCOntroller/*.iws
+/software/MARCOntroller/out/
+
+/software/MARCOntroller/**/*.rs.bk
+

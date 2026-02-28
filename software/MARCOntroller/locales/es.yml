@@ -1,0 +1,35 @@
+# MARCOntroller — Traducciones en español
+# Las claves se referencian en el código mediante t!("clave", param = valor)
+
+ok:
+  off:          "Iluminación APAGADA"
+  set_effect:   "Efecto establecido: id=%{id} velocidad=%{speed} hsv=(%{h},%{s},%{v})"
+  solid_color:  "COLOR_SÓLIDO rgb=(%{r},%{g},%{b}) -> hsv=(%{h},%{s},%{v}) velocidad=%{speed}"
+  solid_hsv:    "COLOR_SÓLIDO hsv=(%{h},%{s},%{v}) velocidad=%{speed}"
+  brightness:   "Brillo establecido en %{v} (modo=%{mode} velocidad=%{speed} h=%{h} s=%{s})"
+  direct_all:   "DIRECTO — %{n} LEDs configurados con hsv=(%{h},%{s},%{v}) velocidad=%{speed}"
+  direct_led:   "DIRECTO — LED %{index} configurado con hsv=(%{h},%{s},%{v})"
+
+err:
+  hidapi_init:          "No se pudo inicializar HIDAPI"
+  no_device:            "No se encontró ningún dispositivo HID para %{vid}:%{pid} (o el serial no coincide)"
+  unexpected_response:  "Respuesta inesperada del teclado: %{bytes}"
+  write:                "Error de escritura HID: se escribieron %{wrote} bytes, se esperaban %{expected}"
+  read:                 "Error de lectura HID: se leyeron %{read} bytes, se esperaban %{expected}"
+  fastset_too_many:     "fastset admite un máximo de 9 LEDs por paquete (recibidos: %{got})"
+  hex_invalid:          "Valor hexadecimal inválido '%{value}'"
+  open_device:          "No se pudo abrir el dispositivo en la ruta %{path}"
+  ambiguous_interface:  "No se pudo identificar la interfaz RAW HID. Ejecuta `marcontroller list` y pega la salida."
+
+label:
+  devices:          "Dispositivos HID para %{vid}:%{pid}"
+  supported_ids:    "IDs de efectos VialRGB soportados (%{count})"
+  protocol_version: "Versión de protocolo VialRGB: %{version}"
+  max_brightness:   "RGB_MATRIX_MAXIMUM_BRIGHTNESS: %{value}"
+  mode:             "modo: %{value}"
+  speed:            "velocidad: %{value}"
+  h:                "h: %{value}"
+  s:                "s: %{value}"
+  v:                "v: %{value}"
+  led_count:        "RGB_MATRIX_LED_COUNT: %{value}"
+  led_info:         "LED %{index}: x=%{x} y=%{y} flags=0x%{flags} matrix=%{row},%{col}"

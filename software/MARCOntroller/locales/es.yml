@@ -9,6 +9,8 @@ ok:
   brightness:   "Brillo establecido en %{v} (modo=%{mode} velocidad=%{speed} h=%{h} s=%{s})"
   direct_all:   "DIRECTO — %{n} LEDs configurados con hsv=(%{h},%{s},%{v}) velocidad=%{speed}"
   direct_led:   "DIRECTO — LED %{index} configurado con hsv=(%{h},%{s},%{v})"
+  config_created: "Config creada en %{path}"
+  agent_start: "Agente MQTT arrancado (Ctrl+C para salir)"
 
 err:
   hidapi_init:          "No se pudo inicializar HIDAPI"
@@ -20,6 +22,9 @@ err:
   hex_invalid:          "Valor hexadecimal inválido '%{value}'"
   open_device:          "No se pudo abrir el dispositivo en la ruta %{path}"
   ambiguous_interface:  "No se pudo identificar la interfaz RAW HID. Ejecuta `marcontroller list` y pega la salida."
+  config_exists: "Ya existe una config en %{path} (usa --force para sobrescribir)"
+  config_missing: "No existe la config en %{path}. Crea una con `marcontroller config init`."
+  config_load: "No se pudo cargar la config %{path}"
 
 label:
   devices:          "Dispositivos HID para %{vid}:%{pid}"
@@ -33,3 +38,4 @@ label:
   v:                "v: %{value}"
   led_count:        "RGB_MATRIX_LED_COUNT: %{value}"
   led_info:         "LED %{index}: x=%{x} y=%{y} flags=0x%{flags} matrix=%{row},%{col}"
+  config_path:      "Ruta de config: %{path}"

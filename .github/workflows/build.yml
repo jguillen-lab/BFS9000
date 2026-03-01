@@ -12,10 +12,23 @@ permissions:
   contents: write
 
 jobs:
+
+  # Creates the release exactly once and generates the changelog
+  # Running this separately prevents the changelog from being duplicated
+  # once per matrix job
+  create-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create release with changelog
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+
   build:
     name: Build - ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-
+    needs: create-release   # Wait for the release to exist before uploading binaries
     strategy:
       matrix:
         include:
@@ -23,17 +36,14 @@ jobs:
           - os: ubuntu-latest
             artifact_name: MARCOntroller
             asset_name: marcontroller-linux-x86_64
-
           # Windows: hidapi works out of the box (uses Windows HID API natively)
           - os: windows-latest
             artifact_name: MARCOntroller.exe
             asset_name: marcontroller-windows-x86_64.exe
-
           # macOS: hidapi works out of the box (uses IOKit framework natively)
           - os: macos-latest
             artifact_name: MARCOntroller
             asset_name: marcontroller-macos-x86_64
-
     steps:
       # Check out the full repository contents
       - name: Checkout code
@@ -74,10 +84,9 @@ jobs:
           cp software/MARCOntroller/target/release/${{ matrix.artifact_name }} \
              ${{ matrix.asset_name }}
 
-      # Create or update the GitHub Release and attach the platform binary
-      # generate_release_notes automatically lists commits since the previous tag
+      # Upload the platform binary to the already-created release
+      # generate_release_notes is intentionally omitted here to avoid duplication
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ matrix.asset_name }}
-          generate_release_notes: true

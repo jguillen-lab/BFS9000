@@ -1,0 +1,83 @@
+name: Build & Release MARCOntroller
+
+# Only triggers on tags following the pattern "marcontroller-vX.Y.Z"
+# This prevents accidental releases from tags meant for other parts of the monorepo
+on:
+  push:
+    tags:
+      - 'marcontroller-v*'
+
+# Write permission is required to create GitHub Releases and upload assets
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build - ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        include:
+          # Linux: requires libudev-dev and libhidapi-dev for hidapi crate
+          - os: ubuntu-latest
+            artifact_name: marcontroller
+            asset_name: marcontroller-linux-x86_64
+
+          # Windows: hidapi works out of the box (uses Windows HID API natively)
+          - os: windows-latest
+            artifact_name: marcontroller.exe
+            asset_name: marcontroller-windows-x86_64.exe
+
+          # macOS: hidapi works out of the box (uses IOKit framework natively)
+          - os: macos-latest
+            artifact_name: marcontroller
+            asset_name: marcontroller-macos-x86_64
+
+    steps:
+      # Check out the full repository contents
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # hidapi on Linux requires system-level HID and udev libraries
+      # These are not needed on Windows or macOS
+      - name: Install system dependencies (Linux only)
+        if: matrix.os == 'ubuntu-latest'
+        run: sudo apt-get install -y libudev-dev libhidapi-dev
+
+      # Install the stable Rust toolchain
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      # Cache Cargo registry and build artifacts to speed up subsequent runs
+      - name: Cache Cargo dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            software/MARCOntroller/target/
+          # Cache key includes the OS and Cargo.lock hash so it invalidates
+          # automatically when dependencies change
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      # Build in release mode (optimized, no debug symbols)
+      - name: Build
+        working-directory: software/MARCOntroller
+        run: cargo build --release
+
+      # Rename the binary to include platform info before uploading
+      # Using bash shell explicitly so this works on Windows too (via Git Bash)
+      - name: Rename binary
+        shell: bash
+        run: |
+          cp software/MARCOntroller/target/release/${{ matrix.artifact_name }} \
+             ${{ matrix.asset_name }}
+
+      # Create or update the GitHub Release and attach the platform binary
+      # generate_release_notes automatically lists commits since the previous tag
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ matrix.asset_name }}
+          generate_release_notes: true

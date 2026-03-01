@@ -8,3 +8,15 @@ anyhow   = "1"
 clap     = { version = "4", features = ["derive"] }
 hidapi   = "2"
 rust-i18n = "3"
+
+# MQTT agent + Home Assistant discovery + config
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "sync"] }
+rumqttc = "0.25"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "1"
+directories-next = "2"
+
+# Logs
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }

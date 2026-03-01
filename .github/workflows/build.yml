@@ -21,17 +21,17 @@ jobs:
         include:
           # Linux: requires libudev-dev and libhidapi-dev for hidapi crate
           - os: ubuntu-latest
-            artifact_name: marcontroller
+            artifact_name: MARCOntroller
             asset_name: marcontroller-linux-x86_64
 
           # Windows: hidapi works out of the box (uses Windows HID API natively)
           - os: windows-latest
-            artifact_name: marcontroller.exe
+            artifact_name: MARCOntroller.exe
             asset_name: marcontroller-windows-x86_64.exe
 
           # macOS: hidapi works out of the box (uses IOKit framework natively)
           - os: macos-latest
-            artifact_name: marcontroller
+            artifact_name: MARCOntroller
             asset_name: marcontroller-macos-x86_64
 
     steps:

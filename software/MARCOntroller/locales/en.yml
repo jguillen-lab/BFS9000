@@ -9,6 +9,8 @@ ok:
   brightness:   "Brightness set to %{v} (mode=%{mode} speed=%{speed} h=%{h} s=%{s})"
   direct_all:   "DIRECT — all %{n} LEDs set to hsv=(%{h},%{s},%{v}) speed=%{speed}"
   direct_led:   "DIRECT — LED %{index} set to hsv=(%{h},%{s},%{v})"
+  config_created: "Config created at %{path}"
+  agent_start: "MQTT agent started (Ctrl+C to exit)"
 
 err:
   hidapi_init:          "Could not initialise HIDAPI"
@@ -20,6 +22,9 @@ err:
   hex_invalid:          "Invalid hex value '%{value}'"
   open_device:          "Could not open device at path %{path}"
   ambiguous_interface:  "Could not identify the RAW HID interface. Run `marcontroller list` and paste the output."
+  config_exists:   "Config already exists at %{path} (use --force to overwrite)"
+  config_missing:  "Config file not found at %{path}. Create one with `marcontroller config init`."
+  config_load:     "Could not load config %{path}"
 
 label:
   devices:          "HID devices for %{vid}:%{pid}"
@@ -33,3 +38,4 @@ label:
   v:                "v: %{value}"
   led_count:        "RGB_MATRIX_LED_COUNT: %{value}"
   led_info:         "LED %{index}: x=%{x} y=%{y} flags=0x%{flags} matrix=%{row},%{col}"
+  config_path:      "Config path: %{path}"

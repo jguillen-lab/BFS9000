@@ -25,46 +25,33 @@
 // SOFTWARE.
 //
 // ============================================================================
-//
-// ARCHITECTURE
-// ------------
-//   main.rs      Entry point. Detects language, initialises i18n, calls cli::run().
-//   cli.rs       Clap CLI structs and command dispatch. Uses t!() for all output.
-//   vialrgb.rs   VialRGB protocol (get/set mode, fastset, …). Pure logic, no output.
-//   hid.rs       Raw USB HID transport (open device, send/read 32-byte packets). Pure.
-//
-// LANGUAGE SELECTION (priority order)
-// ------------------------------------
-//   1. --lang <code>               CLI flag
-//   2. MARCOCONTROLLER_LANG=<code> Environment variable
-//   3. LANG=<code>                 System locale (first two chars)
-//   4. "en"                        Built-in default
-//
-// Adding a new language
-// ---------------------
-//   1. Add a file  locales/<code>.yml  with the same keys as en.yml.
-//   2. Add the code to the match in `detect_lang()` if needed (rust-i18n
-//      picks up any locale file that exists automatically).
-// ============================================================================
 
-// Pull in the rust-i18n macro and embed the locales/ directory at compile time.
-// The `fallback` locale is used whenever a key is missing in the active locale.
 #[macro_use]
 extern crate rust_i18n;
 i18n!("locales", fallback = "en");
 
 use clap::Parser;
+use tracing_subscriber::EnvFilter;
+
 
 mod cli;
+mod config;
 mod hid;
 mod vialrgb;
+mod mqtt_agent;
 
-fn main() -> anyhow::Result<()> {
-    // ── 1. Parse CLI args ────────────────────────────────────────────────────
+#[tokio::main]
+async fn main() -> anyhow::Result<()> {
+    // ── Logging ─────────────────────────────────────────────────────────────
     //
-    // We parse early so we can read --lang before setting the locale.
-    // clap does not yet know about our subcommands at this point, but
-    // `Cli::parse()` handles everything in one shot.
+    // Controlled via RUST_LOG, e.g.:
+    //   PowerShell:  $env:RUST_LOG="info"
+    //   CMD:         set RUST_LOG=info
+    let _ = tracing_subscriber::fmt()
+        .with_env_filter(EnvFilter::from_default_env())
+        .try_init();
+
+    // ── 1. Parse CLI args ────────────────────────────────────────────────────
     let cli = cli::Cli::parse();
 
     // ── 2. Detect and set locale ─────────────────────────────────────────────
@@ -72,7 +59,8 @@ fn main() -> anyhow::Result<()> {
     rust_i18n::set_locale(&locale);
 
     // ── 3. Dispatch ──────────────────────────────────────────────────────────
-    cli::run(cli)
+    // Still sync for now; later we will make cli::run async when we add the agent.
+    cli::run(cli).await
 }
 
 /// Resolve the active locale code from (in priority order):

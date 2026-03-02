@@ -4,20 +4,6 @@
 //
 // MIT License — Copyright (c) 2026 Jesús Guillén (jguillen-lab)
 //
-// This module implements the VialRGB sub-protocol as defined in the Vial QMK
-// fork (vialrgb.h / vialrgb.c).  It is intentionally free of user-facing
-// messages: all functions return typed Results so callers can localise errors.
-//
-// PACKET LAYOUT (shared by all commands)
-// ----------------------------------------
-//  Byte  Meaning
-//  ----  -------
-//   [0]  VIA top-level command  (SET_VALUE = 0x07 | GET_VALUE = 0x08)
-//   [1]  VialRGB sub-command    (see constants below)
-//   [2…] Sub-command arguments  (sub-command specific, rest is zero-padded)
-//
-// The keyboard echoes bytes [0] and [1] in every response, allowing the host
-// to verify it received the right reply.
 // ============================================================================
 
 use anyhow::{anyhow, Result};

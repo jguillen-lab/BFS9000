@@ -4,15 +4,6 @@
 //
 // MIT License — Copyright (c) 2026 Jesús Guillén (jguillen-lab)
 //
-// This module is intentionally free of user-facing messages.
-// It exposes typed errors so callers (CLI, future UI) can format them however
-// they need, including localisation via t!().
-//
-// PROTOCOL NOTE
-// -------------
-// VIA/Vial RAW HID uses 32-byte payloads.  On Windows, hidapi requires a
-// leading report-ID byte (always 0x00), so we write 33 bytes total.
-// Reads are always 32 bytes (the report-ID is stripped by the driver).
 // ============================================================================
 
 use anyhow::{anyhow, Context, Result};

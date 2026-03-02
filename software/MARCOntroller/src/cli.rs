@@ -4,21 +4,17 @@
 //
 // MIT License — Copyright (c) 2026 Jesús Guillén (jguillen-lab)
 //
-// This module owns:
-//   • The `Cli` / `Command` clap structs (argument parsing)
-//   • `run()` — maps each parsed command to the right vialrgb / hid calls
-//     and formats user-facing output via `t!()`.
-//
-// The i18n locale must be set before `run()` is called (done in main.rs).
 // ============================================================================
 
 use anyhow::Result;
 use clap::{Parser, Subcommand};
 use hidapi::HidApi;
+use std::fs;
+use std::path::PathBuf;
 
-use crate::{hid, vialrgb};
+use crate::{config, hid, mqtt_agent, vialrgb};
 
-// ── Argument structs ──────────────────────────────────────────────────────────
+// ── Argument structs ─────────────────────────────────────────────────────────
 
 #[derive(Parser, Debug)]
 #[command(
@@ -40,6 +36,10 @@ pub struct Cli {
     #[arg(long)]
     pub serial: Option<String>,
 
+    /// Path to config.toml (used by `config` and `agent`)
+    #[arg(long)]
+    pub config: Option<PathBuf>,
+
     /// UI language: "en" (default) or "es"
     #[arg(long)]
     pub lang: Option<String>,
@@ -49,7 +49,29 @@ pub struct Cli {
 }
 
 #[derive(Subcommand, Debug)]
+pub enum ConfigCommand {
+    /// Print the resolved config path.
+    Path,
+
+    /// Create a default config.toml (seeding VID/PID/serial from CLI flags).
+    Init {
+        /// Overwrite the config file if it already exists.
+        #[arg(long)]
+        force: bool,
+    },
+
+    /// Show the current config.toml contents.
+    Show,
+}
+
+#[derive(Subcommand, Debug)]
 pub enum Command {
+    /// Manage persistent configuration (TOML).
+    Config {
+        #[command(subcommand)]
+        cmd: ConfigCommand,
+    },
+
     /// List all HID interfaces for this VID/PID — useful for debugging.
     List,
 
@@ -133,131 +155,284 @@ pub enum Command {
         #[arg(long)] s: u8,
         #[arg(long)] v: u8,
     },
+
+    /// Run the MQTT agent (Home Assistant discovery + light control).
+    Agent,
 }
 
-// ── Command dispatch ──────────────────────────────────────────────────────────
+// ── Command dispatch ─────────────────────────────────────────────────────────
 
 /// Parse CLI args, open the device (if needed), and execute the command.
 ///
 /// The i18n locale must be set before calling this function.
 /// All user-visible output is routed through `t!()` so it respects the locale.
-pub fn run(cli: Cli) -> Result<()> {
-    let vid = parse_hex_u16(&cli.vid)?;
-    let pid = parse_hex_u16(&cli.pid)?;
+pub async fn run(cli: Cli) -> Result<()> {
+    // Move fields out to avoid "partial move" issues when matching on `cmd`.
+    let Cli {
+        vid,
+        pid,
+        serial,
+        config: config_path,
+        cmd,
+        ..
+    } = cli;
 
-    let api = HidApi::new().map_err(|e| anyhow::anyhow!("{}: {e}", t!("err.hidapi_init").to_string()))?;
+    // Resolve config path (explicit --config wins, otherwise use OS default).
+    let cfg_path = match config_path {
+        Some(p) => p,
+        None => config::default_config_path()?,
+    };
 
-    // `list` does not need the device open.
-    if let Command::List = cli.cmd {
-        let candidates = hid::list_candidates(&api, vid, pid);
-        println!("{}", t!("label.devices", vid = format!("{vid:04X}"), pid = format!("{pid:04X}")).to_string());
-        for c in candidates {
+    match cmd {
+        // ── Config commands do not need HIDAPI ───────────────────────────────
+        Command::Config { cmd } => {
+            match cmd {
+                ConfigCommand::Path => {
+                    println!(
+                        "{}",
+                        t!("label.config_path", path = cfg_path.display()).to_string()
+                    );
+                }
+
+                ConfigCommand::Init { force } => {
+                    if cfg_path.exists() && !force {
+                        return Err(anyhow::anyhow!(
+                            "{}",
+                            t!("err.config_exists", path = cfg_path.display()).to_string()
+                        ));
+                    }
+
+                    let mut cfg = config::AppConfig::default();
+
+                    // Seed HID fields from CLI flags (keeps current workflow intact).
+                    cfg.hid.vid = normalise_hex_str(&vid);
+                    cfg.hid.pid = normalise_hex_str(&pid);
+                    cfg.hid.serial = serial.clone();
+
+                    config::save(&cfg_path, &cfg)?;
+
+                    println!(
+                        "{}",
+                        t!("ok.config_created", path = cfg_path.display()).to_string()
+                    );
+                }
+
+                ConfigCommand::Show => {
+                    if !cfg_path.exists() {
+                        return Err(anyhow::anyhow!(
+                            "{}",
+                            t!("err.config_missing", path = cfg_path.display()).to_string()
+                        ));
+                    }
+
+                    let s = fs::read_to_string(&cfg_path).map_err(|_| {
+                        anyhow::anyhow!(
+                            "{}",
+                            t!("err.config_load", path = cfg_path.display()).to_string()
+                        )
+                    })?;
+
+                    println!(
+                        "{}",
+                        t!("label.config_path", path = cfg_path.display()).to_string()
+                    );
+                    println!("{s}");
+                }
+            }
+
+            return Ok(());
+        }
+
+        Command::Agent => {
+            // The agent requires a config file.
+            if !cfg_path.exists() {
+                return Err(anyhow::anyhow!(
+                    "{}",
+                    t!("err.config_missing", path = cfg_path.display()).to_string()
+                ));
+            }
+
+            // Load persistent config (TOML).
+            let cfg = config::load(&cfg_path).map_err(|_| {
+                anyhow::anyhow!(
+                    "{}",
+                    t!("err.config_load", path = cfg_path.display()).to_string()
+                )
+            })?;
+
+            println!("{}", t!("ok.agent_start").to_string());
+
+            // This runs indefinitely until an error/disconnect occurs.
+            mqtt_agent::run(cfg).await?;
+            return Ok(());
+        }
+
+        // ── List does not need the device open ───────────────────────────────
+        Command::List => {
+            let vid_u16 = parse_hex_u16(&vid)?;
+            let pid_u16 = parse_hex_u16(&pid)?;
+
+            let api = HidApi::new()
+                .map_err(|e| anyhow::anyhow!("{}: {e}", t!("err.hidapi_init").to_string()))?;
+
+            let candidates = hid::list_candidates(&api, vid_u16, pid_u16);
             println!(
-                "  iface={} usagePage=0x{:04X} usage=0x{:04X} serial={:?} product={:?} path={}",
-                c.interface, c.usage_page, c.usage, c.serial, c.product, c.path
+                "{}",
+                t!(
+                    "label.devices",
+                    vid = format!("{vid_u16:04X}"),
+                    pid = format!("{pid_u16:04X}")
+                )
+                    .to_string()
             );
-        }
-        return Ok(());
-    }
 
-    let dev = hid::open_device(&api, vid, pid, cli.serial.as_deref())
-        .map_err(|e| anyhow::anyhow!("{}", localise_hid_error(e.to_string(), vid, pid)))?;
-
-    match cli.cmd {
-        Command::List => unreachable!(),
-
-        Command::GetInfo => {
-            let info = vialrgb::get_info(&dev)?;
-            println!("{}", t!("label.protocol_version", version = info.protocol_version).to_string());
-            println!("{}", t!("label.max_brightness",   value   = info.max_brightness).to_string());
-        }
-
-        Command::GetMode => {
-            let m = vialrgb::get_mode(&dev)?;
-            println!("{}", t!("label.mode",  value = m.mode).to_string());
-            println!("{}", t!("label.speed", value = m.speed).to_string());
-            println!("{}", t!("label.h",     value = m.h).to_string());
-            println!("{}", t!("label.s",     value = m.s).to_string());
-            println!("{}", t!("label.v",     value = m.v).to_string());
-        }
-
-        Command::Supported => {
-            let ids = vialrgb::get_supported_effects(&dev)?;
-            println!("{}", t!("label.supported_ids", count = ids.len()).to_string());
-            for id in &ids {
-                println!("  {id}");
+            for c in candidates {
+                println!(
+                    "  iface={} usagePage=0x{:04X} usage=0x{:04X} serial={:?} product={:?} path={}",
+                    c.interface, c.usage_page, c.usage, c.serial, c.product, c.path
+                );
             }
+
+            return Ok(());
         }
 
-        Command::Off => {
-            vialrgb::set_mode(&dev, vialrgb::EFFECT_OFF, 0, 0, 0, 0)?;
-            println!("{}", t!("ok.off").to_string());
-        }
+        // ── Everything else needs HID device ─────────────────────────────────
+        other => {
+            let vid_u16 = parse_hex_u16(&vid)?;
+            let pid_u16 = parse_hex_u16(&pid)?;
 
-        Command::SetEffect { id, speed, h, s, v } => {
-            vialrgb::set_mode(&dev, id, speed, h, s, v)?;
-            println!("{}", t!("ok.set_effect", id = id, speed = speed, h = h, s = s, v = v).to_string());
-        }
+            let api = HidApi::new()
+                .map_err(|e| anyhow::anyhow!("{}: {e}", t!("err.hidapi_init").to_string()))?;
 
-        Command::SolidHsv { h, s, v, speed } => {
-            vialrgb::set_mode(&dev, vialrgb::EFFECT_SOLID_COLOR, speed, h, s, v)?;
-            println!("{}", t!("ok.solid_hsv", h = h, s = s, v = v, speed = speed).to_string());
-        }
+            let dev = hid::open_device(&api, vid_u16, pid_u16, serial.as_deref())
+                .map_err(|e| anyhow::anyhow!("{}", localise_hid_error(e.to_string(), vid_u16, pid_u16)))?;
 
-        Command::SolidRgb { r, g, b, v, speed } => {
-            let (h8, s8, mut v8) = vialrgb::rgb_to_hsv(r, g, b);
-            if let Some(v_override) = v {
-                v8 = v_override;
+            match other {
+                // Note: List/Config are handled above.
+                Command::List => unreachable!(),
+                Command::Config { .. } => unreachable!(),
+                Command::Agent => unreachable!(),
+
+                Command::GetInfo => {
+                    let info = vialrgb::get_info(&dev)?;
+                    println!(
+                        "{}",
+                        t!("label.protocol_version", version = info.protocol_version).to_string()
+                    );
+                    println!(
+                        "{}",
+                        t!("label.max_brightness", value = info.max_brightness).to_string()
+                    );
+                }
+
+                Command::GetMode => {
+                    let m = vialrgb::get_mode(&dev)?;
+                    println!("{}", t!("label.mode", value = m.mode).to_string());
+                    println!("{}", t!("label.speed", value = m.speed).to_string());
+                    println!("{}", t!("label.h", value = m.h).to_string());
+                    println!("{}", t!("label.s", value = m.s).to_string());
+                    println!("{}", t!("label.v", value = m.v).to_string());
+                }
+
+                Command::Supported => {
+                    let ids = vialrgb::get_supported_effects(&dev)?;
+                    println!("{}", t!("label.supported_ids", count = ids.len()).to_string());
+                    for id in &ids {
+                        println!("  {id}");
+                    }
+                }
+
+                Command::Off => {
+                    vialrgb::set_mode(&dev, vialrgb::EFFECT_OFF, 0, 0, 0, 0)?;
+                    println!("{}", t!("ok.off").to_string());
+                }
+
+                Command::SetEffect { id, speed, h, s, v } => {
+                    vialrgb::set_mode(&dev, id, speed, h, s, v)?;
+                    println!(
+                        "{}",
+                        t!("ok.set_effect", id = id, speed = speed, h = h, s = s, v = v).to_string()
+                    );
+                }
+
+                Command::SolidHsv { h, s, v, speed } => {
+                    vialrgb::set_mode(&dev, vialrgb::EFFECT_SOLID_COLOR, speed, h, s, v)?;
+                    println!("{}", t!("ok.solid_hsv", h = h, s = s, v = v, speed = speed).to_string());
+                }
+
+                Command::SolidRgb { r, g, b, v, speed } => {
+                    let (h8, s8, mut v8) = vialrgb::rgb_to_hsv(r, g, b);
+                    if let Some(v_override) = v {
+                        v8 = v_override;
+                    }
+                    vialrgb::set_mode(&dev, vialrgb::EFFECT_SOLID_COLOR, speed, h8, s8, v8)?;
+                    println!(
+                        "{}",
+                        t!("ok.solid_color", r = r, g = g, b = b, h = h8, s = s8, v = v8, speed = speed).to_string()
+                    );
+                }
+
+                Command::SetBrightness { v } => {
+                    let cur = vialrgb::get_mode(&dev)?;
+                    vialrgb::set_mode(&dev, cur.mode, cur.speed, cur.h, cur.s, v)?;
+                    println!(
+                        "{}",
+                        t!("ok.brightness", v = v, mode = cur.mode, speed = cur.speed, h = cur.h, s = cur.s).to_string()
+                    );
+                }
+
+                Command::GetLedCount => {
+                    let n = vialrgb::get_led_count(&dev)?;
+                    println!("{}", t!("label.led_count", value = n).to_string());
+                }
+
+                Command::GetLedInfo { index } => {
+                    let li = vialrgb::get_led_info(&dev, index)?;
+                    println!(
+                        "{}",
+                        t!(
+                            "label.led_info",
+                            index = index,
+                            x     = li.x,
+                            y     = li.y,
+                            flags = format!("{:02X}", li.flags),
+                            row   = li.matrix_row,
+                            col   = li.matrix_col
+                        ).to_string()
+                    );
+                }
+
+                Command::DirectAllHsv { h, s, v, speed } => {
+                    let n = vialrgb::direct_set_all(&dev, speed, h, s, v)?;
+                    println!("{}", t!("ok.direct_all", n = n, h = h, s = s, v = v, speed = speed).to_string());
+                }
+
+                Command::DirectLedHsv { index, h, s, v } => {
+                    vialrgb::direct_fastset(&dev, index, &[(h, s, v)])?;
+                    println!("{}", t!("ok.direct_led", index = index, h = h, s = s, v = v).to_string());
+                }
             }
-            vialrgb::set_mode(&dev, vialrgb::EFFECT_SOLID_COLOR, speed, h8, s8, v8)?;
-            println!("{}", t!("ok.solid_color", r = r, g = g, b = b, h = h8, s = s8, v = v8, speed = speed).to_string());
-        }
 
-        Command::SetBrightness { v } => {
-            let cur = vialrgb::get_mode(&dev)?;
-            vialrgb::set_mode(&dev, cur.mode, cur.speed, cur.h, cur.s, v)?;
-            println!("{}", t!("ok.brightness", v = v, mode = cur.mode, speed = cur.speed, h = cur.h, s = cur.s).to_string());
-        }
-
-        Command::GetLedCount => {
-            let n = vialrgb::get_led_count(&dev)?;
-            println!("{}", t!("label.led_count", value = n).to_string());
-        }
-
-        Command::GetLedInfo { index } => {
-            let li = vialrgb::get_led_info(&dev, index)?;
-            println!("{}", t!(
-                "label.led_info",
-                index = index,
-                x     = li.x,
-                y     = li.y,
-                flags = format!("{:02X}", li.flags),
-                row   = li.matrix_row,
-                col   = li.matrix_col
-            ).to_string());
-        }
-
-        Command::DirectAllHsv { h, s, v, speed } => {
-            let n = vialrgb::direct_set_all(&dev, speed, h, s, v)?;
-            println!("{}", t!("ok.direct_all", n = n, h = h, s = s, v = v, speed = speed).to_string());
-        }
-
-        Command::DirectLedHsv { index, h, s, v } => {
-            vialrgb::direct_fastset(&dev, index, &[(h, s, v)])?;
-            println!("{}", t!("ok.direct_led", index = index, h = h, s = s, v = v).to_string());
+            Ok(())
         }
     }
-
-    Ok(())
 }
-
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// ── Helpers ──────────────────────────────────────────────────────────────────
 
 /// Parse a hex string (with or without "0x" prefix) into a `u16`.
 fn parse_hex_u16(s: &str) -> Result<u16> {
     let clean = s.trim().trim_start_matches("0x").trim_start_matches("0X");
     u16::from_str_radix(clean, 16)
         .map_err(|_| anyhow::anyhow!("{}", t!("err.hex_invalid", value = s).to_string()))
+}
+
+/// Normalise a hex string (with or without "0x") to uppercase without prefix.
+/// Example: "0xfeed" -> "FEED"
+fn normalise_hex_str(s: &str) -> String {
+    s.trim()
+        .trim_start_matches("0x")
+        .trim_start_matches("0X")
+        .to_uppercase()
 }
 
 fn localise_hid_error(raw: String, vid: u16, pid: u16) -> String {

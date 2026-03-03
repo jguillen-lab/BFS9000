@@ -39,6 +39,7 @@ mod config;
 mod hid;
 mod vialrgb;
 mod mqtt_agent;
+mod ui;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {

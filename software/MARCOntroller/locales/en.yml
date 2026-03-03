@@ -39,3 +39,70 @@ label:
   led_count:        "RGB_MATRIX_LED_COUNT: %{value}"
   led_info:         "LED %{index}: x=%{x} y=%{y} flags=0x%{flags} matrix=%{row},%{col}"
   config_path:      "Config path: %{path}"
+
+ui:
+  tab_control: "Control"
+  tab_config: "Config"
+  tab_direct: "Per-LED (DIRECT)"
+
+  btn_probe: "Probe"
+  btn_read: "Read"
+  btn_off: "OFF"
+  btn_reload: "Reload"
+  btn_save: "Save"
+
+  label_language: "Language"
+  lang_en: "English"
+  lang_es: "Español"
+
+  status_keyboard: "Keyboard"
+  status_online: "online"
+  status_offline: "offline"
+  status_config: "Config"
+  status_error: "Error"
+
+  group_solid: "Solid color (RGB) + brightness"
+  label_color: "Color"
+  label_brightness: "Brightness"
+  label_auto_apply: "Auto apply"
+
+  group_notes: "Notes"
+  note_effect: "• Solid uses SOLID_COLOR (effect id 2)."
+  note_limits: "• Animated effects can't be represented as a single color."
+
+  cfg_hid_vid: "HID VID"
+  cfg_hid_pid: "HID PID"
+  cfg_hid_serial: "HID serial (optional)"
+
+  cfg_mqtt_host: "MQTT host"
+  cfg_mqtt_port: "MQTT port"
+  cfg_mqtt_username: "MQTT username"
+  cfg_mqtt_password: "MQTT password"
+  cfg_mqtt_client_id: "MQTT client_id"
+
+  cfg_ha_prefix: "HA discovery_prefix"
+  cfg_ha_object_id: "HA object_id"
+  cfg_ha_unique_id: "HA unique_id"
+  cfg_ha_name: "HA name"
+  cfg_ha_base_topic: "HA base_topic"
+
+  btn_apply: "Apply"
+
+  btn_refresh_leds: "Refresh LED count"
+  label_leds: "LEDs"
+  label_leds_unknown: "?"
+  label_index: "Index"
+  btn_set_selected_led: "Set selected LED"
+  btn_set_all_leds: "Set ALL LEDs"
+  msg_auto_apply_disabled: "Auto apply is disabled: sliders will not write until you click a button."
+
+  direct_notes_title: "DIRECT notes"
+  direct_note_1: "• Per-LED control requires DIRECT support in firmware."
+  direct_note_2: "• Some firmwares require DIRECT mode to be active before fastset works."
+  direct_note_3: "  If needed, click 'Set ALL LEDs' once to enter DIRECT mode."
+
+  status_vialrgb: "VialRGB"
+  status_mode: "Mode"
+  status_vialrgb_info: "VialRGB: protocol=%{protocol} max_brightness=%{max_brightness}"
+  status_mode_info: "Mode: id=%{id} speed=%{speed} h=%{h} s=%{s} v=%{v}"
+  err_config_load_failed: "Config load failed: %{error}"

@@ -12,7 +12,7 @@ use hidapi::HidApi;
 use std::fs;
 use std::path::PathBuf;
 
-use crate::{config, hid, mqtt_agent, vialrgb};
+use crate::{config, hid, mqtt_agent, ui, vialrgb};
 
 // ── Argument structs ─────────────────────────────────────────────────────────
 
@@ -158,6 +158,9 @@ pub enum Command {
 
     /// Run the MQTT agent (Home Assistant discovery + light control).
     Agent,
+
+    /// Open the desktop UI (egui/eframe).
+    Ui,
 }
 
 // ── Command dispatch ─────────────────────────────────────────────────────────
@@ -296,6 +299,19 @@ pub async fn run(cli: Cli) -> Result<()> {
             return Ok(());
         }
 
+        Command::Ui => {
+            // The UI requires a config file (it can edit/save it from there).
+            if !cfg_path.exists() {
+                return Err(anyhow::anyhow!(
+                    "{}",
+                    t!("err.config_missing", path = cfg_path.display()).to_string()
+                ));
+            }
+
+            ui::run(cfg_path)?;
+            return Ok(());
+        }
+
         // ── Everything else needs HID device ─────────────────────────────────
         other => {
             let vid_u16 = parse_hex_u16(&vid)?;
@@ -312,6 +328,7 @@ pub async fn run(cli: Cli) -> Result<()> {
                 Command::List => unreachable!(),
                 Command::Config { .. } => unreachable!(),
                 Command::Agent => unreachable!(),
+                Command::Ui => unreachable!(),
 
                 Command::GetInfo => {
                     let info = vialrgb::get_info(&dev)?;

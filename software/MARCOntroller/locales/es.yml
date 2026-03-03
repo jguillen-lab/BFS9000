@@ -39,3 +39,70 @@ label:
   led_count:        "RGB_MATRIX_LED_COUNT: %{value}"
   led_info:         "LED %{index}: x=%{x} y=%{y} flags=0x%{flags} matrix=%{row},%{col}"
   config_path:      "Ruta de config: %{path}"
+
+ui:
+  tab_control: "Control"
+  tab_config: "Configuración"
+  tab_direct: "LED a LED (DIRECT)"
+
+  btn_probe: "Comprobar"
+  btn_read: "Leer"
+  btn_off: "Apagar"
+  btn_reload: "Recargar"
+  btn_save: "Guardar"
+
+  label_language: "Idioma"
+  lang_en: "English"
+  lang_es: "Español"
+
+  status_keyboard: "Teclado"
+  status_online: "online"
+  status_offline: "offline"
+  status_config: "Config"
+  status_error: "Error"
+
+  group_solid: "Color sólido (RGB) + brillo"
+  label_color: "Color"
+  label_brightness: "Brillo"
+  label_auto_apply: "Aplicar automáticamente"
+
+  group_notes: "Notas"
+  note_effect: "• Sólido usa SOLID_COLOR (id 2)."
+  note_limits: "• Los efectos animados no se pueden representar con un único color."
+
+  cfg_hid_vid: "HID VID"
+  cfg_hid_pid: "HID PID"
+  cfg_hid_serial: "HID serial (opcional)"
+
+  cfg_mqtt_host: "Host MQTT"
+  cfg_mqtt_port: "Puerto MQTT"
+  cfg_mqtt_username: "Usuario MQTT"
+  cfg_mqtt_password: "Contraseña MQTT"
+  cfg_mqtt_client_id: "MQTT client_id"
+
+  cfg_ha_prefix: "HA discovery_prefix"
+  cfg_ha_object_id: "HA object_id"
+  cfg_ha_unique_id: "HA unique_id"
+  cfg_ha_name: "Nombre en HA"
+  cfg_ha_base_topic: "HA base_topic"
+
+  btn_apply: "Aplicar"
+
+  btn_refresh_leds: "Actualizar número de LEDs"
+  label_leds: "LEDs"
+  label_leds_unknown: "?"
+  label_index: "Índice"
+  btn_set_selected_led: "Aplicar al LED seleccionado"
+  btn_set_all_leds: "Aplicar a TODOS los LEDs"
+  msg_auto_apply_disabled: "Aplicar automáticamente está desactivado: los cambios no se enviarán hasta que pulses un botón."
+
+  direct_notes_title: "Notas de DIRECT"
+  direct_note_1: "• El control LED a LED requiere soporte DIRECT en el firmware."
+  direct_note_2: "• Algunos firmwares exigen que DIRECT esté activo antes de que fastset funcione."
+  direct_note_3: "  Si hace falta, pulsa 'Aplicar a TODOS los LEDs' una vez para entrar en DIRECT."
+
+  status_vialrgb: "VialRGB"
+  status_mode: "Modo"
+  status_vialrgb_info: "VialRGB: protocolo=%{protocol} brillo_máx=%{max_brightness}"
+  status_mode_info: "Modo: id=%{id} velocidad=%{speed} h=%{h} s=%{s} v=%{v}"
+  err_config_load_failed: "No se pudo cargar la config: %{error}"

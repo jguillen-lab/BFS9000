@@ -106,3 +106,6 @@ ui:
   status_vialrgb_info: "VialRGB: protocolo=%{protocol} brillo_máx=%{max_brightness}"
   status_mode_info: "Modo: id=%{id} velocidad=%{speed} h=%{h} s=%{s} v=%{v}"
   err_config_load_failed: "No se pudo cargar la config: %{error}"
+
+  agent_started: "Agente MQTT arrancado"
+  agent_error: "Error del agente: %{error}"

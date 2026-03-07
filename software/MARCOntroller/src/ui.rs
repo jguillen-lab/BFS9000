@@ -15,32 +15,70 @@ use eframe::egui;
 use std::path::PathBuf;
 use std::time::{Duration, Instant};
 use std::sync::mpsc;
+use image::ImageReader;
 
 use crate::mqtt_agent;
 use crate::{config, hid, vialrgb};
 
 // ── Public API ───────────────────────────────────────────────────────────────
 
-pub fn run(cfg_path: PathBuf) -> Result<()> {
-    let native_options = eframe::NativeOptions::default();
+pub fn run(cfg_path: PathBuf, initial_locale: String) -> Result<()> {
+    let native_options = eframe::NativeOptions {
+        viewport: egui::ViewportBuilder::default()
+            .with_title("MARCOntroller")
+            .with_icon(load_window_icon()?),
+        ..Default::default()
+    };
 
     // eframe::run_native blocks until the window is closed.
     // In eframe 0.33 the app creator returns Result<Box<dyn App>, DynError>.
     eframe::run_native(
         "MARCOntroller",
         native_options,
-        Box::new(move |_cc| Ok(Box::new(MarcontrollerUi::new(cfg_path)))),
+        Box::new(move |_cc| Ok(Box::new(MarcontrollerUi::new(cfg_path, initial_locale.clone())))),
     )
         .map_err(|e| anyhow!("eframe: {e}"))
 }
 
-// ── UI model ────────────────────────────────────────────────────────────────
+// ── Internal helpers ────────────────────────────────────────────────────────
 
+fn load_window_icon() -> Result<egui::IconData> {
+    let icon_path = PathBuf::from("assets/icon.png");
+
+    let image = ImageReader::open(&icon_path)
+        .with_context(|| format!("open window icon: {}", icon_path.display()))?
+        .decode()
+        .with_context(|| format!("decode window icon: {}", icon_path.display()))?
+        .into_rgba8();
+
+    let (width, height) = image.dimensions();
+    let rgba = image.into_raw();
+
+    Ok(egui::IconData {
+        rgba,
+        width,
+        height,
+    })
+}
+
+// ── UI model ────────────────────────────────────────────────────────────────
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum Tab {
     Control,
     Direct,
     Config,
+}
+
+#[derive(Debug, Clone)]
+enum AgentEvent {
+    Started,
+    Error(String),
+}
+
+#[derive(Debug, Clone)]
+enum AgentStatus {
+    Started,
+    Error(String),
 }
 
 struct MarcontrollerUi {
@@ -94,15 +132,15 @@ struct MarcontrollerUi {
 
     // ── Agent (MQTT) ─────────────────────────────────────────────────────
     agent_started: bool,
-    agent_tx: mpsc::Sender<String>,
-    agent_rx: mpsc::Receiver<String>,
-    agent_last_msg: Option<String>,
+    agent_tx: mpsc::Sender<AgentEvent>,
+    agent_rx: mpsc::Receiver<AgentEvent>,
+    agent_status: Option<AgentStatus>,
 }
 
 impl MarcontrollerUi {
     // ── Construction ──────────────────────────────────────────────────────
 
-    fn new(cfg_path: PathBuf) -> Self {
+    fn new(cfg_path: PathBuf, initial_locale: String) -> Self {
         let (cfg, cfg_loaded_ok, last_error) = match config::load(&cfg_path) {
             Ok(c) => (c, true, None),
             Err(e) => (
@@ -112,7 +150,7 @@ impl MarcontrollerUi {
             ),
         };
 
-        let (agent_tx, agent_rx) = mpsc::channel::<String>();
+        let (agent_tx, agent_rx) = mpsc::channel::<AgentEvent>();
 
         Self {
             did_initial_sync: false,
@@ -120,7 +158,7 @@ impl MarcontrollerUi {
 
             // Default UI locale: keep whatever main.rs set, but we don't have a direct getter.
             // Users can switch it from the dropdown.
-            ui_locale: "en".to_owned(),
+            ui_locale: initial_locale,
 
             cfg_path,
             cfg,
@@ -156,8 +194,7 @@ impl MarcontrollerUi {
             agent_started: false,
             agent_tx,
             agent_rx,
-            agent_last_msg: None,
-        }
+            agent_status: None,        }
     }
 
     // ── Error handling helpers ─────────────────────────────────────────────
@@ -459,9 +496,14 @@ impl MarcontrollerUi {
             ).to_string());
         }
 
-        // Show last agent message if present (debug/visibility).
-        if let Some(m) = &self.agent_last_msg {
-            ui.label(m);
+        // Show current agent status using the active UI locale.
+        if let Some(status) = &self.agent_status {
+            let msg = match status {
+                AgentStatus::Started => t!("ui.agent_started").to_string(),
+                AgentStatus::Error(err) => t!("ui.agent_error", error = err).to_string(),
+            };
+
+            ui.label(msg);
         }
 
         if let Some(e) = &self.last_error {
@@ -727,12 +769,15 @@ impl MarcontrollerUi {
         self.start_agent_if_needed();
 
         // Drain agent messages without blocking the UI thread.
-        while let Ok(msg) = self.agent_rx.try_recv() {
-            self.agent_last_msg = Some(msg.clone());
-
-            // Surface agent failures as UI errors.
-            if msg.starts_with("agent error:") {
-                self.last_error = Some(msg);
+        while let Ok(event) = self.agent_rx.try_recv() {
+            match event {
+                AgentEvent::Started => {
+                    self.agent_status = Some(AgentStatus::Started);
+                }
+                AgentEvent::Error(err) => {
+                    self.agent_status = Some(AgentStatus::Error(err.clone()));
+                    self.last_error = Some(t!("ui.agent_error", error = err).to_string());
+                }
             }
         }
 
@@ -825,18 +870,18 @@ impl MarcontrollerUi {
             {
                 Ok(rt) => rt,
                 Err(e) => {
-                    let _ = tx.send(format!("agent error: tokio runtime: {e}"));
+                    let _ = tx.send(AgentEvent::Error(format!("tokio runtime: {e}")));
                     return;
                 }
             };
 
-            let _ = tx.send("agent started".to_owned());
+            let _ = tx.send(AgentEvent::Started);
 
             // Run forever (reconnect loop lives inside mqtt_agent::run).
             let res = rt.block_on(async { mqtt_agent::run(cfg).await });
 
             if let Err(e) = res {
-                let _ = tx.send(format!("agent error: {e:#}"));
+                let _ = tx.send(AgentEvent::Error(format!("{e:#}")));
             }
         });
 

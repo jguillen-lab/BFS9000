@@ -169,7 +169,7 @@ pub enum Command {
 ///
 /// The i18n locale must be set before calling this function.
 /// All user-visible output is routed through `t!()` so it respects the locale.
-pub async fn run(cli: Cli) -> Result<()> {
+pub async fn run(cli: Cli, locale: String) -> Result<()> {
     // Move fields out to avoid "partial move" issues when matching on `cmd`.
     let Cli {
         vid,
@@ -308,7 +308,7 @@ pub async fn run(cli: Cli) -> Result<()> {
                 ));
             }
 
-            ui::run(cfg_path)?;
+            ui::run(cfg_path, locale)?;
             return Ok(());
         }
 

@@ -32,7 +32,7 @@ i18n!("locales", fallback = "en");
 
 use clap::Parser;
 use tracing_subscriber::EnvFilter;
-
+use sys_locale::get_locale;
 
 mod cli;
 mod config;
@@ -61,37 +61,70 @@ async fn main() -> anyhow::Result<()> {
 
     // ── 3. Dispatch ──────────────────────────────────────────────────────────
     // Still sync for now; later we will make cli::run async when we add the agent.
-    cli::run(cli).await
-}
+    cli::run(cli, locale).await}
 
 /// Resolve the active locale code from (in priority order):
-///   1. `--lang` CLI flag  
-///   2. `MARCOCONTROLLER_LANG` environment variable  
-///   3. `LANG` system environment variable (first two chars)  
-///   4. `"en"` built-in default  
+///   1. `--lang` CLI flag
+///   2. `MARCOCONTROLLER_LANG` environment variable
+///   3. `LC_ALL` / `LC_MESSAGES` / `LANG` / `LANGUAGE`
+///   4. System locale via platform API
+///   5. `"en"` built-in default
 ///
-/// Returns a locale code string (e.g. `"en"`, `"es"`).
+/// Returns a supported locale code string (e.g. `"en"`, `"es"`).
 fn detect_lang(cli_override: Option<&str>) -> String {
     if let Some(code) = cli_override {
         return normalise_locale(code);
     }
+
     if let Ok(v) = std::env::var("MARCOCONTROLLER_LANG") {
+        if !v.trim().is_empty() {
+            return normalise_locale(&v);
+        }
+    }
+
+    for key in ["LC_ALL", "LC_MESSAGES", "LANG", "LANGUAGE"] {
+        if let Ok(v) = std::env::var(key) {
+            let trimmed = v.trim();
+            if !trimmed.is_empty() {
+                return normalise_locale(trimmed);
+            }
+        }
+    }
+
+    if let Some(v) = get_locale() {
         return normalise_locale(&v);
     }
-    if let Ok(v) = std::env::var("LANG") {
-        // System LANG is typically "es_ES.UTF-8" — take just the language part.
-        return normalise_locale(&v[..v.len().min(2)]);
-    }
+
     "en".to_owned()
 }
 
 /// Map a locale string to a supported code, defaulting to `"en"`.
 ///
-/// Extend the match arm when new locales are added to locales/.
+/// Accepts common forms such as:
+/// - "es"
+/// - "es-ES"
+/// - "es_ES.UTF-8"
+/// - "en-US"
+/// - "English_United States"
 fn normalise_locale(code: &str) -> String {
-    match code.to_lowercase().as_str() {
-        s if s.starts_with("es") => "es".to_owned(),
-        s if s.starts_with("en") => "en".to_owned(),
-        _ => "en".to_owned(),
+    let lower = code.trim().to_lowercase();
+
+    let primary = lower
+        .split(['-', '_', '.', '@'])
+        .next()
+        .unwrap_or("");
+
+    match primary {
+        "es" => "es".to_owned(),
+        "en" => "en".to_owned(),
+        _ => {
+            if lower.starts_with("spanish") {
+                "es".to_owned()
+            } else if lower.starts_with("english") {
+                "en".to_owned()
+            } else {
+                "en".to_owned()
+            }
+        }
     }
 }

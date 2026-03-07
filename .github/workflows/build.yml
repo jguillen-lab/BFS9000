@@ -26,24 +26,49 @@ jobs:
           generate_release_notes: true
 
   build:
-    name: Build - ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    needs: create-release   # Wait for the release to exist before uploading binaries
+    name: Build - ${{ matrix.label }}
+    runs-on: ${{ matrix.runs_on }}
+    needs: create-release
     strategy:
+      fail-fast: false
       matrix:
         include:
-          # Linux: requires libudev-dev and libhidapi-dev for hidapi crate
-          - os: ubuntu-latest
-            artifact_name: MARCOntroller
+          # Linux x86_64
+          - label: linux-x86_64
+            runs_on: ubuntu-latest
+            bin_name: MARCOntroller
             asset_name: marcontroller-linux-x86_64
-          # Windows: hidapi works out of the box (uses Windows HID API natively)
-          - os: windows-latest
-            artifact_name: MARCOntroller.exe
+
+          # Linux ARM64
+          - label: linux-aarch64
+            runs_on: ubuntu-24.04-arm
+            bin_name: MARCOntroller
+            asset_name: marcontroller-linux-aarch64
+
+          # Windows x86_64
+          - label: windows-x86_64
+            runs_on: windows-latest
+            bin_name: MARCOntroller.exe
             asset_name: marcontroller-windows-x86_64.exe
-          # macOS: hidapi works out of the box (uses IOKit framework natively)
-          - os: macos-latest
-            artifact_name: MARCOntroller
+
+          # Windows ARM64
+          - label: windows-aarch64
+            runs_on: windows-11-arm
+            bin_name: MARCOntroller.exe
+            asset_name: marcontroller-windows-aarch64.exe
+
+          # macOS Intel
+          - label: macos-x86_64
+            runs_on: macos-15-intel
+            bin_name: MARCOntroller
             asset_name: marcontroller-macos-x86_64
+
+          # macOS ARM64
+          - label: macos-aarch64
+            runs_on: macos-latest
+            bin_name: MARCOntroller
+            asset_name: marcontroller-macos-aarch64
+
     steps:
       # Check out the full repository contents
       - name: Checkout code
@@ -52,8 +77,8 @@ jobs:
       # hidapi on Linux requires system-level HID and udev libraries
       # These are not needed on Windows or macOS
       - name: Install system dependencies (Linux only)
-        if: matrix.os == 'ubuntu-latest'
-        run: sudo apt-get install -y libudev-dev libhidapi-dev
+        if: startsWith(matrix.runs_on, 'ubuntu')
+        run: sudo apt-get update && sudo apt-get install -y libudev-dev libhidapi-dev
 
       # Install the stable Rust toolchain
       - name: Install Rust
@@ -67,9 +92,19 @@ jobs:
             ~/.cargo/registry
             ~/.cargo/git
             software/MARCOntroller/target/
-          # Cache key includes the OS and Cargo.lock hash so it invalidates
-          # automatically when dependencies change
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          key: ${{ runner.os }}-${{ runner.arch }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ runner.arch }}-cargo-
+            ${{ runner.os }}-cargo-
+
+      # Helpful diagnostic to verify the real runner architecture
+      - name: Show runner info
+        shell: bash
+        run: |
+          echo "runner.os=${{ runner.os }}"
+          echo "runner.arch=${{ runner.arch }}"
+          rustc -vV
+          cargo -V
 
       # Build in release mode (optimized, no debug symbols)
       - name: Build
@@ -77,11 +112,10 @@ jobs:
         run: cargo build --release
 
       # Rename the binary to include platform info before uploading
-      # Using bash shell explicitly so this works on Windows too (via Git Bash)
-      - name: Rename binary
+      - name: Prepare release asset
         shell: bash
         run: |
-          cp software/MARCOntroller/target/release/${{ matrix.artifact_name }} \
+          cp software/MARCOntroller/target/release/${{ matrix.bin_name }} \
              ${{ matrix.asset_name }}
 
       # Upload the platform binary to the already-created release

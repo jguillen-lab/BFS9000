@@ -1,0 +1,414 @@
+INFO: kbplacer_plugin_action.py:70: Plugin version: 0.14
+INFO: kbplacer_plugin_action.py:71: Python version: '3.11.5 (main, Nov  6 2025, 07:48:09) [MSC v.1944 64 bit (AMD64)]'
+INFO: kbplacer_plugin_action.py:72: KiCad version: 9.0.7 with 4.2.2 msw (phoenix) wxWidgets 3.2.8
+INFO: kbplacer_dialog.py:631: Language: en
+INFO: kbplacer_plugin_action.py:80: GUI state: {"layout_path": "C:\\Users\\Dell Pc\\Documents\\PCB_Design\\Fiverr\\Ondoteam\\Full-keyboard-layout.json", "key_distance": [19.05, 19.05], "key_info": {"annotation_format": "LED{}", "position_option": "Default", "position": {"x": 0.0, "y": 0.0, "orientation": 0.0, "side": "Back"}, "template_path": ""}, "enable_diode_placement": true, "route_switches_with_diodes": false, "optimize_diodes_orientation": true, "diode_info": {"annotation_format": "D{}", "position_option": "Default", "position": {"x": 5.08, "y": 3.03, "orientation": 90.0, "side": "Back"}, "template_path": ""}, "additional_elements": [{"annotation_format": "S{}", "position_option": "Custom", "position": {"x": 0.0, "y": 0.0, "orientation": 0.0, "side": "Back"}, "template_path": ""}], "route_rows_and_columns": false, "template_path": "", "generate_outline": false, "outline_delta": 0.0}
+DEBUG: key_placer.py:424: Set key 1U distance: 19050000/19050000
+WARNING: key_placer.py:134: Unexpected switch net position detected, each switch should have two unique nets unambiguously defining position in key matrix, switch-by-matrix association can't be used
+DEBUG: key_placer.py:141: Switches by nets: {}
+DEBUG: key_placer.py:145: Diodes by switch: {}
+INFO: kle_serial.py:931: User layout: [[{'rx': 0.75, 'ry': 1.36, 'x': 16, 'y': -0.5, 'c': '#d1021a', 'a': 0}, ''], [{'ry': 2.36, 'x': 16, 'y': -0.5, 'c': '#aaaaaa'}, ''], [{'ry': 3.36, 'x': 16, 'y': -0.5}, ''], [{'ry': 4.36, 'x': 16, 'y': -0.5}, ''], [{'ry': 5.36, 'x': 16, 'y': -0.5}, ''], [{'rx': 1.75, 'ry': 1.36, 'x': 14, 'y': -0.5, 'c': '#d1021a'}, ''], [{'ry': 2.36, 'x': 14, 'y': -0.5, 'c': '#cccccc'}, ''], [{'ry': 3.36, 'x': 14, 'y': -0.5}, ''], [{'ry': 4.36, 'x': 14, 'y': -0.5}, ''], [{'ry': 5.36, 'x': 14, 'y': -0.5}, ''], [{'rx': 2.75, 'ry': 1.13, 'x': 12, 'y': -0.5, 'c': '#d1021a'}, ''], [{'ry': 2.13, 'x': 12, 'y': -0.5, 'c': '#cccccc'}, ''], [{'ry': 3.13, 'x': 12, 'y': -0.5}, ''], [{'ry': 4.13, 'x': 12, 'y': -0.5}, ''], [{'ry': 5.13, 'x': 12, 'y': -0.5}, ''], [{'ry': 6.13, 'x': 12, 'y': -0.5, 'c': '#aaaaaa'}, ''], [{'rx': 3.75, 'ry': 1, 'x': 10, 'y': -0.5, 'c': '#d1021a'}, ''], [{'ry': 2, 'x': 10, 'y': -0.5, 'c': '#cccccc'}, ''], [{'ry': 3, 'x': 10, 'y': -0.5}, ''], [{'ry': 4, 'x': 10, 'y': -0.5}, ''], [{'ry': 5, 'x': 10, 'y': -0.5}, ''], [{'ry': 6, 'x': 10, 'y': -0.5, 'c': '#aaaaaa'}, ''], [{'rx': 4.75, 'ry': 1.13, 'x': 8, 'y': -0.5, 'c': '#d1021a'}, ''], [{'ry': 2.13, 'x': 8, 'y': -0.5, 'c': '#cccccc'}, ''], [{'ry': 3.13, 'x': 8, 'y': -0.5}, ''], [{'ry': 4.13, 'x': 8, 'y': -0.5}, ''], [{'ry': 5.13, 'x': 8, 'y': -0.5}, ''], [{'ry': 6.13, 'x': 8, 'y': -0.5, 'c': '#aaaaaa'}, ''], [{'rx': 5.75, 'ry': 1.23, 'x': 6, 'y': -0.5, 'c': '#d1021a'}, ''], [{'ry': 2.23, 'x': 6, 'y': -0.5, 'c': '#cccccc'}, ''], [{'ry': 3.23, 'x': 6, 'y': -0.5}, ''], [{'ry': 4.23, 'x': 6, 'y': -0.5}, ''], [{'ry': 5.23, 'x': 6, 'y': -0.5}, ''], [{'r': 15, 'rx': 18, 'ry': 0, 'x': 2.75, 'y': 0.5, 'c': '#417505'}, ''], [{'x': 1.75, 'y': -0.87}, '', {'x': 1}, ''], [{'x': 4.75, 'y': -0.77}, ''], [{'x': 2.75, 'y': -0.36}, ''], [{'x': 1.75, 'y': -0.87}, '', {'x': 1}, ''], [{'x': 4.75, 'y': -0.77, 'h': 2}, ''], [{'x': 2.75, 'y': -0.36}, ''], [{'x': 1.75, 'y': -0.87}, '', {'x': 1}, ''], [{'x': 2.75, 'y': -0.13}, ''], [{'x': 1.75, 'y': -0.87}, '', {'x': 1}, ''], [{'x': 4.75, 'y': -0.77, 'h': 2}, ''], [{'x': 2.75, 'y': -0.36}, ''], [{'x': 1.75, 'y': -0.87}, '', {'x': 1}, ''], [{'x': 2.75, 'y': -0.13}, ''], [{'x': 1.75, 'y': -0.87}, '', {'x': 1}, ''], [{'x': 4.75, 'y': -0.77}, ''], [{'r': -45, 'rx': 10.991421, 'ry': 6.929646, 'x': -0.5, 'y': -0.75, 'c': '#777777', 'h': 1.5}, ''], [{'r': -30, 'rx': 12.063046, 'ry': 6.401057, 'x': -0.5, 'y': -0.5}, '']]
+DEBUG: key_placer.py:724: Layout offset: (33337500, 31242000)
+DEBUG: kle_serial.py:990: Layout with: x_ortholinear_keys=55, y_ortholinear_keys=14, rotated_keys=24, encoders=0, iso_enters=0 and unrecognized_shape_keys=0
+DEBUG: kle_serial.py:1015: Layout tagged: [<KeyboardTag.OTHER: 4>]
+WARNING: key_placer.py:741: Layout of this kind with missing key matrix annotations may produce unexpected footprint order. For details see: https://github.com/adamws/kicad-kbplacer/blob/master/docs/annotation_guide.md
+DEBUG: board_modifier.py:94: Setting LED1 footprint position: (361950000, 57149999)
+DEBUG: board_modifier.py:94: Setting LED2 footprint position: (361950000, 76200000)
+DEBUG: board_modifier.py:94: Setting LED3 footprint position: (361950000, 95250000)
+DEBUG: board_modifier.py:94: Setting LED4 footprint position: (361950000, 114299999)
+DEBUG: board_modifier.py:94: Setting LED5 footprint position: (361950000, 133350000)
+DEBUG: board_modifier.py:94: Setting LED6 footprint position: (342900000, 57149999)
+DEBUG: board_modifier.py:94: Setting LED7 footprint position: (342900000, 76200000)
+DEBUG: board_modifier.py:94: Setting LED8 footprint position: (342900000, 95250000)
+DEBUG: board_modifier.py:94: Setting LED9 footprint position: (342900000, 114299999)
+DEBUG: board_modifier.py:94: Setting LED10 footprint position: (342900000, 133350000)
+DEBUG: board_modifier.py:94: Setting LED11 footprint position: (323850000, 52768499)
+DEBUG: board_modifier.py:94: Setting LED12 footprint position: (323850000, 71818500)
+DEBUG: board_modifier.py:94: Setting LED13 footprint position: (323850000, 90868500)
+DEBUG: board_modifier.py:94: Setting LED14 footprint position: (323850000, 109918500)
+DEBUG: board_modifier.py:94: Setting LED15 footprint position: (323850000, 128968500)
+DEBUG: board_modifier.py:94: Setting LED16 footprint position: (323850000, 148018500)
+DEBUG: board_modifier.py:94: Setting LED17 footprint position: (304800000, 50292000)
+DEBUG: board_modifier.py:94: Setting LED18 footprint position: (304800000, 69342000)
+DEBUG: board_modifier.py:94: Setting LED19 footprint position: (304800000, 88392000)
+DEBUG: board_modifier.py:94: Setting LED20 footprint position: (304800000, 107442000)
+DEBUG: board_modifier.py:94: Setting LED21 footprint position: (304800000, 126492000)
+DEBUG: board_modifier.py:94: Setting LED22 footprint position: (304800000, 145542000)
+DEBUG: board_modifier.py:94: Setting LED23 footprint position: (285750000, 52768499)
+DEBUG: board_modifier.py:94: Setting LED24 footprint position: (285750000, 71818500)
+DEBUG: board_modifier.py:94: Setting LED25 footprint position: (285750000, 90868500)
+DEBUG: board_modifier.py:94: Setting LED26 footprint position: (285750000, 109918500)
+DEBUG: board_modifier.py:94: Setting LED27 footprint position: (285750000, 128968500)
+DEBUG: board_modifier.py:94: Setting LED28 footprint position: (285750000, 148018500)
+DEBUG: board_modifier.py:94: Setting LED29 footprint position: (266700000, 54673500)
+DEBUG: board_modifier.py:94: Setting LED30 footprint position: (266700000, 73723500)
+DEBUG: board_modifier.py:94: Setting LED31 footprint position: (266700000, 92773500)
+DEBUG: board_modifier.py:94: Setting LED32 footprint position: (266700000, 111823500)
+DEBUG: board_modifier.py:94: Setting LED33 footprint position: (266700000, 130873500)
+DEBUG: board_modifier.py:94: Setting LED34 footprint position: (438150000, 50292000)
+DEBUG: board_modifier.py:94: Setting LED35 footprint position: (419100000, 52768499)
+DEBUG: board_modifier.py:94: Setting LED36 footprint position: (457200000, 52768499)
+DEBUG: board_modifier.py:94: Setting LED37 footprint position: (476250000, 57149999)
+DEBUG: board_modifier.py:94: Setting LED38 footprint position: (438150000, 69342000)
+DEBUG: board_modifier.py:94: Setting LED39 footprint position: (419100000, 71818500)
+DEBUG: board_modifier.py:94: Setting LED40 footprint position: (457200000, 71818500)
+DEBUG: board_modifier.py:94: Setting LED41 footprint position: (476250000, 85725000)
+DEBUG: board_modifier.py:94: Setting LED42 footprint position: (438150000, 88392000)
+DEBUG: board_modifier.py:94: Setting LED43 footprint position: (419100000, 90868500)
+DEBUG: board_modifier.py:94: Setting LED44 footprint position: (457200000, 90868500)
+DEBUG: board_modifier.py:94: Setting LED45 footprint position: (438150000, 107442000)
+DEBUG: board_modifier.py:94: Setting LED46 footprint position: (419100000, 109918500)
+DEBUG: board_modifier.py:94: Setting LED47 footprint position: (457200000, 109918500)
+DEBUG: board_modifier.py:94: Setting LED48 footprint position: (476250000, 123824999)
+DEBUG: board_modifier.py:94: Setting LED49 footprint position: (438150000, 126492000)
+DEBUG: board_modifier.py:94: Setting LED50 footprint position: (419100000, 128968500)
+DEBUG: board_modifier.py:94: Setting LED51 footprint position: (457200000, 128968500)
+DEBUG: board_modifier.py:94: Setting LED52 footprint position: (438150000, 145542000)
+DEBUG: board_modifier.py:94: Setting LED53 footprint position: (419100000, 148018500)
+DEBUG: board_modifier.py:94: Setting LED54 footprint position: (457200000, 148018500)
+DEBUG: board_modifier.py:94: Setting LED55 footprint position: (476250000, 152400000)
+DEBUG: board_modifier.py:94: Setting LED56 footprint position: (242724070, 163251756)
+DEBUG: board_modifier.py:94: Setting LED57 footprint position: (263138526, 153182135)
+INFO: key_placer.py:1078: Diode info: [ElementInfo(annotation_format='D{}', position_option=<PositionOption.DEFAULT: 'Default'>, position=ElementPosition(x=5.08, y=3.03, orientation=90.0, side=<Side.BACK: 'Back'>), template_path='')]
+DEBUG: board_modifier.py:107: Getting LED1 footprint position: (361950000, 57149999)
+DEBUG: board_modifier.py:107: Getting LED2 footprint position: (361950000, 76200000)
+DEBUG: board_modifier.py:107: Getting LED3 footprint position: (361950000, 95250000)
+DEBUG: board_modifier.py:107: Getting LED4 footprint position: (361950000, 114299999)
+DEBUG: board_modifier.py:107: Getting LED5 footprint position: (361950000, 133350000)
+DEBUG: board_modifier.py:107: Getting LED6 footprint position: (342900000, 57149999)
+DEBUG: board_modifier.py:107: Getting LED7 footprint position: (342900000, 76200000)
+DEBUG: board_modifier.py:107: Getting LED8 footprint position: (342900000, 95250000)
+DEBUG: board_modifier.py:107: Getting LED9 footprint position: (342900000, 114299999)
+DEBUG: board_modifier.py:107: Getting LED10 footprint position: (342900000, 133350000)
+DEBUG: board_modifier.py:107: Getting LED11 footprint position: (323850000, 52768499)
+DEBUG: board_modifier.py:107: Getting LED12 footprint position: (323850000, 71818500)
+DEBUG: board_modifier.py:107: Getting LED13 footprint position: (323850000, 90868500)
+DEBUG: board_modifier.py:107: Getting LED14 footprint position: (323850000, 109918500)
+DEBUG: board_modifier.py:107: Getting LED15 footprint position: (323850000, 128968500)
+DEBUG: board_modifier.py:107: Getting LED16 footprint position: (323850000, 148018500)
+DEBUG: board_modifier.py:107: Getting LED17 footprint position: (304800000, 50292000)
+DEBUG: board_modifier.py:107: Getting LED18 footprint position: (304800000, 69342000)
+DEBUG: board_modifier.py:107: Getting LED19 footprint position: (304800000, 88392000)
+DEBUG: board_modifier.py:107: Getting LED20 footprint position: (304800000, 107442000)
+DEBUG: board_modifier.py:107: Getting LED21 footprint position: (304800000, 126492000)
+DEBUG: board_modifier.py:107: Getting LED22 footprint position: (304800000, 145542000)
+DEBUG: board_modifier.py:107: Getting LED23 footprint position: (285750000, 52768499)
+DEBUG: board_modifier.py:107: Getting LED24 footprint position: (285750000, 71818500)
+DEBUG: board_modifier.py:107: Getting LED25 footprint position: (285750000, 90868500)
+DEBUG: board_modifier.py:107: Getting LED26 footprint position: (285750000, 109918500)
+DEBUG: board_modifier.py:107: Getting LED27 footprint position: (285750000, 128968500)
+DEBUG: board_modifier.py:107: Getting LED28 footprint position: (285750000, 148018500)
+DEBUG: board_modifier.py:107: Getting LED29 footprint position: (266700000, 54673500)
+DEBUG: board_modifier.py:107: Getting LED30 footprint position: (266700000, 73723500)
+DEBUG: board_modifier.py:107: Getting LED31 footprint position: (266700000, 92773500)
+DEBUG: board_modifier.py:107: Getting LED32 footprint position: (266700000, 111823500)
+DEBUG: board_modifier.py:107: Getting LED33 footprint position: (266700000, 130873500)
+DEBUG: board_modifier.py:107: Getting LED34 footprint position: (431109880, 65667021)
+DEBUG: board_modifier.py:107: Getting LED35 footprint position: (412068028, 63128633)
+DEBUG: board_modifier.py:107: Getting LED36 footprint position: (448869802, 72989638)
+DEBUG: board_modifier.py:107: Getting LED37 footprint position: (466136673, 82152345)
+DEBUG: board_modifier.py:107: Getting LED38 footprint position: (426179377, 84067908)
+DEBUG: board_modifier.py:107: Getting LED39 footprint position: (407137525, 81529521)
+DEBUG: board_modifier.py:107: Getting LED40 footprint position: (443939299, 91390526)
+DEBUG: board_modifier.py:107: Getting LED41 footprint position: (458740919, 109753677)
+DEBUG: board_modifier.py:107: Getting LED42 footprint position: (421248874, 102468795)
+DEBUG: board_modifier.py:107: Getting LED43 footprint position: (402207022, 99930408)
+DEBUG: board_modifier.py:107: Getting LED44 footprint position: (439008796, 109791413)
+DEBUG: board_modifier.py:107: Getting LED45 footprint position: (416318371, 120869682)
+DEBUG: board_modifier.py:107: Getting LED46 footprint position: (397276519, 118331295)
+DEBUG: board_modifier.py:107: Getting LED47 footprint position: (434078293, 128192300)
+DEBUG: board_modifier.py:107: Getting LED48 footprint position: (448879913, 146555450)
+DEBUG: board_modifier.py:107: Getting LED49 footprint position: (411387869, 139270569)
+DEBUG: board_modifier.py:107: Getting LED50 footprint position: (392346016, 136732182)
+DEBUG: board_modifier.py:107: Getting LED51 footprint position: (429147790, 146593187)
+DEBUG: board_modifier.py:107: Getting LED52 footprint position: (406457366, 157671456)
+DEBUG: board_modifier.py:107: Getting LED53 footprint position: (387415514, 155133069)
+DEBUG: board_modifier.py:107: Getting LED54 footprint position: (424217287, 164994074)
+DEBUG: board_modifier.py:107: Getting LED55 footprint position: (441484159, 174156781)
+DEBUG: board_modifier.py:107: Getting LED56 footprint position: (242724070, 163251756)
+DEBUG: board_modifier.py:107: Getting LED57 footprint position: (263138526, 153182135)
+DEBUG: key_placer.py:826: Optimizing orientation of LED1 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED2 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED3 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED4 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED5 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED6 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED7 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED8 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED9 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED10 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED11 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED12 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED13 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED14 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED15 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED16 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED17 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED18 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED19 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED20 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED21 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED22 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED23 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED24 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED25 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED26 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED27 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED28 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED29 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED30 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED31 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED32 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED33 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED34 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED35 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED36 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED37 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED38 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED39 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED40 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED41 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED42 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED43 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED44 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED45 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED46 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED47 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED48 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED49 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED50 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED51 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED52 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED53 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED54 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED55 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED56 diodes
+DEBUG: key_placer.py:826: Optimizing orientation of LED57 diodes
+DEBUG: key_placer.py:854: Placing additional elements for LED57
+DEBUG: board_modifier.py:107: Getting LED57 footprint position: (263138526, 153182135)
+DEBUG: board_modifier.py:84: Searching for optional S57 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED56
+DEBUG: board_modifier.py:107: Getting LED56 footprint position: (242724070, 163251756)
+DEBUG: board_modifier.py:84: Searching for optional S56 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED55
+DEBUG: board_modifier.py:107: Getting LED55 footprint position: (441484159, 174156781)
+DEBUG: board_modifier.py:84: Searching for optional S55 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED54
+DEBUG: board_modifier.py:107: Getting LED54 footprint position: (424217287, 164994074)
+DEBUG: board_modifier.py:84: Searching for optional S54 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED53
+DEBUG: board_modifier.py:107: Getting LED53 footprint position: (387415514, 155133069)
+DEBUG: board_modifier.py:84: Searching for optional S53 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED52
+DEBUG: board_modifier.py:107: Getting LED52 footprint position: (406457366, 157671456)
+DEBUG: board_modifier.py:84: Searching for optional S52 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED51
+DEBUG: board_modifier.py:107: Getting LED51 footprint position: (429147790, 146593187)
+DEBUG: board_modifier.py:84: Searching for optional S51 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED50
+DEBUG: board_modifier.py:107: Getting LED50 footprint position: (392346016, 136732182)
+DEBUG: board_modifier.py:84: Searching for optional S50 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED49
+DEBUG: board_modifier.py:107: Getting LED49 footprint position: (411387869, 139270569)
+DEBUG: board_modifier.py:84: Searching for optional S49 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED48
+DEBUG: board_modifier.py:107: Getting LED48 footprint position: (448879913, 146555450)
+DEBUG: board_modifier.py:84: Searching for optional S48 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED47
+DEBUG: board_modifier.py:107: Getting LED47 footprint position: (434078293, 128192300)
+DEBUG: board_modifier.py:84: Searching for optional S47 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED46
+DEBUG: board_modifier.py:107: Getting LED46 footprint position: (397276519, 118331295)
+DEBUG: board_modifier.py:84: Searching for optional S46 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED45
+DEBUG: board_modifier.py:107: Getting LED45 footprint position: (416318371, 120869682)
+DEBUG: board_modifier.py:84: Searching for optional S45 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED44
+DEBUG: board_modifier.py:107: Getting LED44 footprint position: (439008796, 109791413)
+DEBUG: board_modifier.py:84: Searching for optional S44 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED43
+DEBUG: board_modifier.py:107: Getting LED43 footprint position: (402207022, 99930408)
+DEBUG: board_modifier.py:84: Searching for optional S43 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED42
+DEBUG: board_modifier.py:107: Getting LED42 footprint position: (421248874, 102468795)
+DEBUG: board_modifier.py:84: Searching for optional S42 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED41
+DEBUG: board_modifier.py:107: Getting LED41 footprint position: (458740919, 109753677)
+DEBUG: board_modifier.py:84: Searching for optional S41 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED40
+DEBUG: board_modifier.py:107: Getting LED40 footprint position: (443939299, 91390526)
+DEBUG: board_modifier.py:84: Searching for optional S40 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED39
+DEBUG: board_modifier.py:107: Getting LED39 footprint position: (407137525, 81529521)
+DEBUG: board_modifier.py:84: Searching for optional S39 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED38
+DEBUG: board_modifier.py:107: Getting LED38 footprint position: (426179377, 84067908)
+DEBUG: board_modifier.py:84: Searching for optional S38 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED37
+DEBUG: board_modifier.py:107: Getting LED37 footprint position: (466136673, 82152345)
+DEBUG: board_modifier.py:84: Searching for optional S37 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED36
+DEBUG: board_modifier.py:107: Getting LED36 footprint position: (448869802, 72989638)
+DEBUG: board_modifier.py:84: Searching for optional S36 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED35
+DEBUG: board_modifier.py:107: Getting LED35 footprint position: (412068028, 63128633)
+DEBUG: board_modifier.py:84: Searching for optional S35 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED34
+DEBUG: board_modifier.py:107: Getting LED34 footprint position: (431109880, 65667021)
+DEBUG: board_modifier.py:84: Searching for optional S34 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED33
+DEBUG: board_modifier.py:107: Getting LED33 footprint position: (266700000, 130873500)
+DEBUG: board_modifier.py:84: Searching for optional S33 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED32
+DEBUG: board_modifier.py:107: Getting LED32 footprint position: (266700000, 111823500)
+DEBUG: board_modifier.py:84: Searching for optional S32 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED31
+DEBUG: board_modifier.py:107: Getting LED31 footprint position: (266700000, 92773500)
+DEBUG: board_modifier.py:84: Searching for optional S31 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED30
+DEBUG: board_modifier.py:107: Getting LED30 footprint position: (266700000, 73723500)
+DEBUG: board_modifier.py:84: Searching for optional S30 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED29
+DEBUG: board_modifier.py:107: Getting LED29 footprint position: (266700000, 54673500)
+DEBUG: board_modifier.py:84: Searching for optional S29 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED28
+DEBUG: board_modifier.py:107: Getting LED28 footprint position: (285750000, 148018500)
+DEBUG: board_modifier.py:84: Searching for optional S28 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED27
+DEBUG: board_modifier.py:107: Getting LED27 footprint position: (285750000, 128968500)
+DEBUG: board_modifier.py:84: Searching for optional S27 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED26
+DEBUG: board_modifier.py:107: Getting LED26 footprint position: (285750000, 109918500)
+DEBUG: board_modifier.py:84: Searching for optional S26 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED25
+DEBUG: board_modifier.py:107: Getting LED25 footprint position: (285750000, 90868500)
+DEBUG: board_modifier.py:84: Searching for optional S25 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED24
+DEBUG: board_modifier.py:107: Getting LED24 footprint position: (285750000, 71818500)
+DEBUG: board_modifier.py:84: Searching for optional S24 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED23
+DEBUG: board_modifier.py:107: Getting LED23 footprint position: (285750000, 52768499)
+DEBUG: board_modifier.py:84: Searching for optional S23 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED22
+DEBUG: board_modifier.py:107: Getting LED22 footprint position: (304800000, 145542000)
+DEBUG: board_modifier.py:84: Searching for optional S22 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED21
+DEBUG: board_modifier.py:107: Getting LED21 footprint position: (304800000, 126492000)
+DEBUG: board_modifier.py:84: Searching for optional S21 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED20
+DEBUG: board_modifier.py:107: Getting LED20 footprint position: (304800000, 107442000)
+DEBUG: board_modifier.py:84: Searching for optional S20 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED19
+DEBUG: board_modifier.py:107: Getting LED19 footprint position: (304800000, 88392000)
+DEBUG: board_modifier.py:84: Searching for optional S19 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED18
+DEBUG: board_modifier.py:107: Getting LED18 footprint position: (304800000, 69342000)
+DEBUG: board_modifier.py:84: Searching for optional S18 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED17
+DEBUG: board_modifier.py:107: Getting LED17 footprint position: (304800000, 50292000)
+DEBUG: board_modifier.py:84: Searching for optional S17 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED16
+DEBUG: board_modifier.py:107: Getting LED16 footprint position: (323850000, 148018500)
+DEBUG: board_modifier.py:84: Searching for optional S16 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED15
+DEBUG: board_modifier.py:107: Getting LED15 footprint position: (323850000, 128968500)
+DEBUG: board_modifier.py:84: Searching for optional S15 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED14
+DEBUG: board_modifier.py:107: Getting LED14 footprint position: (323850000, 109918500)
+DEBUG: board_modifier.py:84: Searching for optional S14 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED13
+DEBUG: board_modifier.py:107: Getting LED13 footprint position: (323850000, 90868500)
+DEBUG: board_modifier.py:84: Searching for optional S13 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED12
+DEBUG: board_modifier.py:107: Getting LED12 footprint position: (323850000, 71818500)
+DEBUG: board_modifier.py:84: Searching for optional S12 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED11
+DEBUG: board_modifier.py:107: Getting LED11 footprint position: (323850000, 52768499)
+DEBUG: board_modifier.py:84: Searching for optional S11 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED10
+DEBUG: board_modifier.py:107: Getting LED10 footprint position: (342900000, 133350000)
+DEBUG: board_modifier.py:84: Searching for optional S10 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED9
+DEBUG: board_modifier.py:107: Getting LED9 footprint position: (342900000, 114299999)
+DEBUG: board_modifier.py:84: Searching for optional S9 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED8
+DEBUG: board_modifier.py:107: Getting LED8 footprint position: (342900000, 95250000)
+DEBUG: board_modifier.py:84: Searching for optional S8 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED7
+DEBUG: board_modifier.py:107: Getting LED7 footprint position: (342900000, 76200000)
+DEBUG: board_modifier.py:84: Searching for optional S7 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED6
+DEBUG: board_modifier.py:107: Getting LED6 footprint position: (342900000, 57149999)
+DEBUG: board_modifier.py:84: Searching for optional S6 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED5
+DEBUG: board_modifier.py:107: Getting LED5 footprint position: (361950000, 133350000)
+DEBUG: board_modifier.py:84: Searching for optional S5 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED4
+DEBUG: board_modifier.py:107: Getting LED4 footprint position: (361950000, 114299999)
+DEBUG: board_modifier.py:84: Searching for optional S4 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED3
+DEBUG: board_modifier.py:107: Getting LED3 footprint position: (361950000, 95250000)
+DEBUG: board_modifier.py:84: Searching for optional S3 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:89: Footprint not found
+DEBUG: key_placer.py:854: Placing additional elements for LED2
+DEBUG: board_modifier.py:107: Getting LED2 footprint position: (361950000, 76200000)
+DEBUG: board_modifier.py:84: Searching for optional S2 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:94: Setting S2 footprint position: (361950000, 76200000)
+DEBUG: key_placer.py:854: Placing additional elements for LED1
+DEBUG: board_modifier.py:107: Getting LED1 footprint position: (361950000, 57149999)
+DEBUG: board_modifier.py:84: Searching for optional S1 footprint in C:\Users\Dell Pc\Documents\PCB_Design\Fiverr\Ondoteam\Custom split ergonomic keyboard PCB\Custom split ergonomic keyboard PCB.kicad_pcb
+DEBUG: board_modifier.py:94: Setting S1 footprint position: (361950000, 57149999)

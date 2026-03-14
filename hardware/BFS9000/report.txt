@@ -1,0 +1,2217 @@
+Info: Procesando el símbolo 'BT1:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'J3:Sofle_Pico:Cirque tie in'.
+Info: Procesando el símbolo 'BT2:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C2R5:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT3:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC8R2:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT4:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C6R2:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT5:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'MLED20:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'BT6:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'MLED27:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'BT7:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC5R03:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT8:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'MLED5:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'BT9:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C3:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Procesando el símbolo 'BT10:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C9R1:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT11:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C3R0:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT12:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC1R4:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT13:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C6R3:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT14:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC3R4:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT15:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC7R1:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT16:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC9R3:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT17:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'J4:Sofle_Pico:Cirque tie in'.
+Info: Procesando el símbolo 'BT18:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C3R1:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT19:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'MLED8:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'BT20:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C9R2:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT21:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C6R4:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT22:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC8R3:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT23:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC1R5:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT24:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC5R4:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT25:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C3R2:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT26:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC3R5:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT27:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'MLED16:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'BT28:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'MLED14:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'BT29:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C6R5:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT30:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C9R3:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT31:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC7R2:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT32:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C3R3:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT33:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'J5:Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical'.
+Info: Procesando el símbolo 'BT34:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC2R0:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT35:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'MLED19:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'BT36:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC9R4:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT37:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C7R0:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT38:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC4R0:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT39:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C3R4:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT40:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C9R4:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT41:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC6R0:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT42:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'J6:Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical'.
+Info: Procesando el símbolo 'BT43:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC8R4:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT44:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'DC2R1:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'BT45:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C7R1:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'BT46:Aron_footprint:Breakaway_Tabs'.
+Info: Procesando el símbolo 'C3R5:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C0R0:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'MLED11:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'DC7R3:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C9R5:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'JP1:Sofle_Pico:Level Shifter Bypass Jumper'.
+Info: Procesando el símbolo 'DC4R1:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'MLED26:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'C0R1:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C4:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Procesando el símbolo 'C7R2:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C4R0:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC6R1:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC2R2:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'MLED24:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'C0R3:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C10R5:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'MLED1:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'DC9R5:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C4R1:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C7R3:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC8R5:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C0R5:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC4R2:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC7R4:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC2R3:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC0R0:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C4R2:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'MLED6:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'C1R0:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C7R4:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC6R2:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'MLED18:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'MLED2:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'MLED9:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'C4R3:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C1R1:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC4R3:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC0R1:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C7R5:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC2R4:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'MLED23:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'MLED12:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'C1R2:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C4R4:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC7R5:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC6R3:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC9R0:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C8R0:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC0R3:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C1R3:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC10R5:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C5R0:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC2R5:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC4R4:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'MLED15:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'MLED22:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'C1R4:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C8R1:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'MLED3:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'C5R1:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC0R5:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'MLED28:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'DC6R4:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C1R5:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC3R0:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC8R0:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C8R2:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C5R2:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC5R0:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'MLED7:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'C2:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Procesando el símbolo 'DC1R0:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C2R0:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC9R1:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'MLED17:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'J1:Sofle_Pico:OLED SSD1306 128x64'.
+Info: Procesando el símbolo 'C5R03:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C8R3:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC3R1:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C2R1:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'MLED25:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'DC6R5:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC1R1:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC5R1:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C5R4:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'MLED4:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'C2R2:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C8R4:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC8R1:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'MLED10:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'DC3R2:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'J2:Sofle_Pico:MJ-4PP-9'.
+Info: Procesando el símbolo 'C6R0:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C2R3:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'DC1R2:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC9R2:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C8R5:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'MLED13:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'DC5R2:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC7R0:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C2R4:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'C6R1:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'MLED21:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'DC3R3:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'DC1R3:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'C9R0:Sofle_Pico:Cherry_MX_DS_Hotswap_v3.5.4'.
+Info: Procesando el símbolo 'MLED29:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'MULED1:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'MULED2:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'MULED3:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'MULED4:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'MULED5:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'MULED6:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'Q1:Sofle_Pico:SOT-23_DS'.
+Info: Procesando el símbolo 'R1:Aron_footprint:Res_1206_SMD_6.3mm_TH_Hybrid'.
+Info: Procesando el símbolo 'R2:Aron_footprint:Res_1206_SMD_6.3mm_TH_Hybrid'.
+Info: Procesando el símbolo 'R3:Aron_footprint:Res_1206_SMD_6.3mm_TH_Hybrid'.
+Info: Procesando el símbolo 'R4:Aron_footprint:Res_1206_SMD_6.3mm_TH_Hybrid'.
+Info: Procesando el símbolo 'rD1:Sofle_Pico:D_SOD-123_DO-35_Hybrid_DoubleSided_V2'.
+Info: Procesando el símbolo 'S1:PCM_marbastlib-mx:STAB_MX_2u'.
+Info: Procesando el símbolo 'S2:PCM_marbastlib-mx:STAB_MX_2u'.
+Info: Procesando el símbolo 'SLED1:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED2:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED3:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED4:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED5:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED6:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED7:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED8:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED9:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED10:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED11:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED12:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED13:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED14:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED15:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED16:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED17:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED18:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED19:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED20:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED21:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SLED22:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SULED1:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SULED2:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SULED3:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SULED4:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'SW1:Sofle_Pico:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm-keebio_modified'.
+Info: Procesando el símbolo 'TH1:Sofle_Pico:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole'.
+Info: Procesando el símbolo 'TH2:Sofle_Pico:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole'.
+Info: Procesando el símbolo 'TH3:Sofle_Pico:Hole from sofle for M2 posts gold rimmer'.
+Info: Procesando el símbolo 'TH4:Sofle_Pico:Hole from sofle for M2 posts gold rimmer'.
+Info: Procesando el símbolo 'TH5:Sofle_Pico:Hole from sofle for M2 posts gold rimmer'.
+Info: Procesando el símbolo 'TH6:Sofle_Pico:Hole from sofle for M2 posts gold rimmer'.
+Info: Procesando el símbolo 'TH7:Sofle_Pico:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole'.
+Info: Procesando el símbolo 'TH8:Sofle_Pico:Hole from sofle for M2 posts gold rimmer'.
+Info: Procesando el símbolo 'TH9:Sofle_Pico:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole'.
+Info: Procesando el símbolo 'TH10:Sofle_Pico:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole'.
+Info: Procesando el símbolo 'TH11:Sofle_Pico:Hole from sofle for M2 posts gold rimmer'.
+Info: Procesando el símbolo 'TH12:Sofle_Pico:Hole from sofle for M2 posts gold rimmer'.
+Info: Procesando el símbolo 'TH13:Sofle_Pico:Hole from sofle for M2 posts gold rimmer'.
+Info: Procesando el símbolo 'TH14:Sofle_Pico:Hole from sofle for M2 posts gold rimmer'.
+Info: Procesando el símbolo 'TH15:Sofle_Pico:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole'.
+Info: Procesando el símbolo 'TH16:Sofle_Pico:Hole from sofle for M2 posts gold rimmer'.
+Info: Procesando el símbolo 'TH17:Sofle_Pico:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole'.
+Info: Procesando el símbolo 'TH18:Sofle_Pico:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole'.
+Info: Procesando el símbolo 'TH19:Sofle_Pico:Hole from sofle for M2 posts gold rimmer'.
+Info: Procesando el símbolo 'TLED1:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'TLED2:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'TLED3:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'TLED4:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'TLED5:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'TLED6:Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5'.
+Info: Procesando el símbolo 'U1:Sofle_Pico:RPi_Pico_SMD_TH_DS'.
+Info: Número de avisos: 0, errores: 3.
+C0R5 pin 2 reconectado de Net-(D57-A) a Net-(DC0R5-A).
+Indicador de referencia cambiado de MX9 a C1R0.
+Actualizados C1R0 campos.
+Añadir red Net-(DC1R0-A).
+C1R0 pin 2 reconectado de Net-(D9-A) a Net-(DC1R0-A).
+C1R0 pin 2 reconectado de Net-(D9-A) a Net-(DC1R0-A).
+C1R0 pin 2 reconectado de Net-(D9-A) a Net-(DC1R0-A).
+Indicador de referencia cambiado de MX19 a C1R1.
+Actualizados C1R1 campos.
+Añadir red Net-(DC1R1-A).
+C1R1 pin 2 reconectado de Net-(D19-A) a Net-(DC1R1-A).
+C1R1 pin 2 reconectado de Net-(D19-A) a Net-(DC1R1-A).
+C1R1 pin 2 reconectado de Net-(D19-A) a Net-(DC1R1-A).
+Indicador de referencia cambiado de MX29 a C1R2.
+Actualizados C1R2 campos.
+Añadir red Net-(DC1R2-A).
+C1R2 pin 2 reconectado de Net-(D29-A) a Net-(DC1R2-A).
+C1R2 pin 2 reconectado de Net-(D29-A) a Net-(DC1R2-A).
+C1R2 pin 2 reconectado de Net-(D29-A) a Net-(DC1R2-A).
+Indicador de referencia cambiado de MX38 a C1R3.
+Actualizados C1R3 campos.
+Añadir red Net-(DC1R3-A).
+C1R3 pin 2 reconectado de Net-(D38-A) a Net-(DC1R3-A).
+C1R3 pin 2 reconectado de Net-(D38-A) a Net-(DC1R3-A).
+C1R3 pin 2 reconectado de Net-(D38-A) a Net-(DC1R3-A).
+Indicador de referencia cambiado de MX48 a C1R4.
+Actualizados C1R4 campos.
+Añadir red Net-(DC1R4-A).
+C1R4 pin 2 reconectado de Net-(D48-A) a Net-(DC1R4-A).
+C1R4 pin 2 reconectado de Net-(D48-A) a Net-(DC1R4-A).
+C1R4 pin 2 reconectado de Net-(D48-A) a Net-(DC1R4-A).
+Indicador de referencia cambiado de MX56 a C1R5.
+Actualizados C1R5 campos.
+Añadir red Net-(DC1R5-A).
+C1R5 pin 2 reconectado de Net-(D56-A) a Net-(DC1R5-A).
+C1R5 pin 2 reconectado de Net-(D56-A) a Net-(DC1R5-A).
+C1R5 pin 2 reconectado de Net-(D56-A) a Net-(DC1R5-A).
+Archivo de hoja C2 actualizado a 'BFS9000.kicad_sch'.
+Indicador de referencia cambiado de MX8 a C2R0.
+Actualizados C2R0 campos.
+Añadir red Net-(DC2R0-A).
+C2R0 pin 2 reconectado de Net-(D8-A) a Net-(DC2R0-A).
+C2R0 pin 2 reconectado de Net-(D8-A) a Net-(DC2R0-A).
+C2R0 pin 2 reconectado de Net-(D8-A) a Net-(DC2R0-A).
+Indicador de referencia cambiado de MX18 a C2R1.
+Actualizados C2R1 campos.
+Añadir red Net-(DC2R1-A).
+C2R1 pin 2 reconectado de Net-(D18-A) a Net-(DC2R1-A).
+C2R1 pin 2 reconectado de Net-(D18-A) a Net-(DC2R1-A).
+C2R1 pin 2 reconectado de Net-(D18-A) a Net-(DC2R1-A).
+Indicador de referencia cambiado de MX28 a C2R2.
+Actualizados C2R2 campos.
+Añadir red Net-(DC2R2-A).
+C2R2 pin 2 reconectado de Net-(D28-A) a Net-(DC2R2-A).
+C2R2 pin 2 reconectado de Net-(D28-A) a Net-(DC2R2-A).
+C2R2 pin 2 reconectado de Net-(D28-A) a Net-(DC2R2-A).
+Indicador de referencia cambiado de MX37 a C2R3.
+Actualizados C2R3 campos.
+Añadir red Net-(DC2R3-A).
+C2R3 pin 2 reconectado de Net-(D37-A) a Net-(DC2R3-A).
+C2R3 pin 2 reconectado de Net-(D37-A) a Net-(DC2R3-A).
+C2R3 pin 2 reconectado de Net-(D37-A) a Net-(DC2R3-A).
+Indicador de referencia cambiado de MX47 a C2R4.
+Actualizados C2R4 campos.
+Añadir red Net-(DC2R4-A).
+C2R4 pin 2 reconectado de Net-(D47-A) a Net-(DC2R4-A).
+C2R4 pin 2 reconectado de Net-(D47-A) a Net-(DC2R4-A).
+C2R4 pin 2 reconectado de Net-(D47-A) a Net-(DC2R4-A).
+Indicador de referencia cambiado de MX55 a C2R5.
+Actualizados C2R5 campos.
+Añadir red Net-(DC2R5-A).
+C2R5 pin 2 reconectado de Net-(D55-A) a Net-(DC2R5-A).
+C2R5 pin 2 reconectado de Net-(D55-A) a Net-(DC2R5-A).
+C2R5 pin 2 reconectado de Net-(D55-A) a Net-(DC2R5-A).
+Archivo de hoja C3 actualizado a 'BFS9000.kicad_sch'.
+Indicador de referencia cambiado de MX7 a C3R0.
+Actualizados C3R0 campos.
+Añadir red Net-(DC3R0-A).
+C3R0 pin 2 reconectado de Net-(D7-A) a Net-(DC3R0-A).
+C3R0 pin 2 reconectado de Net-(D7-A) a Net-(DC3R0-A).
+C3R0 pin 2 reconectado de Net-(D7-A) a Net-(DC3R0-A).
+Indicador de referencia cambiado de MX17 a C3R1.
+Actualizados C3R1 campos.
+Añadir red Net-(DC3R1-A).
+C3R1 pin 2 reconectado de Net-(D17-A) a Net-(DC3R1-A).
+C3R1 pin 2 reconectado de Net-(D17-A) a Net-(DC3R1-A).
+C3R1 pin 2 reconectado de Net-(D17-A) a Net-(DC3R1-A).
+Indicador de referencia cambiado de MX27 a C3R2.
+Actualizados C3R2 campos.
+Añadir red Net-(DC3R2-A).
+C3R2 pin 2 reconectado de Net-(D27-A) a Net-(DC3R2-A).
+C3R2 pin 2 reconectado de Net-(D27-A) a Net-(DC3R2-A).
+C3R2 pin 2 reconectado de Net-(D27-A) a Net-(DC3R2-A).
+Indicador de referencia cambiado de MX36 a C3R3.
+Actualizados C3R3 campos.
+Añadir red Net-(DC3R3-A).
+C3R3 pin 2 reconectado de Net-(D36-A) a Net-(DC3R3-A).
+C3R3 pin 2 reconectado de Net-(D36-A) a Net-(DC3R3-A).
+C3R3 pin 2 reconectado de Net-(D36-A) a Net-(DC3R3-A).
+Indicador de referencia cambiado de MX46 a C3R4.
+Actualizados C3R4 campos.
+Añadir red Net-(DC3R4-A).
+C3R4 pin 2 reconectado de Net-(D46-A) a Net-(DC3R4-A).
+C3R4 pin 2 reconectado de Net-(D46-A) a Net-(DC3R4-A).
+C3R4 pin 2 reconectado de Net-(D46-A) a Net-(DC3R4-A).
+Indicador de referencia cambiado de MX53 a C3R5.
+Actualizados C3R5 campos.
+Añadir red Net-(DC3R5-A).
+C3R5 pin 2 reconectado de Net-(D53-A) a Net-(DC3R5-A).
+C3R5 pin 2 reconectado de Net-(D53-A) a Net-(DC3R5-A).
+C3R5 pin 2 reconectado de Net-(D53-A) a Net-(DC3R5-A).
+Archivo de hoja C4 actualizado a 'BFS9000.kicad_sch'.
+Indicador de referencia cambiado de MX6 a C4R0.
+Actualizados C4R0 campos.
+Añadir red Net-(DC4R0-A).
+C4R0 pin 2 reconectado de Net-(D6-A) a Net-(DC4R0-A).
+C4R0 pin 2 reconectado de Net-(D6-A) a Net-(DC4R0-A).
+C4R0 pin 2 reconectado de Net-(D6-A) a Net-(DC4R0-A).
+Indicador de referencia cambiado de MX16 a C4R1.
+Actualizados C4R1 campos.
+Añadir red Net-(DC4R1-A).
+C4R1 pin 2 reconectado de Net-(D16-A) a Net-(DC4R1-A).
+C4R1 pin 2 reconectado de Net-(D16-A) a Net-(DC4R1-A).
+C4R1 pin 2 reconectado de Net-(D16-A) a Net-(DC4R1-A).
+Indicador de referencia cambiado de MX26 a C4R2.
+Actualizados C4R2 campos.
+Añadir red Net-(DC4R2-A).
+C4R2 pin 2 reconectado de Net-(D26-A) a Net-(DC4R2-A).
+C4R2 pin 2 reconectado de Net-(D26-A) a Net-(DC4R2-A).
+C4R2 pin 2 reconectado de Net-(D26-A) a Net-(DC4R2-A).
+Indicador de referencia cambiado de MX35 a C4R3.
+Actualizados C4R3 campos.
+Añadir red Net-(DC4R3-A).
+C4R3 pin 2 reconectado de Net-(D35-A) a Net-(DC4R3-A).
+C4R3 pin 2 reconectado de Net-(D35-A) a Net-(DC4R3-A).
+C4R3 pin 2 reconectado de Net-(D35-A) a Net-(DC4R3-A).
+Indicador de referencia cambiado de MX45 a C4R4.
+Actualizados C4R4 campos.
+Añadir red Net-(DC4R4-A).
+C4R4 pin 2 reconectado de Net-(D45-A) a Net-(DC4R4-A).
+C4R4 pin 2 reconectado de Net-(D45-A) a Net-(DC4R4-A).
+C4R4 pin 2 reconectado de Net-(D45-A) a Net-(DC4R4-A).
+Indicador de referencia cambiado de MX5 a C5R0.
+Actualizados C5R0 campos.
+Añadir red Net-(DC5R0-A).
+C5R0 pin 2 reconectado de Net-(D5-A) a Net-(DC5R0-A).
+C5R0 pin 2 reconectado de Net-(D5-A) a Net-(DC5R0-A).
+C5R0 pin 2 reconectado de Net-(D5-A) a Net-(DC5R0-A).
+Indicador de referencia cambiado de MX15 a C5R1.
+Actualizados C5R1 campos.
+Añadir red Net-(DC5R1-A).
+C5R1 pin 2 reconectado de Net-(D15-A) a Net-(DC5R1-A).
+C5R1 pin 2 reconectado de Net-(D15-A) a Net-(DC5R1-A).
+C5R1 pin 2 reconectado de Net-(D15-A) a Net-(DC5R1-A).
+Indicador de referencia cambiado de MX25 a C5R2.
+Actualizados C5R2 campos.
+Añadir red Net-(DC5R2-A).
+C5R2 pin 2 reconectado de Net-(D25-A) a Net-(DC5R2-A).
+C5R2 pin 2 reconectado de Net-(D25-A) a Net-(DC5R2-A).
+C5R2 pin 2 reconectado de Net-(D25-A) a Net-(DC5R2-A).
+Indicador de referencia cambiado de MX34 a C5R03.
+Actualizados C5R03 campos.
+Añadir red Net-(DC5R03-A).
+C5R03 pin 2 reconectado de Net-(D34-A) a Net-(DC5R03-A).
+C5R03 pin 2 reconectado de Net-(D34-A) a Net-(DC5R03-A).
+C5R03 pin 2 reconectado de Net-(D34-A) a Net-(DC5R03-A).
+Indicador de referencia cambiado de MX44 a C5R4.
+Actualizados C5R4 campos.
+Añadir red Net-(DC5R4-A).
+C5R4 pin 2 reconectado de Net-(D44-A) a Net-(DC5R4-A).
+C5R4 pin 2 reconectado de Net-(D44-A) a Net-(DC5R4-A).
+C5R4 pin 2 reconectado de Net-(D44-A) a Net-(DC5R4-A).
+Indicador de referencia cambiado de MX3 a C6R0.
+Actualizados C6R0 campos.
+Añadir red Net-(DC6R0-A).
+C6R0 pin 2 reconectado de Net-(D3-A) a Net-(DC6R0-A).
+C6R0 pin 2 reconectado de Net-(D3-A) a Net-(DC6R0-A).
+C6R0 pin 2 reconectado de Net-(D3-A) a Net-(DC6R0-A).
+Indicador de referencia cambiado de MX13 a C6R1.
+Actualizados C6R1 campos.
+Añadir red Net-(DC6R1-A).
+C6R1 pin 2 reconectado de Net-(D13-A) a Net-(DC6R1-A).
+C6R1 pin 2 reconectado de Net-(D13-A) a Net-(DC6R1-A).
+C6R1 pin 2 reconectado de Net-(D13-A) a Net-(DC6R1-A).
+Indicador de referencia cambiado de MX23 a C6R2.
+Actualizados C6R2 campos.
+Añadir red Net-(DC6R2-A).
+C6R2 pin 2 reconectado de Net-(D23-A) a Net-(DC6R2-A).
+C6R2 pin 2 reconectado de Net-(D23-A) a Net-(DC6R2-A).
+C6R2 pin 2 reconectado de Net-(D23-A) a Net-(DC6R2-A).
+Indicador de referencia cambiado de MX32 a C6R3.
+Actualizados C6R3 campos.
+Añadir red Net-(DC6R3-A).
+C6R3 pin 2 reconectado de Net-(D32-A) a Net-(DC6R3-A).
+C6R3 pin 2 reconectado de Net-(D32-A) a Net-(DC6R3-A).
+C6R3 pin 2 reconectado de Net-(D32-A) a Net-(DC6R3-A).
+Indicador de referencia cambiado de MX42 a C6R4.
+Actualizados C6R4 campos.
+Añadir red Net-(DC6R4-A).
+C6R4 pin 2 reconectado de Net-(D42-A) a Net-(DC6R4-A).
+C6R4 pin 2 reconectado de Net-(D42-A) a Net-(DC6R4-A).
+C6R4 pin 2 reconectado de Net-(D42-A) a Net-(DC6R4-A).
+Indicador de referencia cambiado de MX51 a C6R5.
+Actualizados C6R5 campos.
+Añadir red Net-(DC6R5-A).
+C6R5 pin 2 reconectado de Net-(D51-A) a Net-(DC6R5-A).
+C6R5 pin 2 reconectado de Net-(D51-A) a Net-(DC6R5-A).
+C6R5 pin 2 reconectado de Net-(D51-A) a Net-(DC6R5-A).
+Indicador de referencia cambiado de MX1 a C7R0.
+Actualizados C7R0 campos.
+Añadir red Net-(DC7R0-A).
+C7R0 pin 2 reconectado de Net-(D1-A) a Net-(DC7R0-A).
+C7R0 pin 2 reconectado de Net-(D1-A) a Net-(DC7R0-A).
+C7R0 pin 2 reconectado de Net-(D1-A) a Net-(DC7R0-A).
+Indicador de referencia cambiado de MX11 a C7R1.
+Actualizados C7R1 campos.
+Añadir red Net-(DC7R1-A).
+C7R1 pin 2 reconectado de Net-(D11-A) a Net-(DC7R1-A).
+C7R1 pin 2 reconectado de Net-(D11-A) a Net-(DC7R1-A).
+C7R1 pin 2 reconectado de Net-(D11-A) a Net-(DC7R1-A).
+Indicador de referencia cambiado de MX21 a C7R2.
+Actualizados C7R2 campos.
+Añadir red Net-(DC7R2-A).
+C7R2 pin 2 reconectado de Net-(D21-A) a Net-(DC7R2-A).
+C7R2 pin 2 reconectado de Net-(D21-A) a Net-(DC7R2-A).
+C7R2 pin 2 reconectado de Net-(D21-A) a Net-(DC7R2-A).
+Indicador de referencia cambiado de MX30 a C7R3.
+Actualizados C7R3 campos.
+Añadir red Net-(DC7R3-A).
+C7R3 pin 2 reconectado de Net-(D30-A) a Net-(DC7R3-A).
+C7R3 pin 2 reconectado de Net-(D30-A) a Net-(DC7R3-A).
+C7R3 pin 2 reconectado de Net-(D30-A) a Net-(DC7R3-A).
+Indicador de referencia cambiado de MX40 a C7R4.
+Actualizados C7R4 campos.
+Añadir red Net-(DC7R4-A).
+C7R4 pin 2 reconectado de Net-(D40-A) a Net-(DC7R4-A).
+C7R4 pin 2 reconectado de Net-(D40-A) a Net-(DC7R4-A).
+C7R4 pin 2 reconectado de Net-(D40-A) a Net-(DC7R4-A).
+Indicador de referencia cambiado de MX49 a C7R5.
+Actualizados C7R5 campos.
+Añadir red Net-(DC7R5-A).
+C7R5 pin 2 reconectado de Net-(D49-A) a Net-(DC7R5-A).
+C7R5 pin 2 reconectado de Net-(D49-A) a Net-(DC7R5-A).
+C7R5 pin 2 reconectado de Net-(D49-A) a Net-(DC7R5-A).
+Indicador de referencia cambiado de MX2 a C8R0.
+Actualizados C8R0 campos.
+Añadir red Net-(DC8R0-A).
+C8R0 pin 2 reconectado de Net-(D2-A) a Net-(DC8R0-A).
+C8R0 pin 2 reconectado de Net-(D2-A) a Net-(DC8R0-A).
+C8R0 pin 2 reconectado de Net-(D2-A) a Net-(DC8R0-A).
+Indicador de referencia cambiado de MX12 a C8R1.
+Actualizados C8R1 campos.
+Añadir red Net-(DC8R1-A).
+C8R1 pin 2 reconectado de Net-(D12-A) a Net-(DC8R1-A).
+C8R1 pin 2 reconectado de Net-(D12-A) a Net-(DC8R1-A).
+C8R1 pin 2 reconectado de Net-(D12-A) a Net-(DC8R1-A).
+Indicador de referencia cambiado de MX22 a C8R2.
+Actualizados C8R2 campos.
+Añadir red Net-(DC8R2-A).
+C8R2 pin 2 reconectado de Net-(D22-A) a Net-(DC8R2-A).
+C8R2 pin 2 reconectado de Net-(D22-A) a Net-(DC8R2-A).
+C8R2 pin 2 reconectado de Net-(D22-A) a Net-(DC8R2-A).
+Indicador de referencia cambiado de MX31 a C8R3.
+Actualizados C8R3 campos.
+Añadir red Net-(DC8R3-A).
+C8R3 pin 2 reconectado de Net-(D31-A) a Net-(DC8R3-A).
+C8R3 pin 2 reconectado de Net-(D31-A) a Net-(DC8R3-A).
+C8R3 pin 2 reconectado de Net-(D31-A) a Net-(DC8R3-A).
+Indicador de referencia cambiado de MX41 a C8R4.
+Actualizados C8R4 campos.
+Añadir red Net-(DC8R4-A).
+C8R4 pin 2 reconectado de Net-(D41-A) a Net-(DC8R4-A).
+C8R4 pin 2 reconectado de Net-(D41-A) a Net-(DC8R4-A).
+C8R4 pin 2 reconectado de Net-(D41-A) a Net-(DC8R4-A).
+Indicador de referencia cambiado de MX50 a C8R5.
+Actualizados C8R5 campos.
+Añadir red Net-(DC8R5-A).
+C8R5 pin 2 reconectado de Net-(D50-A) a Net-(DC8R5-A).
+C8R5 pin 2 reconectado de Net-(D50-A) a Net-(DC8R5-A).
+C8R5 pin 2 reconectado de Net-(D50-A) a Net-(DC8R5-A).
+Indicador de referencia cambiado de MX4 a C9R0.
+Actualizados C9R0 campos.
+Añadir red Net-(DC9R0-A).
+C9R0 pin 2 reconectado de Net-(D4-A) a Net-(DC9R0-A).
+C9R0 pin 2 reconectado de Net-(D4-A) a Net-(DC9R0-A).
+C9R0 pin 2 reconectado de Net-(D4-A) a Net-(DC9R0-A).
+Indicador de referencia cambiado de MX14 a C9R1.
+Actualizados C9R1 campos.
+Añadir red Net-(DC9R1-A).
+C9R1 pin 2 reconectado de Net-(D14-A) a Net-(DC9R1-A).
+C9R1 pin 2 reconectado de Net-(D14-A) a Net-(DC9R1-A).
+C9R1 pin 2 reconectado de Net-(D14-A) a Net-(DC9R1-A).
+Indicador de referencia cambiado de MX24 a C9R2.
+Actualizados C9R2 campos.
+Añadir red Net-(DC9R2-A).
+C9R2 pin 2 reconectado de Net-(D24-A) a Net-(DC9R2-A).
+C9R2 pin 2 reconectado de Net-(D24-A) a Net-(DC9R2-A).
+C9R2 pin 2 reconectado de Net-(D24-A) a Net-(DC9R2-A).
+Indicador de referencia cambiado de MX33 a C9R3.
+Actualizados C9R3 campos.
+Añadir red Net-(DC9R3-A).
+C9R3 pin 2 reconectado de Net-(D33-A) a Net-(DC9R3-A).
+C9R3 pin 2 reconectado de Net-(D33-A) a Net-(DC9R3-A).
+C9R3 pin 2 reconectado de Net-(D33-A) a Net-(DC9R3-A).
+Indicador de referencia cambiado de MX43 a C9R4.
+Actualizados C9R4 campos.
+Añadir red Net-(DC9R4-A).
+C9R4 pin 2 reconectado de Net-(D43-A) a Net-(DC9R4-A).
+C9R4 pin 2 reconectado de Net-(D43-A) a Net-(DC9R4-A).
+C9R4 pin 2 reconectado de Net-(D43-A) a Net-(DC9R4-A).
+Indicador de referencia cambiado de MX52 a C9R5.
+Actualizados C9R5 campos.
+Añadir red Net-(DC9R5-A).
+C9R5 pin 2 reconectado de Net-(D52-A) a Net-(DC9R5-A).
+C9R5 pin 2 reconectado de Net-(D52-A) a Net-(DC9R5-A).
+C9R5 pin 2 reconectado de Net-(D52-A) a Net-(DC9R5-A).
+Indicador de referencia cambiado de MX54 a C10R5.
+Actualizados C10R5 campos.
+Añadir red Net-(DC10R5-A).
+C10R5 pin 2 reconectado de Net-(D54-A) a Net-(DC10R5-A).
+C10R5 pin 2 reconectado de Net-(D54-A) a Net-(DC10R5-A).
+C10R5 pin 2 reconectado de Net-(D54-A) a Net-(DC10R5-A).
+Indicador de referencia cambiado de D10 a DC0R0.
+DC0R0 pin 2 reconectado de Net-(D10-A) a Net-(DC0R0-A).
+DC0R0 pin 2 reconectado de Net-(D10-A) a Net-(DC0R0-A).
+DC0R0 pin 2 reconectado de Net-(D10-A) a Net-(DC0R0-A).
+DC0R0 pin 2 reconectado de Net-(D10-A) a Net-(DC0R0-A).
+DC0R0 pin 2 reconectado de Net-(D10-A) a Net-(DC0R0-A).
+Indicador de referencia cambiado de D20 a DC0R1.
+DC0R1 pin 2 reconectado de Net-(D20-A) a Net-(DC0R1-A).
+DC0R1 pin 2 reconectado de Net-(D20-A) a Net-(DC0R1-A).
+DC0R1 pin 2 reconectado de Net-(D20-A) a Net-(DC0R1-A).
+DC0R1 pin 2 reconectado de Net-(D20-A) a Net-(DC0R1-A).
+DC0R1 pin 2 reconectado de Net-(D20-A) a Net-(DC0R1-A).
+Indicador de referencia cambiado de D39 a DC0R3.
+DC0R3 pin 2 reconectado de Net-(D39-A) a Net-(DC0R3-A).
+DC0R3 pin 2 reconectado de Net-(D39-A) a Net-(DC0R3-A).
+DC0R3 pin 2 reconectado de Net-(D39-A) a Net-(DC0R3-A).
+DC0R3 pin 2 reconectado de Net-(D39-A) a Net-(DC0R3-A).
+DC0R3 pin 2 reconectado de Net-(D39-A) a Net-(DC0R3-A).
+Indicador de referencia cambiado de D57 a DC0R5.
+DC0R5 pin 2 reconectado de Net-(D57-A) a Net-(DC0R5-A).
+DC0R5 pin 2 reconectado de Net-(D57-A) a Net-(DC0R5-A).
+DC0R5 pin 2 reconectado de Net-(D57-A) a Net-(DC0R5-A).
+DC0R5 pin 2 reconectado de Net-(D57-A) a Net-(DC0R5-A).
+DC0R5 pin 2 reconectado de Net-(D57-A) a Net-(DC0R5-A).
+Indicador de referencia cambiado de D9 a DC1R0.
+DC1R0 pin 2 reconectado de Net-(D9-A) a Net-(DC1R0-A).
+DC1R0 pin 2 reconectado de Net-(D9-A) a Net-(DC1R0-A).
+DC1R0 pin 2 reconectado de Net-(D9-A) a Net-(DC1R0-A).
+DC1R0 pin 2 reconectado de Net-(D9-A) a Net-(DC1R0-A).
+DC1R0 pin 2 reconectado de Net-(D9-A) a Net-(DC1R0-A).
+Indicador de referencia cambiado de D19 a DC1R1.
+DC1R1 pin 2 reconectado de Net-(D19-A) a Net-(DC1R1-A).
+DC1R1 pin 2 reconectado de Net-(D19-A) a Net-(DC1R1-A).
+DC1R1 pin 2 reconectado de Net-(D19-A) a Net-(DC1R1-A).
+DC1R1 pin 2 reconectado de Net-(D19-A) a Net-(DC1R1-A).
+DC1R1 pin 2 reconectado de Net-(D19-A) a Net-(DC1R1-A).
+Indicador de referencia cambiado de D29 a DC1R2.
+DC1R2 pin 2 reconectado de Net-(D29-A) a Net-(DC1R2-A).
+DC1R2 pin 2 reconectado de Net-(D29-A) a Net-(DC1R2-A).
+DC1R2 pin 2 reconectado de Net-(D29-A) a Net-(DC1R2-A).
+DC1R2 pin 2 reconectado de Net-(D29-A) a Net-(DC1R2-A).
+DC1R2 pin 2 reconectado de Net-(D29-A) a Net-(DC1R2-A).
+Indicador de referencia cambiado de D38 a DC1R3.
+DC1R3 pin 2 reconectado de Net-(D38-A) a Net-(DC1R3-A).
+DC1R3 pin 2 reconectado de Net-(D38-A) a Net-(DC1R3-A).
+DC1R3 pin 2 reconectado de Net-(D38-A) a Net-(DC1R3-A).
+DC1R3 pin 2 reconectado de Net-(D38-A) a Net-(DC1R3-A).
+DC1R3 pin 2 reconectado de Net-(D38-A) a Net-(DC1R3-A).
+Indicador de referencia cambiado de D48 a DC1R4.
+DC1R4 pin 2 reconectado de Net-(D48-A) a Net-(DC1R4-A).
+DC1R4 pin 2 reconectado de Net-(D48-A) a Net-(DC1R4-A).
+DC1R4 pin 2 reconectado de Net-(D48-A) a Net-(DC1R4-A).
+DC1R4 pin 2 reconectado de Net-(D48-A) a Net-(DC1R4-A).
+DC1R4 pin 2 reconectado de Net-(D48-A) a Net-(DC1R4-A).
+Indicador de referencia cambiado de D56 a DC1R5.
+DC1R5 pin 2 reconectado de Net-(D56-A) a Net-(DC1R5-A).
+DC1R5 pin 2 reconectado de Net-(D56-A) a Net-(DC1R5-A).
+DC1R5 pin 2 reconectado de Net-(D56-A) a Net-(DC1R5-A).
+DC1R5 pin 2 reconectado de Net-(D56-A) a Net-(DC1R5-A).
+DC1R5 pin 2 reconectado de Net-(D56-A) a Net-(DC1R5-A).
+Indicador de referencia cambiado de D8 a DC2R0.
+DC2R0 pin 2 reconectado de Net-(D8-A) a Net-(DC2R0-A).
+DC2R0 pin 2 reconectado de Net-(D8-A) a Net-(DC2R0-A).
+DC2R0 pin 2 reconectado de Net-(D8-A) a Net-(DC2R0-A).
+DC2R0 pin 2 reconectado de Net-(D8-A) a Net-(DC2R0-A).
+DC2R0 pin 2 reconectado de Net-(D8-A) a Net-(DC2R0-A).
+Indicador de referencia cambiado de D18 a DC2R1.
+DC2R1 pin 2 reconectado de Net-(D18-A) a Net-(DC2R1-A).
+DC2R1 pin 2 reconectado de Net-(D18-A) a Net-(DC2R1-A).
+DC2R1 pin 2 reconectado de Net-(D18-A) a Net-(DC2R1-A).
+DC2R1 pin 2 reconectado de Net-(D18-A) a Net-(DC2R1-A).
+DC2R1 pin 2 reconectado de Net-(D18-A) a Net-(DC2R1-A).
+Indicador de referencia cambiado de D28 a DC2R2.
+DC2R2 pin 2 reconectado de Net-(D28-A) a Net-(DC2R2-A).
+DC2R2 pin 2 reconectado de Net-(D28-A) a Net-(DC2R2-A).
+DC2R2 pin 2 reconectado de Net-(D28-A) a Net-(DC2R2-A).
+DC2R2 pin 2 reconectado de Net-(D28-A) a Net-(DC2R2-A).
+DC2R2 pin 2 reconectado de Net-(D28-A) a Net-(DC2R2-A).
+Indicador de referencia cambiado de D37 a DC2R3.
+DC2R3 pin 2 reconectado de Net-(D37-A) a Net-(DC2R3-A).
+DC2R3 pin 2 reconectado de Net-(D37-A) a Net-(DC2R3-A).
+DC2R3 pin 2 reconectado de Net-(D37-A) a Net-(DC2R3-A).
+DC2R3 pin 2 reconectado de Net-(D37-A) a Net-(DC2R3-A).
+DC2R3 pin 2 reconectado de Net-(D37-A) a Net-(DC2R3-A).
+Indicador de referencia cambiado de D47 a DC2R4.
+DC2R4 pin 2 reconectado de Net-(D47-A) a Net-(DC2R4-A).
+DC2R4 pin 2 reconectado de Net-(D47-A) a Net-(DC2R4-A).
+DC2R4 pin 2 reconectado de Net-(D47-A) a Net-(DC2R4-A).
+DC2R4 pin 2 reconectado de Net-(D47-A) a Net-(DC2R4-A).
+DC2R4 pin 2 reconectado de Net-(D47-A) a Net-(DC2R4-A).
+Indicador de referencia cambiado de D55 a DC2R5.
+DC2R5 pin 2 reconectado de Net-(D55-A) a Net-(DC2R5-A).
+DC2R5 pin 2 reconectado de Net-(D55-A) a Net-(DC2R5-A).
+DC2R5 pin 2 reconectado de Net-(D55-A) a Net-(DC2R5-A).
+DC2R5 pin 2 reconectado de Net-(D55-A) a Net-(DC2R5-A).
+DC2R5 pin 2 reconectado de Net-(D55-A) a Net-(DC2R5-A).
+Indicador de referencia cambiado de D7 a DC3R0.
+DC3R0 pin 2 reconectado de Net-(D7-A) a Net-(DC3R0-A).
+DC3R0 pin 2 reconectado de Net-(D7-A) a Net-(DC3R0-A).
+DC3R0 pin 2 reconectado de Net-(D7-A) a Net-(DC3R0-A).
+DC3R0 pin 2 reconectado de Net-(D7-A) a Net-(DC3R0-A).
+DC3R0 pin 2 reconectado de Net-(D7-A) a Net-(DC3R0-A).
+Indicador de referencia cambiado de D17 a DC3R1.
+DC3R1 pin 2 reconectado de Net-(D17-A) a Net-(DC3R1-A).
+DC3R1 pin 2 reconectado de Net-(D17-A) a Net-(DC3R1-A).
+DC3R1 pin 2 reconectado de Net-(D17-A) a Net-(DC3R1-A).
+DC3R1 pin 2 reconectado de Net-(D17-A) a Net-(DC3R1-A).
+DC3R1 pin 2 reconectado de Net-(D17-A) a Net-(DC3R1-A).
+Indicador de referencia cambiado de D27 a DC3R2.
+DC3R2 pin 2 reconectado de Net-(D27-A) a Net-(DC3R2-A).
+DC3R2 pin 2 reconectado de Net-(D27-A) a Net-(DC3R2-A).
+DC3R2 pin 2 reconectado de Net-(D27-A) a Net-(DC3R2-A).
+DC3R2 pin 2 reconectado de Net-(D27-A) a Net-(DC3R2-A).
+DC3R2 pin 2 reconectado de Net-(D27-A) a Net-(DC3R2-A).
+Indicador de referencia cambiado de D36 a DC3R3.
+DC3R3 pin 2 reconectado de Net-(D36-A) a Net-(DC3R3-A).
+DC3R3 pin 2 reconectado de Net-(D36-A) a Net-(DC3R3-A).
+DC3R3 pin 2 reconectado de Net-(D36-A) a Net-(DC3R3-A).
+DC3R3 pin 2 reconectado de Net-(D36-A) a Net-(DC3R3-A).
+DC3R3 pin 2 reconectado de Net-(D36-A) a Net-(DC3R3-A).
+Indicador de referencia cambiado de D46 a DC3R4.
+DC3R4 pin 2 reconectado de Net-(D46-A) a Net-(DC3R4-A).
+DC3R4 pin 2 reconectado de Net-(D46-A) a Net-(DC3R4-A).
+DC3R4 pin 2 reconectado de Net-(D46-A) a Net-(DC3R4-A).
+DC3R4 pin 2 reconectado de Net-(D46-A) a Net-(DC3R4-A).
+DC3R4 pin 2 reconectado de Net-(D46-A) a Net-(DC3R4-A).
+Indicador de referencia cambiado de D53 a DC3R5.
+DC3R5 pin 2 reconectado de Net-(D53-A) a Net-(DC3R5-A).
+DC3R5 pin 2 reconectado de Net-(D53-A) a Net-(DC3R5-A).
+DC3R5 pin 2 reconectado de Net-(D53-A) a Net-(DC3R5-A).
+DC3R5 pin 2 reconectado de Net-(D53-A) a Net-(DC3R5-A).
+DC3R5 pin 2 reconectado de Net-(D53-A) a Net-(DC3R5-A).
+Indicador de referencia cambiado de D6 a DC4R0.
+DC4R0 pin 2 reconectado de Net-(D6-A) a Net-(DC4R0-A).
+DC4R0 pin 2 reconectado de Net-(D6-A) a Net-(DC4R0-A).
+DC4R0 pin 2 reconectado de Net-(D6-A) a Net-(DC4R0-A).
+DC4R0 pin 2 reconectado de Net-(D6-A) a Net-(DC4R0-A).
+DC4R0 pin 2 reconectado de Net-(D6-A) a Net-(DC4R0-A).
+Indicador de referencia cambiado de D16 a DC4R1.
+DC4R1 pin 2 reconectado de Net-(D16-A) a Net-(DC4R1-A).
+DC4R1 pin 2 reconectado de Net-(D16-A) a Net-(DC4R1-A).
+DC4R1 pin 2 reconectado de Net-(D16-A) a Net-(DC4R1-A).
+DC4R1 pin 2 reconectado de Net-(D16-A) a Net-(DC4R1-A).
+DC4R1 pin 2 reconectado de Net-(D16-A) a Net-(DC4R1-A).
+Indicador de referencia cambiado de D26 a DC4R2.
+DC4R2 pin 2 reconectado de Net-(D26-A) a Net-(DC4R2-A).
+DC4R2 pin 2 reconectado de Net-(D26-A) a Net-(DC4R2-A).
+DC4R2 pin 2 reconectado de Net-(D26-A) a Net-(DC4R2-A).
+DC4R2 pin 2 reconectado de Net-(D26-A) a Net-(DC4R2-A).
+DC4R2 pin 2 reconectado de Net-(D26-A) a Net-(DC4R2-A).
+Indicador de referencia cambiado de D35 a DC4R3.
+DC4R3 pin 2 reconectado de Net-(D35-A) a Net-(DC4R3-A).
+DC4R3 pin 2 reconectado de Net-(D35-A) a Net-(DC4R3-A).
+DC4R3 pin 2 reconectado de Net-(D35-A) a Net-(DC4R3-A).
+DC4R3 pin 2 reconectado de Net-(D35-A) a Net-(DC4R3-A).
+DC4R3 pin 2 reconectado de Net-(D35-A) a Net-(DC4R3-A).
+Indicador de referencia cambiado de D45 a DC4R4.
+DC4R4 pin 2 reconectado de Net-(D45-A) a Net-(DC4R4-A).
+DC4R4 pin 2 reconectado de Net-(D45-A) a Net-(DC4R4-A).
+DC4R4 pin 2 reconectado de Net-(D45-A) a Net-(DC4R4-A).
+DC4R4 pin 2 reconectado de Net-(D45-A) a Net-(DC4R4-A).
+DC4R4 pin 2 reconectado de Net-(D45-A) a Net-(DC4R4-A).
+Indicador de referencia cambiado de D5 a DC5R0.
+DC5R0 pin 2 reconectado de Net-(D5-A) a Net-(DC5R0-A).
+DC5R0 pin 2 reconectado de Net-(D5-A) a Net-(DC5R0-A).
+DC5R0 pin 2 reconectado de Net-(D5-A) a Net-(DC5R0-A).
+DC5R0 pin 2 reconectado de Net-(D5-A) a Net-(DC5R0-A).
+DC5R0 pin 2 reconectado de Net-(D5-A) a Net-(DC5R0-A).
+Indicador de referencia cambiado de D15 a DC5R1.
+DC5R1 pin 2 reconectado de Net-(D15-A) a Net-(DC5R1-A).
+DC5R1 pin 2 reconectado de Net-(D15-A) a Net-(DC5R1-A).
+DC5R1 pin 2 reconectado de Net-(D15-A) a Net-(DC5R1-A).
+DC5R1 pin 2 reconectado de Net-(D15-A) a Net-(DC5R1-A).
+DC5R1 pin 2 reconectado de Net-(D15-A) a Net-(DC5R1-A).
+Indicador de referencia cambiado de D25 a DC5R2.
+DC5R2 pin 2 reconectado de Net-(D25-A) a Net-(DC5R2-A).
+DC5R2 pin 2 reconectado de Net-(D25-A) a Net-(DC5R2-A).
+DC5R2 pin 2 reconectado de Net-(D25-A) a Net-(DC5R2-A).
+DC5R2 pin 2 reconectado de Net-(D25-A) a Net-(DC5R2-A).
+DC5R2 pin 2 reconectado de Net-(D25-A) a Net-(DC5R2-A).
+Indicador de referencia cambiado de D34 a DC5R03.
+DC5R03 pin 2 reconectado de Net-(D34-A) a Net-(DC5R03-A).
+DC5R03 pin 2 reconectado de Net-(D34-A) a Net-(DC5R03-A).
+DC5R03 pin 2 reconectado de Net-(D34-A) a Net-(DC5R03-A).
+DC5R03 pin 2 reconectado de Net-(D34-A) a Net-(DC5R03-A).
+DC5R03 pin 2 reconectado de Net-(D34-A) a Net-(DC5R03-A).
+Indicador de referencia cambiado de D44 a DC5R4.
+DC5R4 pin 2 reconectado de Net-(D44-A) a Net-(DC5R4-A).
+DC5R4 pin 2 reconectado de Net-(D44-A) a Net-(DC5R4-A).
+DC5R4 pin 2 reconectado de Net-(D44-A) a Net-(DC5R4-A).
+DC5R4 pin 2 reconectado de Net-(D44-A) a Net-(DC5R4-A).
+DC5R4 pin 2 reconectado de Net-(D44-A) a Net-(DC5R4-A).
+Indicador de referencia cambiado de D3 a DC6R0.
+DC6R0 pin 2 reconectado de Net-(D3-A) a Net-(DC6R0-A).
+DC6R0 pin 2 reconectado de Net-(D3-A) a Net-(DC6R0-A).
+DC6R0 pin 2 reconectado de Net-(D3-A) a Net-(DC6R0-A).
+DC6R0 pin 2 reconectado de Net-(D3-A) a Net-(DC6R0-A).
+DC6R0 pin 2 reconectado de Net-(D3-A) a Net-(DC6R0-A).
+Indicador de referencia cambiado de D13 a DC6R1.
+DC6R1 pin 2 reconectado de Net-(D13-A) a Net-(DC6R1-A).
+DC6R1 pin 2 reconectado de Net-(D13-A) a Net-(DC6R1-A).
+DC6R1 pin 2 reconectado de Net-(D13-A) a Net-(DC6R1-A).
+DC6R1 pin 2 reconectado de Net-(D13-A) a Net-(DC6R1-A).
+DC6R1 pin 2 reconectado de Net-(D13-A) a Net-(DC6R1-A).
+Indicador de referencia cambiado de D23 a DC6R2.
+DC6R2 pin 2 reconectado de Net-(D23-A) a Net-(DC6R2-A).
+DC6R2 pin 2 reconectado de Net-(D23-A) a Net-(DC6R2-A).
+DC6R2 pin 2 reconectado de Net-(D23-A) a Net-(DC6R2-A).
+DC6R2 pin 2 reconectado de Net-(D23-A) a Net-(DC6R2-A).
+DC6R2 pin 2 reconectado de Net-(D23-A) a Net-(DC6R2-A).
+Indicador de referencia cambiado de D32 a DC6R3.
+DC6R3 pin 2 reconectado de Net-(D32-A) a Net-(DC6R3-A).
+DC6R3 pin 2 reconectado de Net-(D32-A) a Net-(DC6R3-A).
+DC6R3 pin 2 reconectado de Net-(D32-A) a Net-(DC6R3-A).
+DC6R3 pin 2 reconectado de Net-(D32-A) a Net-(DC6R3-A).
+DC6R3 pin 2 reconectado de Net-(D32-A) a Net-(DC6R3-A).
+Indicador de referencia cambiado de D42 a DC6R4.
+DC6R4 pin 2 reconectado de Net-(D42-A) a Net-(DC6R4-A).
+DC6R4 pin 2 reconectado de Net-(D42-A) a Net-(DC6R4-A).
+DC6R4 pin 2 reconectado de Net-(D42-A) a Net-(DC6R4-A).
+DC6R4 pin 2 reconectado de Net-(D42-A) a Net-(DC6R4-A).
+DC6R4 pin 2 reconectado de Net-(D42-A) a Net-(DC6R4-A).
+Indicador de referencia cambiado de D51 a DC6R5.
+DC6R5 pin 2 reconectado de Net-(D51-A) a Net-(DC6R5-A).
+DC6R5 pin 2 reconectado de Net-(D51-A) a Net-(DC6R5-A).
+DC6R5 pin 2 reconectado de Net-(D51-A) a Net-(DC6R5-A).
+DC6R5 pin 2 reconectado de Net-(D51-A) a Net-(DC6R5-A).
+DC6R5 pin 2 reconectado de Net-(D51-A) a Net-(DC6R5-A).
+Indicador de referencia cambiado de D1 a DC7R0.
+DC7R0 pin 2 reconectado de Net-(D1-A) a Net-(DC7R0-A).
+DC7R0 pin 2 reconectado de Net-(D1-A) a Net-(DC7R0-A).
+DC7R0 pin 2 reconectado de Net-(D1-A) a Net-(DC7R0-A).
+DC7R0 pin 2 reconectado de Net-(D1-A) a Net-(DC7R0-A).
+DC7R0 pin 2 reconectado de Net-(D1-A) a Net-(DC7R0-A).
+Indicador de referencia cambiado de D11 a DC7R1.
+DC7R1 pin 2 reconectado de Net-(D11-A) a Net-(DC7R1-A).
+DC7R1 pin 2 reconectado de Net-(D11-A) a Net-(DC7R1-A).
+DC7R1 pin 2 reconectado de Net-(D11-A) a Net-(DC7R1-A).
+DC7R1 pin 2 reconectado de Net-(D11-A) a Net-(DC7R1-A).
+DC7R1 pin 2 reconectado de Net-(D11-A) a Net-(DC7R1-A).
+Indicador de referencia cambiado de D21 a DC7R2.
+DC7R2 pin 2 reconectado de Net-(D21-A) a Net-(DC7R2-A).
+DC7R2 pin 2 reconectado de Net-(D21-A) a Net-(DC7R2-A).
+DC7R2 pin 2 reconectado de Net-(D21-A) a Net-(DC7R2-A).
+DC7R2 pin 2 reconectado de Net-(D21-A) a Net-(DC7R2-A).
+DC7R2 pin 2 reconectado de Net-(D21-A) a Net-(DC7R2-A).
+Indicador de referencia cambiado de D30 a DC7R3.
+DC7R3 pin 2 reconectado de Net-(D30-A) a Net-(DC7R3-A).
+DC7R3 pin 2 reconectado de Net-(D30-A) a Net-(DC7R3-A).
+DC7R3 pin 2 reconectado de Net-(D30-A) a Net-(DC7R3-A).
+DC7R3 pin 2 reconectado de Net-(D30-A) a Net-(DC7R3-A).
+DC7R3 pin 2 reconectado de Net-(D30-A) a Net-(DC7R3-A).
+Indicador de referencia cambiado de D40 a DC7R4.
+DC7R4 pin 2 reconectado de Net-(D40-A) a Net-(DC7R4-A).
+DC7R4 pin 2 reconectado de Net-(D40-A) a Net-(DC7R4-A).
+DC7R4 pin 2 reconectado de Net-(D40-A) a Net-(DC7R4-A).
+DC7R4 pin 2 reconectado de Net-(D40-A) a Net-(DC7R4-A).
+DC7R4 pin 2 reconectado de Net-(D40-A) a Net-(DC7R4-A).
+Indicador de referencia cambiado de D49 a DC7R5.
+DC7R5 pin 2 reconectado de Net-(D49-A) a Net-(DC7R5-A).
+DC7R5 pin 2 reconectado de Net-(D49-A) a Net-(DC7R5-A).
+DC7R5 pin 2 reconectado de Net-(D49-A) a Net-(DC7R5-A).
+DC7R5 pin 2 reconectado de Net-(D49-A) a Net-(DC7R5-A).
+DC7R5 pin 2 reconectado de Net-(D49-A) a Net-(DC7R5-A).
+Indicador de referencia cambiado de D2 a DC8R0.
+DC8R0 pin 2 reconectado de Net-(D2-A) a Net-(DC8R0-A).
+DC8R0 pin 2 reconectado de Net-(D2-A) a Net-(DC8R0-A).
+DC8R0 pin 2 reconectado de Net-(D2-A) a Net-(DC8R0-A).
+DC8R0 pin 2 reconectado de Net-(D2-A) a Net-(DC8R0-A).
+DC8R0 pin 2 reconectado de Net-(D2-A) a Net-(DC8R0-A).
+Indicador de referencia cambiado de D12 a DC8R1.
+DC8R1 pin 2 reconectado de Net-(D12-A) a Net-(DC8R1-A).
+DC8R1 pin 2 reconectado de Net-(D12-A) a Net-(DC8R1-A).
+DC8R1 pin 2 reconectado de Net-(D12-A) a Net-(DC8R1-A).
+DC8R1 pin 2 reconectado de Net-(D12-A) a Net-(DC8R1-A).
+DC8R1 pin 2 reconectado de Net-(D12-A) a Net-(DC8R1-A).
+Indicador de referencia cambiado de D22 a DC8R2.
+DC8R2 pin 2 reconectado de Net-(D22-A) a Net-(DC8R2-A).
+DC8R2 pin 2 reconectado de Net-(D22-A) a Net-(DC8R2-A).
+DC8R2 pin 2 reconectado de Net-(D22-A) a Net-(DC8R2-A).
+DC8R2 pin 2 reconectado de Net-(D22-A) a Net-(DC8R2-A).
+DC8R2 pin 2 reconectado de Net-(D22-A) a Net-(DC8R2-A).
+Indicador de referencia cambiado de D31 a DC8R3.
+DC8R3 pin 2 reconectado de Net-(D31-A) a Net-(DC8R3-A).
+DC8R3 pin 2 reconectado de Net-(D31-A) a Net-(DC8R3-A).
+DC8R3 pin 2 reconectado de Net-(D31-A) a Net-(DC8R3-A).
+DC8R3 pin 2 reconectado de Net-(D31-A) a Net-(DC8R3-A).
+DC8R3 pin 2 reconectado de Net-(D31-A) a Net-(DC8R3-A).
+Indicador de referencia cambiado de D41 a DC8R4.
+DC8R4 pin 2 reconectado de Net-(D41-A) a Net-(DC8R4-A).
+DC8R4 pin 2 reconectado de Net-(D41-A) a Net-(DC8R4-A).
+DC8R4 pin 2 reconectado de Net-(D41-A) a Net-(DC8R4-A).
+DC8R4 pin 2 reconectado de Net-(D41-A) a Net-(DC8R4-A).
+DC8R4 pin 2 reconectado de Net-(D41-A) a Net-(DC8R4-A).
+Indicador de referencia cambiado de D50 a DC8R5.
+DC8R5 pin 2 reconectado de Net-(D50-A) a Net-(DC8R5-A).
+DC8R5 pin 2 reconectado de Net-(D50-A) a Net-(DC8R5-A).
+DC8R5 pin 2 reconectado de Net-(D50-A) a Net-(DC8R5-A).
+DC8R5 pin 2 reconectado de Net-(D50-A) a Net-(DC8R5-A).
+DC8R5 pin 2 reconectado de Net-(D50-A) a Net-(DC8R5-A).
+Indicador de referencia cambiado de D4 a DC9R0.
+DC9R0 pin 2 reconectado de Net-(D4-A) a Net-(DC9R0-A).
+DC9R0 pin 2 reconectado de Net-(D4-A) a Net-(DC9R0-A).
+DC9R0 pin 2 reconectado de Net-(D4-A) a Net-(DC9R0-A).
+DC9R0 pin 2 reconectado de Net-(D4-A) a Net-(DC9R0-A).
+DC9R0 pin 2 reconectado de Net-(D4-A) a Net-(DC9R0-A).
+Indicador de referencia cambiado de D14 a DC9R1.
+DC9R1 pin 2 reconectado de Net-(D14-A) a Net-(DC9R1-A).
+DC9R1 pin 2 reconectado de Net-(D14-A) a Net-(DC9R1-A).
+DC9R1 pin 2 reconectado de Net-(D14-A) a Net-(DC9R1-A).
+DC9R1 pin 2 reconectado de Net-(D14-A) a Net-(DC9R1-A).
+DC9R1 pin 2 reconectado de Net-(D14-A) a Net-(DC9R1-A).
+Indicador de referencia cambiado de D24 a DC9R2.
+DC9R2 pin 2 reconectado de Net-(D24-A) a Net-(DC9R2-A).
+DC9R2 pin 2 reconectado de Net-(D24-A) a Net-(DC9R2-A).
+DC9R2 pin 2 reconectado de Net-(D24-A) a Net-(DC9R2-A).
+DC9R2 pin 2 reconectado de Net-(D24-A) a Net-(DC9R2-A).
+DC9R2 pin 2 reconectado de Net-(D24-A) a Net-(DC9R2-A).
+Indicador de referencia cambiado de D33 a DC9R3.
+DC9R3 pin 2 reconectado de Net-(D33-A) a Net-(DC9R3-A).
+DC9R3 pin 2 reconectado de Net-(D33-A) a Net-(DC9R3-A).
+DC9R3 pin 2 reconectado de Net-(D33-A) a Net-(DC9R3-A).
+DC9R3 pin 2 reconectado de Net-(D33-A) a Net-(DC9R3-A).
+DC9R3 pin 2 reconectado de Net-(D33-A) a Net-(DC9R3-A).
+Indicador de referencia cambiado de D43 a DC9R4.
+DC9R4 pin 2 reconectado de Net-(D43-A) a Net-(DC9R4-A).
+DC9R4 pin 2 reconectado de Net-(D43-A) a Net-(DC9R4-A).
+DC9R4 pin 2 reconectado de Net-(D43-A) a Net-(DC9R4-A).
+DC9R4 pin 2 reconectado de Net-(D43-A) a Net-(DC9R4-A).
+DC9R4 pin 2 reconectado de Net-(D43-A) a Net-(DC9R4-A).
+Indicador de referencia cambiado de D52 a DC9R5.
+DC9R5 pin 2 reconectado de Net-(D52-A) a Net-(DC9R5-A).
+DC9R5 pin 2 reconectado de Net-(D52-A) a Net-(DC9R5-A).
+DC9R5 pin 2 reconectado de Net-(D52-A) a Net-(DC9R5-A).
+DC9R5 pin 2 reconectado de Net-(D52-A) a Net-(DC9R5-A).
+DC9R5 pin 2 reconectado de Net-(D52-A) a Net-(DC9R5-A).
+Indicador de referencia cambiado de D54 a DC10R5.
+DC10R5 pin 2 reconectado de Net-(D54-A) a Net-(DC10R5-A).
+DC10R5 pin 2 reconectado de Net-(D54-A) a Net-(DC10R5-A).
+DC10R5 pin 2 reconectado de Net-(D54-A) a Net-(DC10R5-A).
+DC10R5 pin 2 reconectado de Net-(D54-A) a Net-(DC10R5-A).
+DC10R5 pin 2 reconectado de Net-(D54-A) a Net-(DC10R5-A).
+Actualizados J1 campos.
+Archivo de hoja J1 actualizado a 'BFS9000.kicad_sch'.
+Atributo de fabricación 'excluir de la lista de materiales' J1 eliminado.
+Actualizados J2 campos.
+Archivo de hoja J2 actualizado a 'BFS9000.kicad_sch'.
+Actualizados J3 campos.
+Archivo de hoja J3 actualizado a 'BFS9000.kicad_sch'.
+Atributo de fabricación 'excluir de la lista de materiales' J3 eliminado.
+Actualizados J4 campos.
+Archivo de hoja J4 actualizado a 'BFS9000.kicad_sch'.
+Atributo de fabricación 'excluir de la lista de materiales' J4 eliminado.
+Actualizados J5 campos.
+Actualizados J6 campos.
+Actualizados JP1 campos.
+Archivo de hoja JP1 actualizado a 'BFS9000.kicad_sch'.
+Indicador de referencia cambiado de LED14 a MLED1.
+Actualizados MLED1 campos.
+Indicador de referencia cambiado de LED24 a MLED2.
+Actualizados MLED2 campos.
+Añadir red Net-(MLED2-DOUT).
+MLED2 pin 1 reconectado de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+MLED2 pin 1 reconectado de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Indicador de referencia cambiado de LED33 a MLED3.
+Actualizados MLED3 campos.
+MLED3 pin 3 reconectado de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+MLED3 pin 3 reconectado de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Indicador de referencia cambiado de LED43 a MLED4.
+Actualizados MLED4 campos.
+Añadir red Net-(MLED4-DOUT).
+MLED4 pin 1 reconectado de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+MLED4 pin 1 reconectado de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Indicador de referencia cambiado de LED52 a MLED5.
+Actualizados MLED5 campos.
+MLED5 pin 3 reconectado de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Añadir red Net-(MLED5-DOUT).
+MLED5 pin 1 reconectado de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+MLED5 pin 1 reconectado de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+MLED5 pin 3 reconectado de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Indicador de referencia cambiado de LED50 a MLED6.
+Actualizados MLED6 campos.
+Añadir red Net-(MLED6-DOUT).
+MLED6 pin 1 reconectado de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+MLED6 pin 3 reconectado de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+MLED6 pin 1 reconectado de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+MLED6 pin 3 reconectado de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Indicador de referencia cambiado de LED41 a MLED7.
+Actualizados MLED7 campos.
+Añadir red Net-(MLED7-DOUT).
+MLED7 pin 1 reconectado de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+MLED7 pin 3 reconectado de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+MLED7 pin 3 reconectado de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+MLED7 pin 1 reconectado de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Indicador de referencia cambiado de LED31 a MLED8.
+Actualizados MLED8 campos.
+Añadir red Net-(MLED8-DOUT).
+MLED8 pin 1 reconectado de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+MLED8 pin 1 reconectado de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+MLED8 pin 3 reconectado de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+MLED8 pin 3 reconectado de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Indicador de referencia cambiado de LED22 a MLED9.
+Actualizados MLED9 campos.
+MLED9 pin 3 reconectado de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+MLED9 pin 3 reconectado de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Añadir red Net-(MLED10-DIN).
+MLED9 pin 1 reconectado de Net-(LED12-DIN) a Net-(MLED10-DIN).
+MLED9 pin 1 reconectado de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Indicador de referencia cambiado de LED12 a MLED10.
+Actualizados MLED10 campos.
+Añadir red Net-(MLED10-DOUT).
+MLED10 pin 1 reconectado de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+MLED10 pin 1 reconectado de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+MLED10 pin 3 reconectado de Net-(LED12-DIN) a Net-(MLED10-DIN).
+MLED10 pin 3 reconectado de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Indicador de referencia cambiado de LED11 a MLED11.
+Actualizados MLED11 campos.
+MLED11 pin 3 reconectado de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+MLED11 pin 3 reconectado de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Indicador de referencia cambiado de LED21 a MLED12.
+Actualizados MLED12 campos.
+Añadir red Net-(MLED12-DOUT).
+MLED12 pin 1 reconectado de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+MLED12 pin 1 reconectado de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Indicador de referencia cambiado de LED30 a MLED13.
+Actualizados MLED13 campos.
+MLED13 pin 3 reconectado de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+MLED13 pin 3 reconectado de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Indicador de referencia cambiado de LED40 a MLED14.
+Actualizados MLED14 campos.
+Añadir red Net-(MLED14-DOUT).
+MLED14 pin 1 reconectado de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+MLED14 pin 1 reconectado de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Indicador de referencia cambiado de LED49 a MLED15.
+Actualizados MLED15 campos.
+MLED15 pin 3 reconectado de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+MLED15 pin 3 reconectado de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Añadir red Net-(MLED15-DOUT).
+MLED15 pin 1 reconectado de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+MLED15 pin 1 reconectado de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Indicador de referencia cambiado de LED51 a MLED16.
+Actualizados MLED16 campos.
+Añadir red Net-(MLED16-DOUT).
+MLED16 pin 1 reconectado de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+MLED16 pin 3 reconectado de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+MLED16 pin 3 reconectado de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+MLED16 pin 1 reconectado de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Indicador de referencia cambiado de LED42 a MLED17.
+Actualizados MLED17 campos.
+Añadir red Net-(MLED17-DOUT).
+MLED17 pin 1 reconectado de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+MLED17 pin 3 reconectado de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+MLED17 pin 1 reconectado de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+MLED17 pin 3 reconectado de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Indicador de referencia cambiado de LED32 a MLED18.
+Actualizados MLED18 campos.
+MLED18 pin 3 reconectado de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+MLED18 pin 3 reconectado de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Añadir red Net-(MLED18-DOUT).
+MLED18 pin 1 reconectado de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+MLED18 pin 1 reconectado de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Indicador de referencia cambiado de LED23 a MLED19.
+Actualizados MLED19 campos.
+Añadir red Net-(MLED19-DOUT).
+MLED19 pin 1 reconectado de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+MLED19 pin 3 reconectado de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+MLED19 pin 1 reconectado de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+MLED19 pin 3 reconectado de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Indicador de referencia cambiado de LED13 a MLED20.
+Actualizados MLED20 campos.
+MLED20 pin 3 reconectado de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Añadir red Net-(MLED20-DOUT).
+MLED20 pin 1 reconectado de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+MLED20 pin 1 reconectado de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+MLED20 pin 3 reconectado de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Indicador de referencia cambiado de LED15 a MLED21.
+Actualizados MLED21 campos.
+MLED21 pin 3 reconectado de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+MLED21 pin 3 reconectado de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Indicador de referencia cambiado de LED25 a MLED22.
+Actualizados MLED22 campos.
+Añadir red Net-(MLED22-DOUT).
+MLED22 pin 1 reconectado de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+MLED22 pin 1 reconectado de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Indicador de referencia cambiado de LED34 a MLED23.
+Actualizados MLED23 campos.
+MLED23 pin 3 reconectado de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+MLED23 pin 3 reconectado de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Indicador de referencia cambiado de LED44 a MLED24.
+Actualizados MLED24 campos.
+Añadir red Net-(MLED24-DOUT).
+MLED24 pin 1 reconectado de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+MLED24 pin 1 reconectado de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Indicador de referencia cambiado de LED53 a MLED25.
+Actualizados MLED25 campos.
+MLED25 pin 3 reconectado de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Añadir red Net-(MLED25-DOUT).
+MLED25 pin 1 reconectado de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+MLED25 pin 3 reconectado de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+MLED25 pin 1 reconectado de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Indicador de referencia cambiado de LED45 a MLED26.
+Actualizados MLED26 campos.
+Añadir red Net-(MLED26-DOUT).
+MLED26 pin 1 reconectado de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+MLED26 pin 1 reconectado de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+MLED26 pin 3 reconectado de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+MLED26 pin 3 reconectado de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Indicador de referencia cambiado de LED35 a MLED27.
+Actualizados MLED27 campos.
+MLED27 pin 3 reconectado de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+MLED27 pin 3 reconectado de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Añadir red Net-(MLED27-DOUT).
+MLED27 pin 1 reconectado de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+MLED27 pin 1 reconectado de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Indicador de referencia cambiado de LED26 a MLED28.
+Actualizados MLED28 campos.
+MLED28 pin 3 reconectado de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+MLED28 pin 3 reconectado de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Añadir red Net-(MLED28-DOUT).
+MLED28 pin 1 reconectado de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+MLED28 pin 1 reconectado de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Actualizados BT1 campos.
+Indicador de referencia cambiado de LED16 a MLED29.
+Actualizados MLED29 campos.
+MLED29 pin 3 reconectado de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+MLED29 pin 3 reconectado de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Actualizados BT2 campos.
+Indicador de referencia cambiado de ULED1 a MULED1.
+Actualizados MULED1 campos.
+Actualizados BT3 campos.
+Indicador de referencia cambiado de ULED2 a MULED2.
+Actualizados MULED2 campos.
+Actualizados BT4 campos.
+Indicador de referencia cambiado de ULED3 a MULED3.
+Actualizados MULED3 campos.
+Actualizados BT5 campos.
+Indicador de referencia cambiado de ULED4 a MULED4.
+Actualizados MULED4 campos.
+Actualizados BT6 campos.
+Indicador de referencia cambiado de ULED5 a MULED5.
+Actualizados MULED5 campos.
+Actualizados BT7 campos.
+Indicador de referencia cambiado de ULED6 a MULED6.
+Actualizados MULED6 campos.
+Actualizados BT8 campos.
+Actualizados Q1 campos.
+Archivo de hoja Q1 actualizado a 'BFS9000.kicad_sch'.
+Actualizados BT9 campos.
+Actualizados R1 campos.
+Archivo de hoja R1 actualizado a 'BFS9000.kicad_sch'.
+Actualizados BT10 campos.
+Actualizados R2 campos.
+Archivo de hoja R2 actualizado a 'BFS9000.kicad_sch'.
+Actualizados BT11 campos.
+Valor R3 cambiado de 4.7k a 2.2k.
+Actualizados R3 campos.
+Archivo de hoja R3 actualizado a 'BFS9000.kicad_sch'.
+Actualizados BT12 campos.
+Valor R4 cambiado de 4.7k a 2.2k.
+Actualizados R4 campos.
+Archivo de hoja R4 actualizado a 'BFS9000.kicad_sch'.
+Actualizados BT13 campos.
+Actualizados BT14 campos.
+Actualizados S1 campos.
+Actualizados BT15 campos.
+Actualizados S2 campos.
+Actualizados BT16 campos.
+Indicador de referencia cambiado de LED7 a SLED1.
+Actualizados SLED1 campos.
+Actualizados BT17 campos.
+Indicador de referencia cambiado de LED17 a SLED2.
+Actualizados SLED2 campos.
+Añadir red Net-(SLED2-DOUT).
+SLED2 pin 1 reconectado de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+SLED2 pin 1 reconectado de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Actualizados BT18 campos.
+Indicador de referencia cambiado de LED27 a SLED3.
+Actualizados SLED3 campos.
+Añadir red Net-(SLED3-DOUT).
+SLED3 pin 1 reconectado de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+SLED3 pin 1 reconectado de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+SLED3 pin 3 reconectado de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+SLED3 pin 3 reconectado de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Actualizados BT19 campos.
+Indicador de referencia cambiado de LED36 a SLED4.
+Actualizados SLED4 campos.
+Añadir red Net-(SLED4-DOUT).
+SLED4 pin 1 reconectado de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+SLED4 pin 3 reconectado de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+SLED4 pin 3 reconectado de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+SLED4 pin 1 reconectado de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Actualizados BT20 campos.
+Indicador de referencia cambiado de LED46 a SLED5.
+Actualizados SLED5 campos.
+SLED5 pin 3 reconectado de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+SLED5 pin 3 reconectado de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Actualizados BT21 campos.
+Indicador de referencia cambiado de LED54 a SLED6.
+Actualizados SLED6 campos.
+Añadir red Net-(SLED6-DOUT).
+SLED6 pin 1 reconectado de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+SLED6 pin 1 reconectado de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Actualizados BT22 campos.
+Indicador de referencia cambiado de LED55 a SLED7.
+Actualizados SLED7 campos.
+Añadir red Net-(SLED7-DOUT).
+SLED7 pin 1 reconectado de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+SLED7 pin 1 reconectado de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+SLED7 pin 3 reconectado de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+SLED7 pin 3 reconectado de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Actualizados BT23 campos.
+Indicador de referencia cambiado de LED47 a SLED8.
+Actualizados SLED8 campos.
+Añadir red Net-(SLED8-DOUT).
+SLED8 pin 1 reconectado de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+SLED8 pin 3 reconectado de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+SLED8 pin 3 reconectado de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+SLED8 pin 1 reconectado de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Actualizados BT24 campos.
+Indicador de referencia cambiado de LED37 a SLED9.
+Actualizados SLED9 campos.
+SLED9 pin 3 reconectado de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+SLED9 pin 3 reconectado de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Añadir red Net-(SLED10-DIN).
+SLED9 pin 1 reconectado de Net-(LED28-DIN) a Net-(SLED10-DIN).
+SLED9 pin 1 reconectado de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Actualizados BT25 campos.
+Indicador de referencia cambiado de LED28 a SLED10.
+Actualizados SLED10 campos.
+Añadir red Net-(SLED10-DOUT).
+SLED10 pin 1 reconectado de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+SLED10 pin 3 reconectado de Net-(LED28-DIN) a Net-(SLED10-DIN).
+SLED10 pin 1 reconectado de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+SLED10 pin 3 reconectado de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Actualizados BT26 campos.
+Indicador de referencia cambiado de LED18 a SLED11.
+Actualizados SLED11 campos.
+SLED11 pin 3 reconectado de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Añadir red Net-(SLED11-DOUT).
+SLED11 pin 1 reconectado de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+SLED11 pin 3 reconectado de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+SLED11 pin 1 reconectado de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Actualizados BT27 campos.
+Indicador de referencia cambiado de LED8 a SLED12.
+Actualizados SLED12 campos.
+SLED12 pin 3 reconectado de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+SLED12 pin 3 reconectado de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Añadir red Net-(SLED12-DOUT).
+SLED12 pin 1 reconectado de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+SLED12 pin 1 reconectado de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Actualizados BT28 campos.
+Indicador de referencia cambiado de LED9 a SLED13.
+Actualizados SLED13 campos.
+SLED13 pin 3 reconectado de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+SLED13 pin 3 reconectado de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Actualizados BT29 campos.
+Indicador de referencia cambiado de LED19 a SLED14.
+Actualizados SLED14 campos.
+Añadir red Net-(SLED14-DOUT).
+SLED14 pin 1 reconectado de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+SLED14 pin 1 reconectado de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Actualizados BT30 campos.
+Indicador de referencia cambiado de LED29 a SLED15.
+Actualizados SLED15 campos.
+Añadir red Net-(SLED15-DOUT).
+SLED15 pin 1 reconectado de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+SLED15 pin 1 reconectado de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+SLED15 pin 3 reconectado de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+SLED15 pin 3 reconectado de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Actualizados BT31 campos.
+Indicador de referencia cambiado de LED38 a SLED16.
+Actualizados SLED16 campos.
+Añadir red Net-(SLED16-DOUT).
+SLED16 pin 1 reconectado de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+SLED16 pin 3 reconectado de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+SLED16 pin 1 reconectado de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+SLED16 pin 3 reconectado de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Actualizados BT32 campos.
+Indicador de referencia cambiado de LED48 a SLED17.
+Actualizados SLED17 campos.
+SLED17 pin 3 reconectado de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+SLED17 pin 3 reconectado de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Actualizados BT33 campos.
+Indicador de referencia cambiado de LED56 a SLED18.
+Actualizados SLED18 campos.
+Añadir red Net-(SLED18-DOUT).
+SLED18 pin 1 reconectado de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+SLED18 pin 1 reconectado de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Actualizados BT34 campos.
+Indicador de referencia cambiado de LED57 a SLED19.
+Actualizados SLED19 campos.
+SLED19 pin 3 reconectado de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+SLED19 pin 3 reconectado de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Añadir red Net-(SLED19-DOUT).
+SLED19 pin 1 reconectado de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+SLED19 pin 1 reconectado de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Actualizados BT35 campos.
+Indicador de referencia cambiado de LED39 a SLED20.
+Actualizados SLED20 campos.
+Añadir red Net-(SLED20-DOUT).
+SLED20 pin 1 reconectado de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+SLED20 pin 1 reconectado de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+SLED20 pin 3 reconectado de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+SLED20 pin 3 reconectado de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Actualizados BT36 campos.
+Indicador de referencia cambiado de LED20 a SLED21.
+Actualizados SLED21 campos.
+SLED21 pin 3 reconectado de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Añadir red Net-(SLED21-DOUT).
+SLED21 pin 1 reconectado de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+SLED21 pin 1 reconectado de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+SLED21 pin 3 reconectado de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Actualizados BT37 campos.
+Indicador de referencia cambiado de LED10 a SLED22.
+Actualizados SLED22 campos.
+SLED22 pin 3 reconectado de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+SLED22 pin 3 reconectado de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Añadir red unconnected-(SLED22-DOUT-Pad1).
+SLED22 pin 1 reconectado de unconnected-(LED10-DOUT-Pad1) a unconnected-(SLED22-DOUT-Pad1).
+Añadir red unconnected-(SLED22-DOUT-Pad1)_1.
+SLED22 pin 1 reconectado de unconnected-(LED10-DOUT-Pad1)_1 a unconnected-(SLED22-DOUT-Pad1)_1.
+Actualizados BT38 campos.
+Indicador de referencia cambiado de nULED1 a SULED1.
+Actualizados SULED1 campos.
+Actualizados BT39 campos.
+Indicador de referencia cambiado de nULED2 a SULED2.
+Actualizados SULED2 campos.
+Actualizados BT40 campos.
+Indicador de referencia cambiado de nULED3 a SULED3.
+Actualizados SULED3 campos.
+Actualizados BT41 campos.
+Indicador de referencia cambiado de nULED4 a SULED4.
+Actualizados SULED4 campos.
+Actualizados BT42 campos.
+Actualizados SW1 campos.
+Archivo de hoja SW1 actualizado a 'BFS9000.kicad_sch'.
+Actualizados BT43 campos.
+Actualizados TH1 campos.
+Actualizados BT44 campos.
+Actualizados TH2 campos.
+Actualizados BT45 campos.
+Actualizados TH3 campos.
+Actualizados BT46 campos.
+Actualizados TH4 campos.
+Indicador de referencia cambiado de MX10 a C0R0.
+Actualizados TH5 campos.
+Actualizados C0R0 campos.
+Actualizados TH6 campos.
+Añadir red Net-(DC0R0-A).
+Actualizados TH7 campos.
+C0R0 pin 2 reconectado de Net-(D10-A) a Net-(DC0R0-A).
+Actualizados TH8 campos.
+C0R0 pin 2 reconectado de Net-(D10-A) a Net-(DC0R0-A).
+Actualizados TH9 campos.
+C0R0 pin 2 reconectado de Net-(D10-A) a Net-(DC0R0-A).
+Actualizados TH10 campos.
+Indicador de referencia cambiado de MX20 a C0R1.
+Actualizados TH11 campos.
+Actualizados C0R1 campos.
+Actualizados TH12 campos.
+Añadir red Net-(DC0R1-A).
+Actualizados TH13 campos.
+C0R1 pin 2 reconectado de Net-(D20-A) a Net-(DC0R1-A).
+Actualizados TH14 campos.
+C0R1 pin 2 reconectado de Net-(D20-A) a Net-(DC0R1-A).
+Actualizados TH15 campos.
+C0R1 pin 2 reconectado de Net-(D20-A) a Net-(DC0R1-A).
+Actualizados TH16 campos.
+Indicador de referencia cambiado de MX39 a C0R3.
+Actualizados TH17 campos.
+Actualizados C0R3 campos.
+Actualizados TH18 campos.
+Añadir red Net-(DC0R3-A).
+Actualizados TH19 campos.
+C0R3 pin 2 reconectado de Net-(D39-A) a Net-(DC0R3-A).
+Indicador de referencia cambiado de LED4 a TLED1.
+Actualizados TLED1 campos.
+Añadir red Net-(TLED1-DOUT).
+TLED1 pin 1 reconectado de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+TLED1 pin 1 reconectado de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+C0R3 pin 2 reconectado de Net-(D39-A) a Net-(DC0R3-A).
+Indicador de referencia cambiado de LED2 a TLED2.
+Actualizados TLED2 campos.
+TLED2 pin 3 reconectado de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+TLED2 pin 3 reconectado de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Añadir red Net-(TLED2-DOUT).
+TLED2 pin 1 reconectado de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+TLED2 pin 1 reconectado de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+C0R3 pin 2 reconectado de Net-(D39-A) a Net-(DC0R3-A).
+Indicador de referencia cambiado de LED1 a TLED3.
+Actualizados TLED3 campos.
+Añadir red Net-(TLED3-DOUT).
+TLED3 pin 1 reconectado de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+TLED3 pin 3 reconectado de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+TLED3 pin 1 reconectado de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+TLED3 pin 3 reconectado de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Indicador de referencia cambiado de MX57 a C0R5.
+Indicador de referencia cambiado de LED3 a TLED4.
+Actualizados TLED4 campos.
+Añadir red Net-(TLED4-DOUT).
+TLED4 pin 1 reconectado de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+TLED4 pin 3 reconectado de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+TLED4 pin 1 reconectado de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+TLED4 pin 3 reconectado de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Actualizados C0R5 campos.
+Indicador de referencia cambiado de LED5 a TLED5.
+Actualizados TLED5 campos.
+TLED5 pin 3 reconectado de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Añadir red Net-(TLED5-DOUT).
+TLED5 pin 1 reconectado de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+TLED5 pin 1 reconectado de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+TLED5 pin 3 reconectado de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Añadir red Net-(DC0R5-A).
+Indicador de referencia cambiado de LED6 a TLED6.
+Actualizados TLED6 campos.
+TLED6 pin 3 reconectado de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+TLED6 pin 3 reconectado de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+C0R5 pin 2 reconectado de Net-(D57-A) a Net-(DC0R5-A).
+Actualizados U1 campos.
+Archivo de hoja U1 actualizado a 'BFS9000.kicad_sch'.
+Añadir red unconnected-(U1-3V3_EN-Pad37)_1.
+U1 pin 37 reconectado de unconnected-(U1-3V3_EN-Pad37) a unconnected-(U1-3V3_EN-Pad37)_1.
+Añadir red unconnected-(U1-GPIO28_ADC2-Pad34)_1.
+U1 pin 34 reconectado de unconnected-(U1-GPIO28_ADC2-Pad34) a unconnected-(U1-GPIO28_ADC2-Pad34)_1.
+Vía reconectada de Net-(D20-A) a Net-(DC0R1-A).
+Vía reconectada de Net-(D20-A) a Net-(DC0R1-A).
+Vía reconectada de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Vía reconectada de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Vía reconectada de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Vía reconectada de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Vía reconectada de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+Vía reconectada de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+Vía reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Vía reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Vía reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Vía reconectada de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Vía reconectada de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Vía reconectada de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Vía reconectada de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Vía reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Vía reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Vía reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Vía reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Vía reconectada de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Vía reconectada de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Vía reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Vía reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Vía reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Vía reconectada de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Vía reconectada de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Vía reconectada de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Vía reconectada de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Vía reconectada de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Vía reconectada de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Vía reconectada de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Vía reconectada de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Vía reconectada de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Vía reconectada de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Vía reconectada de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Vía reconectada de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Vía reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Vía reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Vía reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Vía reconectada de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+Vía reconectada de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+Vía reconectada de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Vía reconectada de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Vía reconectada de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Vía reconectada de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Vía reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Vía reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Vía reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Vía reconectada de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Vía reconectada de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Vía reconectada de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Vía reconectada de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Vía reconectada de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Vía reconectada de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Vía reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Vía reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Vía reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Vía reconectada de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Vía reconectada de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Vía reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Vía reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Vía reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Vía reconectada de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Vía reconectada de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Vía reconectada de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Vía reconectada de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Vía reconectada de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+Vía reconectada de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+Vía reconectada de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Vía reconectada de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Vía reconectada de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Vía reconectada de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Vía reconectada de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Vía reconectada de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Vía reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Vía reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Vía reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Vía reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Vía reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Vía reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Vía reconectada de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+Vía reconectada de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+Vía reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Vía reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Vía reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Vía reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Vía reconectada de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Vía reconectada de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Vía reconectada de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Vía reconectada de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Vía reconectada de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Vía reconectada de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Vía reconectada de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Vía reconectada de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Vía reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Vía reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Vía reconectada de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Vía reconectada de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Vía reconectada de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Vía reconectada de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Vía reconectada de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Vía reconectada de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Vía reconectada de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Vía reconectada de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Zona de cobre reconectada de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Zona de cobre reconectada de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Zona de cobre reconectada de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Zona de cobre reconectada de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Zona de cobre reconectada de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Zona de cobre reconectada de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Zona de cobre reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Zona de cobre reconectada de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Zona de cobre reconectada de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Zona de cobre reconectada de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Zona de cobre reconectada de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+Zona de cobre reconectada de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+Zona de cobre reconectada de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Zona de cobre reconectada de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+Zona de cobre reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Zona de cobre reconectada de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Zona de cobre reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Zona de cobre reconectada de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Zona de cobre reconectada de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Zona de cobre reconectada de Net-(D20-A) a Net-(DC0R1-A).
+Zona de cobre reconectada de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Zona de cobre reconectada de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Zona de cobre reconectada de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Zona de cobre reconectada de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Zona de cobre reconectada de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Zona de cobre reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Zona de cobre reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Zona de cobre reconectada de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Zona de cobre reconectada de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Zona de cobre reconectada de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Zona de cobre reconectada de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Zona de cobre reconectada de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Zona de cobre reconectada de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+Zona de cobre reconectada de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Zona de cobre reconectada de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Zona de cobre reconectada de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Zona de cobre reconectada de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Zona de cobre reconectada de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Zona de cobre reconectada de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Zona de cobre reconectada de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Zona de cobre reconectada de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Zona de cobre reconectada de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Zona de cobre reconectada de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Zona de cobre reconectada de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Zona de cobre reconectada de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Zona de cobre reconectada de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Zona de cobre reconectada de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Zona de cobre reconectada de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Zona de cobre reconectada de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Zona de cobre reconectada de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Zona de cobre reconectada de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Zona de cobre reconectada de Net-(D20-A) a Net-(DC0R1-A).
+Zona de cobre reconectada de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Zona de cobre reconectada de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+Zona de cobre reconectada de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Zona de cobre reconectada de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Zona de cobre reconectada de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Zona de cobre reconectada de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Zona de cobre reconectada de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Zona de cobre reconectada de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+Zona de cobre reconectada de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Zona de cobre reconectada de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Zona de cobre reconectada de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Zona de cobre reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Zona de cobre reconectada de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Zona de cobre reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Zona de cobre reconectada de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Zona de cobre reconectada de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Zona de cobre reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Zona de cobre reconectada de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Zona de cobre reconectada de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Zona de cobre reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Zona de cobre reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Zona de cobre reconectada de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Zona de cobre reconectada de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Zona de cobre reconectada de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Zona de cobre reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Zona de cobre reconectada de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Zona de cobre reconectada de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Zona de cobre reconectada de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Zona de cobre reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Zona de cobre reconectada de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Zona de cobre reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Zona de cobre reconectada de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Zona de cobre reconectada de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Zona de cobre reconectada de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Zona de cobre reconectada de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Zona de cobre reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Zona de cobre reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Zona de cobre reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Zona de cobre reconectada de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+Zona de cobre reconectada de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+Zona de cobre reconectada de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Zona de cobre reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Zona de cobre reconectada de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Zona de cobre reconectada de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+Zona de cobre reconectada de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Zona de cobre reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Zona de cobre reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Zona de cobre reconectada de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Zona de cobre reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Zona de cobre reconectada de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Zona de cobre reconectada de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Zona de cobre reconectada de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Zona de cobre reconectada de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Zona de cobre reconectada de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Zona de cobre reconectada de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Zona de cobre reconectada de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Zona de cobre reconectada de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Zona de cobre reconectada de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Zona de cobre reconectada de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Zona de cobre reconectada de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Zona de cobre reconectada de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Zona de cobre reconectada de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Zona de cobre reconectada de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Zona de cobre reconectada de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Zona de cobre reconectada de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Zona de cobre reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+C0R5 pin 2 reconectado de Net-(D57-A) a Net-(DC0R5-A).
+Zona de cobre reconectada de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+Zona de cobre reconectada de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Zona de cobre reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Zona de cobre reconectada de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Zona de cobre reconectada de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Zona de cobre reconectada de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Zona de cobre reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Zona de cobre reconectada de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Zona de cobre reconectada de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Zona de cobre reconectada de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Zona de cobre reconectada de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Zona de cobre reconectada de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Zona de cobre reconectada de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Zona de cobre reconectada de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Zona de cobre reconectada de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Zona de cobre reconectada de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Zona de cobre reconectada de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Zona de cobre reconectada de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Zona de cobre reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Zona de cobre reconectada de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Zona de cobre reconectada de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Zona de cobre reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Zona de cobre reconectada de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Zona de cobre reconectada de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Zona de cobre reconectada de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Zona de cobre reconectada de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Zona de cobre reconectada de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+Zona de cobre reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Zona de cobre reconectada de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Zona de cobre reconectada de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+Zona de cobre reconectada de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Zona de cobre reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Zona de cobre reconectada de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Zona de cobre reconectada de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Zona de cobre reconectada de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Zona de cobre reconectada de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Zona de cobre reconectada de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Zona de cobre reconectada de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Zona de cobre reconectada de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Zona de cobre reconectada de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+Zona de cobre reconectada de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+Zona de cobre reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Zona de cobre reconectada de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Zona de cobre reconectada de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Zona de cobre reconectada de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Zona de cobre reconectada de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Zona de cobre reconectada de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Zona de cobre reconectada de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Zona de cobre reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Zona de cobre reconectada de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Zona de cobre reconectada de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Zona de cobre reconectada de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Zona de cobre reconectada de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Zona de cobre reconectada de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Zona de cobre reconectada de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Zona de cobre reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Zona de cobre reconectada de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Zona de cobre reconectada de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Zona de cobre reconectada de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Zona de cobre reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Zona de cobre reconectada de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Zona de cobre reconectada de Net-(D20-A) a Net-(DC0R1-A).
+Zona de cobre reconectada de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Zona de cobre reconectada de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Zona de cobre reconectada de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Zona de cobre reconectada de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Zona de cobre reconectada de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Zona de cobre reconectada de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Zona de cobre reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Zona de cobre reconectada de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Zona de cobre reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Zona de cobre reconectada de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Zona de cobre reconectada de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Zona de cobre reconectada de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+Zona de cobre reconectada de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+Zona de cobre reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Zona de cobre reconectada de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Zona de cobre reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Zona de cobre reconectada de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Zona de cobre reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Zona de cobre reconectada de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Zona de cobre reconectada de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Zona de cobre reconectada de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+Zona de cobre reconectada de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Zona de cobre reconectada de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Zona de cobre reconectada de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Zona de cobre reconectada de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+Zona de cobre reconectada de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Zona de cobre reconectada de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Zona de cobre reconectada de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Zona de cobre reconectada de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Zona de cobre reconectada de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Zona de cobre reconectada de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Zona de cobre reconectada de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Zona de cobre reconectada de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+Zona de cobre reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Zona de cobre reconectada de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Zona de cobre reconectada de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+Zona de cobre reconectada de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Zona de cobre reconectada de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Zona de cobre reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Zona de cobre reconectada de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Zona de cobre reconectada de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+Zona de cobre reconectada de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Zona de cobre reconectada de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Zona de cobre reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Zona de cobre reconectada de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Zona de cobre reconectada de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Zona de cobre reconectada de Net-(D20-A) a Net-(DC0R1-A).
+Zona de cobre reconectada de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Zona de cobre reconectada de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+Zona de cobre reconectada de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Zona de cobre reconectada de Net-(D33-A) a Net-(DC9R3-A).
+Zona de cobre reconectada de Net-(D47-A) a Net-(DC2R4-A).
+Zona de cobre reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Zona de cobre reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Zona de cobre reconectada de Net-(D11-A) a Net-(DC7R1-A).
+Zona de cobre reconectada de Net-(D2-A) a Net-(DC8R0-A).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Zona de cobre reconectada de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Zona de cobre reconectada de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Zona de cobre reconectada de Net-(D43-A) a Net-(DC9R4-A).
+Zona de cobre reconectada de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Zona de cobre reconectada de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Zona de cobre reconectada de Net-(D52-A) a Net-(DC9R5-A).
+Zona de cobre reconectada de Net-(D11-A) a Net-(DC7R1-A).
+Zona de cobre reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Zona de cobre reconectada de Net-(D16-A) a Net-(DC4R1-A).
+Zona de cobre reconectada de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Zona de cobre reconectada de Net-(D6-A) a Net-(DC4R0-A).
+Zona de cobre reconectada de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Zona de cobre reconectada de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Zona de cobre reconectada de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Zona de cobre reconectada de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Zona de cobre reconectada de Net-(D45-A) a Net-(DC4R4-A).
+Zona de cobre reconectada de Net-(D33-A) a Net-(DC9R3-A).
+Zona de cobre reconectada de Net-(D20-A) a Net-(DC0R1-A).
+Zona de cobre reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Zona de cobre reconectada de Net-(D26-A) a Net-(DC4R2-A).
+Zona de cobre reconectada de Net-(D42-A) a Net-(DC6R4-A).
+Zona de cobre reconectada de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(D48-A) a Net-(DC1R4-A).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(D40-A) a Net-(DC7R4-A).
+Zona de cobre reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Zona de cobre reconectada de Net-(D4-A) a Net-(DC9R0-A).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Zona de cobre reconectada de Net-(D30-A) a Net-(DC7R3-A).
+Zona de cobre reconectada de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Zona de cobre reconectada de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Zona de cobre reconectada de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Zona de cobre reconectada de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Zona de cobre reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Zona de cobre reconectada de Net-(D29-A) a Net-(DC1R2-A).
+Zona de cobre reconectada de Net-(D54-A) a Net-(DC10R5-A).
+Zona de cobre reconectada de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Zona de cobre reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Zona de cobre reconectada de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Zona de cobre reconectada de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Zona de cobre reconectada de Net-(D4-A) a Net-(DC9R0-A).
+Zona de cobre reconectada de Net-(D49-A) a Net-(DC7R5-A).
+Zona de cobre reconectada de Net-(D52-A) a Net-(DC9R5-A).
+Zona de cobre reconectada de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Zona de cobre reconectada de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Zona de cobre reconectada de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Zona de cobre reconectada de Net-(D36-A) a Net-(DC3R3-A).
+Zona de cobre reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Zona de cobre reconectada de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Zona de cobre reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Zona de cobre reconectada de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Zona de cobre reconectada de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Zona de cobre reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Zona de cobre reconectada de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Zona de cobre reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Zona de cobre reconectada de Net-(D35-A) a Net-(DC4R3-A).
+Zona de cobre reconectada de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+Zona de cobre reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Zona de cobre reconectada de Net-(D21-A) a Net-(DC7R2-A).
+Zona de cobre reconectada de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Zona de cobre reconectada de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Zona de cobre reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Zona de cobre reconectada de Net-(D46-A) a Net-(DC3R4-A).
+Zona de cobre reconectada de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Zona de cobre reconectada de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+Zona de cobre reconectada de Net-(D24-A) a Net-(DC9R2-A).
+Zona de cobre reconectada de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Zona de cobre reconectada de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Zona de cobre reconectada de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Zona de cobre reconectada de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Zona de cobre reconectada de Net-(D38-A) a Net-(DC1R3-A).
+Zona de cobre reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Zona de cobre reconectada de Net-(D31-A) a Net-(DC8R3-A).
+Zona de cobre reconectada de Net-(D44-A) a Net-(DC5R4-A).
+Zona de cobre reconectada de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Zona de cobre reconectada de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+Zona de cobre reconectada de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Zona de cobre reconectada de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Zona de cobre reconectada de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Zona de cobre reconectada de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Zona de cobre reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Zona de cobre reconectada de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Zona de cobre reconectada de Net-(D26-A) a Net-(DC4R2-A).
+Zona de cobre reconectada de Net-(D44-A) a Net-(DC5R4-A).
+Zona de cobre reconectada de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(D17-A) a Net-(DC3R1-A).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+Zona de cobre reconectada de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Zona de cobre reconectada de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Zona de cobre reconectada de Net-(D34-A) a Net-(DC5R03-A).
+Zona de cobre reconectada de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Zona de cobre reconectada de Net-(D51-A) a Net-(DC6R5-A).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(D14-A) a Net-(DC9R1-A).
+Zona de cobre reconectada de Net-(D30-A) a Net-(DC7R3-A).
+Zona de cobre reconectada de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Zona de cobre reconectada de Net-(D14-A) a Net-(DC9R1-A).
+Zona de cobre reconectada de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(D7-A) a Net-(DC3R0-A).
+Zona de cobre reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Zona de cobre reconectada de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+Zona de cobre reconectada de Net-(D49-A) a Net-(DC7R5-A).
+Zona de cobre reconectada de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Zona de cobre reconectada de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Zona de cobre reconectada de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Zona de cobre reconectada de Net-(D54-A) a Net-(DC10R5-A).
+Zona de cobre reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Zona de cobre reconectada de Net-(LED20-DIN) a Net-(SLED20-DOUT).
+Zona de cobre reconectada de Net-(LED3-DOUT) a Net-(TLED4-DOUT).
+Zona de cobre reconectada de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Zona de cobre reconectada de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Zona de cobre reconectada de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Zona de cobre reconectada de Net-(D12-A) a Net-(DC8R1-A).
+Zona de cobre reconectada de Net-(D28-A) a Net-(DC2R2-A).
+Zona de cobre reconectada de Net-(D12-A) a Net-(DC8R1-A).
+Zona de cobre reconectada de Net-(D31-A) a Net-(DC8R3-A).
+Zona de cobre reconectada de Net-(D56-A) a Net-(DC1R5-A).
+Zona de cobre reconectada de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Zona de cobre reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Zona de cobre reconectada de Net-(D25-A) a Net-(DC5R2-A).
+Zona de cobre reconectada de Net-(D10-A) a Net-(DC0R0-A).
+Zona de cobre reconectada de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Zona de cobre reconectada de Net-(D53-A) a Net-(DC3R5-A).
+Zona de cobre reconectada de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+Zona de cobre reconectada de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Zona de cobre reconectada de Net-(D18-A) a Net-(DC2R1-A).
+Zona de cobre reconectada de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Zona de cobre reconectada de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Zona de cobre reconectada de Net-(D48-A) a Net-(DC1R4-A).
+Zona de cobre reconectada de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Zona de cobre reconectada de Net-(D27-A) a Net-(DC3R2-A).
+Zona de cobre reconectada de Net-(D18-A) a Net-(DC2R1-A).
+Zona de cobre reconectada de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(D39-A) a Net-(DC0R3-A).
+Zona de cobre reconectada de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+Zona de cobre reconectada de Net-(D22-A) a Net-(DC8R2-A).
+Zona de cobre reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Zona de cobre reconectada de Net-(D19-A) a Net-(DC1R1-A).
+Zona de cobre reconectada de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+Zona de cobre reconectada de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Zona de cobre reconectada de Net-(D25-A) a Net-(DC5R2-A).
+Zona de cobre reconectada de Net-(D50-A) a Net-(DC8R5-A).
+Zona de cobre reconectada de Net-(D9-A) a Net-(DC1R0-A).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Zona de cobre reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Zona de cobre reconectada de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Zona de cobre reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Zona de cobre reconectada de Net-(D46-A) a Net-(DC3R4-A).
+Zona de cobre reconectada de Net-(D32-A) a Net-(DC6R3-A).
+Zona de cobre reconectada de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Zona de cobre reconectada de Net-(D6-A) a Net-(DC4R0-A).
+Zona de cobre reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Zona de cobre reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Zona de cobre reconectada de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Zona de cobre reconectada de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Zona de cobre reconectada de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Zona de cobre reconectada de Net-(D15-A) a Net-(DC5R1-A).
+Zona de cobre reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Zona de cobre reconectada de Net-(LED26-DIN) a Net-(MLED27-DOUT).
+Zona de cobre reconectada de Net-(D19-A) a Net-(DC1R1-A).
+Zona de cobre reconectada de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Zona de cobre reconectada de Net-(D37-A) a Net-(DC2R3-A).
+Zona de cobre reconectada de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Zona de cobre reconectada de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Zona de cobre reconectada de Net-(D32-A) a Net-(DC6R3-A).
+Zona de cobre reconectada de Net-(D51-A) a Net-(DC6R5-A).
+Zona de cobre reconectada de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Zona de cobre reconectada de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Zona de cobre reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Zona de cobre reconectada de Net-(LED2-DIN) a Net-(TLED1-DOUT).
+Zona de cobre reconectada de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Zona de cobre reconectada de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Zona de cobre reconectada de Net-(LED35-DIN) a Net-(MLED26-DOUT).
+Zona de cobre reconectada de Net-(D35-A) a Net-(DC4R3-A).
+Zona de cobre reconectada de Net-(D41-A) a Net-(DC8R4-A).
+Zona de cobre reconectada de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Zona de cobre reconectada de Net-(LED45-DIN) a Net-(MLED25-DOUT).
+Zona de cobre reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Zona de cobre reconectada de Net-(D56-A) a Net-(DC1R5-A).
+Zona de cobre reconectada de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Zona de cobre reconectada de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+Zona de cobre reconectada de Net-(D3-A) a Net-(DC6R0-A).
+Zona de cobre reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Zona de cobre reconectada de Net-(D45-A) a Net-(DC4R4-A).
+Zona de cobre reconectada de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+Zona de cobre reconectada de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+Zona de cobre reconectada de Net-(D20-A) a Net-(DC0R1-A).
+Zona de cobre reconectada de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Zona de cobre reconectada de Net-(LED22-DIN) a Net-(MLED8-DOUT).
+Zona de cobre reconectada de Net-(LED32-DIN) a Net-(MLED17-DOUT).
+Zona de cobre reconectada de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Zona de cobre reconectada de Net-(D2-A) a Net-(DC8R0-A).
+Zona de cobre reconectada de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Zona de cobre reconectada de Net-(D3-A) a Net-(DC6R0-A).
+Zona de cobre reconectada de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Zona de cobre reconectada de Net-(D55-A) a Net-(DC2R5-A).
+Zona de cobre reconectada de Net-(D5-A) a Net-(DC5R0-A).
+Zona de cobre reconectada de Net-(D8-A) a Net-(DC2R0-A).
+Zona de cobre reconectada de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Zona de cobre reconectada de Net-(D13-A) a Net-(DC6R1-A).
+Zona de cobre reconectada de Net-(D41-A) a Net-(DC8R4-A).
+Zona de cobre reconectada de Net-(LED36-DOUT) a Net-(SLED4-DOUT).
+Zona de cobre reconectada de Net-(D1-A) a Net-(DC7R0-A).
+Zona de cobre reconectada de Net-(LED47-DIN) a Net-(SLED7-DOUT).
+Zona de cobre reconectada de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Zona de cobre reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Zona de cobre reconectada de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(D57-A) a Net-(DC0R5-A).
+Zona de cobre reconectada de Net-(LED19-DOUT) a Net-(SLED14-DOUT).
+Zona de cobre reconectada de Net-(D13-A) a Net-(DC6R1-A).
+Zona de cobre reconectada de Net-(LED5-DOUT) a Net-(TLED5-DOUT).
+Zona de cobre reconectada de Net-(LED29-DOUT) a Net-(SLED15-DOUT).
+Zona de cobre reconectada de Net-(D16-A) a Net-(DC4R1-A).
+Zona de cobre reconectada de Net-(D7-A) a Net-(DC3R0-A).
+Zona de cobre reconectada de Net-(LED12-DIN) a Net-(MLED10-DIN).
+Zona de cobre reconectada de Net-(LED43-DOUT) a Net-(MLED4-DOUT).
+Zona de cobre reconectada de Net-(D38-A) a Net-(DC1R3-A).
+Zona de cobre reconectada de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Zona de cobre reconectada de Net-(D8-A) a Net-(DC2R0-A).
+Zona de cobre reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Zona de cobre reconectada de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Zona de cobre reconectada de Net-(D55-A) a Net-(DC2R5-A).
+Zona de cobre reconectada de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Zona de cobre reconectada de Net-(D15-A) a Net-(DC5R1-A).
+Zona de cobre reconectada de Net-(D27-A) a Net-(DC3R2-A).
+Zona de cobre reconectada de Net-(D10-A) a Net-(DC0R0-A).
+Zona de cobre reconectada de Net-(LED28-DIN) a Net-(SLED10-DIN).
+Zona de cobre reconectada de Net-(D47-A) a Net-(DC2R4-A).
+Zona de cobre reconectada de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Zona de cobre reconectada de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Zona de cobre reconectada de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Zona de cobre reconectada de Net-(D42-A) a Net-(DC6R4-A).
+Zona de cobre reconectada de Net-(LED27-DOUT) a Net-(SLED3-DOUT).
+Zona de cobre reconectada de Net-(D22-A) a Net-(DC8R2-A).
+Zona de cobre reconectada de Net-(LED38-DOUT) a Net-(SLED16-DOUT).
+Zona de cobre reconectada de Net-(D17-A) a Net-(DC3R1-A).
+Zona de cobre reconectada de Net-(LED21-DOUT) a Net-(MLED12-DOUT).
+Zona de cobre reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Zona de cobre reconectada de Net-(D36-A) a Net-(DC3R3-A).
+Zona de cobre reconectada de Net-(D39-A) a Net-(DC0R3-A).
+Zona de cobre reconectada de Net-(LED50-DIN) a Net-(MLED5-DOUT).
+Zona de cobre reconectada de Net-(LED39-DIN) a Net-(SLED19-DOUT).
+Zona de cobre reconectada de Net-(LED18-DOUT) a Net-(SLED11-DOUT).
+Zona de cobre reconectada de Net-(D23-A) a Net-(DC6R2-A).
+Zona de cobre reconectada de Net-(LED40-DOUT) a Net-(MLED14-DOUT).
+Zona de cobre reconectada de Net-(D9-A) a Net-(DC1R0-A).
+Zona de cobre reconectada de Net-(D28-A) a Net-(DC2R2-A).
+Zona de cobre reconectada de Net-(LED23-DIN) a Net-(MLED18-DOUT).
+Zona de cobre reconectada de Net-(D23-A) a Net-(DC6R2-A).
+Zona de cobre reconectada de Net-(LED1-DOUT) a Net-(TLED3-DOUT).
+Zona de cobre reconectada de Net-(D34-A) a Net-(DC5R03-A).
+Zona de cobre reconectada de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Zona de cobre reconectada de Net-(D57-A) a Net-(DC0R5-A).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(LED13-DOUT) a Net-(MLED20-DOUT).
+Zona de cobre reconectada de Net-(D53-A) a Net-(DC3R5-A).
+Zona de cobre reconectada de Net-(D24-A) a Net-(DC9R2-A).
+Zona de cobre reconectada de Net-(LED24-DOUT) a Net-(MLED2-DOUT).
+Zona de cobre reconectada de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Zona de cobre reconectada de Net-(LED56-DOUT) a Net-(SLED18-DOUT).
+Zona de cobre reconectada de Net-(D1-A) a Net-(DC7R0-A).
+Zona de cobre reconectada de Net-(LED44-DOUT) a Net-(MLED24-DOUT).
+Zona de cobre reconectada de Net-(D21-A) a Net-(DC7R2-A).
+Zona de cobre reconectada de Net-(D5-A) a Net-(DC5R0-A).
+Zona de cobre reconectada de Net-(LED1-DIN) a Net-(TLED2-DOUT).
+Zona de cobre reconectada de Net-(D29-A) a Net-(DC1R2-A).
+Zona de cobre reconectada de Net-(LED41-DIN) a Net-(MLED6-DOUT).
+Zona de cobre reconectada de Net-(LED49-DOUT) a Net-(MLED15-DOUT).
+Zona de cobre reconectada de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Zona de cobre reconectada de Net-(LED37-DIN) a Net-(SLED8-DOUT).
+Zona de cobre reconectada de Net-(LED11-DIN) a Net-(MLED10-DOUT).
+Zona de cobre reconectada de Net-(LED18-DIN) a Net-(SLED10-DOUT).
+Zona de cobre reconectada de Net-(LED31-DIN) a Net-(MLED7-DOUT).
+Zona de cobre reconectada de Net-(LED10-DIN) a Net-(SLED21-DOUT).
+Zona de cobre reconectada de Net-(D50-A) a Net-(DC8R5-A).
+Zona de cobre reconectada de Net-(LED25-DOUT) a Net-(MLED22-DOUT).
+Zona de cobre reconectada de Net-(D37-A) a Net-(DC2R3-A).
+Zona de cobre reconectada de Net-(LED16-DIN) a Net-(MLED28-DOUT).
+Zona de cobre reconectada de Net-(LED42-DIN) a Net-(MLED16-DOUT).
+Zona de cobre reconectada de Net-(LED17-DOUT) a Net-(SLED2-DOUT).
+Zona de cobre reconectada de Net-(LED54-DOUT) a Net-(SLED6-DOUT).
+Zona de cobre reconectada de Net-(LED13-DIN) a Net-(MLED19-DOUT).
+Zona de cobre reconectada de Net-(LED8-DOUT) a Net-(SLED12-DOUT).
+Zona de cobre reconectada de Net-(D43-A) a Net-(DC9R4-A).
+Red no utilizada Net-(D1-A) eliminada.
+Red no utilizada Net-(D10-A) eliminada.
+Red no utilizada Net-(D11-A) eliminada.
+Red no utilizada Net-(D12-A) eliminada.
+Red no utilizada Net-(D13-A) eliminada.
+Red no utilizada Net-(D14-A) eliminada.
+Red no utilizada Net-(D15-A) eliminada.
+Red no utilizada Net-(D16-A) eliminada.
+Red no utilizada Net-(D17-A) eliminada.
+Red no utilizada Net-(D18-A) eliminada.
+Red no utilizada Net-(D19-A) eliminada.
+Red no utilizada Net-(D2-A) eliminada.
+Red no utilizada Net-(D20-A) eliminada.
+Red no utilizada Net-(D21-A) eliminada.
+Red no utilizada Net-(D22-A) eliminada.
+Red no utilizada Net-(D23-A) eliminada.
+Red no utilizada Net-(D24-A) eliminada.
+Red no utilizada Net-(D25-A) eliminada.
+Red no utilizada Net-(D26-A) eliminada.
+Red no utilizada Net-(D27-A) eliminada.
+Red no utilizada Net-(D28-A) eliminada.
+Red no utilizada Net-(D29-A) eliminada.
+Red no utilizada Net-(D3-A) eliminada.
+Red no utilizada Net-(D30-A) eliminada.
+Red no utilizada Net-(D31-A) eliminada.
+Red no utilizada Net-(D32-A) eliminada.
+Red no utilizada Net-(D33-A) eliminada.
+Red no utilizada Net-(D34-A) eliminada.
+Red no utilizada Net-(D35-A) eliminada.
+Red no utilizada Net-(D36-A) eliminada.
+Red no utilizada Net-(D37-A) eliminada.
+Red no utilizada Net-(D38-A) eliminada.
+Red no utilizada Net-(D39-A) eliminada.
+Red no utilizada Net-(D4-A) eliminada.
+Red no utilizada Net-(D40-A) eliminada.
+Red no utilizada Net-(D41-A) eliminada.
+Red no utilizada Net-(D42-A) eliminada.
+Red no utilizada Net-(D43-A) eliminada.
+Red no utilizada Net-(D44-A) eliminada.
+Red no utilizada Net-(D45-A) eliminada.
+Red no utilizada Net-(D46-A) eliminada.
+Red no utilizada Net-(D47-A) eliminada.
+Red no utilizada Net-(D48-A) eliminada.
+Red no utilizada Net-(D49-A) eliminada.
+Red no utilizada Net-(D5-A) eliminada.
+Red no utilizada Net-(D50-A) eliminada.
+Red no utilizada Net-(D51-A) eliminada.
+Red no utilizada Net-(D52-A) eliminada.
+Red no utilizada Net-(D53-A) eliminada.
+Red no utilizada Net-(D54-A) eliminada.
+Red no utilizada Net-(D55-A) eliminada.
+Red no utilizada Net-(D56-A) eliminada.
+Red no utilizada Net-(D57-A) eliminada.
+Red no utilizada Net-(D6-A) eliminada.
+Red no utilizada Net-(D7-A) eliminada.
+Red no utilizada Net-(D8-A) eliminada.
+Red no utilizada Net-(D9-A) eliminada.
+Red no utilizada Net-(LED1-DIN) eliminada.
+Red no utilizada Net-(LED1-DOUT) eliminada.
+Red no utilizada Net-(LED10-DIN) eliminada.
+Red no utilizada Net-(LED11-DIN) eliminada.
+Red no utilizada Net-(LED12-DIN) eliminada.
+Red no utilizada Net-(LED13-DIN) eliminada.
+Red no utilizada Net-(LED13-DOUT) eliminada.
+Red no utilizada Net-(LED16-DIN) eliminada.
+Red no utilizada Net-(LED17-DOUT) eliminada.
+Red no utilizada Net-(LED18-DIN) eliminada.
+Red no utilizada Net-(LED18-DOUT) eliminada.
+Red no utilizada Net-(LED19-DOUT) eliminada.
+Red no utilizada Net-(LED2-DIN) eliminada.
+Red no utilizada Net-(LED20-DIN) eliminada.
+Red no utilizada Net-(LED21-DOUT) eliminada.
+Red no utilizada Net-(LED22-DIN) eliminada.
+Red no utilizada Net-(LED23-DIN) eliminada.
+Red no utilizada Net-(LED24-DOUT) eliminada.
+Red no utilizada Net-(LED25-DOUT) eliminada.
+Red no utilizada Net-(LED26-DIN) eliminada.
+Red no utilizada Net-(LED27-DOUT) eliminada.
+Red no utilizada Net-(LED28-DIN) eliminada.
+Red no utilizada Net-(LED29-DOUT) eliminada.
+Red no utilizada Net-(LED3-DOUT) eliminada.
+Red no utilizada Net-(LED31-DIN) eliminada.
+Red no utilizada Net-(LED32-DIN) eliminada.
+Red no utilizada Net-(LED35-DIN) eliminada.
+Red no utilizada Net-(LED36-DOUT) eliminada.
+Red no utilizada Net-(LED37-DIN) eliminada.
+Red no utilizada Net-(LED38-DOUT) eliminada.
+Red no utilizada Net-(LED39-DIN) eliminada.
+Red no utilizada Net-(LED40-DOUT) eliminada.
+Red no utilizada Net-(LED41-DIN) eliminada.
+Red no utilizada Net-(LED42-DIN) eliminada.
+Red no utilizada Net-(LED43-DOUT) eliminada.
+Red no utilizada Net-(LED44-DOUT) eliminada.
+Red no utilizada Net-(LED45-DIN) eliminada.
+Red no utilizada Net-(LED47-DIN) eliminada.
+Red no utilizada Net-(LED49-DOUT) eliminada.
+Red no utilizada Net-(LED5-DOUT) eliminada.
+Red no utilizada Net-(LED50-DIN) eliminada.
+Red no utilizada Net-(LED54-DOUT) eliminada.
+Red no utilizada Net-(LED56-DOUT) eliminada.
+Red no utilizada Net-(LED8-DOUT) eliminada.
+Red no utilizada unconnected-(LED10-DOUT-Pad1) eliminada.
+Red no utilizada unconnected-(LED10-DOUT-Pad1)_1 eliminada.
+
+
+Zona de cobre reconectada de Net-(D40-A) a Net-(DC7R4-A).
+Error: No se ha encontrado U1 pad 41 en Sofle_Pico:RPi_Pico_SMD_TH_DS.
+Error: No se ha encontrado U1 pad 43 en Sofle_Pico:RPi_Pico_SMD_TH_DS.
+Error: No se ha encontrado U1 pad 42 en Sofle_Pico:RPi_Pico_SMD_TH_DS.
+
+
+Info: Número de avisos: 0, errores: 3.

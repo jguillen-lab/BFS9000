@@ -10,3 +10,76 @@
 
 /software/MARCOntroller/**/*.rs.bk
 
+# KiCad project in /hardware
+
+# --- Autosave / backup / lock ---
+hardware/**/.backup/
+hardware/**/*-backups/
+hardware/**/fp-info-cache
+hardware/**/*.kicad_prl
+hardware/**/*.kicad_pro-bak
+hardware/**/*.kicad_sch-bak
+hardware/**/*.kicad_pcb-bak
+hardware/**/*-bak
+hardware/**/*~
+hardware/**/*.lck
+hardware/**/.#*
+hardware/**/#*#
+
+# --- Exports files ---
+hardware/**/Exports/
+
+# --- Temporary / cache files ---
+hardware/**/__pycache__/
+hardware/**/*.tmp
+hardware/**/*.temp
+hardware/**/*.cache
+
+# --- Netlists / intermediate exports (regenerables) ---
+hardware/**/*.net
+hardware/**/*.xml
+hardware/**/*.csv
+
+# --- Fabrication outputs (regenerables) ---
+hardware/**/gerbers/
+hardware/**/fabrication/
+hardware/**/manufacturing/
+hardware/**/outputs/
+hardware/**/*.gbr
+hardware/**/*.gbrjob
+hardware/**/*.gtl
+hardware/**/*.gbl
+hardware/**/*.gts
+hardware/**/*.gbs
+hardware/**/*.gto
+hardware/**/*.gbo
+hardware/**/*.gm1
+hardware/**/*.gko
+hardware/**/*.drl
+hardware/**/*.map
+hardware/**/*.pos
+hardware/**/*.rpt
+hardware/**/*.step
+hardware/**/*.stp
+hardware/**/*.wrl
+
+# --- Plot / export files ---
+hardware/**/*.pdf
+hardware/**/*.svg
+hardware/**/*.png
+hardware/**/*.jpg
+hardware/**/*.jpeg
+
+# --- BOM / pick and place generated outputs ---
+hardware/**/bom/
+hardware/**/pickplace/
+hardware/**/*bom*.csv
+hardware/**/*bom*.txt
+hardware/**/*pos*.csv
+hardware/**/*pos*.txt
+
+# --- OS / editor junk ---
+.DS_Store
+Thumbs.db
+desktop.ini
+

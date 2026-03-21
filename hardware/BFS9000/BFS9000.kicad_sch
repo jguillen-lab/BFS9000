@@ -7188,7 +7188,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "948aabf0-4122-4706-a0da-e6a9f5f0bfa8")
-		(property "Reference" "ENC"
+		(property "Reference" "ENC1"
 			(at 44.45 112.776 0)
 			(effects
 				(font
@@ -7276,7 +7276,7 @@
 		(instances
 			(project "Custom split ergonomic keyboard PCB"
 				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df"
-					(reference "ENC")
+					(reference "ENC1")
 					(unit 1)
 				)
 			)

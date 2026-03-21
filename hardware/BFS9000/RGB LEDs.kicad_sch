@@ -743,6 +743,16 @@
 	)
 	(wire
 		(pts
+			(xy 125.73 71.12) (xy 125.73 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01433518-51e1-4429-b89e-ad4d63448cbd")
+	)
+	(wire
+		(pts
 			(xy 346.71 78.74) (xy 347.98 78.74)
 		)
 		(stroke
@@ -793,7 +803,7 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 133.35) (xy 105.41 133.35)
+			(xy 124.46 133.35) (xy 105.41 133.35)
 		)
 		(stroke
 			(width 0)
@@ -860,16 +870,6 @@
 			(type default)
 		)
 		(uuid "0853f30f-8136-45a5-a86a-cdc4476cce20")
-	)
-	(wire
-		(pts
-			(xy 100.33 226.06) (xy 100.33 224.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "087e6215-cb18-4154-9c6c-94a4515ef77e")
 	)
 	(wire
 		(pts
@@ -943,16 +943,6 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 241.3) (xy 66.04 242.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "12827947-c508-4cca-91f7-88f92cb296e8")
-	)
-	(wire
-		(pts
 			(xy 242.57 125.73) (xy 243.84 125.73)
 		)
 		(stroke
@@ -1020,6 +1010,16 @@
 			(type default)
 		)
 		(uuid "1ca9ad49-6623-46d2-b69c-f751eb32d020")
+	)
+	(wire
+		(pts
+			(xy 124.46 121.92) (xy 124.46 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1cb836b6-2af0-4520-924e-2a0214214281")
 	)
 	(wire
 		(pts
@@ -1163,7 +1163,7 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 124.46) (xy 69.85 124.46)
+			(xy 68.58 124.46) (xy 71.12 124.46)
 		)
 		(stroke
 			(width 0)
@@ -1303,7 +1303,7 @@
 	)
 	(wire
 		(pts
-			(xy 180.34 86.36) (xy 162.56 86.36)
+			(xy 181.61 86.36) (xy 162.56 86.36)
 		)
 		(stroke
 			(width 0)
@@ -1403,16 +1403,6 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 241.3) (xy 167.64 242.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "492335d1-fe19-4cda-a32d-78fa248c8f2c")
-	)
-	(wire
-		(pts
 			(xy 318.77 165.1) (xy 302.26 165.1)
 		)
 		(stroke
@@ -1423,7 +1413,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 74.93) (xy 180.34 74.93)
+			(xy 179.07 74.93) (xy 181.61 74.93)
 		)
 		(stroke
 			(width 0)
@@ -1593,13 +1583,23 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 71.12) (xy 124.46 71.12)
+			(xy 123.19 71.12) (xy 125.73 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "6117c6be-a7de-469c-ab12-b5e0773b21ba")
+	)
+	(wire
+		(pts
+			(xy 69.85 73.66) (xy 69.85 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "62fbe4a9-18d4-41e4-9abf-2ffe48074972")
 	)
 	(wire
 		(pts
@@ -1643,16 +1643,6 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 241.3) (xy 134.62 242.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "67b26be4-73af-43d7-88b9-e16ee11022ae")
-	)
-	(wire
-		(pts
 			(xy 52.07 86.36) (xy 52.07 99.06)
 		)
 		(stroke
@@ -1693,7 +1683,7 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 137.16) (xy 50.8 137.16)
+			(xy 50.8 137.16) (xy 71.12 137.16)
 		)
 		(stroke
 			(width 0)
@@ -1753,7 +1743,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 137.16) (xy 161.29 137.16)
+			(xy 180.34 137.16) (xy 161.29 137.16)
 		)
 		(stroke
 			(width 0)
@@ -1800,16 +1790,6 @@
 			(type default)
 		)
 		(uuid "763a324d-0389-4cca-81f7-89c2b4d3f347")
-	)
-	(wire
-		(pts
-			(xy 33.02 224.79) (xy 33.02 226.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7642ed8e-a5f4-4285-b8c1-884dc111ba0b")
 	)
 	(wire
 		(pts
@@ -1870,16 +1850,6 @@
 			(type default)
 		)
 		(uuid "7c416400-166b-491c-b482-067ea58298b1")
-	)
-	(wire
-		(pts
-			(xy 200.66 224.79) (xy 200.66 226.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7cebbcb3-5964-481b-93b9-cfba2406dc3f")
 	)
 	(wire
 		(pts
@@ -1973,16 +1943,6 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 224.79) (xy 167.64 226.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "878d0bf4-5229-4dc6-8452-b64c8514cb72")
-	)
-	(wire
-		(pts
 			(xy 318.77 180.34) (xy 331.47 180.34)
 		)
 		(stroke
@@ -1993,17 +1953,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 241.3) (xy 200.66 242.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "88804255-65ae-45a2-85da-7368183372ab")
-	)
-	(wire
-		(pts
-			(xy 177.8 125.73) (xy 179.07 125.73)
+			(xy 177.8 125.73) (xy 180.34 125.73)
 		)
 		(stroke
 			(width 0)
@@ -2213,7 +2163,7 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 86.36) (xy 52.07 86.36)
+			(xy 69.85 86.36) (xy 52.07 86.36)
 		)
 		(stroke
 			(width 0)
@@ -2263,6 +2213,16 @@
 	)
 	(wire
 		(pts
+			(xy 181.61 74.93) (xy 181.61 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9acf0fb8-5f51-4441-a4b2-0a86ef719dd8")
+	)
+	(wire
+		(pts
 			(xy 189.23 74.93) (xy 190.5 74.93)
 		)
 		(stroke
@@ -2280,6 +2240,16 @@
 			(type default)
 		)
 		(uuid "9f547acb-56c3-4ff3-ac1a-8a12cf19eee3")
+	)
+	(wire
+		(pts
+			(xy 69.85 73.66) (xy 68.58 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a313316b-f82d-4f16-b334-c18215c3f1e7")
 	)
 	(wire
 		(pts
@@ -2360,16 +2330,6 @@
 			(type default)
 		)
 		(uuid "a9bcf618-6216-41aa-bda4-1c602b8d5522")
-	)
-	(wire
-		(pts
-			(xy 66.04 226.06) (xy 66.04 224.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "aaa82997-d914-4889-8fb7-8793eb7faead")
 	)
 	(wire
 		(pts
@@ -2460,16 +2420,6 @@
 			(type default)
 		)
 		(uuid "b1c7436e-2bf7-446b-91dc-51b3ef44c4cc")
-	)
-	(wire
-		(pts
-			(xy 100.33 241.3) (xy 100.33 242.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b3e65dfd-ce7f-47d0-97ed-5b1f4e3c8459")
 	)
 	(wire
 		(pts
@@ -2623,7 +2573,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 121.92) (xy 123.19 121.92)
+			(xy 121.92 121.92) (xy 124.46 121.92)
 		)
 		(stroke
 			(width 0)
@@ -2713,6 +2663,16 @@
 	)
 	(wire
 		(pts
+			(xy 71.12 124.46) (xy 71.12 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cec7733d-2084-434b-b43d-c31b307776e9")
+	)
+	(wire
+		(pts
 			(xy 149.86 148.59) (xy 151.13 148.59)
 		)
 		(stroke
@@ -2750,16 +2710,6 @@
 			(type default)
 		)
 		(uuid "d479bae7-de7c-48e8-8ede-05696d8e13c5")
-	)
-	(wire
-		(pts
-			(xy 33.02 241.3) (xy 33.02 242.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d66670eb-855f-4ea4-975a-35675f3d9e7d")
 	)
 	(wire
 		(pts
@@ -2883,7 +2833,7 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 82.55) (xy 105.41 82.55)
+			(xy 125.73 82.55) (xy 105.41 82.55)
 		)
 		(stroke
 			(width 0)
@@ -2930,6 +2880,16 @@
 			(type default)
 		)
 		(uuid "e95268da-eabe-45ae-ac22-4e17d028bc10")
+	)
+	(wire
+		(pts
+			(xy 180.34 125.73) (xy 180.34 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9fbf5c7-97b2-44bc-a0c3-7ba04d8d59ad")
 	)
 	(wire
 		(pts
@@ -3143,16 +3103,6 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 226.06) (xy 134.62 224.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fdfdbe5d-2b54-4255-9877-355903e36df5")
-	)
-	(wire
-		(pts
 			(xy 189.23 176.53) (xy 177.8 176.53)
 		)
 		(stroke
@@ -3190,29 +3140,6 @@
 			(type default)
 		)
 		(uuid "ff60f405-b2bd-4ecc-bdcc-c5ccc99674d6")
-	)
-	(global_label "LED6"
-		(shape output)
-		(at 179.07 125.73 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "02d103fc-85d4-4814-a1ed-3dd0c50aa612")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 186.7118 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
 	)
 	(global_label "nLED_1"
 		(shape input)
@@ -3308,75 +3235,6 @@
 			)
 		)
 	)
-	(global_label "LED5"
-		(shape output)
-		(at 160.02 233.68 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify right)
-		)
-		(uuid "20cb2065-720c-415c-b5d4-6f8292f76352")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 152.3782 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED_3"
-		(shape input)
-		(at 180.34 86.36 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "22149b18-3b87-46f4-bdce-d79c3bb0de8a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 188.9494 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED1"
-		(shape output)
-		(at 68.58 73.66 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "23bc6d54-7163-418b-b099-728073a678b5")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 76.2218 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "LED_N"
 		(shape input)
 		(at 205.74 46.99 0)
@@ -3393,29 +3251,6 @@
 		(uuid "25987b29-c9db-4302-9396-151c92cf770d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 214.9464 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED_2"
-		(shape input)
-		(at 124.46 82.55 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "2bad126a-25c7-4961-a68a-92e9e6b5d738")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 133.0694 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3448,98 +3283,6 @@
 			)
 		)
 	)
-	(global_label "LED5"
-		(shape output)
-		(at 123.19 121.92 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "2df00cc9-f6b4-4a02-9f7f-671b8a8363b3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 130.8318 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED_6"
-		(shape input)
-		(at 179.07 137.16 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "3197f2b9-4f95-4149-ad1b-1d8b52bec478")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 187.6794 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED2"
-		(shape output)
-		(at 58.42 233.68 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify right)
-		)
-		(uuid "32b904bb-6f73-458e-968f-4a9bb0fc10a0")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 50.7782 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED_1"
-		(shape input)
-		(at 68.58 86.36 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "3bfddd58-84ba-4347-8079-7df7fba36d8a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 77.1894 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "nLED_4"
 		(shape input)
 		(at 361.95 232.41 0)
@@ -3563,52 +3306,6 @@
 			)
 		)
 	)
-	(global_label "LED4"
-		(shape output)
-		(at 127 233.68 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify right)
-		)
-		(uuid "4990f64b-3f5c-4960-9d11-66110ce9d741")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 119.3582 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED_1"
-		(shape input)
-		(at 40.64 233.68 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "550799c3-8c64-4207-816e-9b9c7fc69f48")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 49.2494 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "nLED_2"
 		(shape input)
 		(at 288.29 232.41 0)
@@ -3623,121 +3320,6 @@
 		(uuid "56b75353-c438-4c6c-8801-b46c0b12dc8a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 298.0484 232.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED_2"
-		(shape input)
-		(at 73.66 233.68 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "63de2e18-dd50-4b08-9b9d-7e482d4944e7")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 82.2694 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED1"
-		(shape output)
-		(at 25.4 233.68 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify right)
-		)
-		(uuid "6df50bc5-b178-4982-a185-8181c36343a2")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 17.7582 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED_4"
-		(shape input)
-		(at 68.58 137.16 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "71161508-cba2-45d7-af34-d3b541634f12")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 77.1894 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED2"
-		(shape output)
-		(at 124.46 71.12 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "792dc487-5475-4590-941e-33deae357758")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 132.1018 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED_3"
-		(shape input)
-		(at 107.95 233.68 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "8239c252-4290-4ac7-bdaf-c4a41a6ffaf3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 116.5594 233.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3814,29 +3396,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED_4"
-		(shape input)
-		(at 142.24 233.68 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "8f9c4c88-ad64-48cc-af86-ced38d8af881")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 150.8494 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -3956,52 +3515,6 @@
 			)
 		)
 	)
-	(global_label "LED_5"
-		(shape input)
-		(at 175.26 233.68 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "bd68ac22-fb6b-4adb-b98e-06550cda4376")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 183.8694 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED3"
-		(shape output)
-		(at 92.71 233.68 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify right)
-		)
-		(uuid "c5054839-ab62-4c9d-808e-6c31356ff70c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 85.0682 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "nLED2"
 		(shape output)
 		(at 321.31 52.07 0)
@@ -4073,29 +3586,6 @@
 			)
 		)
 	)
-	(global_label "LED_6"
-		(shape input)
-		(at 208.28 233.68 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "e07fadbf-3cd7-48c1-ad3f-8ae1f1dbaacb")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 216.8894 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "nLED_3"
 		(shape input)
 		(at 325.12 232.41 0)
@@ -4110,98 +3600,6 @@
 		(uuid "e187123b-3fbe-41ff-a59c-af0ac01548a4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 334.8784 232.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED_5"
-		(shape input)
-		(at 123.19 133.35 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "e43ad323-57a5-4692-8437-536f6c6e1ffa")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 131.7994 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED4"
-		(shape output)
-		(at 69.85 124.46 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "e869f200-635c-4fa0-9569-67ffc74ce572")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 77.4918 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED6"
-		(shape output)
-		(at 193.04 233.68 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify right)
-		)
-		(uuid "ed4eeab9-53a8-4620-a5f0-c559f2d2d93b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 185.3982 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED3"
-		(shape output)
-		(at 180.34 74.93 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 194 0 194 1)
-			)
-			(justify left)
-		)
-		(uuid "f1bc0d9c-1c5a-4ee5-90f8-7f71b63ff1aa")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 187.9818 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4774,73 +4172,6 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 167.64 242.57 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "059a86b0-748a-4dc8-84e7-d2fbef471da1")
-		(property "Reference" "#PWR0153"
-			(at 167.64 248.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 167.64 247.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 167.64 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 167.64 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 167.64 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c0e46752-20a4-468d-aea6-66d1033a81d1")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "#PWR0153")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
 		(at 312.42 59.69 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4966,108 +4297,6 @@
 			(project "Custom split ergonomic keyboard PCB"
 				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
 					(reference "#PWR050")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "LED:SK6805")
-		(at 200.66 233.68 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "07b700b7-f6ca-4593-b8be-a0c0dd76bf83")
-		(property "Reference" "MULED6"
-			(at 196.088 226.822 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SK6803 MINI-E"
-			(at 209.042 227.584 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5"
-			(at 201.93 241.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/3484/3484_Datasheet.pdf"
-			(at 203.2 243.205 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 200.66 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB_PN" "C5242955 "
-			(at 200.66 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG" "OPSCO Optoelectronics"
-			(at 200.66 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG PN" "SK6803MINI-E-001 "
-			(at 200.66 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5938000f-8ff0-4a9b-bf53-a5ec7b5203c1")
-		)
-		(pin "3"
-			(uuid "4e2c4866-5a55-48fb-b792-41c42ca82fa2")
-		)
-		(pin "4"
-			(uuid "fe9f63c5-8a09-4eb6-801d-0fb7c5d6682b")
-		)
-		(pin "2"
-			(uuid "d8de4e70-cdfd-4a3c-adc7-3f75276a4ab6")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "MULED6")
 					(unit 1)
 				)
 			)
@@ -5403,108 +4632,6 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:SK6805")
-		(at 66.04 233.68 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "11fb4a68-8850-45d4-9626-abae78796524")
-		(property "Reference" "MULED2"
-			(at 61.468 226.822 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SK6803 MINI-E"
-			(at 74.422 227.584 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5"
-			(at 67.31 241.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/3484/3484_Datasheet.pdf"
-			(at 68.58 243.205 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 66.04 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB_PN" "C5242955 "
-			(at 66.04 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG" "OPSCO Optoelectronics"
-			(at 66.04 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG PN" "SK6803MINI-E-001 "
-			(at 66.04 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a0b6b55f-3d4c-409e-99ca-7a4ea03f923d")
-		)
-		(pin "3"
-			(uuid "c29a69e5-62ab-41e8-9189-33c88f214daa")
-		)
-		(pin "4"
-			(uuid "2e245dab-deb5-4309-a1ca-e7fe86f29539")
-		)
-		(pin "2"
-			(uuid "8df1a27d-49a2-4f0a-a7bd-fe082eae405b")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "MULED2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:VDC")
 		(at 60.96 38.1 0)
 		(unit 1)
@@ -5731,73 +4858,6 @@
 			(project "Custom split ergonomic keyboard PCB"
 				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
 					(reference "#PWR0121")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 134.62 242.57 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1693745b-b663-4079-bf35-dff68490f18c")
-		(property "Reference" "#PWR0152"
-			(at 134.62 248.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 134.62 247.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 134.62 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 134.62 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 134.62 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "721d298a-0fdf-4ded-a0d8-016d94257e9e")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "#PWR0152")
 					(unit 1)
 				)
 			)
@@ -6829,73 +5889,6 @@
 			(project "Custom split ergonomic keyboard PCB"
 				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
 					(reference "TLED1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 66.04 242.57 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "28c0cc96-8b2d-4aba-8a47-c4c52c8095a3")
-		(property "Reference" "#PWR0150"
-			(at 66.04 248.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 66.04 247.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 66.04 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 66.04 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 66.04 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c93f351b-f129-41bc-8cbe-35406ff64dcd")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "#PWR0150")
 					(unit 1)
 				)
 			)
@@ -8144,73 +7137,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 100.33 242.57 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3a5f1ae3-0e02-42d3-a59b-9b25c128bae6")
-		(property "Reference" "#PWR0151"
-			(at 100.33 248.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 100.33 247.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 100.33 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 100.33 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 100.33 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7e738fca-7c93-4cef-8d9a-d12163601510")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "#PWR0151")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "LED:SK6805")
 		(at 198.12 125.73 0)
 		(unit 1)
@@ -8575,73 +7501,6 @@
 			(project "Custom split ergonomic keyboard PCB"
 				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
 					(reference "#PWR031")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 200.66 242.57 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3ceeb3e5-6e26-4297-aa32-2822a27c753d")
-		(property "Reference" "#PWR0154"
-			(at 200.66 248.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 200.66 247.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 200.66 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 200.66 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 200.66 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "f081600b-be7a-4e71-93c4-57b5ff27c665")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "#PWR0154")
 					(unit 1)
 				)
 			)
@@ -10545,71 +9404,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
-		(at 33.02 224.79 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "64418625-a816-48dc-b03b-641702fbb739")
-		(property "Reference" "#PWR0139"
-			(at 33.02 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VSYS"
-			(at 33.02 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 33.02 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 33.02 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "35350fa1-9614-4587-a98b-4bd75534bacb")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "#PWR0139")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 115.57 78.74 0)
 		(unit 1)
@@ -10903,108 +9697,6 @@
 			(project "Custom split ergonomic keyboard PCB"
 				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
 					(reference "MLED29")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "LED:SK6805")
-		(at 134.62 233.68 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "69f4b941-6e6a-4fce-9943-aae6c6b8e83d")
-		(property "Reference" "MULED4"
-			(at 130.048 226.822 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SK6803 MINI-E"
-			(at 143.002 227.584 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5"
-			(at 135.89 241.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/3484/3484_Datasheet.pdf"
-			(at 137.16 243.205 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 134.62 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB_PN" "C5242955 "
-			(at 134.62 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG" "OPSCO Optoelectronics"
-			(at 134.62 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG PN" "SK6803MINI-E-001 "
-			(at 134.62 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a743ed9a-3c01-4f0c-8930-f464f0560f67")
-		)
-		(pin "3"
-			(uuid "befb84c2-1b2f-4cdb-9c13-d0dadc41ed03")
-		)
-		(pin "4"
-			(uuid "8c89a5e3-a66a-4131-908b-4c8b179d43ba")
-		)
-		(pin "2"
-			(uuid "e56ec847-0016-4739-ae9d-6eafeffb337e")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "MULED4")
 					(unit 1)
 				)
 			)
@@ -12518,71 +11210,6 @@
 	)
 	(symbol
 		(lib_id "power:VDC")
-		(at 167.64 224.79 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "80a1024b-17c6-49bb-91d4-bb77258da5d0")
-		(property "Reference" "#PWR0143"
-			(at 167.64 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VSYS"
-			(at 167.64 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 167.64 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 167.64 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 167.64 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8f03ce0b-c867-4b77-ac48-cd3ff516dee3")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "#PWR0143")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VDC")
 		(at 312.42 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12918,71 +11545,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
-		(at 134.62 224.79 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "890ebe5b-58d7-4398-8ad2-18cb94164805")
-		(property "Reference" "#PWR0142"
-			(at 134.62 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VSYS"
-			(at 134.62 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 134.62 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 134.62 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 134.62 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "804b2bda-bdb9-48cd-8743-bcd194d36eea")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "#PWR0142")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "LED:SK6805")
 		(at 60.96 124.46 0)
 		(unit 1)
@@ -13079,108 +11641,6 @@
 			(project "Custom split ergonomic keyboard PCB"
 				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
 					(reference "MLED3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "LED:SK6805")
-		(at 33.02 233.68 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8b56572c-c062-4b35-a972-89814727d012")
-		(property "Reference" "MULED1"
-			(at 28.448 226.822 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SK6803 MINI-E"
-			(at 41.402 227.584 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5"
-			(at 34.29 241.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/3484/3484_Datasheet.pdf"
-			(at 35.56 243.205 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 33.02 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB_PN" "C5242955 "
-			(at 33.02 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG" "OPSCO Optoelectronics"
-			(at 33.02 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG PN" "SK6803MINI-E-001 "
-			(at 33.02 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "632207db-3641-4064-894f-b45384cbbc76")
-		)
-		(pin "3"
-			(uuid "a9b17654-fba5-4cb8-8383-ce748e5ac6af")
-		)
-		(pin "4"
-			(uuid "7998b1e7-51b8-4526-bace-887de4d905cc")
-		)
-		(pin "2"
-			(uuid "261689c4-cb83-4bba-bc55-7af86e338397")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "MULED1")
 					(unit 1)
 				)
 			)
@@ -13445,71 +11905,6 @@
 			(project "Custom split ergonomic keyboard PCB"
 				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
 					(reference "#PWR0112")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VDC")
-		(at 200.66 224.79 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "961cd869-d823-4add-82c0-47da65a60ead")
-		(property "Reference" "#PWR0144"
-			(at 200.66 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VSYS"
-			(at 200.66 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 200.66 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 200.66 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 200.66 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "62c463a6-f9d5-4ab7-94fa-482d126d1724")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "#PWR0144")
 					(unit 1)
 				)
 			)
@@ -14420,136 +12815,6 @@
 	)
 	(symbol
 		(lib_id "power:VDC")
-		(at 66.04 224.79 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a1a2a6b9-96dc-40d4-8ea6-bc5f3f1e0a93")
-		(property "Reference" "#PWR0140"
-			(at 66.04 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VSYS"
-			(at 66.04 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 66.04 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 66.04 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 66.04 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2487f857-a6c3-4bdb-9378-1f819434cd5d")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "#PWR0140")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VDC")
-		(at 100.33 224.79 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a2329f6f-4647-4b47-9720-18601fc3b6c7")
-		(property "Reference" "#PWR0141"
-			(at 100.33 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VSYS"
-			(at 100.33 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 100.33 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 100.33 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 100.33 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "894f4857-3542-4f67-b62c-56db99f86044")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "#PWR0141")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VDC")
 		(at 317.5 223.52 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15405,108 +13670,6 @@
 			(project "Custom split ergonomic keyboard PCB"
 				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
 					(reference "#PWR090")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "LED:SK6805")
-		(at 100.33 233.68 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b4588e1a-708a-430f-ae0d-51d327015be7")
-		(property "Reference" "MULED3"
-			(at 95.758 226.822 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SK6803 MINI-E"
-			(at 108.712 227.584 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5"
-			(at 101.6 241.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/3484/3484_Datasheet.pdf"
-			(at 102.87 243.205 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 100.33 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB_PN" "C5242955 "
-			(at 100.33 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG" "OPSCO Optoelectronics"
-			(at 100.33 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG PN" "SK6803MINI-E-001 "
-			(at 100.33 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a89017a4-d788-462e-94c5-ee2f186ad0f5")
-		)
-		(pin "3"
-			(uuid "9d567274-170f-4dd7-a5e2-4f34cd5558ec")
-		)
-		(pin "4"
-			(uuid "f5e3be95-7080-4957-97b5-6db9cd5fbded")
-		)
-		(pin "2"
-			(uuid "8dc0fe7e-3027-4812-a557-3d8c349e9320")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "MULED3")
 					(unit 1)
 				)
 			)
@@ -17761,108 +15924,6 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:SK6805")
-		(at 167.64 233.68 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "daf6fb2c-5bd9-4a77-bc43-23bc6a5fab30")
-		(property "Reference" "MULED5"
-			(at 163.068 226.822 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SK6803 MINI-E"
-			(at 176.022 227.584 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Sofle_Pico:Cust_SK6803_MINI-E_v3.5.5"
-			(at 168.91 241.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/3484/3484_Datasheet.pdf"
-			(at 170.18 243.205 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 167.64 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB_PN" "C5242955 "
-			(at 167.64 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG" "OPSCO Optoelectronics"
-			(at 167.64 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG PN" "SK6803MINI-E-001 "
-			(at 167.64 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "db5f82ed-1c09-4326-9a06-3aff50164bbc")
-		)
-		(pin "3"
-			(uuid "e6b36185-4663-43e3-8aca-ece405c4fde0")
-		)
-		(pin "4"
-			(uuid "df51ba37-56d4-444c-bb33-6caf20048236")
-		)
-		(pin "2"
-			(uuid "2878abe9-4a3c-4649-9bae-658a93476a62")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "MULED5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:VDC")
 		(at 142.24 64.77 0)
 		(unit 1)
@@ -19029,73 +17090,6 @@
 			(project "Custom split ergonomic keyboard PCB"
 				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
 					(reference "#PWR092")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 33.02 242.57 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "eeb60c98-c5b2-4f23-99a9-1a6e0f320f57")
-		(property "Reference" "#PWR0149"
-			(at 33.02 248.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 33.02 247.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 33.02 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 33.02 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "272fac3f-edbb-48b6-8a6f-5a2a36acf22c")
-		)
-		(instances
-			(project "Custom split ergonomic keyboard PCB"
-				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df/7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d"
-					(reference "#PWR0149")
 					(unit 1)
 				)
 			)

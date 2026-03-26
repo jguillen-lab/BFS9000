@@ -10,3 +10,6 @@
 - [ ] Remove SULED1 and SULED2. Reposition SULED3 and SULED4 (which will later be renamed to SULED1 and SULED2) so that the center of each footprint is approximately 4 mm from the edge. Also center them vertically within the "SIDE" section.
 - [ ] Reposition all the enclosure mounting holes according to the image.
 - [ ] Review the traces, as I noticed that some of them change width halfway along their route.
+- [ ] The trackpad will be placed on the bottom side near C10R5, so the through-hole header for it should be located there. Do not move the display connector.
+- [ ] Document everything needed to build the firmware in QMK.
+- [ ] Document the purpose of the components, such as resistors, capacitors, and others.

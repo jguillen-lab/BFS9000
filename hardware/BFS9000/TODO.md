@@ -1,9 +1,12 @@
-- [ ] The VSYS trace needs to be fixed because it is exposed due to the cut made in the top-left corner. I had to make that cut because the PCB goes inside an enclosure and access to the USB is required. Right now, it is aligned with the USB-C connector.
+- [x] The VSYS trace needs to be fixed because it is exposed due to the cut made in the top-left corner. I had to make that cut because the PCB goes inside an enclosure and access to the USB is required. Right now, it is aligned with the USB-C connector.
 - [ ] Reposition any components near the edge that need it.
 - [ ] C10R5 needs to be rotated 90 degrees clockwise. See the original Sofle Pico.
 - [ ] C10R4 needs to be reviewed due to its overlap with the C9R4 key.
 - [ ] If the TOP section is split, the final LED’s DOUT must be connected to the SIDE’s DIN with a wire. This should be possible by soldering two pads in the central area, where there are barely any traces.
 - [ ] Review SLED20. I moved it by accident and I’m not sure whether it is positioned correctly.
 - [ ] Arrange the LEDs in a zig-zag pattern, as in the original Sofle Pico.
-- [ ] Remove the underglow LEDs from the top section and improve the alignment of the bottom ones, leaving three on MAIN and two on SIDE. Specifically, remove MULED1, MULED2, MULED3, SULED1, and SULED2. Rename the remaining LEDs accordingly. Position them as close to the board edge as possible, making them roughly equidistant.
+- [x] Remove the underglow LEDs from the top section and improve the alignment of the bottom ones, leaving three on MAIN and two on SIDE. Specifically, remove MULED1, MULED2, MULED3, SULED1, and SULED2. Rename the remaining LEDs accordingly. Position them as close to the board edge as possible, making them roughly equidistant.
+- [ ] Add the traces for the LEDs placed on the bottom side in commit b496d4e9, trying to connect them to the last position of the main matrix.
+- [ ] Remove SULED1 and SULED2. Reposition SULED3 and SULED4 (which will later be renamed to SULED1 and SULED2) so that the center of each footprint is approximately 4 mm from the edge. Also center them vertically within the "SIDE" section.
 - [ ] Reposition all the enclosure mounting holes according to the image.
+- [ ] Review the traces, as I noticed that some of them change width halfway along their route.

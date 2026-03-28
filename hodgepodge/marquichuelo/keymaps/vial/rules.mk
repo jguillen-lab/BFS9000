@@ -43,3 +43,19 @@ RGB_MATRIX_ENABLE = yes
 # Requires both RGB_MATRIX_ENABLE = yes and VIAL_ENABLE = yes.
 # Also requires "lighting": "vialrgb" in vial.json, which is already set.
 VIALRGB_ENABLE = yes
+
+# Enable the Pointing Device subsystem.
+# Activates QMK's generic pointing device layer, which abstracts mouse movement,
+# button clicks and scroll events regardless of the underlying hardware driver.
+# Required for any trackpad or trackball integration; without this flag the
+# POINTING_DEVICE_DRIVER setting below is ignored and no HID mouse report is sent.
+POINTING_DEVICE_ENABLE = yes
+
+# Select the Cirque Pinnacle driver over I²C.
+# Tells QMK which low-level driver to compile and use to communicate with the
+# trackpad hardware. The cirque_pinnacle_i2c driver reads position data from the
+# Pinnacle ASIC via the I²C bus, using the address and mode configured by
+# CIRQUE_PINNACLE_ADDR and CIRQUE_PINNACLE_POSITION_MODE in config.h.
+# The alternative driver (cirque_pinnacle_spi) would be used if the module were
+# wired over SPI instead.
+POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c

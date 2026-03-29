@@ -214,6 +214,11 @@ struct Topics {
     command_topic: String,
     state_topic: String,
     availability_topic: String,
+
+    effect_speed_discovery_topic: String,
+    effect_speed_command_topic: String,
+    effect_speed_state_topic: String,
+
     ha_status_topic: String,
 }
 
@@ -231,6 +236,14 @@ impl Topics {
         let command_topic = format!("{base}/set");
         let state_topic = format!("{base}/state");
         let availability_topic = format!("{base}/availability");
+        let effect_speed_discovery_topic = format!(
+            "{}/number/{}_effect_speed/config",
+            cfg.ha.discovery_prefix.trim_end_matches('/'),
+            cfg.ha.object_id
+        );
+
+        let effect_speed_command_topic = format!("{base}/effect_speed/set");
+        let effect_speed_state_topic = format!("{base}/effect_speed/state");
 
         Self {
             discovery_topic,
@@ -238,6 +251,9 @@ impl Topics {
             state_topic,
             availability_topic,
             ha_status_topic: "homeassistant/status".to_owned(),
+            effect_speed_discovery_topic,
+            effect_speed_command_topic,
+            effect_speed_state_topic,
         }
     }
 }
@@ -296,6 +312,12 @@ async fn run_once(cfg: AppConfig) -> Result<()> {
         .await
         .context("mqtt subscribe command_topic")?;
 
+    // Subscribe to effect speed command topic.
+    client
+        .subscribe(topics.effect_speed_command_topic.clone(), QoS::AtLeastOnce)
+        .await
+        .context("mqtt subscribe effect_speed_command_topic")?;
+
     // Subscribe to HA birth message if configured.
     if cfg.ha.republish_on_ha_birth {
         client
@@ -337,6 +359,7 @@ async fn run_once(cfg: AppConfig) -> Result<()> {
     // Publish discovery at startup (optional).
     if cfg.ha.publish_discovery_on_start {
         publish_discovery(&client, &cfg, &topics, effect_catalog.as_ref()).await?;
+        publish_effect_speed_discovery(&client, &cfg, &topics).await?;
     }
 
     publish_availability(&client, &topics, kb_online).await?;
@@ -420,6 +443,15 @@ async fn run_once(cfg: AppConfig) -> Result<()> {
                                 &mut kb_online,
                                 p,
                             ).await;
+                        } else if p.topic == topics.effect_speed_command_topic {
+                            handle_effect_speed_command(
+                                &client,
+                                &cfg,
+                                &topics,
+                                &hid_tx,
+                                &mut kb_online,
+                                p,
+                            ).await;
                         } else if p.topic == topics.ha_status_topic {
                             handle_ha_status(
                                 &client,
@@ -473,6 +505,10 @@ async fn handle_ha_status(
 
         if let Err(e) = publish_discovery(client, cfg, topics, effect_catalog.as_ref()).await {
             warn!("republish discovery error: {e:#}");
+        }
+
+        if let Err(e) = publish_effect_speed_discovery(client, cfg, topics).await {
+            warn!("republish effect speed discovery error: {e:#}");
         }
 
         // Re-probe keyboard and republish current availability.
@@ -619,6 +655,51 @@ async fn handle_command(
     let _ = publish_state(client, cfg, topics, &st).await;
 }
 
+async fn handle_effect_speed_command(
+    client: &AsyncClient,
+    cfg: &AppConfig,
+    topics: &Topics,
+    hid_tx: &mpsc::Sender<HidJob>,
+    kb_online: &mut bool,
+    p: Publish,
+) {
+    let payload = match std::str::from_utf8(&p.payload) {
+        Ok(s) => s.trim(),
+        Err(e) => {
+            warn!("invalid UTF-8 effect_speed payload: {e}");
+            return;
+        }
+    };
+
+    let speed = match payload.parse::<u8>() {
+        Ok(v) => v,
+        Err(e) => {
+            warn!("invalid effect_speed payload: {e}; payload={payload}");
+            return;
+        }
+    };
+
+    match hid_set_effect_speed(hid_tx, speed).await {
+        Ok(true) => {
+            if !*kb_online {
+                *kb_online = true;
+                let _ = publish_availability(client, topics, true).await;
+            }
+
+            let _ = publish_effect_speed_state(client, cfg, topics, speed).await;
+        }
+        Ok(false) => {
+            if *kb_online {
+                *kb_online = false;
+                let _ = publish_availability(client, topics, false).await;
+            }
+
+            info!("keyboard not available (no_device) — ignoring effect_speed command");
+        }
+        Err(e) => warn!("hid set effect_speed failed: {e:#}"),
+    }
+}
+
 // ── Publish helpers ──────────────────────────────────────────────────────────
 
 async fn publish_discovery(client: &AsyncClient, cfg: &AppConfig, topics: &Topics,
@@ -636,6 +717,36 @@ async fn publish_discovery(client: &AsyncClient, cfg: &AppConfig, topics: &Topic
         .context("mqtt publish discovery")?;
 
     info!("published discovery: {}", topics.discovery_topic);
+    Ok(())
+}
+
+// ── Publish helpers (effect speed number) ───────────────────────────────────
+//
+// Home Assistant does not model effect speed inside the MQTT light entity, so
+// we expose it as a dedicated MQTT number. The UI mode is forced to "slider"
+// to give the user a native slider control in HA.
+//
+
+async fn publish_effect_speed_discovery(
+    client: &AsyncClient,
+    cfg: &AppConfig,
+    topics: &Topics,
+) -> Result<()> {
+    let payload = build_effect_speed_discovery_payload(cfg, topics)?;
+    client
+        .publish(
+            topics.effect_speed_discovery_topic.clone(),
+            QoS::AtLeastOnce,
+            cfg.mqtt.retain_discovery,
+            payload,
+        )
+        .await
+        .context("mqtt publish effect_speed discovery")?;
+
+    info!(
+        "published effect speed discovery: {}",
+        topics.effect_speed_discovery_topic
+    );
     Ok(())
 }
 
@@ -669,6 +780,31 @@ async fn publish_state(
         )
         .await
         .context("mqtt publish state")?;
+    Ok(())
+}
+
+// ── Publish helpers (effect speed state) ─────────────────────────────────────
+//
+// The MQTT Number entity uses a plain numeric payload (not JSON). We publish
+// the current keyboard speed as a decimal string so Home Assistant can keep
+// the slider in sync.
+//
+
+async fn publish_effect_speed_state(
+    client: &AsyncClient,
+    cfg: &AppConfig,
+    topics: &Topics,
+    speed: u8,
+) -> Result<()> {
+    client
+        .publish(
+            topics.effect_speed_state_topic.clone(),
+            QoS::AtLeastOnce,
+            cfg.mqtt.retain_state,
+            speed.to_string(),
+        )
+        .await
+        .context("mqtt publish effect_speed state")?;
     Ok(())
 }
 
@@ -759,6 +895,77 @@ fn build_discovery_payload(cfg: &AppConfig, topics: &Topics, effects: Option<&Ef
     serde_json::to_string(&d).context("discovery_to_json")
 }
 
+fn build_effect_speed_discovery_payload(cfg: &AppConfig, topics: &Topics) -> Result<String> {
+    #[derive(Serialize)]
+    struct Device<'a> {
+        identifiers: [&'a str; 1],
+        name: &'a str,
+        manufacturer: &'a str,
+        model: &'a str,
+        sw_version: &'a str,
+    }
+
+    #[derive(Serialize)]
+    struct Origin<'a> {
+        name: &'a str,
+        sw_version: &'a str,
+    }
+
+    #[derive(Serialize)]
+    struct Discovery<'a> {
+        name: &'a str,
+        unique_id: &'a str,
+
+        command_topic: &'a str,
+        state_topic: &'a str,
+
+        availability_topic: &'a str,
+        payload_available: &'a str,
+        payload_not_available: &'a str,
+
+        min: u8,
+        max: u8,
+        step: u8,
+        mode: &'a str,
+
+        icon: &'a str,
+
+        device: Device<'a>,
+        origin: Origin<'a>,
+    }
+
+    let unique_id = format!("{}_effect_speed", cfg.ha.unique_id);
+    let name = format!("{} Effect Speed", cfg.ha.name);
+
+    let d = Discovery {
+        name: &name,
+        unique_id: &unique_id,
+        command_topic: &topics.effect_speed_command_topic,
+        state_topic: &topics.effect_speed_state_topic,
+        availability_topic: &topics.availability_topic,
+        payload_available: "online",
+        payload_not_available: "offline",
+        min: 0,
+        max: 255,
+        step: 1,
+        mode: "slider",
+        icon: "mdi:speedometer",
+        device: Device {
+            identifiers: [&cfg.ha.unique_id],
+            name: &cfg.ha.name,
+            manufacturer: "QMK/Vial",
+            model: "VialRGB keyboard",
+            sw_version: env!("CARGO_PKG_VERSION"),
+        },
+        origin: Origin {
+            name: "MARCOntroller",
+            sw_version: env!("CARGO_PKG_VERSION"),
+        },
+    };
+
+    serde_json::to_string(&d).context("effect_speed_discovery_to_json")
+}
+
 // ── HID worker thread ────────────────────────────────────────────────────────
 //
 // Replies are typed via HidReply to support Probe/Apply/GetState on one channel.
@@ -768,6 +975,7 @@ enum HidRequest {
     Probe,
     GetState,
     GetSupportedEffects,
+    SetEffectSpeed(u8),
     Apply(HaLightCommand),
 }
 
@@ -820,6 +1028,20 @@ async fn hid_get_supported_effects(tx: &mpsc::Sender<HidJob>) -> Result<Option<V
 
     match reply_rx.await?? {
         HidReply::SupportedEffects(v) => Ok(v),
+        _ => Err(anyhow!("unexpected_hid_reply")),
+    }
+}
+
+async fn hid_set_effect_speed(tx: &mpsc::Sender<HidJob>, speed: u8) -> Result<bool> {
+    let (reply_tx, reply_rx) = oneshot::channel();
+    tx.send(HidJob {
+        req: HidRequest::SetEffectSpeed(speed),
+        reply: reply_tx,
+    })
+        .await?;
+
+    match reply_rx.await?? {
+        HidReply::Availability(v) => Ok(v),
         _ => Err(anyhow!("unexpected_hid_reply")),
     }
 }
@@ -902,6 +1124,19 @@ fn hid_worker(cfg: AppConfig, mut rx: mpsc::Receiver<HidJob>) {
                 }
             },
 
+            HidRequest::SetEffectSpeed(speed) => {
+                match set_effect_speed_once(&api, vid, pid, cfg.hid.serial.as_deref(), *speed) {
+                    Ok(()) => Ok(HidReply::Availability(true)),
+                    Err(e) => {
+                        if is_no_device_anyhow(&e) {
+                            Ok(HidReply::Availability(false))
+                        } else {
+                            Err(e)
+                        }
+                    }
+                }
+            },
+
             HidRequest::Apply(cmd) => match apply_once(&api, vid, pid, cfg.hid.serial.as_deref(), cmd) {
                 Ok(()) => Ok(HidReply::Availability(true)),
                 Err(e) => {
@@ -963,6 +1198,22 @@ fn get_supported_effects_once(
     vialrgb::get_supported_effects(&dev).context("get_supported_effects")
 }
 
+fn set_effect_speed_once(
+    api: &hidapi::HidApi,
+    vid: u16,
+    pid: u16,
+    serial: Option<&str>,
+    speed: u8,
+) -> Result<()> {
+    let dev = hid::open_device(api, vid, pid, serial).context("open_device")?;
+    let cur = vialrgb::get_mode(&dev).context("get_mode")?;
+
+    // VialRGB changes speed through SET_MODE. Preserve the current mode and HSV
+    // values so only the animation speed is modified.
+    vialrgb::set_mode(&dev, cur.mode, speed, cur.h, cur.s, cur.v).context("set_mode speed")?;
+    Ok(())
+}
+
 fn apply_once(
     api: &hidapi::HidApi,
     vid: u16,
@@ -979,38 +1230,41 @@ fn apply_once(
     }
 
     // ON / update
-    // ON / update
     //
-    // If HA provides an effect name, translate it to a VialRGB mode ID.
-    // Otherwise keep the current behaviour: default to SOLID_COLOR unless we
-    // explicitly decide otherwise in a later step.
-    let h: u8;
-    let s: u8;
-    let mut v: u8;
+    // HA light commands must preserve the current animation speed unless the
+    // dedicated effect-speed control changes it explicitly. We therefore read
+    // the current keyboard mode first and only override the fields present in
+    // the incoming command.
+    let cur = vialrgb::get_mode(&dev).context("get_mode")?;
+
+    let mut mode: u16 = cur.mode;
+    let speed: u8 = cur.speed;
+    let mut h: u8 = cur.h;
+    let mut s: u8 = cur.s;
+    let mut v: u8 = cur.v;
+
+    if let Some(effect_name) = cmd.effect.as_deref() {
+        mode = effect_id_for_ha_name(effect_name).unwrap_or(vialrgb::EFFECT_SOLID_COLOR);
+    }
 
     if let Some(rgb) = &cmd.color {
         let (hh, ss, vv) = vialrgb::rgb_to_hsv(rgb.r, rgb.g, rgb.b);
         h = hh;
         s = ss;
         v = vv;
-    } else {
-        let cur = vialrgb::get_mode(&dev)?;
-        h = cur.h;
-        s = cur.s;
-        v = cur.v;
     }
 
     if let Some(b) = cmd.brightness {
         v = b;
     }
 
-    let mode = if let Some(effect_name) = cmd.effect.as_deref() {
-        effect_id_for_ha_name(effect_name).unwrap_or(vialrgb::EFFECT_SOLID_COLOR)
-    } else {
-        vialrgb::EFFECT_SOLID_COLOR
-    };
+    // If HA turns the light on without an explicit effect and the current mode
+    // is OFF, use SOLID_COLOR as a deterministic fallback.
+    if mode == vialrgb::EFFECT_OFF {
+        mode = vialrgb::EFFECT_SOLID_COLOR;
+    }
 
-    vialrgb::set_mode(&dev, mode, 0, h, s, v)?;
+    vialrgb::set_mode(&dev, mode, speed, h, s, v)?;
     Ok(())
 }
 

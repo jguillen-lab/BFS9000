@@ -18,7 +18,7 @@ use crate::{config::AppConfig, hid, vialrgb};
 
 // ── HA JSON payload types ─────────────────────────────────────────────────────
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Eq)]
 pub struct HaRgb {
     pub r: u8,
     pub g: u8,
@@ -33,7 +33,7 @@ pub struct HaLightCommand {
     pub effect: Option<String>, // optional for now
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, PartialEq, Eq)]
 pub struct HaLightState {
     pub state: String,
 
@@ -60,6 +60,150 @@ impl HaLightState {
             effect: None,
         }
     }
+}
+
+// ── Effect catalogue ─────────────────────────────────────────────────────────
+//
+// Home Assistant expects effect names (strings), while VialRGB exposes effect
+// IDs (u16). For now we keep the mapping simple and deterministic:
+//   • OFF and DIRECT are not exposed as HA effects
+//   • Known RGB Matrix effects get readable HA names
+//   • Unknown IDs fall back to a generic "Effect <id>" name
+//
+
+#[derive(Debug, Clone)]
+struct EffectCatalog {
+    ha_names: Vec<String>,
+}
+
+fn ha_effect_name_for_id(id: u16) -> String {
+    match id {
+        2  => "Solid Color".to_owned(),
+        3  => "Alpha Mods".to_owned(),
+        4  => "Gradient Up Down".to_owned(),
+        5  => "Gradient Left Right".to_owned(),
+        6  => "Breathing".to_owned(),
+        7  => "Band Sat".to_owned(),
+        8  => "Band Val".to_owned(),
+        9  => "Band Pinwheel Sat".to_owned(),
+        10 => "Band Pinwheel Val".to_owned(),
+        11 => "Band Spiral Sat".to_owned(),
+        12 => "Band Spiral Val".to_owned(),
+        13 => "Cycle All".to_owned(),
+        14 => "Cycle Left Right".to_owned(),
+        15 => "Cycle Up Down".to_owned(),
+        16 => "Rainbow Moving Chevron".to_owned(),
+        17 => "Cycle Out In".to_owned(),
+        18 => "Cycle Out In Dual".to_owned(),
+        19 => "Cycle Pinwheel".to_owned(),
+        20 => "Cycle Spiral".to_owned(),
+        21 => "Dual Beacon".to_owned(),
+        22 => "Rainbow Beacon".to_owned(),
+        23 => "Rainbow Pinwheels".to_owned(),
+        24 => "Flower Blooming".to_owned(),
+        25 => "Raindrops".to_owned(),
+        26 => "Jellybean Raindrops".to_owned(),
+        27 => "Hue Breathing".to_owned(),
+        28 => "Hue Pendulum".to_owned(),
+        29 => "Hue Wave".to_owned(),
+        30 => "Pixel Rain".to_owned(),
+        31 => "Pixel Flow".to_owned(),
+        32 => "Pixel Fractal".to_owned(),
+        33 => "Typing Heatmap".to_owned(),
+        34 => "Digital Rain".to_owned(),
+        35 => "Solid Reactive Simple".to_owned(),
+        36 => "Solid Reactive".to_owned(),
+        37 => "Solid Reactive Wide".to_owned(),
+        38 => "Solid Reactive Cross".to_owned(),
+        39 => "Solid Reactive Nexus".to_owned(),
+        40 => "Splash".to_owned(),
+        41 => "Solid Splash".to_owned(),
+        42 => "Starlight Smooth".to_owned(),
+        43 => "Starlight".to_owned(),
+        44 => "Starlight Dual Sat".to_owned(),
+        45 => "Starlight Dual Hue".to_owned(),
+        46 => "Riverflow".to_owned(),
+        other => format!("Effect {other}"),
+    }
+}
+
+fn effect_id_for_ha_name(name: &str) -> Option<u16> {
+    // Accept:
+    //   • pretty HA names ("Solid Color")
+    //   • machine-like aliases ("solid_color")
+    //   • legacy compatibility names ("vialrgb_6")
+    //   • generic fallback names ("effect_46", "Effect 46")
+    let token = name
+        .trim()
+        .to_ascii_lowercase()
+        .replace([' ', '-', '/'], "_");
+
+    match token.as_str() {
+        "solid_color" => Some(2),
+        "alpha_mods" => Some(3),
+        "gradient_up_down" => Some(4),
+        "gradient_left_right" => Some(5),
+        "breathing" => Some(6),
+        "band_sat" => Some(7),
+        "band_val" => Some(8),
+        "band_pinwheel_sat" => Some(9),
+        "band_pinwheel_val" => Some(10),
+        "band_spiral_sat" => Some(11),
+        "band_spiral_val" => Some(12),
+        "cycle_all" => Some(13),
+        "cycle_left_right" => Some(14),
+        "cycle_up_down" => Some(15),
+        "rainbow_moving_chevron" => Some(16),
+        "cycle_out_in" => Some(17),
+        "cycle_out_in_dual" => Some(18),
+        "cycle_pinwheel" => Some(19),
+        "cycle_spiral" => Some(20),
+        "dual_beacon" => Some(21),
+        "rainbow_beacon" => Some(22),
+        "rainbow_pinwheels" => Some(23),
+        "flower_blooming" => Some(24),
+        "raindrops" => Some(25),
+        "jellybean_raindrops" => Some(26),
+        "hue_breathing" => Some(27),
+        "hue_pendulum" => Some(28),
+        "hue_wave" => Some(29),
+        "pixel_rain" => Some(30),
+        "pixel_flow" => Some(31),
+        "pixel_fractal" => Some(32),
+        "typing_heatmap" => Some(33),
+        "digital_rain" => Some(34),
+        "solid_reactive_simple" => Some(35),
+        "solid_reactive" => Some(36),
+        "solid_reactive_wide" => Some(37),
+        "solid_reactive_cross" => Some(38),
+        "solid_reactive_nexus" => Some(39),
+        "splash" => Some(40),
+        "solid_splash" => Some(41),
+        "starlight_smooth" => Some(42),
+        "starlight" => Some(43),
+        "starlight_dual_sat" => Some(44),
+        "starlight_dual_hue" => Some(45),
+        "riverflow" => Some(46),
+        _ => {
+            if let Some(suffix) = token.strip_prefix("vialrgb_") {
+                return suffix.parse::<u16>().ok();
+            }
+            if let Some(suffix) = token.strip_prefix("effect_") {
+                return suffix.parse::<u16>().ok();
+            }
+            None
+        }
+    }
+}
+
+fn build_effect_catalog(ids: Vec<u16>) -> EffectCatalog {
+    let ha_names = ids
+        .into_iter()
+        .filter(|id| *id != vialrgb::EFFECT_OFF && *id != vialrgb::EFFECT_DIRECT)
+        .map(ha_effect_name_for_id)
+        .collect();
+
+    EffectCatalog { ha_names }
 }
 
 // ── Topics ───────────────────────────────────────────────────────────────────
@@ -160,10 +304,9 @@ async fn run_once(cfg: AppConfig) -> Result<()> {
             .context("mqtt subscribe ha_status_topic")?;
     }
 
-    // Publish discovery at startup (optional).
-    if cfg.ha.publish_discovery_on_start {
-        publish_discovery(&client, &cfg, &topics).await?;
-    }
+    // Cache the last state we published to MQTT so we can detect out-of-band
+    // keyboard changes (UI, Vial, external HID tools) and resync Home Assistant.
+    let mut last_published_state: Option<HaLightState>;
 
     // Remember last "ON" parameters (used when HA sends ON without color/brightness).
     let mut saved_on = SavedOn {
@@ -181,6 +324,21 @@ async fn run_once(cfg: AppConfig) -> Result<()> {
         }
     };
 
+    // Read supported keyboard effects (best-effort) so HA only advertises what
+    // this firmware actually supports.
+    let mut effect_catalog: Option<EffectCatalog> = None;
+
+    if kb_online {
+        if let Ok(Some(ids)) = hid_get_supported_effects(&hid_tx).await {
+            effect_catalog = Some(build_effect_catalog(ids));
+        }
+    }
+
+    // Publish discovery at startup (optional).
+    if cfg.ha.publish_discovery_on_start {
+        publish_discovery(&client, &cfg, &topics, effect_catalog.as_ref()).await?;
+    }
+
     publish_availability(&client, &topics, kb_online).await?;
 
     // Publish INITIAL state based on real keyboard state when available.
@@ -188,13 +346,18 @@ async fn run_once(cfg: AppConfig) -> Result<()> {
         if let Ok(Some(st)) = hid_get_state(&hid_tx).await {
             update_saved_on_from_state(&mut saved_on, &st);
             publish_state(&client, &cfg, &topics, &st).await?;
+            last_published_state = Some(st);
         } else {
             // Fallback: avoid "unknown" in HA.
-            publish_state(&client, &cfg, &topics, &HaLightState::off()).await?;
+            let st = HaLightState::off();
+            publish_state(&client, &cfg, &topics, &st).await?;
+            last_published_state = Some(st);
         }
     } else {
         // Keyboard offline: keep a deterministic retained state.
-        publish_state(&client, &cfg, &topics, &HaLightState::off()).await?;
+        let st = HaLightState::off();
+        publish_state(&client, &cfg, &topics, &st).await?;
+        last_published_state = Some(st);
     }
 
     // Periodic keyboard probe (hot-plug detection).
@@ -204,7 +367,7 @@ async fn run_once(cfg: AppConfig) -> Result<()> {
     // Event loop (MQTT + periodic HID probe).
     loop {
         tokio::select! {
-            _ = kb_probe.tick() => {
+                        _ = kb_probe.tick() => {
                 let online_now = hid_probe(&hid_tx).await.unwrap_or(false);
 
                 if online_now != kb_online {
@@ -217,7 +380,28 @@ async fn run_once(cfg: AppConfig) -> Result<()> {
                     if kb_online {
                         if let Ok(Some(st)) = hid_get_state(&hid_tx).await {
                             update_saved_on_from_state(&mut saved_on, &st);
+
+                            if last_published_state.as_ref() != Some(&st) {
+                                let _ = publish_state(&client, &cfg, &topics, &st).await;
+                                last_published_state = Some(st);
+                            }
+                        }
+                    } else {
+                        let st = HaLightState::off();
+                        if last_published_state.as_ref() != Some(&st) {
                             let _ = publish_state(&client, &cfg, &topics, &st).await;
+                            last_published_state = Some(st);
+                        }
+                    }
+                } else if kb_online {
+                    // Poll the real keyboard state even when availability has not
+                    // changed so Home Assistant stays in sync with UI/Vial/manual HID changes.
+                    if let Ok(Some(st)) = hid_get_state(&hid_tx).await {
+                        update_saved_on_from_state(&mut saved_on, &st);
+
+                        if last_published_state.as_ref() != Some(&st) {
+                            let _ = publish_state(&client, &cfg, &topics, &st).await;
+                            last_published_state = Some(st);
                         }
                     }
                 }
@@ -279,7 +463,15 @@ async fn handle_ha_status(
     if payload == "online" && cfg.ha.republish_on_ha_birth {
         tokio::time::sleep(Duration::from_millis(250)).await;
 
-        if let Err(e) = publish_discovery(client, cfg, topics).await {
+        // Re-read supported keyboard effects on HA restart so the discovery
+        // payload stays aligned with the currently connected keyboard/firmware.
+        let effect_catalog = if let Ok(Some(ids)) = hid_get_supported_effects(hid_tx).await {
+            Some(build_effect_catalog(ids))
+        } else {
+            None
+        };
+
+        if let Err(e) = publish_discovery(client, cfg, topics, effect_catalog.as_ref()).await {
             warn!("republish discovery error: {e:#}");
         }
 
@@ -429,8 +621,10 @@ async fn handle_command(
 
 // ── Publish helpers ──────────────────────────────────────────────────────────
 
-async fn publish_discovery(client: &AsyncClient, cfg: &AppConfig, topics: &Topics) -> Result<()> {
-    let payload = build_discovery_payload(cfg, topics)?;
+async fn publish_discovery(client: &AsyncClient, cfg: &AppConfig, topics: &Topics,
+                           effects: Option<&EffectCatalog>,
+) -> Result<()> {
+    let payload = build_discovery_payload(cfg, topics, effects)?;
     client
         .publish(
             topics.discovery_topic.clone(),
@@ -478,7 +672,7 @@ async fn publish_state(
     Ok(())
 }
 
-fn build_discovery_payload(cfg: &AppConfig, topics: &Topics) -> Result<String> {
+fn build_discovery_payload(cfg: &AppConfig, topics: &Topics, effects: Option<&EffectCatalog>) -> Result<String> {
     #[derive(Serialize)]
     struct Device<'a> {
         identifiers: [&'a str; 1],
@@ -512,9 +706,29 @@ fn build_discovery_payload(cfg: &AppConfig, topics: &Topics) -> Result<String> {
         brightness: bool,
         supported_color_modes: [&'a str; 1],
 
+        #[serde(skip_serializing_if = "Option::is_none")]
+        effect: Option<bool>,
+
+        #[serde(skip_serializing_if = "Option::is_none")]
+        effect_list: Option<Vec<String>>,
+
         device: Device<'a>,
         origin: Origin<'a>,
     }
+
+    // Publish effect support only when the connected keyboard/firmware reports
+    // at least one HA-exposed effect.
+    let effect_enabled = effects
+        .map(|e| !e.ha_names.is_empty())
+        .unwrap_or(false);
+
+    let effect_list = effects.and_then(|e| {
+        if e.ha_names.is_empty() {
+            None
+        } else {
+            Some(e.ha_names.clone())
+        }
+    });
 
     let d = Discovery {
         name: &cfg.ha.name,
@@ -538,6 +752,8 @@ fn build_discovery_payload(cfg: &AppConfig, topics: &Topics) -> Result<String> {
             name: "MARCOntroller",
             sw_version: env!("CARGO_PKG_VERSION"),
         },
+        effect: effect_enabled.then_some(true),
+        effect_list,
     };
 
     serde_json::to_string(&d).context("discovery_to_json")
@@ -551,12 +767,14 @@ fn build_discovery_payload(cfg: &AppConfig, topics: &Topics) -> Result<String> {
 enum HidRequest {
     Probe,
     GetState,
+    GetSupportedEffects,
     Apply(HaLightCommand),
 }
 
 enum HidReply {
     Availability(bool),
     State(Option<HaLightState>),
+    SupportedEffects(Option<Vec<u16>>),
 }
 
 struct HidJob {
@@ -588,6 +806,20 @@ async fn hid_get_state(tx: &mpsc::Sender<HidJob>) -> Result<Option<HaLightState>
 
     match reply_rx.await?? {
         HidReply::State(st) => Ok(st),
+        _ => Err(anyhow!("unexpected_hid_reply")),
+    }
+}
+
+async fn hid_get_supported_effects(tx: &mpsc::Sender<HidJob>) -> Result<Option<Vec<u16>>> {
+    let (reply_tx, reply_rx) = oneshot::channel();
+    tx.send(HidJob {
+        req: HidRequest::GetSupportedEffects,
+        reply: reply_tx,
+    })
+        .await?;
+
+    match reply_rx.await?? {
+        HidReply::SupportedEffects(v) => Ok(v),
         _ => Err(anyhow!("unexpected_hid_reply")),
     }
 }
@@ -657,6 +889,19 @@ fn hid_worker(cfg: AppConfig, mut rx: mpsc::Receiver<HidJob>) {
                 }
             },
 
+            HidRequest::GetSupportedEffects => {
+                match get_supported_effects_once(&api, vid, pid, cfg.hid.serial.as_deref()) {
+                    Ok(ids) => Ok(HidReply::SupportedEffects(Some(ids))),
+                    Err(e) => {
+                        if is_no_device_anyhow(&e) {
+                            Ok(HidReply::SupportedEffects(None))
+                        } else {
+                            Err(e)
+                        }
+                    }
+                }
+            },
+
             HidRequest::Apply(cmd) => match apply_once(&api, vid, pid, cfg.hid.serial.as_deref(), cmd) {
                 Ok(()) => Ok(HidReply::Availability(true)),
                 Err(e) => {
@@ -691,13 +936,31 @@ fn get_state_once(api: &hidapi::HidApi, vid: u16, pid: u16, serial: Option<&str>
 
     let rgb = hsv_to_rgb(m.h, m.s, m.v);
 
+    // Reconstruct the current HA effect name from the real keyboard mode so
+    // Home Assistant stays in sync with out-of-band changes (UI, Vial, HID tools).
+    let effect = match m.mode {
+        vialrgb::EFFECT_OFF => None,
+        vialrgb::EFFECT_DIRECT => None,
+        other => Some(ha_effect_name_for_id(other)),
+    };
+
     Ok(HaLightState {
         state: "ON".to_owned(),
         brightness: Some(m.v),
         color_mode: Some("rgb".to_owned()),
         color: Some(rgb),
-        effect: None,
+        effect,
     })
+}
+
+fn get_supported_effects_once(
+    api: &hidapi::HidApi,
+    vid: u16,
+    pid: u16,
+    serial: Option<&str>,
+) -> Result<Vec<u16>> {
+    let dev = hid::open_device(api, vid, pid, serial).context("open_device")?;
+    vialrgb::get_supported_effects(&dev).context("get_supported_effects")
 }
 
 fn apply_once(
@@ -716,6 +979,11 @@ fn apply_once(
     }
 
     // ON / update
+    // ON / update
+    //
+    // If HA provides an effect name, translate it to a VialRGB mode ID.
+    // Otherwise keep the current behaviour: default to SOLID_COLOR unless we
+    // explicitly decide otherwise in a later step.
     let h: u8;
     let s: u8;
     let mut v: u8;
@@ -736,8 +1004,13 @@ fn apply_once(
         v = b;
     }
 
-    // For v0: ignore effects other than solid/off (keep it predictable).
-    vialrgb::set_mode(&dev, vialrgb::EFFECT_SOLID_COLOR, 0, h, s, v)?;
+    let mode = if let Some(effect_name) = cmd.effect.as_deref() {
+        effect_id_for_ha_name(effect_name).unwrap_or(vialrgb::EFFECT_SOLID_COLOR)
+    } else {
+        vialrgb::EFFECT_SOLID_COLOR
+    };
+
+    vialrgb::set_mode(&dev, mode, 0, h, s, v)?;
     Ok(())
 }
 

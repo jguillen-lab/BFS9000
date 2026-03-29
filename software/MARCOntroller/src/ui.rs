@@ -114,6 +114,8 @@ struct MarcontrollerUi {
 
     direct_dirty: bool,
     direct_changed_at: Instant,
+    effect_dirty: bool,
+    effect_changed_at: Instant,
 
     // ── Control tab state (solid) ─────────────────────────────────────────
     solid_rgb: [u8; 3],
@@ -182,6 +184,8 @@ impl MarcontrollerUi {
 
             direct_dirty: false,
             direct_changed_at: Instant::now(),
+            effect_dirty: false,
+            effect_changed_at: Instant::now(),
 
             solid_rgb: [255, 0, 0],
             solid_brightness: 128,
@@ -330,6 +334,15 @@ impl MarcontrollerUi {
 
     fn should_fire_direct(&self) -> bool {
         self.auto_apply && self.direct_dirty && self.direct_changed_at.elapsed() >= self.debounce
+    }
+
+    fn schedule_effect_apply(&mut self) {
+        self.effect_dirty = true;
+        self.effect_changed_at = Instant::now();
+    }
+
+    fn should_fire_effect(&self) -> bool {
+        self.auto_apply && self.effect_dirty && self.effect_changed_at.elapsed() >= self.debounce
     }
 
     fn apply_solid_now(&mut self) -> Result<()> {
@@ -505,6 +518,7 @@ impl MarcontrollerUi {
             if changed && self.auto_apply {
                 self.solid_changed_at = Instant::now() - self.debounce;
                 self.direct_changed_at = Instant::now() - self.debounce;
+                self.effect_changed_at = Instant::now() - self.debounce;
             }
         });
     }
@@ -574,30 +588,7 @@ impl MarcontrollerUi {
 
                 if selected != self.effect_id {
                     self.effect_id = selected;
-
-                    if let Err(e) = self.apply_effect_now() {
-                        self.mark_error(e);
-                    } else {
-                        // Update the local status optimistically and let the periodic poll
-                        // confirm the real keyboard state shortly afterwards.
-                        let (h, s, v) = if let Some(m) = self.last_mode {
-                            (m.h, m.s, m.v)
-                        } else {
-                            let (hh, ss, _vv) =
-                                vialrgb::rgb_to_hsv(self.solid_rgb[0], self.solid_rgb[1], self.solid_rgb[2]);
-                            (hh, ss, self.solid_brightness)
-                        };
-
-                        self.last_mode = Some(vialrgb::Mode {
-                            mode: self.effect_id,
-                            speed: self.effect_speed,
-                            h,
-                            s,
-                            v,
-                        });
-
-                        self.clear_error();
-                    }
+                    self.schedule_effect_apply();
                 }
             });
 
@@ -607,29 +598,7 @@ impl MarcontrollerUi {
                 let resp = ui.add(egui::Slider::new(&mut self.effect_speed, 0..=255));
 
                 if resp.changed() {
-                    if let Err(e) = self.apply_effect_now() {
-                        self.mark_error(e);
-                    } else {
-                        // Update the local status optimistically and let the periodic poll
-                        // confirm the real keyboard state shortly afterwards.
-                        let (h, s, v) = if let Some(m) = self.last_mode {
-                            (m.h, m.s, m.v)
-                        } else {
-                            let (hh, ss, _vv) =
-                                vialrgb::rgb_to_hsv(self.solid_rgb[0], self.solid_rgb[1], self.solid_rgb[2]);
-                            (hh, ss, self.solid_brightness)
-                        };
-
-                        self.last_mode = Some(vialrgb::Mode {
-                            mode: self.effect_id,
-                            speed: self.effect_speed,
-                            h,
-                            s,
-                            v,
-                        });
-
-                        self.clear_error();
-                    }
+                    self.schedule_effect_apply();
                 }
             });
 
@@ -949,6 +918,32 @@ impl MarcontrollerUi {
                     self.solid_dirty = false;
                     // Sync from device for consistent UI.
                     let _ = self.read_mode();
+                }
+            }
+
+            if self.should_fire_effect() {
+                if let Err(e) = self.apply_effect_now() {
+                    self.mark_error(e);
+                } else {
+                    self.effect_dirty = false;
+
+                    // Update the local status optimistically and let the periodic
+                    // probe confirm the real keyboard state shortly afterwards.
+                    let (h, s, v) = if let Some(m) = self.last_mode {
+                        (m.h, m.s, m.v)
+                    } else {
+                        let (hh, ss, _vv) =
+                            vialrgb::rgb_to_hsv(self.solid_rgb[0], self.solid_rgb[1], self.solid_rgb[2]);
+                        (hh, ss, self.solid_brightness)
+                    };
+
+                    self.last_mode = Some(vialrgb::Mode {
+                        mode: self.effect_id,
+                        speed: self.effect_speed,
+                        h,
+                        s,
+                        v,
+                    });
                 }
             }
 

@@ -507,7 +507,7 @@
       "plot": "F:/Proyectos/Teclados/BFS9000/hardware/BFS9000/Exports/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "BFS9000.step",
       "svg": "",
       "vrml": ""
     },

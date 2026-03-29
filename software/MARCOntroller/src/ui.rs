@@ -119,6 +119,10 @@ struct MarcontrollerUi {
     solid_rgb: [u8; 3],
     solid_brightness: u8,
 
+    // ── Control tab state (effect) ────────────────────────────────────────
+    effect_id: u16,
+    effect_speed: u8,
+
     // ── Direct tab state (per-LED) ─────────────────────────────────────────
     led_count: Option<u16>,
     led_index: u16,
@@ -181,6 +185,9 @@ impl MarcontrollerUi {
 
             solid_rgb: [255, 0, 0],
             solid_brightness: 128,
+
+            effect_id: vialrgb::EFFECT_SOLID_COLOR,
+            effect_speed: 0,
 
             led_count: None,
             led_index: 0,
@@ -280,6 +287,11 @@ impl MarcontrollerUi {
         let m = vialrgb::get_mode(&dev).context("get_mode")?;
         self.last_mode = Some(m);
 
+        // Keep UI effect controls aligned with the real keyboard state so the
+        // selector and speed slider can be added later without fake defaults.
+        self.effect_id = m.mode;
+        self.effect_speed = m.speed;
+
         // Best-effort mapping:
         // - If OFF or v=0 => reflect brightness 0.
         // - Otherwise compute an approximate RGB from HSV for the color picker.
@@ -327,8 +339,39 @@ impl MarcontrollerUi {
             vialrgb::rgb_to_hsv(self.solid_rgb[0], self.solid_rgb[1], self.solid_rgb[2]);
         let v = self.solid_brightness;
 
-        vialrgb::set_mode(&dev, vialrgb::EFFECT_SOLID_COLOR, 0, h, s, v)
+        // Preserve the current animation speed when switching to SOLID_COLOR from
+        // the UI so colour/brightness changes do not silently reset speed to 0.
+        let cur = vialrgb::get_mode(&dev).context("get_mode")?;
+
+        vialrgb::set_mode(&dev, vialrgb::EFFECT_SOLID_COLOR, cur.speed, h, s, v)
             .context("set_mode solid_color")?;
+
+        Ok(())
+    }
+
+    fn apply_effect_now(&mut self) -> Result<()> {
+        let dev = self.open_device()?;
+
+        // Avoid an extra HID round-trip on every effect change. Use the last mode
+        // cached by the UI as the source of HSV values, and fall back to the solid
+        // controls only if we do not have a previous keyboard snapshot yet.
+        let (h, s, v) = if let Some(m) = self.last_mode {
+            (m.h, m.s, m.v)
+        } else {
+            let (hh, ss, _vv) =
+                vialrgb::rgb_to_hsv(self.solid_rgb[0], self.solid_rgb[1], self.solid_rgb[2]);
+            (hh, ss, self.solid_brightness)
+        };
+
+        vialrgb::set_mode(
+            &dev,
+            self.effect_id,
+            self.effect_speed,
+            h,
+            s,
+            v,
+        )
+            .context("set_mode effect")?;
 
         Ok(())
     }
@@ -515,6 +558,80 @@ impl MarcontrollerUi {
     fn ui_control_tab(&mut self, ui: &mut egui::Ui) {
         ui.group(|ui| {
             ui.label(t!("ui.group_solid").to_string());
+
+            ui.horizontal(|ui| {
+                ui.label("Efecto:");
+
+                let mut selected = self.effect_id;
+
+                egui::ComboBox::from_id_salt("effect_selector")
+                    .selected_text(ui_effect_name_for_id(selected))
+                    .show_ui(ui, |ui| {
+                        for &id in ui_effect_ids() {
+                            ui.selectable_value(&mut selected, id, ui_effect_name_for_id(id));
+                        }
+                    });
+
+                if selected != self.effect_id {
+                    self.effect_id = selected;
+
+                    if let Err(e) = self.apply_effect_now() {
+                        self.mark_error(e);
+                    } else {
+                        // Update the local status optimistically and let the periodic poll
+                        // confirm the real keyboard state shortly afterwards.
+                        let (h, s, v) = if let Some(m) = self.last_mode {
+                            (m.h, m.s, m.v)
+                        } else {
+                            let (hh, ss, _vv) =
+                                vialrgb::rgb_to_hsv(self.solid_rgb[0], self.solid_rgb[1], self.solid_rgb[2]);
+                            (hh, ss, self.solid_brightness)
+                        };
+
+                        self.last_mode = Some(vialrgb::Mode {
+                            mode: self.effect_id,
+                            speed: self.effect_speed,
+                            h,
+                            s,
+                            v,
+                        });
+
+                        self.clear_error();
+                    }
+                }
+            });
+
+            ui.horizontal(|ui| {
+                ui.label("Velocidad:");
+
+                let resp = ui.add(egui::Slider::new(&mut self.effect_speed, 0..=255));
+
+                if resp.changed() {
+                    if let Err(e) = self.apply_effect_now() {
+                        self.mark_error(e);
+                    } else {
+                        // Update the local status optimistically and let the periodic poll
+                        // confirm the real keyboard state shortly afterwards.
+                        let (h, s, v) = if let Some(m) = self.last_mode {
+                            (m.h, m.s, m.v)
+                        } else {
+                            let (hh, ss, _vv) =
+                                vialrgb::rgb_to_hsv(self.solid_rgb[0], self.solid_rgb[1], self.solid_rgb[2]);
+                            (hh, ss, self.solid_brightness)
+                        };
+
+                        self.last_mode = Some(vialrgb::Mode {
+                            mode: self.effect_id,
+                            speed: self.effect_speed,
+                            h,
+                            s,
+                            v,
+                        });
+
+                        self.clear_error();
+                    }
+                }
+            });
 
             ui.horizontal(|ui| {
                 ui.label(format!("{}:", t!("ui.label_color").to_string()));
@@ -797,21 +914,23 @@ impl MarcontrollerUi {
             self.did_initial_sync = true;
         }
 
-        // ── Periodic probe (hot-plug) ──────────────────────────────────────
+        // ── Periodic probe (hot-plug + state refresh) ──────────────────────
         //
-        // Detect online/offline transitions and refresh real mode on reconnect.
+        // Detect online/offline transitions and also refresh the real keyboard
+        // mode periodically so the status bar reflects changes made from HA,
+        // Vial or any other external HID client.
         if self.last_probe.elapsed() >= Duration::from_secs(2) {
             self.last_probe = Instant::now();
 
             let online_now = self.probe_keyboard(false);
 
-            if online_now && !self.last_online {
+            if online_now {
                 if let Err(e) = self.read_mode() {
                     self.mark_error(e);
                 }
 
                 // Populate LED count lazily when we come online.
-                if self.led_count.is_none() {
+                if !self.last_online && self.led_count.is_none() {
                     let _ = self.refresh_led_count();
                 }
             }
@@ -950,4 +1069,65 @@ fn hsv_to_rgb(h: u8, s: u8, v: u8) -> [u8; 3] {
     };
 
     [r as u8, g as u8, b as u8]
+}
+
+fn ui_effect_name_for_id(id: u16) -> String {
+    match id {
+        0  => "OFF".to_owned(),
+        1  => "DIRECT".to_owned(),
+        2  => "Solid Color".to_owned(),
+        3  => "Alpha Mods".to_owned(),
+        4  => "Gradient Up Down".to_owned(),
+        5  => "Gradient Left Right".to_owned(),
+        6  => "Breathing".to_owned(),
+        7  => "Band Sat".to_owned(),
+        8  => "Band Val".to_owned(),
+        9  => "Band Pinwheel Sat".to_owned(),
+        10 => "Band Pinwheel Val".to_owned(),
+        11 => "Band Spiral Sat".to_owned(),
+        12 => "Band Spiral Val".to_owned(),
+        13 => "Cycle All".to_owned(),
+        14 => "Cycle Left Right".to_owned(),
+        15 => "Cycle Up Down".to_owned(),
+        16 => "Rainbow Moving Chevron".to_owned(),
+        17 => "Cycle Out In".to_owned(),
+        18 => "Cycle Out In Dual".to_owned(),
+        19 => "Cycle Pinwheel".to_owned(),
+        20 => "Cycle Spiral".to_owned(),
+        21 => "Dual Beacon".to_owned(),
+        22 => "Rainbow Beacon".to_owned(),
+        23 => "Rainbow Pinwheels".to_owned(),
+        24 => "Flower Blooming".to_owned(),
+        25 => "Raindrops".to_owned(),
+        26 => "Jellybean Raindrops".to_owned(),
+        27 => "Hue Breathing".to_owned(),
+        28 => "Hue Pendulum".to_owned(),
+        29 => "Hue Wave".to_owned(),
+        30 => "Pixel Rain".to_owned(),
+        31 => "Pixel Flow".to_owned(),
+        32 => "Pixel Fractal".to_owned(),
+        33 => "Typing Heatmap".to_owned(),
+        34 => "Digital Rain".to_owned(),
+        35 => "Solid Reactive Simple".to_owned(),
+        36 => "Solid Reactive".to_owned(),
+        37 => "Solid Reactive Wide".to_owned(),
+        38 => "Solid Reactive Cross".to_owned(),
+        39 => "Solid Reactive Nexus".to_owned(),
+        40 => "Splash".to_owned(),
+        41 => "Solid Splash".to_owned(),
+        42 => "Starlight Smooth".to_owned(),
+        43 => "Starlight".to_owned(),
+        44 => "Starlight Dual Sat".to_owned(),
+        45 => "Starlight Dual Hue".to_owned(),
+        46 => "Riverflow".to_owned(),
+        other => format!("Effect {other}"),
+    }
+}
+
+fn ui_effect_ids() -> &'static [u16] {
+    &[
+        2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+        21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46,
+    ]
 }

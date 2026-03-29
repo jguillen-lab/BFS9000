@@ -147,7 +147,7 @@ pub fn send_and_read(dev: &HidDevice, payload: &[u8; 32]) -> Result<[u8; 32]> {
     }
 
     let mut read_buf = [0u8; 32];
-    let read = dev.read_timeout(&mut read_buf, 500)?;
+    let read = dev.read_timeout(&mut read_buf, 150)?;
     if read != 32 {
         return Err(anyhow!("read_short read={} expected=32", read));
     }

@@ -291,10 +291,12 @@ impl MarcontrollerUi {
         let m = vialrgb::get_mode(&dev).context("get_mode")?;
         self.last_mode = Some(m);
 
-        // Keep UI effect controls aligned with the real keyboard state so the
-        // selector and speed slider can be added later without fake defaults.
-        self.effect_id = m.mode;
-        self.effect_speed = m.speed;
+        // Keep UI effect controls aligned with the real keyboard state, but do
+        // not overwrite a local pending edit while debounce is waiting to fire.
+        if !self.effect_dirty {
+            self.effect_id = m.mode;
+            self.effect_speed = m.speed;
+        }
 
         // Best-effort mapping:
         // - If OFF or v=0 => reflect brightness 0.

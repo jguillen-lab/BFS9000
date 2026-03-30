@@ -124,6 +124,7 @@ struct MarcontrollerUi {
     // ── Control tab state (effect) ────────────────────────────────────────
     effect_id: u16,
     effect_speed: u8,
+    supported_effect_ids: Vec<u16>,
 
     // ── Direct tab state (per-LED) ─────────────────────────────────────────
     led_count: Option<u16>,
@@ -192,6 +193,7 @@ impl MarcontrollerUi {
 
             effect_id: vialrgb::EFFECT_SOLID_COLOR,
             effect_speed: 0,
+            supported_effect_ids: vec![vialrgb::EFFECT_SOLID_COLOR],
 
             led_count: None,
             led_index: 0,
@@ -291,6 +293,10 @@ impl MarcontrollerUi {
         let m = vialrgb::get_mode(&dev).context("get_mode")?;
         self.last_mode = Some(m);
 
+        // Refresh the supported-effect list from the real keyboard so the UI
+        // can later restrict its selector to what this firmware actually offers.
+        let _ = self.refresh_supported_effects();
+
         // Keep UI effect controls aligned with the real keyboard state, but do
         // not overwrite a local pending edit while debounce is waiting to fire.
         if !self.effect_dirty {
@@ -306,6 +312,31 @@ impl MarcontrollerUi {
         } else {
             self.solid_brightness = m.v;
             self.solid_rgb = hsv_to_rgb(m.h, m.s, m.v);
+        }
+
+        Ok(())
+    }
+
+    /// Read the list of effects supported by the current keyboard firmware.
+    ///
+    /// This lets the UI offer only the effects that the connected device
+    /// actually exposes through VialRGB, instead of relying on a fixed list.
+    fn refresh_supported_effects(&mut self) -> Result<()> {
+        let dev = self.open_device()?;
+
+        let ids = vialrgb::get_supported_effects(&dev).context("get_supported_effects")?;
+
+        self.supported_effect_ids = ids
+            .into_iter()
+            .filter(|id| *id != vialrgb::EFFECT_OFF && *id != vialrgb::EFFECT_DIRECT)
+            .collect();
+
+        if self.supported_effect_ids.is_empty() {
+            self.supported_effect_ids = vec![vialrgb::EFFECT_SOLID_COLOR];
+        }
+
+        if !self.supported_effect_ids.contains(&self.effect_id) {
+            self.effect_id = self.supported_effect_ids[0];
         }
 
         Ok(())
@@ -583,7 +614,7 @@ impl MarcontrollerUi {
                 egui::ComboBox::from_id_salt("effect_selector")
                     .selected_text(ui_effect_name_for_id(selected))
                     .show_ui(ui, |ui| {
-                        for &id in ui_effect_ids() {
+                        for &id in &self.supported_effect_ids {
                             ui.selectable_value(&mut selected, id, ui_effect_name_for_id(id));
                         }
                     });
@@ -1119,12 +1150,4 @@ fn ui_effect_name_for_id(id: u16) -> String {
         46 => "Riverflow".to_owned(),
         other => format!("Effect {other}"),
     }
-}
-
-fn ui_effect_ids() -> &'static [u16] {
-    &[
-        2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-        21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
-        38, 39, 40, 41, 42, 43, 44, 45, 46,
-    ]
 }

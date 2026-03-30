@@ -12,6 +12,11 @@ use hidapi::HidApi;
 use std::fs;
 use std::path::PathBuf;
 
+use std::sync::{
+    atomic::AtomicBool,
+    Arc,
+};
+
 use crate::{config, hid, mqtt_agent, ui, vialrgb};
 
 // ── Argument structs ─────────────────────────────────────────────────────────
@@ -266,7 +271,8 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
             println!("{}", t!("ok.agent_start").to_string());
 
             // This runs indefinitely until an error/disconnect occurs.
-            mqtt_agent::run(cfg).await?;
+            let stop_flag = Arc::new(AtomicBool::new(false));
+            mqtt_agent::run(cfg, stop_flag).await?;
             return Ok(());
         }
 

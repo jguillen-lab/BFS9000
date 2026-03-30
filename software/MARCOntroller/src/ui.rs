@@ -16,9 +16,14 @@ use std::path::PathBuf;
 use std::time::{Duration, Instant};
 use std::sync::mpsc;
 use image::ImageReader;
+use std::thread::JoinHandle;
 
-use crate::mqtt_agent;
-use crate::{config, hid, vialrgb};
+use crate::{config, hid, vialrgb, mqtt_agent};
+
+use std::sync::{
+    atomic::{AtomicBool, Ordering},
+    Arc,
+};
 
 // ── Public API ───────────────────────────────────────────────────────────────
 
@@ -77,7 +82,7 @@ enum AgentEvent {
 
 #[derive(Debug, Clone)]
 enum AgentStatus {
-    Started,
+    Started(u64),
     Error(String),
 }
 
@@ -139,9 +144,12 @@ struct MarcontrollerUi {
 
     // ── Agent (MQTT) ─────────────────────────────────────────────────────
     agent_started: bool,
+    agent_stop_tx: Option<std::sync::mpsc::Sender<()>>,
+    agent_thread: Option<JoinHandle<()>>,
     agent_tx: mpsc::Sender<AgentEvent>,
     agent_rx: mpsc::Receiver<AgentEvent>,
     agent_status: Option<AgentStatus>,
+    agent_start_count: u64,
 }
 
 impl MarcontrollerUi {
@@ -205,9 +213,13 @@ impl MarcontrollerUi {
             last_error,
 
             agent_started: false,
+            agent_stop_tx: None,
+            agent_thread: None,
             agent_tx,
             agent_rx,
-            agent_status: None,        }
+            agent_status: None,
+            agent_start_count: 0,
+        }
     }
 
     // ── Error handling helpers ─────────────────────────────────────────────
@@ -589,7 +601,7 @@ impl MarcontrollerUi {
         // Show current agent status using the active UI locale.
         if let Some(status) = &self.agent_status {
             let msg = match status {
-                AgentStatus::Started => t!("ui.agent_started").to_string(),
+                AgentStatus::Started(n) => format!("{} #{n}", t!("ui.agent_started")),
                 AgentStatus::Error(err) => t!("ui.agent_error", error = err).to_string(),
             };
 
@@ -784,6 +796,10 @@ impl MarcontrollerUi {
                         self.dirty = false;
                         self.cfg_loaded_ok = true;
                         self.clear_error();
+
+                        // Restart the MQTT agent so it reloads the freshly saved config.
+                        self.stop_agent();
+                        self.start_agent_if_needed();
                     }
                 }
             });
@@ -891,7 +907,8 @@ impl MarcontrollerUi {
         while let Ok(event) = self.agent_rx.try_recv() {
             match event {
                 AgentEvent::Started => {
-                    self.agent_status = Some(AgentStatus::Started);
+                    self.agent_start_count += 1;
+                    self.agent_status = Some(AgentStatus::Started(self.agent_start_count));
                 }
                 AgentEvent::Error(err) => {
                     self.agent_status = Some(AgentStatus::Error(err.clone()));
@@ -1009,7 +1026,11 @@ impl MarcontrollerUi {
         let cfg = self.cfg.clone();
         let tx = self.agent_tx.clone();
 
-        std::thread::spawn(move || {
+        // Stop signal for the agent thread. We only wire it up in this step;
+        // the actual stop/restart behaviour will be added afterwards.
+        let (stop_tx, stop_rx) = std::sync::mpsc::channel::<()>();
+
+        let thread = std::thread::spawn(move || {
             // Build a Tokio runtime for the agent.
             let rt = match tokio::runtime::Builder::new_multi_thread()
                 .enable_all()
@@ -1024,15 +1045,39 @@ impl MarcontrollerUi {
 
             let _ = tx.send(AgentEvent::Started);
 
-            // Run forever (reconnect loop lives inside mqtt_agent::run).
-            let res = rt.block_on(async { mqtt_agent::run(cfg).await });
+            // Cooperative stop flag shared with the async agent loop.
+            let stop_flag = Arc::new(AtomicBool::new(false));
+            let stop_flag_for_rx = stop_flag.clone();
+
+            // Wait for a stop signal from the UI and flip the shared flag.
+            std::thread::spawn(move || {
+                let _ = stop_rx.recv();
+                stop_flag_for_rx.store(true, Ordering::Relaxed);
+            });
+
+            let res = rt.block_on(async { mqtt_agent::run(cfg, stop_flag).await });
 
             if let Err(e) = res {
                 let _ = tx.send(AgentEvent::Error(format!("{e:#}")));
             }
         });
 
+        self.agent_stop_tx = Some(stop_tx);
+        self.agent_thread = Some(thread);
         self.agent_started = true;
+    }
+
+    fn stop_agent(&mut self) {
+        if let Some(tx) = self.agent_stop_tx.take() {
+            let _ = tx.send(());
+        }
+
+        if let Some(thread) = self.agent_thread.take() {
+            let _ = thread.join();
+        }
+
+        self.agent_started = false;
+        self.agent_status = None;
     }
 }
 

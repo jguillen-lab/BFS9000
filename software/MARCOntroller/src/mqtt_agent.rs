@@ -16,6 +16,11 @@ use tracing::{info, warn};
 
 use crate::{config::AppConfig, hid, vialrgb};
 
+use std::sync::{
+    atomic::{AtomicBool, Ordering},
+    Arc,
+};
+
 // ── HA JSON payload types ─────────────────────────────────────────────────────
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Eq)]
@@ -260,11 +265,22 @@ impl Topics {
 
 // ── Public API ───────────────────────────────────────────────────────────────
 
-pub async fn run(cfg: AppConfig) -> Result<()> {
-    // Simple reconnect loop.
+pub async fn run(cfg: AppConfig, stop_flag: Arc<AtomicBool>) -> Result<()> {
+    // Simple reconnect loop with cooperative stop support.
     loop {
-        if let Err(e) = run_once(cfg.clone()).await {
+        if stop_flag.load(Ordering::Relaxed) {
+            info!("mqtt_agent stop requested");
+            return Ok(());
+        }
+
+        if let Err(e) = run_once(cfg.clone(), stop_flag.clone()).await {
             warn!("mqtt_agent run_once error: {e:#}");
+
+            if stop_flag.load(Ordering::Relaxed) {
+                info!("mqtt_agent stop requested after run_once");
+                return Ok(());
+            }
+
             tokio::time::sleep(Duration::from_secs(2)).await;
         }
     }
@@ -272,7 +288,7 @@ pub async fn run(cfg: AppConfig) -> Result<()> {
 
 // ── Core loop ────────────────────────────────────────────────────────────────
 
-async fn run_once(cfg: AppConfig) -> Result<()> {
+async fn run_once(cfg: AppConfig, stop_flag: Arc<AtomicBool>) -> Result<()> {
     let topics = Topics::from_cfg(&cfg);
 
     // Start HID worker.
@@ -389,6 +405,11 @@ async fn run_once(cfg: AppConfig) -> Result<()> {
 
     // Event loop (MQTT + periodic HID probe).
     loop {
+        if stop_flag.load(Ordering::Relaxed) {
+            info!("mqtt_agent run_once stop requested");
+            return Ok(());
+        }
+
         tokio::select! {
                         _ = kb_probe.tick() => {
                 let online_now = hid_probe(&hid_tx).await.unwrap_or(false);

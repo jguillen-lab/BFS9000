@@ -6,7 +6,7 @@
 //
 // ============================================================================
 
-use anyhow::{anyhow, Context, Result};
+use anyhow::{Context, Result, anyhow};
 use hidapi::{HidApi, HidDevice};
 
 // ── VIA/Vial RAW HID USB descriptors ─────────────────────────────────────────
@@ -118,11 +118,12 @@ pub fn open_device(
 
     // 4) Last resort: single candidate.
     if candidates.len() == 1 {
-        return candidates[0]
-            .open_device(api)
-            .with_context(|| {
-                format!("open_device path={}", candidates[0].path().to_string_lossy())
-            });
+        return candidates[0].open_device(api).with_context(|| {
+            format!(
+                "open_device path={}",
+                candidates[0].path().to_string_lossy()
+            )
+        });
     }
 
     Err(anyhow!("ambiguous_interface"))

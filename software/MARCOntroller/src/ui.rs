@@ -10,21 +10,25 @@
 //     + auto-apply scheduling.
 // ============================================================================
 
-use anyhow::{anyhow, Context, Result};
+use anyhow::{Context, Result, anyhow};
 use eframe::egui;
-use std::path::PathBuf;
-use std::time::{Duration, Instant};
-use std::sync::mpsc;
 use image::ImageReader;
+use std::path::PathBuf;
+use std::sync::mpsc;
 use std::thread::JoinHandle;
+use std::time::{Duration, Instant};
 
-use crate::{config, hid, vialrgb, mqtt_agent};
+use crate::config;
 
-use std::sync::{
-    atomic::{AtomicBool, Ordering},
-    Arc,
+use crate::agent::runtime;
+use crate::keyboard::{hid, vialrgb};
+use crate::service::control::{
+    self, ServiceBackend, ServiceExecutableMatch, ServicePrivilegeMode, SystemServiceStatus,
 };
-
+use std::sync::{
+    Arc,
+    atomic::{AtomicBool, Ordering},
+};
 // ── Public API ───────────────────────────────────────────────────────────────
 
 pub fn run(cfg_path: PathBuf, initial_locale: String) -> Result<()> {
@@ -36,13 +40,17 @@ pub fn run(cfg_path: PathBuf, initial_locale: String) -> Result<()> {
     };
 
     // eframe::run_native blocks until the window is closed.
-    // In eframe 0.33 the app creator returns Result<Box<dyn App>, DynError>.
     eframe::run_native(
         "MARCOntroller",
         native_options,
-        Box::new(move |_cc| Ok(Box::new(MarcontrollerUi::new(cfg_path, initial_locale.clone())))),
+        Box::new(move |_cc| {
+            Ok(Box::new(MarcontrollerUi::new(
+                cfg_path,
+                initial_locale.clone(),
+            )))
+        }),
     )
-        .map_err(|e| anyhow!("eframe: {e}"))
+    .map_err(|e| anyhow!("eframe: {e}"))
 }
 
 // ── Internal helpers ────────────────────────────────────────────────────────
@@ -150,6 +158,10 @@ struct MarcontrollerUi {
     agent_rx: mpsc::Receiver<AgentEvent>,
     agent_status: Option<AgentStatus>,
     agent_start_count: u64,
+
+    system_service_status: SystemServiceStatus,
+    system_service_registered_exe_path: Option<String>,
+    system_service_exe_match: ServiceExecutableMatch,
 }
 
 impl MarcontrollerUi {
@@ -171,8 +183,8 @@ impl MarcontrollerUi {
             did_initial_sync: false,
             last_online: false,
 
-            // Default UI locale: keep whatever main.rs set, but we don't have a direct getter.
-            // Users can switch it from the dropdown.
+            // Keep the locale selected at startup; the user can still switch it
+            // later from the language dropdown.
             ui_locale: initial_locale,
 
             cfg_path,
@@ -219,6 +231,10 @@ impl MarcontrollerUi {
             agent_rx,
             agent_status: None,
             agent_start_count: 0,
+
+            system_service_status: SystemServiceStatus::Unknown,
+            system_service_registered_exe_path: None,
+            system_service_exe_match: ServiceExecutableMatch::Unknown,
         }
     }
 
@@ -316,9 +332,9 @@ impl MarcontrollerUi {
             self.effect_speed = m.speed;
         }
 
-        // Best-effort mapping:
-        // - If OFF or v=0 => reflect brightness 0.
-        // - Otherwise compute an approximate RGB from HSV for the color picker.
+        // Map the real keyboard state back into the UI controls. OFF or zero
+        // brightness collapses to brightness=0; otherwise we approximate RGB
+        // from HSV for the colour picker.
         if m.mode == vialrgb::EFFECT_OFF || m.v == 0 {
             self.solid_brightness = 0;
         } else {
@@ -421,14 +437,7 @@ impl MarcontrollerUi {
             (hh, ss, self.solid_brightness)
         };
 
-        vialrgb::set_mode(
-            &dev,
-            self.effect_id,
-            self.effect_speed,
-            h,
-            s,
-            v,
-        )
+        vialrgb::set_mode(&dev, self.effect_id, self.effect_speed, h, s, v)
             .context("set_mode effect")?;
 
         Ok(())
@@ -497,11 +506,7 @@ impl MarcontrollerUi {
                 Tab::Control,
                 t!("ui.tab_control").to_string(),
             );
-            ui.selectable_value(
-                &mut self.tab,
-                Tab::Direct,
-                t!("ui.tab_direct").to_string(),
-            );
+            ui.selectable_value(&mut self.tab, Tab::Direct, t!("ui.tab_direct").to_string());
             ui.selectable_value(&mut self.tab, Tab::Config, t!("ui.tab_config").to_string());
 
             ui.separator();
@@ -576,26 +581,41 @@ impl MarcontrollerUi {
                 t!("ui.status_offline").to_string()
             };
 
-            ui.label(format!("{}: {status}", t!("ui.status_keyboard").to_string()));
+            ui.label(format!(
+                "{}: {status}",
+                t!("ui.status_keyboard").to_string()
+            ));
             ui.separator();
-            ui.label(format!("{}: {}", t!("ui.status_config").to_string(), self.cfg_path.display()));
+            ui.label(format!(
+                "{}: {}",
+                t!("ui.status_config").to_string(),
+                self.cfg_path.display()
+            ));
         });
 
         if let Some(info) = self.last_info {
-            ui.label(t!("ui.status_vialrgb_info",
-                protocol = info.protocol_version,
-                max_brightness = info.max_brightness
-            ).to_string());
+            ui.label(
+                t!(
+                    "ui.status_vialrgb_info",
+                    protocol = info.protocol_version,
+                    max_brightness = info.max_brightness
+                )
+                .to_string(),
+            );
         }
 
         if let Some(m) = self.last_mode {
-            ui.label(t!("ui.status_mode_info",
-                id = m.mode,
-                speed = m.speed,
-                h = m.h,
-                s = m.s,
-                v = m.v
-            ).to_string());
+            ui.label(
+                t!(
+                    "ui.status_mode_info",
+                    id = m.mode,
+                    speed = m.speed,
+                    h = m.h,
+                    s = m.s,
+                    v = m.v
+                )
+                .to_string(),
+            );
         }
 
         // Show current agent status using the active UI locale.
@@ -619,7 +639,7 @@ impl MarcontrollerUi {
             ui.label(t!("ui.group_solid").to_string());
 
             ui.horizontal(|ui| {
-                ui.label("Efecto:");
+                ui.label(format!("{}:", t!("ui.label_effect").to_string()));
 
                 let mut selected = self.effect_id;
 
@@ -638,7 +658,7 @@ impl MarcontrollerUi {
             });
 
             ui.horizontal(|ui| {
-                ui.label("Velocidad:");
+                ui.label(format!("{}:", t!("ui.label_speed").to_string()));
 
                 let resp = ui.add(egui::Slider::new(&mut self.effect_speed, 0..=255));
 
@@ -663,7 +683,7 @@ impl MarcontrollerUi {
                 }
             });
 
-            // If auto-apply is disabled, still allow manual apply in this tab.
+            // Manual apply remains available when auto-apply is disabled.
             if !self.auto_apply {
                 if ui.button(t!("ui.btn_apply").to_string()).clicked() {
                     if let Err(e) = self.apply_solid_now() {
@@ -673,6 +693,184 @@ impl MarcontrollerUi {
                     }
                 }
             }
+
+            ui.add_space(10.0);
+
+            ui.separator();
+            ui.add_space(8.0);
+
+            ui.group(|ui| {
+                ui.label(t!("ui.service_group").to_string());
+
+                ui.add_space(6.0);
+
+                let service_status_text = match self.system_service_status {
+                    SystemServiceStatus::Unknown => t!("ui.service_status_unknown").to_string(),
+                    SystemServiceStatus::NotInstalled => {
+                        t!("ui.service_status_not_installed").to_string()
+                    }
+                    SystemServiceStatus::Stopped => t!("ui.service_status_stopped").to_string(),
+                    SystemServiceStatus::StartPending => {
+                        t!("ui.service_status_start_pending").to_string()
+                    }
+                    SystemServiceStatus::Running => t!("ui.service_status_running").to_string(),
+                    SystemServiceStatus::Error => t!("ui.service_status_error").to_string(),
+                };
+
+                ui.label(format!(
+                    "{}: {}",
+                    t!("ui.service_status_label"),
+                    service_status_text
+                ));
+
+                ui.label(format!(
+                    "{}: {}",
+                    t!("ui.service_backend_label"),
+                    service_backend_text()
+                ));
+
+                ui.label(format!(
+                    "{}: {}",
+                    t!("ui.service_privileges_label"),
+                    service_privileges_text()
+                ));
+
+                ui.add_space(6.0);
+
+                let can_install = matches!(
+                    self.system_service_status,
+                    SystemServiceStatus::NotInstalled
+                );
+
+                let can_start = matches!(self.system_service_status, SystemServiceStatus::Stopped);
+
+                let can_stop = matches!(self.system_service_status, SystemServiceStatus::Running);
+
+                let can_uninstall =
+                    matches!(self.system_service_status, SystemServiceStatus::Stopped);
+
+                ui.horizontal(|ui| {
+                    let install_btn = ui.add_enabled(
+                        can_install,
+                        egui::Button::new(t!("ui.btn_service_install").to_string()),
+                    );
+                    if install_btn.clicked() {
+                        match control::run_service_command_from_ui(
+                            "service-install",
+                            &self.cfg_path,
+                        ) {
+                            Ok(()) => {
+                                self.refresh_system_service_status();
+                                self.clear_error();
+                            }
+                            Err(e) => {
+                                self.mark_error(e);
+                                self.refresh_system_service_status();
+                            }
+                        }
+                    }
+
+                    let start_btn = ui.add_enabled(
+                        can_start,
+                        egui::Button::new(t!("ui.btn_service_start").to_string()),
+                    );
+                    if start_btn.clicked() {
+                        match control::run_service_command_from_ui("service-start", &self.cfg_path)
+                        {
+                            Ok(()) => {
+                                self.refresh_system_service_status();
+                                self.clear_error();
+                            }
+                            Err(e) => {
+                                self.mark_error(e);
+                                self.refresh_system_service_status();
+                            }
+                        }
+                    }
+                });
+
+                ui.horizontal(|ui| {
+                    let stop_btn = ui.add_enabled(
+                        can_stop,
+                        egui::Button::new(t!("ui.btn_service_stop").to_string()),
+                    );
+                    if stop_btn.clicked() {
+                        match control::run_service_command_from_ui("service-stop", &self.cfg_path) {
+                            Ok(()) => {
+                                self.refresh_system_service_status();
+                                self.clear_error();
+                            }
+                            Err(e) => {
+                                self.mark_error(e);
+                                self.refresh_system_service_status();
+                            }
+                        }
+                    }
+
+                    let uninstall_btn = ui.add_enabled(
+                        can_uninstall,
+                        egui::Button::new(t!("ui.btn_service_uninstall").to_string()),
+                    );
+                    if uninstall_btn.clicked() {
+                        match control::run_service_command_from_ui(
+                            "service-uninstall",
+                            &self.cfg_path,
+                        ) {
+                            Ok(()) => {
+                                self.refresh_system_service_status();
+                                self.clear_error();
+                            }
+                            Err(e) => {
+                                self.mark_error(e);
+                                self.refresh_system_service_status();
+                            }
+                        }
+                    }
+                });
+
+                ui.add_space(6.0);
+
+                let exe_path_text = match std::env::current_exe() {
+                    Ok(path) => path.display().to_string(),
+                    Err(_) => "-".to_owned(),
+                };
+
+                ui.label(format!(
+                    "{}: {}",
+                    t!("ui.service_exe_path_label"),
+                    exe_path_text
+                ));
+
+                let registered_exe_path_text = self
+                    .system_service_registered_exe_path
+                    .clone()
+                    .unwrap_or_else(|| "-".to_owned());
+
+                let exe_match_text = match self.system_service_exe_match {
+                    ServiceExecutableMatch::Unknown => {
+                        t!("ui.service_exe_match_unknown").to_string()
+                    }
+                    ServiceExecutableMatch::Same => t!("ui.service_exe_match_same").to_string(),
+                    ServiceExecutableMatch::Different => {
+                        t!("ui.service_exe_match_different").to_string()
+                    }
+                };
+
+                ui.label(format!(
+                    "{}: {}",
+                    t!("ui.service_registered_exe_path_label"),
+                    registered_exe_path_text
+                ));
+
+                ui.label(format!(
+                    "{}: {}",
+                    t!("ui.service_exe_match_label"),
+                    exe_match_text
+                ));
+
+                ui.add_space(6.0);
+                ui.label(t!("ui.service_install_location_note").to_string());
+            });
         });
 
         ui.add_space(8.0);
@@ -698,7 +896,11 @@ impl MarcontrollerUi {
                 if let Some(n) = self.led_count {
                     ui.label(format!("{}: {n}", t!("ui.label_leds").to_string()));
                 } else {
-                    ui.label(format!("{}: {}", t!("ui.label_leds").to_string(), t!("ui.label_leds_unknown").to_string()));
+                    ui.label(format!(
+                        "{}: {}",
+                        t!("ui.label_leds").to_string(),
+                        t!("ui.label_leds_unknown").to_string()
+                    ));
                 }
             });
 
@@ -735,9 +937,12 @@ impl MarcontrollerUi {
             ui.add_space(8.0);
 
             ui.horizontal(|ui| {
-                // When auto-apply is enabled, we apply "selected LED" on debounce.
-                // Keep explicit buttons for "All LEDs" and for manual mode.
-                if ui.button(t!("ui.btn_set_selected_led").to_string()).clicked() {
+                // Auto-apply targets the selected LED after debounce. Keep the
+                // explicit buttons for full-strip writes and manual workflows.
+                if ui
+                    .button(t!("ui.btn_set_selected_led").to_string())
+                    .clicked()
+                {
                     if let Err(e) = self.apply_direct_led_now() {
                         self.mark_error(e);
                     } else {
@@ -788,7 +993,8 @@ impl MarcontrollerUi {
                     }
                 }
 
-                let save_btn = ui.add_enabled(self.dirty, egui::Button::new(t!("ui.btn_save").to_string()));
+                let save_btn =
+                    ui.add_enabled(self.dirty, egui::Button::new(t!("ui.btn_save").to_string()));
                 if save_btn.clicked() {
                     if let Err(e) = config::save(&self.cfg_path, &self.cfg) {
                         self.mark_error(e);
@@ -866,7 +1072,9 @@ impl MarcontrollerUi {
                     ui.end_row();
 
                     ui.label(t!("ui.cfg_mqtt_client_id").to_string());
-                    self.dirty |= ui.text_edit_singleline(&mut self.cfg.mqtt.client_id).changed();
+                    self.dirty |= ui
+                        .text_edit_singleline(&mut self.cfg.mqtt.client_id)
+                        .changed();
                     ui.end_row();
 
                     ui.separator();
@@ -875,15 +1083,21 @@ impl MarcontrollerUi {
 
                     // Home Assistant
                     ui.label(t!("ui.cfg_ha_prefix").to_string());
-                    self.dirty |= ui.text_edit_singleline(&mut self.cfg.ha.discovery_prefix).changed();
+                    self.dirty |= ui
+                        .text_edit_singleline(&mut self.cfg.ha.discovery_prefix)
+                        .changed();
                     ui.end_row();
 
                     ui.label(t!("ui.cfg_ha_object_id").to_string());
-                    self.dirty |= ui.text_edit_singleline(&mut self.cfg.ha.object_id).changed();
+                    self.dirty |= ui
+                        .text_edit_singleline(&mut self.cfg.ha.object_id)
+                        .changed();
                     ui.end_row();
 
                     ui.label(t!("ui.cfg_ha_unique_id").to_string());
-                    self.dirty |= ui.text_edit_singleline(&mut self.cfg.ha.unique_id).changed();
+                    self.dirty |= ui
+                        .text_edit_singleline(&mut self.cfg.ha.unique_id)
+                        .changed();
                     ui.end_row();
 
                     ui.label(t!("ui.cfg_ha_name").to_string());
@@ -891,7 +1105,9 @@ impl MarcontrollerUi {
                     ui.end_row();
 
                     ui.label(t!("ui.cfg_ha_base_topic").to_string());
-                    self.dirty |= ui.text_edit_singleline(&mut self.cfg.ha.base_topic).changed();
+                    self.dirty |= ui
+                        .text_edit_singleline(&mut self.cfg.ha.base_topic)
+                        .changed();
                     ui.end_row();
                 });
         });
@@ -900,8 +1116,22 @@ impl MarcontrollerUi {
     // ── Tick (background orchestration) ─────────────────────────────────────
 
     fn tick_sync(&mut self) {
-        // Start the MQTT agent automatically when the UI is running.
-        self.start_agent_if_needed();
+        // Refresh the system service state first so the UI can decide whether it
+        // should own the local MQTT agent or defer to a background service instance.
+        self.refresh_system_service_status();
+
+        // If the system service becomes active while the UI-owned agent is already
+        // running, stop the UI agent to avoid duplicate MQTT clients and two
+        // concurrent processes fighting over the same keyboard.
+        if !self.should_start_ui_agent() && self.agent_started {
+            self.stop_agent();
+        }
+
+        // Otherwise, when no active system service owns the agent, the UI can run
+        // the local agent instance as before.
+        if self.should_start_ui_agent() {
+            self.start_agent_if_needed();
+        }
 
         // Drain agent messages without blocking the UI thread.
         while let Ok(event) = self.agent_rx.try_recv() {
@@ -982,8 +1212,11 @@ impl MarcontrollerUi {
                     let (h, s, v) = if let Some(m) = self.last_mode {
                         (m.h, m.s, m.v)
                     } else {
-                        let (hh, ss, _vv) =
-                            vialrgb::rgb_to_hsv(self.solid_rgb[0], self.solid_rgb[1], self.solid_rgb[2]);
+                        let (hh, ss, _vv) = vialrgb::rgb_to_hsv(
+                            self.solid_rgb[0],
+                            self.solid_rgb[1],
+                            self.solid_rgb[2],
+                        );
                         (hh, ss, self.solid_brightness)
                     };
 
@@ -1026,8 +1259,8 @@ impl MarcontrollerUi {
         let cfg = self.cfg.clone();
         let tx = self.agent_tx.clone();
 
-        // Stop signal for the agent thread. We only wire it up in this step;
-        // the actual stop/restart behaviour will be added afterwards.
+        // Stop signal for the agent thread. The UI uses this channel to request a
+        // cooperative shutdown before joining the worker thread.
         let (stop_tx, stop_rx) = std::sync::mpsc::channel::<()>();
 
         let thread = std::thread::spawn(move || {
@@ -1055,7 +1288,7 @@ impl MarcontrollerUi {
                 stop_flag_for_rx.store(true, Ordering::Relaxed);
             });
 
-            let res = rt.block_on(async { mqtt_agent::run(cfg, stop_flag).await });
+            let res = rt.block_on(async { runtime::run_agent(cfg, stop_flag).await });
 
             if let Err(e) = res {
                 let _ = tx.send(AgentEvent::Error(format!("{e:#}")));
@@ -1078,6 +1311,29 @@ impl MarcontrollerUi {
 
         self.agent_started = false;
         self.agent_status = None;
+    }
+
+    fn refresh_system_service_status(&mut self) {
+        self.system_service_status = control::query_system_service_status();
+
+        self.system_service_registered_exe_path = match self.system_service_status {
+            SystemServiceStatus::NotInstalled => None,
+            _ => control::query_system_service_registered_exe_path(),
+        };
+
+        let current_exe = std::env::current_exe().ok();
+
+        self.system_service_exe_match = control::compare_service_executable_paths(
+            current_exe.as_deref(),
+            self.system_service_registered_exe_path.as_deref(),
+        );
+    }
+
+    fn should_start_ui_agent(&self) -> bool {
+        !matches!(
+            self.system_service_status,
+            SystemServiceStatus::Running | SystemServiceStatus::StartPending
+        )
     }
 }
 
@@ -1114,6 +1370,25 @@ fn parse_hex_u16(s: &str) -> Result<u16> {
     u16::from_str_radix(clean, 16).context("parse_hex_u16")
 }
 
+fn service_backend_text() -> String {
+    match control::query_service_backend() {
+        ServiceBackend::WindowsService => t!("ui.service_backend_windows").to_string(),
+        ServiceBackend::Systemd => t!("ui.service_backend_systemd").to_string(),
+        ServiceBackend::OpenRc => t!("ui.service_backend_openrc").to_string(),
+        ServiceBackend::Launchd => t!("ui.service_backend_macos").to_string(),
+        ServiceBackend::Unknown => t!("ui.service_backend_unknown").to_string(),
+    }
+}
+
+fn service_privileges_text() -> String {
+    match control::query_service_privilege_mode() {
+        ServicePrivilegeMode::Uac => t!("ui.service_privileges_windows").to_string(),
+        ServicePrivilegeMode::Pkexec => t!("ui.service_privileges_linux").to_string(),
+        ServicePrivilegeMode::AppleScriptAdmin => t!("ui.service_privileges_macos").to_string(),
+        ServicePrivilegeMode::Unsupported => t!("ui.service_privileges_unsupported").to_string(),
+    }
+}
+
 /// Convert HSV (0–255) to RGB (0–255) using integer math.
 ///
 /// This is a common 8-bit HSV->RGB conversion (region/remainder).
@@ -1146,16 +1421,16 @@ fn hsv_to_rgb(h: u8, s: u8, v: u8) -> [u8; 3] {
 
 fn ui_effect_name_for_id(id: u16) -> String {
     match id {
-        0  => "OFF".to_owned(),
-        1  => "DIRECT".to_owned(),
-        2  => "Solid Color".to_owned(),
-        3  => "Alpha Mods".to_owned(),
-        4  => "Gradient Up Down".to_owned(),
-        5  => "Gradient Left Right".to_owned(),
-        6  => "Breathing".to_owned(),
-        7  => "Band Sat".to_owned(),
-        8  => "Band Val".to_owned(),
-        9  => "Band Pinwheel Sat".to_owned(),
+        0 => "OFF".to_owned(),
+        1 => "DIRECT".to_owned(),
+        2 => "Solid Color".to_owned(),
+        3 => "Alpha Mods".to_owned(),
+        4 => "Gradient Up Down".to_owned(),
+        5 => "Gradient Left Right".to_owned(),
+        6 => "Breathing".to_owned(),
+        7 => "Band Sat".to_owned(),
+        8 => "Band Val".to_owned(),
+        9 => "Band Pinwheel Sat".to_owned(),
         10 => "Band Pinwheel Val".to_owned(),
         11 => "Band Spiral Sat".to_owned(),
         12 => "Band Spiral Val".to_owned(),

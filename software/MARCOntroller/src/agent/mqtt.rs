@@ -1,26 +1,26 @@
 // ============================================================================
-// src/mqtt_agent.rs — MQTT agent + Home Assistant Discovery (MQTT Light JSON)
+// src/mqtt — MQTT agent + Home Assistant Discovery (MQTT Light JSON)
 // ============================================================================
 //
 // MIT License — Copyright (c) 2026 Jesús Guillén (jguillen-lab)
 //
 // ============================================================================
 
-use anyhow::{anyhow, Context, Result};
+use anyhow::{Context, Result, anyhow};
 use rumqttc::{AsyncClient, Event, Incoming, LastWill, MqttOptions, Outgoing, Publish, QoS};
 use serde::{Deserialize, Serialize};
 use std::time::Duration;
 use tokio::sync::{mpsc, oneshot};
-use tokio::time::{interval, MissedTickBehavior};
+use tokio::time::{MissedTickBehavior, interval};
 use tracing::{info, warn};
 
-use crate::{config::AppConfig, hid, vialrgb};
+use crate::config::AppConfig;
 
+use crate::keyboard::{hid, vialrgb};
 use std::sync::{
-    atomic::{AtomicBool, Ordering},
     Arc,
+    atomic::{AtomicBool, Ordering},
 };
-
 // ── HA JSON payload types ─────────────────────────────────────────────────────
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Eq)]
@@ -83,14 +83,14 @@ struct EffectCatalog {
 
 fn ha_effect_name_for_id(id: u16) -> String {
     match id {
-        2  => "Solid Color".to_owned(),
-        3  => "Alpha Mods".to_owned(),
-        4  => "Gradient Up Down".to_owned(),
-        5  => "Gradient Left Right".to_owned(),
-        6  => "Breathing".to_owned(),
-        7  => "Band Sat".to_owned(),
-        8  => "Band Val".to_owned(),
-        9  => "Band Pinwheel Sat".to_owned(),
+        2 => "Solid Color".to_owned(),
+        3 => "Alpha Mods".to_owned(),
+        4 => "Gradient Up Down".to_owned(),
+        5 => "Gradient Left Right".to_owned(),
+        6 => "Breathing".to_owned(),
+        7 => "Band Sat".to_owned(),
+        8 => "Band Val".to_owned(),
+        9 => "Band Pinwheel Sat".to_owned(),
         10 => "Band Pinwheel Val".to_owned(),
         11 => "Band Spiral Sat".to_owned(),
         12 => "Band Spiral Val".to_owned(),
@@ -407,6 +407,11 @@ async fn run_once(cfg: AppConfig, stop_flag: Arc<AtomicBool>) -> Result<()> {
     loop {
         if stop_flag.load(Ordering::Relaxed) {
             info!("mqtt_agent run_once stop requested");
+
+            // On a graceful shutdown, publish availability=offline explicitly.
+            // The MQTT last-will only covers unexpected disconnects.
+            let _ = publish_availability(&client, &topics, false).await;
+
             return Ok(());
         }
 
@@ -723,8 +728,11 @@ async fn handle_effect_speed_command(
 
 // ── Publish helpers ──────────────────────────────────────────────────────────
 
-async fn publish_discovery(client: &AsyncClient, cfg: &AppConfig, topics: &Topics,
-                           effects: Option<&EffectCatalog>,
+async fn publish_discovery(
+    client: &AsyncClient,
+    cfg: &AppConfig,
+    topics: &Topics,
+    effects: Option<&EffectCatalog>,
 ) -> Result<()> {
     let payload = build_discovery_payload(cfg, topics, effects)?;
     client
@@ -829,7 +837,11 @@ async fn publish_effect_speed_state(
     Ok(())
 }
 
-fn build_discovery_payload(cfg: &AppConfig, topics: &Topics, effects: Option<&EffectCatalog>) -> Result<String> {
+fn build_discovery_payload(
+    cfg: &AppConfig,
+    topics: &Topics,
+    effects: Option<&EffectCatalog>,
+) -> Result<String> {
     #[derive(Serialize)]
     struct Device<'a> {
         identifiers: [&'a str; 1],
@@ -875,9 +887,7 @@ fn build_discovery_payload(cfg: &AppConfig, topics: &Topics, effects: Option<&Ef
 
     // Publish effect support only when the connected keyboard/firmware reports
     // at least one HA-exposed effect.
-    let effect_enabled = effects
-        .map(|e| !e.ha_names.is_empty())
-        .unwrap_or(false);
+    let effect_enabled = effects.map(|e| !e.ha_names.is_empty()).unwrap_or(false);
 
     let effect_list = effects.and_then(|e| {
         if e.ha_names.is_empty() {
@@ -1017,7 +1027,7 @@ async fn hid_probe(tx: &mpsc::Sender<HidJob>) -> Result<bool> {
         req: HidRequest::Probe,
         reply: reply_tx,
     })
-        .await?;
+    .await?;
 
     match reply_rx.await?? {
         HidReply::Availability(v) => Ok(v),
@@ -1031,7 +1041,7 @@ async fn hid_get_state(tx: &mpsc::Sender<HidJob>) -> Result<Option<HaLightState>
         req: HidRequest::GetState,
         reply: reply_tx,
     })
-        .await?;
+    .await?;
 
     match reply_rx.await?? {
         HidReply::State(st) => Ok(st),
@@ -1045,7 +1055,7 @@ async fn hid_get_supported_effects(tx: &mpsc::Sender<HidJob>) -> Result<Option<V
         req: HidRequest::GetSupportedEffects,
         reply: reply_tx,
     })
-        .await?;
+    .await?;
 
     match reply_rx.await?? {
         HidReply::SupportedEffects(v) => Ok(v),
@@ -1059,7 +1069,7 @@ async fn hid_set_effect_speed(tx: &mpsc::Sender<HidJob>, speed: u8) -> Result<bo
         req: HidRequest::SetEffectSpeed(speed),
         reply: reply_tx,
     })
-        .await?;
+    .await?;
 
     match reply_rx.await?? {
         HidReply::Availability(v) => Ok(v),
@@ -1073,7 +1083,7 @@ async fn hid_apply(tx: &mpsc::Sender<HidJob>, cmd: HaLightCommand) -> Result<boo
         req: HidRequest::Apply(cmd),
         reply: reply_tx,
     })
-        .await?;
+    .await?;
 
     match reply_rx.await?? {
         HidReply::Availability(v) => Ok(v),
@@ -1121,7 +1131,8 @@ fn hid_worker(cfg: AppConfig, mut rx: mpsc::Receiver<HidJob>) {
                 }
             },
 
-            HidRequest::GetState => match get_state_once(&api, vid, pid, cfg.hid.serial.as_deref()) {
+            HidRequest::GetState => match get_state_once(&api, vid, pid, cfg.hid.serial.as_deref())
+            {
                 Ok(st) => Ok(HidReply::State(Some(st))),
                 Err(e) => {
                     if is_no_device_anyhow(&e) {
@@ -1143,7 +1154,7 @@ fn hid_worker(cfg: AppConfig, mut rx: mpsc::Receiver<HidJob>) {
                         }
                     }
                 }
-            },
+            }
 
             HidRequest::SetEffectSpeed(speed) => {
                 match set_effect_speed_once(&api, vid, pid, cfg.hid.serial.as_deref(), *speed) {
@@ -1156,18 +1167,20 @@ fn hid_worker(cfg: AppConfig, mut rx: mpsc::Receiver<HidJob>) {
                         }
                     }
                 }
-            },
+            }
 
-            HidRequest::Apply(cmd) => match apply_once(&api, vid, pid, cfg.hid.serial.as_deref(), cmd) {
-                Ok(()) => Ok(HidReply::Availability(true)),
-                Err(e) => {
-                    if is_no_device_anyhow(&e) {
-                        Ok(HidReply::Availability(false))
-                    } else {
-                        Err(e)
+            HidRequest::Apply(cmd) => {
+                match apply_once(&api, vid, pid, cfg.hid.serial.as_deref(), cmd) {
+                    Ok(()) => Ok(HidReply::Availability(true)),
+                    Err(e) => {
+                        if is_no_device_anyhow(&e) {
+                            Ok(HidReply::Availability(false))
+                        } else {
+                            Err(e)
+                        }
                     }
                 }
-            },
+            }
         };
 
         let _ = job.reply.send(res);
@@ -1181,7 +1194,12 @@ fn probe_once(api: &hidapi::HidApi, vid: u16, pid: u16, serial: Option<&str>) ->
     Ok(())
 }
 
-fn get_state_once(api: &hidapi::HidApi, vid: u16, pid: u16, serial: Option<&str>) -> Result<HaLightState> {
+fn get_state_once(
+    api: &hidapi::HidApi,
+    vid: u16,
+    pid: u16,
+    serial: Option<&str>,
+) -> Result<HaLightState> {
     let dev = hid::open_device(api, vid, pid, serial).context("open_device")?;
     let m = vialrgb::get_mode(&dev).context("get_mode")?;
 

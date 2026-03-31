@@ -540,10 +540,10 @@ impl MarcontrollerUi {
             if ui.button(t!("ui.btn_probe").to_string()).clicked() {
                 self.probe_keyboard(true);
             }
-            if ui.button(t!("ui.btn_read").to_string()).clicked() {
-                if let Err(e) = self.read_mode() {
-                    self.mark_error(e);
-                }
+            if ui.button(t!("ui.btn_read").to_string()).clicked()
+                && let Err(e) = self.read_mode()
+            {
+                self.mark_error(e);
             }
 
             ui.separator();
@@ -581,14 +581,11 @@ impl MarcontrollerUi {
                 t!("ui.status_offline").to_string()
             };
 
-            ui.label(format!(
-                "{}: {status}",
-                t!("ui.status_keyboard").to_string()
-            ));
+            ui.label(format!("{}: {status}", t!("ui.status_keyboard")));
             ui.separator();
             ui.label(format!(
                 "{}: {}",
-                t!("ui.status_config").to_string(),
+                t!("ui.status_config"),
                 self.cfg_path.display()
             ));
         });
@@ -630,7 +627,7 @@ impl MarcontrollerUi {
 
         if let Some(e) = &self.last_error {
             ui.separator();
-            ui.label(format!("{}: {e}", t!("ui.status_error").to_string()));
+            ui.label(format!("{}: {e}", t!("ui.status_error")));
         }
     }
 
@@ -639,7 +636,7 @@ impl MarcontrollerUi {
             ui.label(t!("ui.group_solid").to_string());
 
             ui.horizontal(|ui| {
-                ui.label(format!("{}:", t!("ui.label_effect").to_string()));
+                ui.label(format!("{}:", t!("ui.label_effect")));
 
                 let mut selected = self.effect_id;
 
@@ -658,7 +655,7 @@ impl MarcontrollerUi {
             });
 
             ui.horizontal(|ui| {
-                ui.label(format!("{}:", t!("ui.label_speed").to_string()));
+                ui.label(format!("{}:", t!("ui.label_speed")));
 
                 let resp = ui.add(egui::Slider::new(&mut self.effect_speed, 0..=255));
 
@@ -668,7 +665,7 @@ impl MarcontrollerUi {
             });
 
             ui.horizontal(|ui| {
-                ui.label(format!("{}:", t!("ui.label_color").to_string()));
+                ui.label(format!("{}:", t!("ui.label_color")));
                 let resp = ui.color_edit_button_srgb(&mut self.solid_rgb);
                 if resp.changed() {
                     self.schedule_solid_apply();
@@ -676,7 +673,7 @@ impl MarcontrollerUi {
             });
 
             ui.horizontal(|ui| {
-                ui.label(format!("{}:", t!("ui.label_brightness").to_string()));
+                ui.label(format!("{}:", t!("ui.label_brightness")));
                 let resp = ui.add(egui::Slider::new(&mut self.solid_brightness, 0..=255));
                 if resp.changed() {
                     self.schedule_solid_apply();
@@ -684,13 +681,11 @@ impl MarcontrollerUi {
             });
 
             // Manual apply remains available when auto-apply is disabled.
-            if !self.auto_apply {
-                if ui.button(t!("ui.btn_apply").to_string()).clicked() {
-                    if let Err(e) = self.apply_solid_now() {
-                        self.mark_error(e);
-                    } else if let Err(e) = self.read_mode() {
-                        self.mark_error(e);
-                    }
+            if !self.auto_apply && ui.button(t!("ui.btn_apply").to_string()).clicked() {
+                if let Err(e) = self.apply_solid_now() {
+                    self.mark_error(e);
+                } else if let Err(e) = self.read_mode() {
+                    self.mark_error(e);
                 }
             }
 
@@ -894,12 +889,12 @@ impl MarcontrollerUi {
                 }
 
                 if let Some(n) = self.led_count {
-                    ui.label(format!("{}: {n}", t!("ui.label_leds").to_string()));
+                    ui.label(format!("{}: {n}", t!("ui.label_leds")));
                 } else {
                     ui.label(format!(
                         "{}: {}",
-                        t!("ui.label_leds").to_string(),
-                        t!("ui.label_leds_unknown").to_string()
+                        t!("ui.label_leds"),
+                        t!("ui.label_leds_unknown")
                     ));
                 }
             });
@@ -909,7 +904,7 @@ impl MarcontrollerUi {
             // Index selector
             let max_idx = self.led_count.map(|n| n.saturating_sub(1)).unwrap_or(255);
             ui.horizontal(|ui| {
-                ui.label(format!("{}:", t!("ui.label_index").to_string()));
+                ui.label(format!("{}:", t!("ui.label_index")));
                 let resp = ui.add(egui::Slider::new(&mut self.led_index, 0..=max_idx));
                 if resp.changed() {
                     // Changing index does not apply by itself.
@@ -919,7 +914,7 @@ impl MarcontrollerUi {
             ui.add_space(6.0);
 
             ui.horizontal(|ui| {
-                ui.label(format!("{}:", t!("ui.label_color").to_string()));
+                ui.label(format!("{}:", t!("ui.label_color")));
                 let resp = ui.color_edit_button_srgb(&mut self.direct_rgb);
                 if resp.changed() {
                     self.schedule_direct_apply();
@@ -927,7 +922,7 @@ impl MarcontrollerUi {
             });
 
             ui.horizontal(|ui| {
-                ui.label(format!("{}:", t!("ui.label_brightness").to_string()));
+                ui.label(format!("{}:", t!("ui.label_brightness")));
                 let resp = ui.add(egui::Slider::new(&mut self.direct_brightness, 0..=255));
                 if resp.changed() {
                     self.schedule_direct_apply();
@@ -1154,10 +1149,8 @@ impl MarcontrollerUi {
             let online = self.probe_keyboard(false);
             self.last_online = online;
 
-            if online {
-                if let Err(e) = self.read_mode() {
-                    self.mark_error(e);
-                }
+            if online && let Err(e) = self.read_mode() {
+                self.mark_error(e);
             }
 
             self.did_initial_sync = true;

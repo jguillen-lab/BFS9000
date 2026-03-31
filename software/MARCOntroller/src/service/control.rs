@@ -87,7 +87,7 @@ pub enum ServiceExecutableMatch {
 pub fn service_query_name() -> String {
     #[cfg(windows)]
     {
-        return service_label_str().to_owned();
+        service_label_str().to_owned()
     }
 
     #[cfg(target_os = "linux")]
@@ -236,7 +236,7 @@ pub fn query_system_service_status() -> SystemServiceStatus {
             return SystemServiceStatus::Stopped;
         }
 
-        return SystemServiceStatus::Error;
+        SystemServiceStatus::Error
     }
 
     #[cfg(target_os = "linux")]
@@ -366,7 +366,7 @@ pub fn query_system_service_registered_exe_path() -> Option<String> {
             }
         }
 
-        return None;
+        None
     }
 
     #[cfg(target_os = "linux")]
@@ -475,9 +475,7 @@ pub fn run_service_command_from_ui(subcommand: &str, cfg_path: &Path) -> Result<
         let _ = cfg_path;
 
         match query_service_privilege_mode() {
-            ServicePrivilegeMode::Uac => {
-                return run_service_command_with_privileges(subcommand);
-            }
+            ServicePrivilegeMode::Uac => run_service_command_with_privileges(subcommand),
             ServicePrivilegeMode::Unsupported => {
                 anyhow::bail!("no supported elevation mechanism available on Windows");
             }
@@ -639,7 +637,7 @@ fn extract_execstart_path_from_unit_file(unit_contents: &str) -> Option<String> 
 pub fn query_service_backend() -> ServiceBackend {
     #[cfg(windows)]
     {
-        return ServiceBackend::WindowsService;
+        ServiceBackend::WindowsService
     }
 
     #[cfg(target_os = "linux")]
@@ -680,7 +678,7 @@ pub fn query_service_backend() -> ServiceBackend {
 pub fn query_service_privilege_mode() -> ServicePrivilegeMode {
     #[cfg(windows)]
     {
-        return ServicePrivilegeMode::Uac;
+        ServicePrivilegeMode::Uac
     }
 
     #[cfg(target_os = "linux")]

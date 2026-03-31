@@ -74,10 +74,10 @@ fn detect_lang(cli_override: Option<&str>) -> String {
         return normalise_locale(code);
     }
 
-    if let Ok(v) = std::env::var("MARCOCONTROLLER_LANG") {
-        if !v.trim().is_empty() {
-            return normalise_locale(&v);
-        }
+    if let Ok(v) = std::env::var("MARCOCONTROLLER_LANG")
+        && !v.trim().is_empty()
+    {
+        return normalise_locale(&v);
     }
 
     for key in ["LC_ALL", "LC_MESSAGES", "LANG", "LANGUAGE"] {
@@ -115,8 +115,6 @@ fn normalise_locale(code: &str) -> String {
         _ => {
             if lower.starts_with("spanish") {
                 "es".to_owned()
-            } else if lower.starts_with("english") {
-                "en".to_owned()
             } else {
                 "en".to_owned()
             }

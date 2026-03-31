@@ -366,10 +366,8 @@ async fn run_once(cfg: AppConfig, stop_flag: Arc<AtomicBool>) -> Result<()> {
     // this firmware actually supports.
     let mut effect_catalog: Option<EffectCatalog> = None;
 
-    if kb_online {
-        if let Ok(Some(ids)) = hid_get_supported_effects(&hid_tx).await {
-            effect_catalog = Some(build_effect_catalog(ids));
-        }
+    if kb_online && let Ok(Some(ids)) = hid_get_supported_effects(&hid_tx).await {
+        effect_catalog = Some(build_effect_catalog(ids));
     }
 
     // Publish discovery at startup (optional).
@@ -545,11 +543,9 @@ async fn handle_ha_status(
         let _ = publish_availability(client, topics, *kb_online).await;
 
         // Also republish current real state when online (helps after HA restart).
-        if *kb_online {
-            if let Ok(Some(st)) = hid_get_state(hid_tx).await {
-                update_saved_on_from_state(saved_on, &st);
-                let _ = publish_state(client, cfg, topics, &st).await;
-            }
+        if *kb_online && let Ok(Some(st)) = hid_get_state(hid_tx).await {
+            update_saved_on_from_state(saved_on, &st);
+            let _ = publish_state(client, cfg, topics, &st).await;
         }
     }
 }

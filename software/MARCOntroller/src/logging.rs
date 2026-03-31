@@ -58,18 +58,18 @@ fn init_service_file_logging(explicit_config_path: Option<&Path>) {
 fn resolve_service_log_dir(explicit_config_path: Option<&Path>) -> PathBuf {
     // Prefer a "logs" directory next to the config file so service logs and
     // configuration stay together and are easy to find.
-    if let Some(cfg_path) = explicit_config_path {
-        if let Some(parent) = cfg_path.parent() {
-            return parent.join("logs");
-        }
+    if let Some(cfg_path) = explicit_config_path
+        && let Some(parent) = cfg_path.parent()
+    {
+        return parent.join("logs");
     }
 
     // Fall back to the default config location when no explicit --config path
     // was passed to the service.
-    if let Ok(cfg_path) = crate::config::default_config_path() {
-        if let Some(parent) = cfg_path.parent() {
-            return parent.join("logs");
-        }
+    if let Ok(cfg_path) = crate::config::default_config_path()
+        && let Some(parent) = cfg_path.parent()
+    {
+        return parent.join("logs");
     }
 
     // Last resort: local "logs" directory relative to the current process.

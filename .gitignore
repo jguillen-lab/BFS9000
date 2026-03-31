@@ -79,6 +79,7 @@ hardware/**/*pos*.csv
 hardware/**/*pos*.txt
 
 # --- OS / editor junk ---
+.history/
 .DS_Store
 Thumbs.db
 desktop.ini

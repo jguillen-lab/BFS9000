@@ -1,0 +1,198 @@
+name: PCB render manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_ref:
+        description: "Commit/branch/tag base (antes). Ej: main~1 o un SHA"
+        required: true
+        default: "main~1"
+      head_ref:
+        description: "Commit/branch/tag nuevo (después). Ej: main o un SHA"
+        required: true
+        default: "main"
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    env:
+      PCB_PATH: hardware/BFS9000/BFS9000.kicad_pcb
+
+    steps:
+      - name: Checkout completo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Instalar KiCad
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y kicad
+          kicad-cli version
+
+      - name: Resolver refs
+        id: refs
+        run: |
+          set -euo pipefail
+
+          BASE_REF="${{ inputs.base_ref }}"
+          HEAD_REF="${{ inputs.head_ref }}"
+
+          git rev-parse --verify "$BASE_REF^{commit}" >/dev/null
+          git rev-parse --verify "$HEAD_REF^{commit}" >/dev/null
+
+          BASE_SHA="$(git rev-parse "$BASE_REF^{commit}")"
+          HEAD_SHA="$(git rev-parse "$HEAD_REF^{commit}")"
+
+          echo "base_sha=$BASE_SHA" >> "$GITHUB_OUTPUT"
+          echo "head_sha=$HEAD_SHA" >> "$GITHUB_OUTPUT"
+
+          mkdir -p out/meta
+          {
+            echo "PCB_PATH=$PCB_PATH"
+            echo "BASE_REF=$BASE_REF"
+            echo "BASE_SHA=$BASE_SHA"
+            echo "HEAD_REF=$HEAD_REF"
+            echo "HEAD_SHA=$HEAD_SHA"
+          } | tee out/meta/compare.txt
+
+      - name: Crear worktrees
+        run: |
+          set -euo pipefail
+
+          BASE_DIR="$RUNNER_TEMP/pcb_base"
+          HEAD_DIR="$RUNNER_TEMP/pcb_head"
+
+          rm -rf "$BASE_DIR" "$HEAD_DIR"
+          git worktree add --detach "$BASE_DIR" "${{ steps.refs.outputs.base_sha }}"
+          git worktree add --detach "$HEAD_DIR" "${{ steps.refs.outputs.head_sha }}"
+
+          test -f "$BASE_DIR/$PCB_PATH"
+          test -f "$HEAD_DIR/$PCB_PATH"
+
+      - name: Render 2D base
+        run: |
+          set -euo pipefail
+
+          PCB="$RUNNER_TEMP/pcb_base/$PCB_PATH"
+          OUT="out/base"
+          mkdir -p "$OUT"
+
+          kicad-cli pcb export svg \
+            --layers F.Cu,F.SilkS,Edge.Cuts \
+            --output "$OUT/front.svg" \
+            --fit-page-to-board \
+            --exclude-drawing-sheet \
+            --black-and-white \
+            "$PCB"
+
+          kicad-cli pcb export svg \
+            --layers B.Cu,B.SilkS,Edge.Cuts \
+            --output "$OUT/back.svg" \
+            --fit-page-to-board \
+            --exclude-drawing-sheet \
+            --black-and-white \
+            "$PCB"
+
+          kicad-cli pcb export pdf \
+            --layers F.Cu,B.Cu,F.SilkS,B.SilkS,Edge.Cuts \
+            --mode-multipage \
+            --output "$OUT/board-2d.pdf" \
+            --black-and-white \
+            "$PCB"
+
+      - name: Render 2D head
+        run: |
+          set -euo pipefail
+
+          PCB="$RUNNER_TEMP/pcb_head/$PCB_PATH"
+          OUT="out/head"
+          mkdir -p "$OUT"
+
+          kicad-cli pcb export svg \
+            --layers F.Cu,F.SilkS,Edge.Cuts \
+            --output "$OUT/front.svg" \
+            --fit-page-to-board \
+            --exclude-drawing-sheet \
+            --black-and-white \
+            "$PCB"
+
+          kicad-cli pcb export svg \
+            --layers B.Cu,B.SilkS,Edge.Cuts \
+            --output "$OUT/back.svg" \
+            --fit-page-to-board \
+            --exclude-drawing-sheet \
+            --black-and-white \
+            "$PCB"
+
+          kicad-cli pcb export pdf \
+            --layers F.Cu,B.Cu,F.SilkS,B.SilkS,Edge.Cuts \
+            --mode-multipage \
+            --output "$OUT/board-2d.pdf" \
+            --black-and-white \
+            "$PCB"
+
+      - name: Render 3D base
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+
+          PCB="$RUNNER_TEMP/pcb_base/$PCB_PATH"
+          OUT="out/base"
+          mkdir -p "$OUT"
+
+          kicad-cli pcb export glb \
+            --output "$OUT/board-3d.glb" \
+            --include-tracks \
+            --include-pads \
+            --include-zones \
+            --include-silkscreen \
+            --include-soldermask \
+            "$PCB"
+
+      - name: Render 3D head
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+
+          PCB="$RUNNER_TEMP/pcb_head/$PCB_PATH"
+          OUT="out/head"
+          mkdir -p "$OUT"
+
+          kicad-cli pcb export glb \
+            --output "$OUT/board-3d.glb" \
+            --include-tracks \
+            --include-pads \
+            --include-zones \
+            --include-silkscreen \
+            --include-soldermask \
+            "$PCB"
+
+      - name: Subir artefacto base
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcb-base-render
+          path: out/base
+
+      - name: Subir artefacto head
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcb-head-render
+          path: out/head
+
+      - name: Subir metadatos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcb-render-meta
+          path: out/meta

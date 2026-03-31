@@ -1,0 +1,42 @@
+name: CI MARCOntroller
+
+on:
+  push:
+    paths:
+      - 'software/MARCOntroller/**'
+      - '.github/workflows/ci-marcontroller.yml'
+  pull_request:
+    paths:
+      - 'software/MARCOntroller/**'
+      - '.github/workflows/ci-marcontroller.yml'
+
+jobs:
+  build:
+    name: build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+
+    defaults:
+      run:
+        working-directory: software/MARCOntroller
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install Linux dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libudev-dev libhidapi-dev
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build
+        run: cargo build --verbose

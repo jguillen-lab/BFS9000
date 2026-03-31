@@ -6,7 +6,7 @@
 //
 // ============================================================================
 
-use anyhow::{anyhow, Context, Result};
+use anyhow::{Context, Result, anyhow};
 use directories_next::ProjectDirs;
 use serde::{Deserialize, Serialize};
 use std::fs;

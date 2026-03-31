@@ -12,20 +12,22 @@ use hidapi::HidApi;
 use std::fs;
 use std::path::PathBuf;
 
-use std::sync::{
-    atomic::AtomicBool,
-    Arc,
-};
+use std::sync::{Arc, atomic::AtomicBool};
 
-use crate::{config, hid, mqtt_agent, ui, vialrgb};
+#[cfg(unix)]
+use std::sync::atomic::Ordering;
 
+use crate::agent::runtime;
+use crate::keyboard::{hid, vialrgb};
+use crate::service::{control, windows};
+use crate::{config, ui};
 // ── Argument structs ─────────────────────────────────────────────────────────
 
 #[derive(Parser, Debug)]
 #[command(
-    name    = "marcontroller",
+    name = "marcontroller",
     version,
-    about   = "Control VialRGB lighting over USB HID (VIA/Vial RAW HID)\nControl de iluminación VialRGB por USB HID (VIA/Vial RAW HID)"
+    about = "Control VialRGB lighting over USB HID (VIA/Vial RAW HID)\nControl de iluminación VialRGB por USB HID (VIA/Vial RAW HID)"
 )]
 pub struct Cli {
     /// Vendor ID (hex). Default: FEED
@@ -113,26 +115,36 @@ pub enum Command {
 
     /// Set SOLID_COLOR effect using HSV values (0–255).
     SolidHsv {
-        #[arg(long)] h: u8,
-        #[arg(long)] s: u8,
-        #[arg(long)] v: u8,
-        #[arg(long, default_value_t = 0)] speed: u8,
+        #[arg(long)]
+        h: u8,
+        #[arg(long)]
+        s: u8,
+        #[arg(long)]
+        v: u8,
+        #[arg(long, default_value_t = 0)]
+        speed: u8,
     },
 
     /// Set SOLID_COLOR from RGB values (0–255). Optionally override brightness (V).
     SolidRgb {
-        #[arg(long)] r: u8,
-        #[arg(long)] g: u8,
-        #[arg(long)] b: u8,
+        #[arg(long)]
+        r: u8,
+        #[arg(long)]
+        g: u8,
+        #[arg(long)]
+        b: u8,
         /// Override the computed HSV brightness (V)
-        #[arg(long)] v: Option<u8>,
-        #[arg(long, default_value_t = 0)] speed: u8,
+        #[arg(long)]
+        v: Option<u8>,
+        #[arg(long, default_value_t = 0)]
+        speed: u8,
     },
 
     /// Change brightness only, keeping the current mode, speed, hue and saturation.
     SetBrightness {
         /// New brightness 0–255
-        #[arg(long)] v: u8,
+        #[arg(long)]
+        v: u8,
     },
 
     /// Read the total number of addressable LEDs (requires DIRECT in firmware).
@@ -141,28 +153,52 @@ pub enum Command {
     /// Read physical/logical info for a specific LED by index.
     GetLedInfo {
         /// Zero-based LED index
-        #[arg(long)] index: u16,
+        #[arg(long)]
+        index: u16,
     },
 
     /// Switch to DIRECT mode and paint ALL LEDs with one HSV colour.
     DirectAllHsv {
-        #[arg(long)] h: u8,
-        #[arg(long)] s: u8,
-        #[arg(long)] v: u8,
-        #[arg(long, default_value_t = 0)] speed: u8,
+        #[arg(long)]
+        h: u8,
+        #[arg(long)]
+        s: u8,
+        #[arg(long)]
+        v: u8,
+        #[arg(long, default_value_t = 0)]
+        speed: u8,
     },
 
     /// Set a single LED to an HSV colour (DIRECT mode must already be active).
     DirectLedHsv {
         /// Zero-based LED index
-        #[arg(long)] index: u16,
-        #[arg(long)] h: u8,
-        #[arg(long)] s: u8,
-        #[arg(long)] v: u8,
+        #[arg(long)]
+        index: u16,
+        #[arg(long)]
+        h: u8,
+        #[arg(long)]
+        s: u8,
+        #[arg(long)]
+        v: u8,
     },
 
     /// Run the MQTT agent (Home Assistant discovery + light control).
     Agent,
+
+    /// Run the MQTT agent in service mode (same core runtime, different entry point).
+    Service,
+
+    /// Install the system service.
+    ServiceInstall,
+
+    /// Start the installed system service.
+    ServiceStart,
+
+    /// Stop the installed system service.
+    ServiceStop,
+
+    /// Uninstall the system service.
+    ServiceUninstall,
 
     /// Open the desktop UI (egui/eframe).
     Ui,
@@ -270,9 +306,92 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
 
             println!("{}", t!("ok.agent_start").to_string());
 
-            // This runs indefinitely until an error/disconnect occurs.
             let stop_flag = Arc::new(AtomicBool::new(false));
-            mqtt_agent::run(cfg, stop_flag).await?;
+            runtime::run_agent(cfg, stop_flag).await?;
+            return Ok(());
+        }
+
+        Command::Service => {
+            // Windows uses the Service Control Manager entry path. On other
+            // platforms, the service manager launches this same subcommand as a
+            // regular long-lived process, so we run the shared agent core
+            // directly.
+            #[cfg(windows)]
+            {
+                windows::run_service_dispatcher()?;
+                return Ok(());
+            }
+
+            #[cfg(not(windows))]
+            {
+                if !cfg_path.exists() {
+                    return Err(anyhow::anyhow!(
+                        "{}",
+                        t!("err.config_missing", path = cfg_path.display()).to_string()
+                    ));
+                }
+
+                let cfg = config::load(&cfg_path).map_err(|_| {
+                    anyhow::anyhow!(
+                        "{}",
+                        t!("err.config_load", path = cfg_path.display()).to_string()
+                    )
+                })?;
+
+                let stop_flag = Arc::new(AtomicBool::new(false));
+
+                #[cfg(unix)]
+                {
+                    let stop_flag_for_signal = stop_flag.clone();
+
+                    tokio::spawn(async move {
+                        use tokio::signal::unix::{SignalKind, signal};
+
+                        let mut sigterm = match signal(SignalKind::terminate()) {
+                            Ok(s) => s,
+                            Err(_) => return,
+                        };
+
+                        let mut sigint = match signal(SignalKind::interrupt()) {
+                            Ok(s) => s,
+                            Err(_) => return,
+                        };
+
+                        tokio::select! {
+                            _ = sigterm.recv() => {}
+                            _ = sigint.recv() => {}
+                        }
+
+                        stop_flag_for_signal.store(true, Ordering::Relaxed);
+                    });
+                }
+
+                runtime::run_agent(cfg, stop_flag).await?;
+                return Ok(());
+            }
+        }
+
+        Command::ServiceInstall => {
+            control::install_service_for_config(&cfg_path)?;
+            println!("{}", t!("ok.service_installed").to_string());
+            return Ok(());
+        }
+
+        Command::ServiceStart => {
+            control::start_service()?;
+            println!("{}", t!("ok.service_started").to_string());
+            return Ok(());
+        }
+
+        Command::ServiceStop => {
+            control::stop_service()?;
+            println!("{}", t!("ok.service_stopped").to_string());
+            return Ok(());
+        }
+
+        Command::ServiceUninstall => {
+            control::uninstall_service()?;
+            println!("{}", t!("ok.service_uninstalled").to_string());
             return Ok(());
         }
 
@@ -292,7 +411,7 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                     vid = format!("{vid_u16:04X}"),
                     pid = format!("{pid_u16:04X}")
                 )
-                    .to_string()
+                .to_string()
             );
 
             for c in candidates {
@@ -326,8 +445,9 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
             let api = HidApi::new()
                 .map_err(|e| anyhow::anyhow!("{}: {e}", t!("err.hidapi_init").to_string()))?;
 
-            let dev = hid::open_device(&api, vid_u16, pid_u16, serial.as_deref())
-                .map_err(|e| anyhow::anyhow!("{}", localise_hid_error(e.to_string(), vid_u16, pid_u16)))?;
+            let dev = hid::open_device(&api, vid_u16, pid_u16, serial.as_deref()).map_err(|e| {
+                anyhow::anyhow!("{}", localise_hid_error(e.to_string(), vid_u16, pid_u16))
+            })?;
 
             match other {
                 // Note: List/Config are handled above.
@@ -335,6 +455,11 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                 Command::Config { .. } => unreachable!(),
                 Command::Agent => unreachable!(),
                 Command::Ui => unreachable!(),
+                Command::Service => unreachable!(),
+                Command::ServiceInstall => unreachable!(),
+                Command::ServiceStart => unreachable!(),
+                Command::ServiceStop => unreachable!(),
+                Command::ServiceUninstall => unreachable!(),
 
                 Command::GetInfo => {
                     let info = vialrgb::get_info(&dev)?;
@@ -359,7 +484,10 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
 
                 Command::Supported => {
                     let ids = vialrgb::get_supported_effects(&dev)?;
-                    println!("{}", t!("label.supported_ids", count = ids.len()).to_string());
+                    println!(
+                        "{}",
+                        t!("label.supported_ids", count = ids.len()).to_string()
+                    );
                     for id in &ids {
                         println!("  {id}");
                     }
@@ -374,13 +502,17 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                     vialrgb::set_mode(&dev, id, speed, h, s, v)?;
                     println!(
                         "{}",
-                        t!("ok.set_effect", id = id, speed = speed, h = h, s = s, v = v).to_string()
+                        t!("ok.set_effect", id = id, speed = speed, h = h, s = s, v = v)
+                            .to_string()
                     );
                 }
 
                 Command::SolidHsv { h, s, v, speed } => {
                     vialrgb::set_mode(&dev, vialrgb::EFFECT_SOLID_COLOR, speed, h, s, v)?;
-                    println!("{}", t!("ok.solid_hsv", h = h, s = s, v = v, speed = speed).to_string());
+                    println!(
+                        "{}",
+                        t!("ok.solid_hsv", h = h, s = s, v = v, speed = speed).to_string()
+                    );
                 }
 
                 Command::SolidRgb { r, g, b, v, speed } => {
@@ -391,7 +523,17 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                     vialrgb::set_mode(&dev, vialrgb::EFFECT_SOLID_COLOR, speed, h8, s8, v8)?;
                     println!(
                         "{}",
-                        t!("ok.solid_color", r = r, g = g, b = b, h = h8, s = s8, v = v8, speed = speed).to_string()
+                        t!(
+                            "ok.solid_color",
+                            r = r,
+                            g = g,
+                            b = b,
+                            h = h8,
+                            s = s8,
+                            v = v8,
+                            speed = speed
+                        )
+                        .to_string()
                     );
                 }
 
@@ -400,7 +542,15 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                     vialrgb::set_mode(&dev, cur.mode, cur.speed, cur.h, cur.s, v)?;
                     println!(
                         "{}",
-                        t!("ok.brightness", v = v, mode = cur.mode, speed = cur.speed, h = cur.h, s = cur.s).to_string()
+                        t!(
+                            "ok.brightness",
+                            v = v,
+                            mode = cur.mode,
+                            speed = cur.speed,
+                            h = cur.h,
+                            s = cur.s
+                        )
+                        .to_string()
                     );
                 }
 
@@ -416,23 +566,30 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                         t!(
                             "label.led_info",
                             index = index,
-                            x     = li.x,
-                            y     = li.y,
+                            x = li.x,
+                            y = li.y,
                             flags = format!("{:02X}", li.flags),
-                            row   = li.matrix_row,
-                            col   = li.matrix_col
-                        ).to_string()
+                            row = li.matrix_row,
+                            col = li.matrix_col
+                        )
+                        .to_string()
                     );
                 }
 
                 Command::DirectAllHsv { h, s, v, speed } => {
                     let n = vialrgb::direct_set_all(&dev, speed, h, s, v)?;
-                    println!("{}", t!("ok.direct_all", n = n, h = h, s = s, v = v, speed = speed).to_string());
+                    println!(
+                        "{}",
+                        t!("ok.direct_all", n = n, h = h, s = s, v = v, speed = speed).to_string()
+                    );
                 }
 
                 Command::DirectLedHsv { index, h, s, v } => {
                     vialrgb::direct_fastset(&dev, index, &[(h, s, v)])?;
-                    println!("{}", t!("ok.direct_led", index = index, h = h, s = s, v = v).to_string());
+                    println!(
+                        "{}",
+                        t!("ok.direct_led", index = index, h = h, s = s, v = v).to_string()
+                    );
                 }
             }
 
@@ -460,7 +617,12 @@ fn normalise_hex_str(s: &str) -> String {
 
 fn localise_hid_error(raw: String, vid: u16, pid: u16) -> String {
     if raw.starts_with("no_device") {
-        t!("err.no_device", vid = format!("{vid:04X}"), pid = format!("{pid:04X}")).to_string()
+        t!(
+            "err.no_device",
+            vid = format!("{vid:04X}"),
+            pid = format!("{pid:04X}")
+        )
+        .to_string()
     } else if raw.starts_with("ambiguous_interface") {
         t!("err.ambiguous_interface").to_string()
     } else if raw.starts_with("unexpected_response") {

@@ -1,4 +1,4 @@
-﻿// ============================================================================
+// ============================================================================
 // MARCOntroller — VialRGB keyboard lighting controller over USB HID
 // ============================================================================
 //
@@ -31,37 +31,35 @@ extern crate rust_i18n;
 i18n!("locales", fallback = "en");
 
 use clap::Parser;
-use tracing_subscriber::EnvFilter;
 use sys_locale::get_locale;
 
+mod agent;
 mod cli;
 mod config;
-mod hid;
-mod vialrgb;
-mod mqtt_agent;
+mod keyboard;
+mod logging;
+mod service;
 mod ui;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    // ── Logging ─────────────────────────────────────────────────────────────
-    //
-    // Controlled via RUST_LOG, e.g.:
-    //   PowerShell:  $env:RUST_LOG="info"
-    //   CMD:         set RUST_LOG=info
-    let _ = tracing_subscriber::fmt()
-        .with_env_filter(EnvFilter::from_default_env())
-        .try_init();
-
     // ── 1. Parse CLI args ────────────────────────────────────────────────────
     let cli = cli::Cli::parse();
 
-    // ── 2. Detect and set locale ─────────────────────────────────────────────
+    // ── 2. Logging ──────────────────────────────────────────────────────────
+    //
+    // Console/UI mode keeps stdout logging. Service mode switches to a file
+    // logger so diagnostics remain available without an attached terminal.
+    let is_service_mode = matches!(cli.cmd, cli::Command::Service);
+    logging::init(is_service_mode, cli.config.as_deref());
+
+    // ── 3. Detect and set locale ─────────────────────────────────────────────
     let locale = detect_lang(cli.lang.as_deref());
     rust_i18n::set_locale(&locale);
 
-    // ── 3. Dispatch ──────────────────────────────────────────────────────────
-    // Still sync for now; later we will make cli::run async when we add the agent.
-    cli::run(cli, locale).await}
+    // ── 4. Dispatch ──────────────────────────────────────────────────────────
+    cli::run(cli, locale).await
+}
 
 /// Resolve the active locale code from (in priority order):
 ///   1. `--lang` CLI flag
@@ -109,10 +107,7 @@ fn detect_lang(cli_override: Option<&str>) -> String {
 fn normalise_locale(code: &str) -> String {
     let lower = code.trim().to_lowercase();
 
-    let primary = lower
-        .split(['-', '_', '.', '@'])
-        .next()
-        .unwrap_or("");
+    let primary = lower.split(['-', '_', '.', '@']).next().unwrap_or("");
 
     match primary {
         "es" => "es".to_owned(),

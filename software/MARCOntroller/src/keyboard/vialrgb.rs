@@ -6,10 +6,10 @@
 //
 // ============================================================================
 
-use anyhow::{anyhow, Result};
+use anyhow::{Result, anyhow};
 use hidapi::HidDevice;
 
-use crate::hid::send_and_read;
+use crate::keyboard::hid::send_and_read;
 
 // ── Top-level VIA command bytes ───────────────────────────────────────────────
 
@@ -19,15 +19,15 @@ pub const ID_LIGHTING_GET_VALUE: u8 = 0x08;
 // ── VialRGB GET sub-commands ──────────────────────────────────────────────────
 
 /// Request VialRGB protocol version + firmware maximum brightness.
-pub const VIALRGB_GET_INFO:         u8 = 0x40;
+pub const VIALRGB_GET_INFO: u8 = 0x40;
 /// Request the current lighting mode/speed/HSV state.
-pub const VIALRGB_GET_MODE:         u8 = 0x41;
+pub const VIALRGB_GET_MODE: u8 = 0x41;
 /// Request a page of supported effect IDs (paginated by cursor).
-pub const VIALRGB_GET_SUPPORTED:    u8 = 0x42;
+pub const VIALRGB_GET_SUPPORTED: u8 = 0x42;
 /// Request the total number of addressable LEDs.
-pub const VIALRGB_GET_NUMBER_LEDS:  u8 = 0x43;
+pub const VIALRGB_GET_NUMBER_LEDS: u8 = 0x43;
 /// Request physical/logical info for a single LED by index.
-pub const VIALRGB_GET_LED_INFO:     u8 = 0x44;
+pub const VIALRGB_GET_LED_INFO: u8 = 0x44;
 
 // ── VialRGB SET sub-commands ──────────────────────────────────────────────────
 //
@@ -35,16 +35,16 @@ pub const VIALRGB_GET_LED_INFO:     u8 = 0x44;
 // the VIA top-level byte (0x07 vs 0x08) is the disambiguator.
 
 /// Write mode, speed, and HSV to the keyboard.
-pub const VIALRGB_SET_MODE:         u8 = 0x41;
+pub const VIALRGB_SET_MODE: u8 = 0x41;
 /// Push raw HSV values to a contiguous range of LEDs (max 9 per call).
-pub const VIALRGB_DIRECT_FASTSET:   u8 = 0x42;
+pub const VIALRGB_DIRECT_FASTSET: u8 = 0x42;
 
 // ── Well-known effect IDs (vialrgb_effects.inc) ───────────────────────────────
 
 /// Effect 0 — all lighting off.
-pub const EFFECT_OFF:         u16 = 0;
+pub const EFFECT_OFF: u16 = 0;
 /// Effect 1 — DIRECT mode: each LED controlled individually by the host.
-pub const EFFECT_DIRECT:      u16 = 1;
+pub const EFFECT_DIRECT: u16 = 1;
 /// Effect 2 — SOLID_COLOR: all LEDs show a single uniform colour.
 pub const EFFECT_SOLID_COLOR: u16 = 2;
 
@@ -105,7 +105,7 @@ pub fn get_info(dev: &HidDevice) -> Result<Info> {
 
     Ok(Info {
         protocol_version: u16::from_le_bytes([r[2], r[3]]),
-        max_brightness:   r[4],
+        max_brightness: r[4],
     })
 }
 
@@ -119,11 +119,11 @@ pub fn get_mode(dev: &HidDevice) -> Result<Mode> {
     check_echo(&r, ID_LIGHTING_GET_VALUE, VIALRGB_GET_MODE)?;
 
     Ok(Mode {
-        mode:  u16::from_le_bytes([r[2], r[3]]),
+        mode: u16::from_le_bytes([r[2], r[3]]),
         speed: r[4],
-        h:     r[5],
-        s:     r[6],
-        v:     r[7],
+        h: r[5],
+        s: r[6],
+        v: r[7],
     })
 }
 
@@ -214,9 +214,9 @@ pub fn get_led_info(dev: &HidDevice, index: u16) -> Result<LedInfo> {
     check_echo(&r, ID_LIGHTING_GET_VALUE, VIALRGB_GET_LED_INFO)?;
 
     Ok(LedInfo {
-        x:          r[2],
-        y:          r[3],
-        flags:      r[4],
+        x: r[2],
+        y: r[3],
+        flags: r[4],
         matrix_row: r[5],
         matrix_col: r[6],
     })
@@ -258,7 +258,7 @@ pub fn direct_fastset(dev: &HidDevice, first_index: u16, hsvs: &[(u8, u8, u8)]) 
 
     let mut off = 5;
     for &(h, s, v) in hsvs {
-        p[off]     = h;
+        p[off] = h;
         p[off + 1] = s;
         p[off + 2] = v;
         off += 3;
@@ -272,13 +272,7 @@ pub fn direct_fastset(dev: &HidDevice, first_index: u16, hsvs: &[(u8, u8, u8)]) 
 ///
 /// Queries the LED count from the keyboard, then sends `ceil(n / 9)` fastset
 /// packets to cover every LED.
-pub fn direct_set_all(
-    dev: &HidDevice,
-    speed: u8,
-    h: u8,
-    s: u8,
-    v: u8,
-) -> Result<u16> {
+pub fn direct_set_all(dev: &HidDevice, speed: u8, h: u8, s: u8, v: u8) -> Result<u16> {
     // Switch to DIRECT mode first so the fastset packets take effect.
     set_mode(dev, EFFECT_DIRECT, speed, h, s, v)?;
 
@@ -306,8 +300,8 @@ pub fn rgb_to_hsv(r: u8, g: u8, b: u8) -> (u8, u8, u8) {
     let gf = g as f32 / 255.0;
     let bf = b as f32 / 255.0;
 
-    let max   = rf.max(gf).max(bf);
-    let min   = rf.min(gf).min(bf);
+    let max = rf.max(gf).max(bf);
+    let min = rf.min(gf).min(bf);
     let delta = max - min;
 
     // Value
@@ -344,10 +338,7 @@ pub fn rgb_to_hsv(r: u8, g: u8, b: u8) -> (u8, u8, u8) {
 /// differ, something went wrong (wrong interface, firmware bug, packet loss).
 fn check_echo(r: &[u8; 32], expected_cmd: u8, expected_sub: u8) -> Result<()> {
     if r[0] != expected_cmd || r[1] != expected_sub {
-        return Err(anyhow!(
-            "unexpected_response bytes={:02X?}",
-            &r[..8]
-        ));
+        return Err(anyhow!("unexpected_response bytes={:02X?}", &r[..8]));
     }
     Ok(())
 }

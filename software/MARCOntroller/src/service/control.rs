@@ -62,6 +62,13 @@ pub enum ServiceBackend {
     Unknown,
 }
 
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct SystemServiceSnapshot {
+    pub status: SystemServiceStatus,
+    pub registered_exe_path: Option<String>,
+    pub exe_match: ServiceExecutableMatch,
+}
+
 #[cfg_attr(windows, allow(dead_code))]
 #[cfg_attr(target_os = "linux", allow(dead_code))]
 #[cfg_attr(target_os = "macos", allow(dead_code))]
@@ -418,6 +425,23 @@ pub fn query_system_service_registered_exe_path() -> Option<String> {
     #[cfg(not(any(windows, target_os = "linux", target_os = "macos")))]
     {
         None
+    }
+}
+
+pub fn query_system_service_snapshot(current_exe: Option<&Path>) -> SystemServiceSnapshot {
+    let status = query_system_service_status();
+
+    let registered_exe_path = match status {
+        SystemServiceStatus::NotInstalled => None,
+        _ => query_system_service_registered_exe_path(),
+    };
+
+    let exe_match = compare_service_executable_paths(current_exe, registered_exe_path.as_deref());
+
+    SystemServiceSnapshot {
+        status,
+        registered_exe_path,
+        exe_match,
     }
 }
 

@@ -22,8 +22,9 @@ use crate::config;
 
 use crate::agent::runtime;
 use crate::keyboard::{hid, vialrgb};
+use crate::service::control as service_control;
 use crate::service::control::{
-    self, ServiceBackend, ServiceExecutableMatch, ServicePrivilegeMode, SystemServiceStatus,
+    ServiceBackend, ServiceExecutableMatch, ServicePrivilegeMode, SystemServiceStatus,
 };
 use std::sync::{
     Arc,
@@ -95,6 +96,14 @@ enum AgentStatus {
     Error(String),
 }
 
+#[derive(Debug, Clone)]
+struct KeyboardSnapshot {
+    online: bool,
+    info: Option<vialrgb::Info>,
+    mode: Option<vialrgb::Mode>,
+    supported_effect_ids: Vec<u16>,
+}
+
 struct MarcontrollerUi {
     // ── Sync state ─────────────────────────────────────────────────────────
     did_initial_sync: bool,
@@ -118,6 +127,13 @@ struct MarcontrollerUi {
     hid_api: Option<hidapi::HidApi>,
     kb_online: bool,
     last_probe: Instant,
+    last_service_snapshot_request: Instant,
+    service_snapshot_request_tx: mpsc::Sender<()>,
+    service_snapshot_result_rx: mpsc::Receiver<service_control::SystemServiceSnapshot>,
+    service_snapshot_in_flight: bool,
+    keyboard_snapshot_request_tx: mpsc::Sender<config::HidConfig>,
+    keyboard_snapshot_result_rx: mpsc::Receiver<KeyboardSnapshot>,
+    keyboard_snapshot_in_flight: bool,
 
     // ── Auto-apply scheduling ─────────────────────────────────────────────
     auto_apply: bool,
@@ -180,6 +196,43 @@ impl MarcontrollerUi {
 
         let (agent_tx, agent_rx) = mpsc::channel::<AgentEvent>();
 
+        let (service_snapshot_request_tx, service_snapshot_request_rx) = mpsc::channel::<()>();
+        let (service_snapshot_result_tx, service_snapshot_result_rx) =
+            mpsc::channel::<service_control::SystemServiceSnapshot>();
+
+        let current_exe = std::env::current_exe().ok();
+
+        std::thread::spawn(move || {
+            while service_snapshot_request_rx.recv().is_ok() {
+                let snapshot =
+                    service_control::query_system_service_snapshot(current_exe.as_deref());
+
+                if service_snapshot_result_tx.send(snapshot).is_err() {
+                    break;
+                }
+            }
+        });
+
+        let service_snapshot_in_flight = service_snapshot_request_tx.send(()).is_ok();
+
+        let (keyboard_snapshot_request_tx, keyboard_snapshot_request_rx) =
+            mpsc::channel::<config::HidConfig>();
+        let (keyboard_snapshot_result_tx, keyboard_snapshot_result_rx) =
+            mpsc::channel::<KeyboardSnapshot>();
+
+        std::thread::spawn(move || {
+            while let Ok(hid_cfg) = keyboard_snapshot_request_rx.recv() {
+                let snapshot = query_keyboard_snapshot_for_hid(&hid_cfg);
+
+                if keyboard_snapshot_result_tx.send(snapshot).is_err() {
+                    break;
+                }
+            }
+        });
+
+        let keyboard_snapshot_in_flight =
+            keyboard_snapshot_request_tx.send(cfg.hid.clone()).is_ok();
+
         Self {
             did_initial_sync: false,
             last_online: false,
@@ -197,6 +250,13 @@ impl MarcontrollerUi {
             hid_api: None,
             kb_online: false,
             last_probe: Instant::now() - Duration::from_secs(10),
+            last_service_snapshot_request: Instant::now(),
+            service_snapshot_request_tx,
+            service_snapshot_result_rx,
+            service_snapshot_in_flight,
+            keyboard_snapshot_request_tx,
+            keyboard_snapshot_result_rx,
+            keyboard_snapshot_in_flight,
 
             auto_apply: true,
             debounce: Duration::from_millis(180),
@@ -751,7 +811,7 @@ impl MarcontrollerUi {
                         egui::Button::new(t!("ui.btn_service_install").to_string()),
                     );
                     if install_btn.clicked() {
-                        match control::run_service_command_from_ui(
+                        match service_control::run_service_command_from_ui(
                             "service-install",
                             &self.cfg_path,
                         ) {
@@ -771,8 +831,10 @@ impl MarcontrollerUi {
                         egui::Button::new(t!("ui.btn_service_start").to_string()),
                     );
                     if start_btn.clicked() {
-                        match control::run_service_command_from_ui("service-start", &self.cfg_path)
-                        {
+                        match service_control::run_service_command_from_ui(
+                            "service-start",
+                            &self.cfg_path,
+                        ) {
                             Ok(()) => {
                                 self.refresh_system_service_status();
                                 self.clear_error();
@@ -791,7 +853,10 @@ impl MarcontrollerUi {
                         egui::Button::new(t!("ui.btn_service_stop").to_string()),
                     );
                     if stop_btn.clicked() {
-                        match control::run_service_command_from_ui("service-stop", &self.cfg_path) {
+                        match service_control::run_service_command_from_ui(
+                            "service-stop",
+                            &self.cfg_path,
+                        ) {
                             Ok(()) => {
                                 self.refresh_system_service_status();
                                 self.clear_error();
@@ -808,7 +873,7 @@ impl MarcontrollerUi {
                         egui::Button::new(t!("ui.btn_service_uninstall").to_string()),
                     );
                     if uninstall_btn.clicked() {
-                        match control::run_service_command_from_ui(
+                        match service_control::run_service_command_from_ui(
                             "service-uninstall",
                             &self.cfg_path,
                         ) {
@@ -1114,7 +1179,13 @@ impl MarcontrollerUi {
     fn tick_sync(&mut self) {
         // Refresh the system service state first so the UI can decide whether it
         // should own the local MQTT agent or defer to a background service instance.
-        self.refresh_system_service_status();
+        self.apply_pending_keyboard_snapshot();
+        self.apply_pending_system_service_snapshot();
+
+        if self.last_service_snapshot_request.elapsed() >= Duration::from_secs(2) {
+            self.request_system_service_status_refresh();
+            self.last_service_snapshot_request = Instant::now();
+        }
 
         // If the system service becomes active while the UI-owned agent is already
         // running, stop the UI agent to avoid duplicate MQTT clients and two
@@ -1144,41 +1215,14 @@ impl MarcontrollerUi {
         }
 
         // ── Initial sync ───────────────────────────────────────────────────
-        //
-        // Avoid showing fake/default values: do a best-effort probe + read once.
         if !self.did_initial_sync {
-            let online = self.probe_keyboard(false);
-            self.last_online = online;
-
-            if online && let Err(e) = self.read_mode() {
-                self.mark_error(e);
-            }
-
             self.did_initial_sync = true;
+            self.request_keyboard_snapshot_refresh();
         }
 
-        // ── Periodic probe (hot-plug + state refresh) ──────────────────────
-        //
-        // Detect online/offline transitions and also refresh the real keyboard
-        // mode periodically so the status bar reflects changes made from HA,
-        // Vial or any other external HID client.
         if self.last_probe.elapsed() >= Duration::from_secs(2) {
             self.last_probe = Instant::now();
-
-            let online_now = self.probe_keyboard(false);
-
-            if online_now {
-                if let Err(e) = self.read_mode() {
-                    self.mark_error(e);
-                }
-
-                // Populate LED count lazily when we come online.
-                if !self.last_online && self.led_count.is_none() {
-                    let _ = self.refresh_led_count();
-                }
-            }
-
-            self.last_online = online_now;
+            self.request_keyboard_snapshot_refresh();
         }
 
         // ── Auto-apply (debounced) ─────────────────────────────────────────
@@ -1308,19 +1352,7 @@ impl MarcontrollerUi {
     }
 
     fn refresh_system_service_status(&mut self) {
-        self.system_service_status = control::query_system_service_status();
-
-        self.system_service_registered_exe_path = match self.system_service_status {
-            SystemServiceStatus::NotInstalled => None,
-            _ => control::query_system_service_registered_exe_path(),
-        };
-
-        let current_exe = std::env::current_exe().ok();
-
-        self.system_service_exe_match = control::compare_service_executable_paths(
-            current_exe.as_deref(),
-            self.system_service_registered_exe_path.as_deref(),
-        );
+        self.request_system_service_status_refresh();
     }
 
     fn should_start_ui_agent(&self) -> bool {
@@ -1328,6 +1360,73 @@ impl MarcontrollerUi {
             self.system_service_status,
             SystemServiceStatus::Running | SystemServiceStatus::StartPending
         )
+    }
+
+    fn apply_pending_system_service_snapshot(&mut self) {
+        while let Ok(snapshot) = self.service_snapshot_result_rx.try_recv() {
+            self.system_service_status = snapshot.status;
+            self.system_service_registered_exe_path = snapshot.registered_exe_path;
+            self.system_service_exe_match = snapshot.exe_match;
+            self.service_snapshot_in_flight = false;
+        }
+    }
+
+    fn request_system_service_status_refresh(&mut self) {
+        if self.service_snapshot_in_flight {
+            return;
+        }
+
+        if self.service_snapshot_request_tx.send(()).is_ok() {
+            self.service_snapshot_in_flight = true;
+        }
+    }
+
+    fn apply_pending_keyboard_snapshot(&mut self) {
+        while let Ok(snapshot) = self.keyboard_snapshot_result_rx.try_recv() {
+            self.kb_online = snapshot.online;
+            self.last_online = snapshot.online;
+            self.last_info = snapshot.info;
+
+            if let Some(m) = snapshot.mode {
+                self.last_mode = Some(m);
+
+                if !self.effect_dirty {
+                    self.effect_id = m.mode;
+                    self.effect_speed = m.speed;
+                }
+
+                if m.mode == vialrgb::EFFECT_OFF || m.v == 0 {
+                    self.solid_brightness = 0;
+                } else {
+                    self.solid_brightness = m.v;
+                    self.solid_rgb = hsv_to_rgb(m.h, m.s, m.v);
+                }
+            }
+
+            if !snapshot.supported_effect_ids.is_empty() {
+                self.supported_effect_ids = snapshot.supported_effect_ids;
+
+                if !self.supported_effect_ids.contains(&self.effect_id) {
+                    self.effect_id = self.supported_effect_ids[0];
+                }
+            }
+
+            self.keyboard_snapshot_in_flight = false;
+        }
+    }
+
+    fn request_keyboard_snapshot_refresh(&mut self) {
+        if self.keyboard_snapshot_in_flight {
+            return;
+        }
+
+        if self
+            .keyboard_snapshot_request_tx
+            .send(self.cfg.hid.clone())
+            .is_ok()
+        {
+            self.keyboard_snapshot_in_flight = true;
+        }
     }
 }
 
@@ -1364,7 +1463,7 @@ fn parse_hex_u16(s: &str) -> Result<u16> {
 }
 
 fn service_backend_text() -> String {
-    match control::query_service_backend() {
+    match service_control::query_service_backend() {
         ServiceBackend::WindowsService => t!("ui.service_backend_windows").to_string(),
         ServiceBackend::Systemd => t!("ui.service_backend_systemd").to_string(),
         ServiceBackend::OpenRc => t!("ui.service_backend_openrc").to_string(),
@@ -1374,7 +1473,7 @@ fn service_backend_text() -> String {
 }
 
 fn service_privileges_text() -> String {
-    match control::query_service_privilege_mode() {
+    match service_control::query_service_privilege_mode() {
         ServicePrivilegeMode::Uac => t!("ui.service_privileges_windows").to_string(),
         ServicePrivilegeMode::Pkexec => t!("ui.service_privileges_linux").to_string(),
         ServicePrivilegeMode::AppleScriptAdmin => t!("ui.service_privileges_macos").to_string(),
@@ -1463,4 +1562,42 @@ fn ui_effect_name_for_id(id: u16) -> String {
         46 => "Riverflow".to_owned(),
         other => format!("Effect {other}"),
     }
+}
+
+fn query_keyboard_snapshot_for_hid(hid_cfg: &config::HidConfig) -> KeyboardSnapshot {
+    let res: Result<KeyboardSnapshot> = (|| {
+        let vid = parse_hex_u16(&hid_cfg.vid).context("parse vid")?;
+        let pid = parse_hex_u16(&hid_cfg.pid).context("parse pid")?;
+
+        let mut api = hidapi::HidApi::new().context("hidapi init")?;
+        let _ = api.refresh_devices();
+
+        let dev =
+            hid::open_device(&api, vid, pid, hid_cfg.serial.as_deref()).context("open_device")?;
+        let info = vialrgb::get_info(&dev).context("get_info")?;
+        let mode = vialrgb::get_mode(&dev).context("get_mode")?;
+        let supported_effect_ids = vialrgb::get_supported_effects(&dev)
+            .context("get_supported_effects")?
+            .into_iter()
+            .filter(|id| *id != vialrgb::EFFECT_OFF && *id != vialrgb::EFFECT_DIRECT)
+            .collect::<Vec<_>>();
+
+        Ok(KeyboardSnapshot {
+            online: true,
+            info: Some(info),
+            mode: Some(mode),
+            supported_effect_ids,
+        })
+    })();
+
+    res.unwrap_or_else(|e| {
+        let _msg = format!("{e:#}");
+
+        KeyboardSnapshot {
+            online: false,
+            info: None,
+            mode: None,
+            supported_effect_ids: Vec::new(),
+        }
+    })
 }

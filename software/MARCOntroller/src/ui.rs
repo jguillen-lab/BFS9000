@@ -35,6 +35,7 @@ pub fn run(cfg_path: PathBuf, initial_locale: String) -> Result<()> {
     let native_options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_title("MARCOntroller")
+            .with_inner_size([800.0, 650.0])
             .with_icon(load_window_icon()?),
         ..Default::default()
     };
@@ -1333,25 +1334,24 @@ impl MarcontrollerUi {
 // ── eframe integration ───────────────────────────────────────────────────────
 
 impl eframe::App for MarcontrollerUi {
-    fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
+    fn ui(&mut self, ui: &mut egui::Ui, _frame: &mut eframe::Frame) {
         self.tick_sync();
 
-        egui::TopBottomPanel::top("top").show(ctx, |ui| {
+        egui::Panel::top("top").show_inside(ui, |ui| {
             self.ui_top_bar(ui);
         });
 
-        egui::TopBottomPanel::bottom("bottom").show(ctx, |ui| {
+        egui::Panel::bottom("bottom").show_inside(ui, |ui| {
             self.ui_status_bar(ui);
         });
 
-        egui::CentralPanel::default().show(ctx, |ui| match self.tab {
+        egui::CentralPanel::default().show_inside(ui, |ui| match self.tab {
             Tab::Control => self.ui_control_tab(ui),
             Tab::Direct => self.ui_direct_tab(ui),
             Tab::Config => self.ui_config_tab(ui),
         });
 
-        // Keep the UI responsive during idle (probe + debounce).
-        ctx.request_repaint_after(Duration::from_millis(200));
+        ui.ctx().request_repaint_after(Duration::from_millis(200));
     }
 }
 

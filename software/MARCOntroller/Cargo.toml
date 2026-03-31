@@ -1,12 +1,12 @@
 ﻿[package]
 edition = "2024"
 name = "MARCOntroller"
-version = "0.2.4"
+version = "0.2.9"
 
 [dependencies]
 anyhow   = "1"
 clap     = { version = "4", features = ["derive"] }
-eframe = "0.33"
+eframe = { version = "0.34.1", default-features = false, features = ["accesskit", "default_fonts", "glow", "x11", "wayland"] }
 hidapi   = "2"
 image = { version = "0.25", default-features = false, features = ["png"] }
 rust-i18n = "3"

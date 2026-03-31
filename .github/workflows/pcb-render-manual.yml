@@ -32,11 +32,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Instalar KiCad
+      - name: Instalar KiCad 9 oficial
         run: |
           set -euo pipefail
+          sudo add-apt-repository --yes ppa:kicad/kicad-9.0-releases
           sudo apt-get update
-          sudo apt-get install -y kicad
+          sudo apt-get install -y --install-recommends kicad
           kicad-cli version
 
       - name: Resolver refs

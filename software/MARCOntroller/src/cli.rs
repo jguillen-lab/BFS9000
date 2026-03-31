@@ -232,17 +232,14 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
         Command::Config { cmd } => {
             match cmd {
                 ConfigCommand::Path => {
-                    println!(
-                        "{}",
-                        t!("label.config_path", path = cfg_path.display()).to_string()
-                    );
+                    println!("{}", t!("label.config_path", path = cfg_path.display()));
                 }
 
                 ConfigCommand::Init { force } => {
                     if cfg_path.exists() && !force {
                         return Err(anyhow::anyhow!(
                             "{}",
-                            t!("err.config_exists", path = cfg_path.display()).to_string()
+                            t!("err.config_exists", path = cfg_path.display())
                         ));
                     }
 
@@ -255,36 +252,27 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
 
                     config::save(&cfg_path, &cfg)?;
 
-                    println!(
-                        "{}",
-                        t!("ok.config_created", path = cfg_path.display()).to_string()
-                    );
+                    println!("{}", t!("ok.config_created", path = cfg_path.display()));
                 }
 
                 ConfigCommand::Show => {
                     if !cfg_path.exists() {
                         return Err(anyhow::anyhow!(
                             "{}",
-                            t!("err.config_missing", path = cfg_path.display()).to_string()
+                            t!("err.config_missing", path = cfg_path.display())
                         ));
                     }
 
                     let s = fs::read_to_string(&cfg_path).map_err(|_| {
-                        anyhow::anyhow!(
-                            "{}",
-                            t!("err.config_load", path = cfg_path.display()).to_string()
-                        )
+                        anyhow::anyhow!("{}", t!("err.config_load", path = cfg_path.display()))
                     })?;
 
-                    println!(
-                        "{}",
-                        t!("label.config_path", path = cfg_path.display()).to_string()
-                    );
+                    println!("{}", t!("label.config_path", path = cfg_path.display()));
                     println!("{s}");
                 }
             }
 
-            return Ok(());
+            Ok(())
         }
 
         Command::Agent => {
@@ -292,23 +280,20 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
             if !cfg_path.exists() {
                 return Err(anyhow::anyhow!(
                     "{}",
-                    t!("err.config_missing", path = cfg_path.display()).to_string()
+                    t!("err.config_missing", path = cfg_path.display())
                 ));
             }
 
             // Load persistent config (TOML).
             let cfg = config::load(&cfg_path).map_err(|_| {
-                anyhow::anyhow!(
-                    "{}",
-                    t!("err.config_load", path = cfg_path.display()).to_string()
-                )
+                anyhow::anyhow!("{}", t!("err.config_load", path = cfg_path.display()))
             })?;
 
-            println!("{}", t!("ok.agent_start").to_string());
+            println!("{}", t!("ok.agent_start"));
 
             let stop_flag = Arc::new(AtomicBool::new(false));
             runtime::run_agent(cfg, stop_flag).await?;
-            return Ok(());
+            Ok(())
         }
 
         Command::Service => {
@@ -319,7 +304,7 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
             #[cfg(windows)]
             {
                 windows::run_service_dispatcher()?;
-                return Ok(());
+                Ok(())
             }
 
             #[cfg(not(windows))]
@@ -373,26 +358,26 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
 
         Command::ServiceInstall => {
             control::install_service_for_config(&cfg_path)?;
-            println!("{}", t!("ok.service_installed").to_string());
-            return Ok(());
+            println!("{}", t!("ok.service_installed"));
+            Ok(())
         }
 
         Command::ServiceStart => {
             control::start_service()?;
-            println!("{}", t!("ok.service_started").to_string());
-            return Ok(());
+            println!("{}", t!("ok.service_started"));
+            Ok(())
         }
 
         Command::ServiceStop => {
             control::stop_service()?;
-            println!("{}", t!("ok.service_stopped").to_string());
-            return Ok(());
+            println!("{}", t!("ok.service_stopped"));
+            Ok(())
         }
 
         Command::ServiceUninstall => {
             control::uninstall_service()?;
-            println!("{}", t!("ok.service_uninstalled").to_string());
-            return Ok(());
+            println!("{}", t!("ok.service_uninstalled"));
+            Ok(())
         }
 
         // ── List does not need the device open ───────────────────────────────
@@ -400,8 +385,8 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
             let vid_u16 = parse_hex_u16(&vid)?;
             let pid_u16 = parse_hex_u16(&pid)?;
 
-            let api = HidApi::new()
-                .map_err(|e| anyhow::anyhow!("{}: {e}", t!("err.hidapi_init").to_string()))?;
+            let api =
+                HidApi::new().map_err(|e| anyhow::anyhow!("{}: {e}", t!("err.hidapi_init")))?;
 
             let candidates = hid::list_candidates(&api, vid_u16, pid_u16);
             println!(
@@ -411,7 +396,6 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                     vid = format!("{vid_u16:04X}"),
                     pid = format!("{pid_u16:04X}")
                 )
-                .to_string()
             );
 
             for c in candidates {
@@ -421,7 +405,7 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                 );
             }
 
-            return Ok(());
+            Ok(())
         }
 
         Command::Ui => {
@@ -429,12 +413,12 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
             if !cfg_path.exists() {
                 return Err(anyhow::anyhow!(
                     "{}",
-                    t!("err.config_missing", path = cfg_path.display()).to_string()
+                    t!("err.config_missing", path = cfg_path.display())
                 ));
             }
 
             ui::run(cfg_path, locale)?;
-            return Ok(());
+            Ok(())
         }
 
         // ── Everything else needs HID device ─────────────────────────────────
@@ -442,8 +426,8 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
             let vid_u16 = parse_hex_u16(&vid)?;
             let pid_u16 = parse_hex_u16(&pid)?;
 
-            let api = HidApi::new()
-                .map_err(|e| anyhow::anyhow!("{}: {e}", t!("err.hidapi_init").to_string()))?;
+            let api =
+                HidApi::new().map_err(|e| anyhow::anyhow!("{}: {e}", t!("err.hidapi_init")))?;
 
             let dev = hid::open_device(&api, vid_u16, pid_u16, serial.as_deref()).map_err(|e| {
                 anyhow::anyhow!("{}", localise_hid_error(e.to_string(), vid_u16, pid_u16))
@@ -465,29 +449,26 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                     let info = vialrgb::get_info(&dev)?;
                     println!(
                         "{}",
-                        t!("label.protocol_version", version = info.protocol_version).to_string()
+                        t!("label.protocol_version", version = info.protocol_version)
                     );
                     println!(
                         "{}",
-                        t!("label.max_brightness", value = info.max_brightness).to_string()
+                        t!("label.max_brightness", value = info.max_brightness)
                     );
                 }
 
                 Command::GetMode => {
                     let m = vialrgb::get_mode(&dev)?;
-                    println!("{}", t!("label.mode", value = m.mode).to_string());
-                    println!("{}", t!("label.speed", value = m.speed).to_string());
-                    println!("{}", t!("label.h", value = m.h).to_string());
-                    println!("{}", t!("label.s", value = m.s).to_string());
-                    println!("{}", t!("label.v", value = m.v).to_string());
+                    println!("{}", t!("label.mode", value = m.mode));
+                    println!("{}", t!("label.speed", value = m.speed));
+                    println!("{}", t!("label.h", value = m.h));
+                    println!("{}", t!("label.s", value = m.s));
+                    println!("{}", t!("label.v", value = m.v));
                 }
 
                 Command::Supported => {
                     let ids = vialrgb::get_supported_effects(&dev)?;
-                    println!(
-                        "{}",
-                        t!("label.supported_ids", count = ids.len()).to_string()
-                    );
+                    println!("{}", t!("label.supported_ids", count = ids.len()));
                     for id in &ids {
                         println!("  {id}");
                     }
@@ -495,7 +476,7 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
 
                 Command::Off => {
                     vialrgb::set_mode(&dev, vialrgb::EFFECT_OFF, 0, 0, 0, 0)?;
-                    println!("{}", t!("ok.off").to_string());
+                    println!("{}", t!("ok.off"));
                 }
 
                 Command::SetEffect { id, speed, h, s, v } => {
@@ -503,16 +484,12 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                     println!(
                         "{}",
                         t!("ok.set_effect", id = id, speed = speed, h = h, s = s, v = v)
-                            .to_string()
                     );
                 }
 
                 Command::SolidHsv { h, s, v, speed } => {
                     vialrgb::set_mode(&dev, vialrgb::EFFECT_SOLID_COLOR, speed, h, s, v)?;
-                    println!(
-                        "{}",
-                        t!("ok.solid_hsv", h = h, s = s, v = v, speed = speed).to_string()
-                    );
+                    println!("{}", t!("ok.solid_hsv", h = h, s = s, v = v, speed = speed));
                 }
 
                 Command::SolidRgb { r, g, b, v, speed } => {
@@ -533,7 +510,6 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                             v = v8,
                             speed = speed
                         )
-                        .to_string()
                     );
                 }
 
@@ -550,13 +526,12 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                             h = cur.h,
                             s = cur.s
                         )
-                        .to_string()
                     );
                 }
 
                 Command::GetLedCount => {
                     let n = vialrgb::get_led_count(&dev)?;
-                    println!("{}", t!("label.led_count", value = n).to_string());
+                    println!("{}", t!("label.led_count", value = n));
                 }
 
                 Command::GetLedInfo { index } => {
@@ -572,7 +547,6 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                             row = li.matrix_row,
                             col = li.matrix_col
                         )
-                        .to_string()
                     );
                 }
 
@@ -580,7 +554,7 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                     let n = vialrgb::direct_set_all(&dev, speed, h, s, v)?;
                     println!(
                         "{}",
-                        t!("ok.direct_all", n = n, h = h, s = s, v = v, speed = speed).to_string()
+                        t!("ok.direct_all", n = n, h = h, s = s, v = v, speed = speed)
                     );
                 }
 
@@ -588,7 +562,7 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
                     vialrgb::direct_fastset(&dev, index, &[(h, s, v)])?;
                     println!(
                         "{}",
-                        t!("ok.direct_led", index = index, h = h, s = s, v = v).to_string()
+                        t!("ok.direct_led", index = index, h = h, s = s, v = v)
                     );
                 }
             }
@@ -603,7 +577,7 @@ pub async fn run(cli: Cli, locale: String) -> Result<()> {
 fn parse_hex_u16(s: &str) -> Result<u16> {
     let clean = s.trim().trim_start_matches("0x").trim_start_matches("0X");
     u16::from_str_radix(clean, 16)
-        .map_err(|_| anyhow::anyhow!("{}", t!("err.hex_invalid", value = s).to_string()))
+        .map_err(|_| anyhow::anyhow!("{}", t!("err.hex_invalid", value = s)))
 }
 
 /// Normalise a hex string (with or without "0x") to uppercase without prefix.
@@ -628,7 +602,7 @@ fn localise_hid_error(raw: String, vid: u16, pid: u16) -> String {
     } else if raw.starts_with("unexpected_response") {
         t!("err.unexpected_response", bytes = raw).to_string()
     } else if raw.starts_with("fastset_too_many") {
-        let got = raw.split('=').last().unwrap_or("?");
+        let got = raw.split('=').next_back().unwrap_or("?");
         t!("err.fastset_too_many", got = got).to_string()
     } else {
         raw

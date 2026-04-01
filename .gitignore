@@ -79,6 +79,8 @@ hardware/**/*pos*.csv
 hardware/**/*pos*.txt
 
 # --- OS / editor junk ---
+_autosave-*.kicad_pcb
+_autosave-*.kicad_sch
 .history/
 .DS_Store
 Thumbs.db

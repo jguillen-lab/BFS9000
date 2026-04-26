@@ -248,7 +248,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "BFS9000 bottom plate.kicad_pro",
+    "filename": "BFS9000 switch plate.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -267,13 +267,14 @@
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.2,
+        "tuning_profile": "",
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
       }
     ],
     "meta": {
-      "version": 4
+      "version": 5
     },
     "net_colors": null,
     "netclass_assignments": null,
@@ -281,14 +282,10 @@
   },
   "pcbnew": {
     "last_paths": {
-      "gencad": "",
       "idf": "",
       "netlist": "",
       "plot": "",
-      "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
-      "svg": "",
       "vrml": ""
     },
     "page_layout_descr_file": ""

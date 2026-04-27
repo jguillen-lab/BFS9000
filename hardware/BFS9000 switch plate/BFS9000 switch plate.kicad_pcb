@@ -100,7 +100,7 @@
 		(filling no)
 		(grid_origin 139.93 122.442)
 		(pcbplotparams
-			(layerselection 0x00000000_00000000_55555555_575555ff)
+			(layerselection 0x00000000_00000000_55555555_5755f5ff)
 			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
 			(disableapertmacros no)
 			(usegerberextensions yes)
@@ -133,7 +133,7 @@
 			(mirror no)
 			(drillshape 0)
 			(scaleselection 1)
-			(outputdirectory "F:/Proyectos/Teclados/BFS9000/hardware/BFS9000/Exports/")
+			(outputdirectory "Exports/")
 		)
 	)
 	(footprint "BFS9000:LongOvalCut"

@@ -12,7 +12,7 @@
 		(date "2026-04-26")
 		(rev "0.1")
 		(company "jguillen-lab")
-		(comment 1 "Split ergonomic keyboard based on Sofle by Josef AdamÄÃ­k")
+		(comment 1 "Split ergonomic keyboard based on Sofle by Josef Adamčík")
 		(comment 2 "Special thanks to the creator of Sofle Pico")
 		(comment 3 "https://github.com/jguillen-lab/BFS9000")
 	)

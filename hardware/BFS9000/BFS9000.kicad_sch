@@ -1,0 +1,81 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "df2b308e-7efe-4cc0-aa51-822cf3ef83df")
+	(paper "A4")
+	(title_block
+		(title "BSF9000")
+		(date "2026-05-01")
+		(rev "0.3")
+		(company "jguillen-lab")
+		(comment 1 "Split ergonomic keyboard based on Sofle by Josef Adamčík")
+		(comment 2 "Special thanks to the creator of Sofle Pico")
+		(comment 3 "https://github.com/jguillen-lab/BFS9000")
+	)
+	(lib_symbols)
+	(text "Break Away Tabs"
+		(exclude_from_sim no)
+		(at 25.4 35.56 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+				(thickness 0.2223)
+			)
+			(justify left bottom)
+		)
+		(uuid "760c1241-d5d8-49cf-848e-3469bbe6d028")
+	)
+	(sheet
+		(at 16.51 17.78)
+		(size 52.324 35.052)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "6bdc546c-7eeb-4b61-aaf3-aa191f148630")
+		(property "Sheetname" "Breakaway tabs Sheet"
+			(at 16.51 17.0684 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Breakaway tabs.kicad_sch"
+			(at 16.51 53.4166 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "BFS9000"
+				(path "/df2b308e-7efe-4cc0-aa51-822cf3ef83df"
+					(page "1")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

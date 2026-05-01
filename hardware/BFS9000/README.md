@@ -14,7 +14,7 @@ Hardware directory for the **BFS9000** keyboard.
 
 ## Status
 
-- Current version: `0.1`
+- Current version: `0.3`
 - Development stage: prototype / WIP
 - Functional status: **not working yet**
 

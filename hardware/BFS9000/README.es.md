@@ -14,7 +14,7 @@ Directorio de hardware del teclado **BFS9000**.
 
 ## Estado
 
-- Versión actual: `0.1`
+- Versión actual: `0.3`
 - Fase de desarrollo: prototipo / WIP
 - Estado funcional: **todavía no funciona**
 

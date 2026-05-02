@@ -863,7 +863,7 @@
         "uuid": "df2b308e-7efe-4cc0-aa51-822cf3ef83df"
       }
     ],
-    "used_designators": "D31,TH20,Cut_2-17",
+    "used_designators": "",
     "variants": []
   },
   "sheets": [
@@ -873,15 +873,15 @@
     ],
     [
       "6bdc546c-7eeb-4b61-aaf3-aa191f148630",
-      "Break Away Tabs Sheet"
+      "Breakaway tabs Sheet"
     ],
     [
       "e9a3a212-2ce7-4c00-9f7e-dfcdb0393570",
-      "Keyboard Switches Sheet"
+      "Keyboard switches Sheet"
     ],
     [
       "7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d",
-      "RGB LEDs Sheet"
+      "Addressable RGB LEDs Sheet"
     ]
   ],
   "text_variables": {},

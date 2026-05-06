@@ -805,6 +805,12 @@
           "label": "MFR.Part #",
           "name": "MFR.Part #",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "TH_Val",
+          "name": "TH_Val",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -874,6 +880,14 @@
     [
       "6bdc546c-7eeb-4b61-aaf3-aa191f148630",
       "Breakaway tabs Sheet"
+    ],
+    [
+      "e9a3a212-2ce7-4c00-9f7e-dfcdb0393570",
+      "Keyboard switches Sheet"
+    ],
+    [
+      "7fdd1f57-f7f8-46ff-a6fe-0d12bbf6335d",
+      "Addressable RGB LEDs Sheet"
     ]
   ],
   "text_variables": {},

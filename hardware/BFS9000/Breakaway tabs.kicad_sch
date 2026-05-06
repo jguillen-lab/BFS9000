@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "BSF9000")
-		(date "2026-05-03")
+		(date "2026-05-01")
 		(rev "0.3")
 		(company "jguillen-lab")
 		(comment 1 "Split ergonomic keyboard based on Sofle by Josef Adamčík")
@@ -572,7 +572,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer narrow-keyplate-hole"
 			(at 189.23 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -678,7 +678,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer narrow-keyplate-hole"
 			(at 199.39 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -996,7 +996,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer narrow-keyplate-hole"
 			(at 226.06 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -3345,7 +3345,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer narrow-keyplate-hole"
 			(at 217.17 30.48 0)
 			(hide yes)
 			(show_name no)

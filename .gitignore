@@ -86,3 +86,5 @@ _autosave-*.kicad_sch
 Thumbs.db
 desktop.ini
 
+
+.scripts/

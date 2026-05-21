@@ -1,24 +1,35 @@
-ï»¿# BFS9000 â€” Hardware
+# BFS9000 — Hardware
 
-> ðŸ‡¬ðŸ‡§ **Prefer to read this in English?** â†’ [README.md](README.md)
+> ???? **Prefer to read this in English?** ? [README.md](README.md)
 
 Directorio de hardware del teclado **BFS9000**.
 
 > **Trabajo en curso**
 >
-> Este hardware estÃ¡ actualmente en desarrollo activo y **todavÃ­a no es funcional**.
-> La versiÃ³n `0.1` debe considerarse un prototipo temprano, pensado solo para validaciÃ³n e iteraciÃ³n.
+> Este hardware está actualmente en desarrollo activo y **todavía no es funcional**.
+> La versión `0.1` debe considerarse un prototipo temprano, pensado solo para validación e iteración.
 >
-> **No** debes considerar el diseÃ±o actual, la PCB, los esquemÃ¡ticos, las huellas, la BOM ni la documentaciÃ³n como algo final o listo para producciÃ³n.
-> Cabe esperar cambios incompatibles, funciones ausentes, errores de diseÃ±o y documentaciÃ³n incompleta.
+> **No** debes considerar el diseño actual, la PCB, los esquemáticos, las huellas, la BOM ni la documentación como algo final o listo para producción.
+> Cabe esperar cambios incompatibles, funciones ausentes, errores de diseño y documentación incompleta.
 
 ## Estado
 
-- VersiÃ³n actual: `0.3`
+- Versión actual: `0.1`
 - Fase de desarrollo: prototipo / WIP
-- Estado funcional: **todavÃ­a no funciona**
+- Estado funcional: **todavía no funciona**
 
 ## Notas
 
-Este directorio estÃ¡ pensado para seguir el desarrollo en curso del hardware BFS9000.
+Este directorio está pensado para seguir el desarrollo en curso del hardware BFS9000.
 En esta fase, el proyecto sigue evolucionando y es de esperar que haya cambios importantes antes de que llegue a ser utilizable.
+
+## Licencia y atribución
+
+Este directorio de hardware se publica bajo licencia MIT salvo que se indique lo contrario.
+
+BFS9000 contiene trabajo original, además de ficheros, ideas, referencias o trabajo derivado de otros proyectos de teclados open-source y librerías de componentes.
+
+Consulta:
+
+- [LICENSE.es.md](LICENSE.es.md)
+- [NOTICE.es.md](NOTICE.es.md)

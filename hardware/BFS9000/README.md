@@ -1,6 +1,6 @@
-﻿# BFS9000 — Hardware
+# BFS9000 � Hardware
 
-> 🇪🇸 **¿Prefieres leer esto en español?** → [README.es.md](README.es.md)
+> ???? **�Prefieres leer esto en espa�ol?** ? [README.es.md](README.es.md)
 
 Hardware directory for the **BFS9000** keyboard.
 
@@ -14,7 +14,7 @@ Hardware directory for the **BFS9000** keyboard.
 
 ## Status
 
-- Current version: `0.3`
+- Current version: `0.1`
 - Development stage: prototype / WIP
 - Functional status: **not working yet**
 
@@ -22,3 +22,14 @@ Hardware directory for the **BFS9000** keyboard.
 
 This directory is intended to track the ongoing hardware development of the BFS9000.
 At this stage, the project is still evolving and substantial changes are expected before it becomes usable.
+
+## License and attribution
+
+This hardware directory is licensed under the MIT License unless otherwise stated.
+
+BFS9000 contains original work as well as files, ideas, references, or derived work from other open-source keyboard projects and component libraries.
+
+See:
+
+- [LICENSE](LICENSE)
+- [NOTICE.md](NOTICE.md)

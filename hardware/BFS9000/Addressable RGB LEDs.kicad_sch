@@ -14,7 +14,7 @@
 		(comment 3 "https://github.com/jguillen-lab/BFS9000")
 	)
 	(lib_symbols
-		(symbol "Connector_Generic:Conn_01x01"
+		(symbol "BFS9000:Conn_01x01"
 			(pin_names
 				(offset 1.016)
 				(hide yes)
@@ -143,7 +143,119 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Temp:SK6803MINIE_V2_COMPAT_N"
+		(symbol "BFS9000:GND-power"
+			(power global)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND-power_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND-power_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(hide yes)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "BFS9000:LED_SK6803MINI_E"
 			(pin_names
 				(offset 1.016)
 			)
@@ -172,7 +284,7 @@
 					)
 				)
 			)
-			(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+			(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 				(at 1.27 -7.62 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -240,7 +352,7 @@
 					)
 				)
 			)
-			(symbol "SK6803MINIE_V2_COMPAT_N_1_1"
+			(symbol "LED_SK6803MINI_E_1_1"
 				(rectangle
 					(start -5.08 5.08)
 					(end 5.08 -5.08)
@@ -327,119 +439,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:GND"
-			(power global)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "GND"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "GND_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "power:VDC"
+		(symbol "BFS9000:VDC"
 			(power global)
 			(pin_names
 				(offset 0)
@@ -3259,7 +3259,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 307.34 76.2 0)
 		(unit 1)
 		(body_style 1)
@@ -3338,7 +3338,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 135.89 128.27 0)
 		(unit 1)
 		(body_style 1)
@@ -3417,7 +3417,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 110.49 58.42 270)
 		(unit 1)
 		(body_style 1)
@@ -3447,7 +3447,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 102.87 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -3537,7 +3537,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 110.49 161.29 270)
 		(unit 1)
 		(body_style 1)
@@ -3567,7 +3567,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 102.87 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -3657,7 +3657,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 135.89 135.89 270)
 		(unit 1)
 		(body_style 1)
@@ -3687,7 +3687,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 128.27 137.16 0)
 			(hide yes)
 			(show_name no)
@@ -3777,7 +3777,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 307.34 220.98 0)
 		(unit 1)
 		(body_style 1)
@@ -3856,7 +3856,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 307.34 83.82 270)
 		(unit 1)
 		(body_style 1)
@@ -3886,7 +3886,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 299.72 85.09 0)
 			(hide yes)
 			(show_name no)
@@ -3976,7 +3976,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 307.34 66.04 0)
 		(unit 1)
 		(body_style 1)
@@ -4055,7 +4055,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 332.74 76.2 0)
 		(unit 1)
 		(body_style 1)
@@ -4134,7 +4134,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 186.69 143.51 0)
 		(unit 1)
 		(body_style 1)
@@ -4213,7 +4213,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 281.94 177.8 0)
 		(unit 1)
 		(body_style 1)
@@ -4292,7 +4292,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 161.29 194.31 0)
 		(unit 1)
 		(body_style 1)
@@ -4371,7 +4371,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 135.89 77.47 0)
 		(unit 1)
 		(body_style 1)
@@ -4450,7 +4450,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 85.09 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -4529,7 +4529,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 307.34 185.42 270)
 		(unit 1)
 		(body_style 1)
@@ -4559,7 +4559,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 299.72 186.69 0)
 			(hide yes)
 			(show_name no)
@@ -4649,7 +4649,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 186.69 179.07 0)
 		(unit 1)
 		(body_style 1)
@@ -4728,7 +4728,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 307.34 134.62 270)
 		(unit 1)
 		(body_style 1)
@@ -4758,7 +4758,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 299.72 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -4848,7 +4848,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 85.09 179.07 0)
 		(unit 1)
 		(body_style 1)
@@ -4927,7 +4927,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 212.09 77.47 0)
 		(unit 1)
 		(body_style 1)
@@ -5006,7 +5006,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 186.69 118.11 0)
 		(unit 1)
 		(body_style 1)
@@ -5085,7 +5085,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 307.34 193.04 0)
 		(unit 1)
 		(body_style 1)
@@ -5164,7 +5164,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 161.29 58.42 270)
 		(unit 1)
 		(body_style 1)
@@ -5194,7 +5194,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 153.67 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -5284,7 +5284,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 110.49 77.47 0)
 		(unit 1)
 		(body_style 1)
@@ -5363,7 +5363,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 110.49 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -5442,7 +5442,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 281.94 91.44 0)
 		(unit 1)
 		(body_style 1)
@@ -5521,7 +5521,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 307.34 152.4 0)
 		(unit 1)
 		(body_style 1)
@@ -5600,7 +5600,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 256.54 152.4 0)
 		(unit 1)
 		(body_style 1)
@@ -5679,7 +5679,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 281.94 167.64 0)
 		(unit 1)
 		(body_style 1)
@@ -5758,7 +5758,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 85.09 58.42 270)
 		(unit 1)
 		(body_style 1)
@@ -5788,7 +5788,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 77.47 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -5878,7 +5878,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 161.29 168.91 0)
 		(unit 1)
 		(body_style 1)
@@ -5957,7 +5957,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 212.09 110.49 270)
 		(unit 1)
 		(body_style 1)
@@ -5987,7 +5987,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 204.47 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -6077,7 +6077,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 135.89 179.07 0)
 		(unit 1)
 		(body_style 1)
@@ -6156,7 +6156,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 307.34 142.24 0)
 		(unit 1)
 		(body_style 1)
@@ -6235,7 +6235,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 256.54 185.42 270)
 		(unit 1)
 		(body_style 1)
@@ -6265,7 +6265,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 248.92 186.69 0)
 			(hide yes)
 			(show_name no)
@@ -6355,7 +6355,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 212.09 92.71 0)
 		(unit 1)
 		(body_style 1)
@@ -6434,7 +6434,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 212.09 161.29 270)
 		(unit 1)
 		(body_style 1)
@@ -6464,7 +6464,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 204.47 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -6554,7 +6554,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 135.89 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -6633,7 +6633,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 110.49 179.07 0)
 		(unit 1)
 		(body_style 1)
@@ -6712,7 +6712,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 281.94 160.02 270)
 		(unit 1)
 		(body_style 1)
@@ -6742,7 +6742,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 274.32 161.29 0)
 			(hide yes)
 			(show_name no)
@@ -6832,7 +6832,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 161.29 110.49 270)
 		(unit 1)
 		(body_style 1)
@@ -6862,7 +6862,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 153.67 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -6952,7 +6952,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 256.54 83.82 270)
 		(unit 1)
 		(body_style 1)
@@ -6982,7 +6982,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 248.92 85.09 0)
 			(hide yes)
 			(show_name no)
@@ -7072,7 +7072,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 85.09 77.47 0)
 		(unit 1)
 		(body_style 1)
@@ -7151,7 +7151,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 212.09 135.89 270)
 		(unit 1)
 		(body_style 1)
@@ -7181,7 +7181,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 204.47 137.16 0)
 			(hide yes)
 			(show_name no)
@@ -7271,7 +7271,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 281.94 66.04 0)
 		(unit 1)
 		(body_style 1)
@@ -7350,7 +7350,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 281.94 116.84 0)
 		(unit 1)
 		(body_style 1)
@@ -7429,7 +7429,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 281.94 142.24 0)
 		(unit 1)
 		(body_style 1)
@@ -7508,7 +7508,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 135.89 66.04 0)
 		(unit 1)
 		(body_style 1)
@@ -7587,7 +7587,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 332.74 134.62 270)
 		(unit 1)
 		(body_style 1)
@@ -7617,7 +7617,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 325.12 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -7707,7 +7707,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 161.29 66.04 0)
 		(unit 1)
 		(body_style 1)
@@ -7786,7 +7786,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 85.09 128.27 0)
 		(unit 1)
 		(body_style 1)
@@ -7865,7 +7865,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 212.09 168.91 0)
 		(unit 1)
 		(body_style 1)
@@ -7944,7 +7944,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 148.59 220.98 0)
 		(unit 1)
 		(body_style 1)
@@ -8023,7 +8023,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 110.49 118.11 0)
 		(unit 1)
 		(body_style 1)
@@ -8102,7 +8102,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 281.94 152.4 0)
 		(unit 1)
 		(body_style 1)
@@ -8181,7 +8181,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 332.74 177.8 0)
 		(unit 1)
 		(body_style 1)
@@ -8260,7 +8260,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 307.34 58.42 270)
 		(unit 1)
 		(body_style 1)
@@ -8290,7 +8290,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 299.72 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -8380,7 +8380,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 161.29 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -8459,7 +8459,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x01")
+		(lib_id "BFS9000:Conn_01x01")
 		(at 248.92 66.04 270)
 		(unit 1)
 		(body_style 1)
@@ -8492,7 +8492,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
+		(property "Footprint" "BFS9000:PinHeader_1x01_P2.54mm"
 			(at 248.92 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -8571,7 +8571,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 332.74 83.82 270)
 		(unit 1)
 		(body_style 1)
@@ -8601,7 +8601,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 325.12 85.09 0)
 			(hide yes)
 			(show_name no)
@@ -8691,7 +8691,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 281.94 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -8770,7 +8770,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 110.49 66.04 0)
 		(unit 1)
 		(body_style 1)
@@ -8849,7 +8849,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 281.94 185.42 270)
 		(unit 1)
 		(body_style 1)
@@ -8879,7 +8879,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 274.32 186.69 0)
 			(hide yes)
 			(show_name no)
@@ -8969,7 +8969,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 186.69 58.42 270)
 		(unit 1)
 		(body_style 1)
@@ -8999,7 +8999,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 179.07 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -9089,7 +9089,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 212.09 102.87 0)
 		(unit 1)
 		(body_style 1)
@@ -9168,7 +9168,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 173.99 205.74 0)
 		(unit 1)
 		(body_style 1)
@@ -9247,7 +9247,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 135.89 58.42 270)
 		(unit 1)
 		(body_style 1)
@@ -9277,7 +9277,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 128.27 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -9367,7 +9367,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 332.74 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -9446,7 +9446,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 186.69 135.89 270)
 		(unit 1)
 		(body_style 1)
@@ -9476,7 +9476,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 179.07 137.16 0)
 			(hide yes)
 			(show_name no)
@@ -9566,7 +9566,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 161.29 135.89 270)
 		(unit 1)
 		(body_style 1)
@@ -9596,7 +9596,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 153.67 137.16 0)
 			(hide yes)
 			(show_name no)
@@ -9686,7 +9686,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 332.74 193.04 0)
 		(unit 1)
 		(body_style 1)
@@ -9765,7 +9765,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 161.29 143.51 0)
 		(unit 1)
 		(body_style 1)
@@ -9844,7 +9844,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 186.69 128.27 0)
 		(unit 1)
 		(body_style 1)
@@ -9923,7 +9923,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 148.59 213.36 270)
 		(unit 1)
 		(body_style 1)
@@ -9953,7 +9953,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000_Underglow"
 			(at 140.97 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -10043,7 +10043,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 135.89 92.71 0)
 		(unit 1)
 		(body_style 1)
@@ -10122,7 +10122,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 307.34 177.8 0)
 		(unit 1)
 		(body_style 1)
@@ -10201,7 +10201,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 135.89 153.67 0)
 		(unit 1)
 		(body_style 1)
@@ -10280,7 +10280,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 212.09 85.09 270)
 		(unit 1)
 		(body_style 1)
@@ -10310,7 +10310,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 204.47 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -10400,7 +10400,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 110.49 110.49 270)
 		(unit 1)
 		(body_style 1)
@@ -10430,7 +10430,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 102.87 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -10520,7 +10520,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 256.54 91.44 0)
 		(unit 1)
 		(body_style 1)
@@ -10599,7 +10599,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 281.94 109.22 270)
 		(unit 1)
 		(body_style 1)
@@ -10629,7 +10629,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 274.32 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -10719,7 +10719,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 212.09 58.42 270)
 		(unit 1)
 		(body_style 1)
@@ -10749,7 +10749,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 204.47 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -10839,7 +10839,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 85.09 153.67 0)
 		(unit 1)
 		(body_style 1)
@@ -10918,7 +10918,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 256.54 76.2 0)
 		(unit 1)
 		(body_style 1)
@@ -10997,7 +10997,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 307.34 205.74 0)
 		(unit 1)
 		(body_style 1)
@@ -11076,7 +11076,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 281.94 58.42 270)
 		(unit 1)
 		(body_style 1)
@@ -11106,7 +11106,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 274.32 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -11196,7 +11196,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 281.94 220.98 0)
 		(unit 1)
 		(body_style 1)
@@ -11275,7 +11275,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 110.49 153.67 0)
 		(unit 1)
 		(body_style 1)
@@ -11354,7 +11354,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 212.09 153.67 0)
 		(unit 1)
 		(body_style 1)
@@ -11433,7 +11433,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 256.54 109.22 270)
 		(unit 1)
 		(body_style 1)
@@ -11463,7 +11463,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 248.92 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -11553,7 +11553,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 161.29 92.71 0)
 		(unit 1)
 		(body_style 1)
@@ -11632,7 +11632,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 212.09 143.51 0)
 		(unit 1)
 		(body_style 1)
@@ -11711,7 +11711,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 307.34 101.6 0)
 		(unit 1)
 		(body_style 1)
@@ -11790,7 +11790,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 307.34 167.64 0)
 		(unit 1)
 		(body_style 1)
@@ -11869,7 +11869,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 186.69 92.71 0)
 		(unit 1)
 		(body_style 1)
@@ -11948,7 +11948,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 281.94 83.82 270)
 		(unit 1)
 		(body_style 1)
@@ -11978,7 +11978,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 274.32 85.09 0)
 			(hide yes)
 			(show_name no)
@@ -12068,7 +12068,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 212.09 118.11 0)
 		(unit 1)
 		(body_style 1)
@@ -12147,7 +12147,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 256.54 101.6 0)
 		(unit 1)
 		(body_style 1)
@@ -12226,7 +12226,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 123.19 213.36 270)
 		(unit 1)
 		(body_style 1)
@@ -12256,7 +12256,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000_Underglow"
 			(at 115.57 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -12346,7 +12346,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 307.34 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -12425,7 +12425,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 135.89 85.09 270)
 		(unit 1)
 		(body_style 1)
@@ -12455,7 +12455,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 128.27 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -12545,7 +12545,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 186.69 194.31 0)
 		(unit 1)
 		(body_style 1)
@@ -12624,7 +12624,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 85.09 135.89 270)
 		(unit 1)
 		(body_style 1)
@@ -12654,7 +12654,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 77.47 137.16 0)
 			(hide yes)
 			(show_name no)
@@ -12744,7 +12744,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 161.29 128.27 0)
 		(unit 1)
 		(body_style 1)
@@ -12823,7 +12823,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 135.89 118.11 0)
 		(unit 1)
 		(body_style 1)
@@ -12902,7 +12902,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 186.69 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -12981,7 +12981,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 123.19 205.74 0)
 		(unit 1)
 		(body_style 1)
@@ -13060,7 +13060,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 186.69 168.91 0)
 		(unit 1)
 		(body_style 1)
@@ -13139,7 +13139,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 281.94 205.74 0)
 		(unit 1)
 		(body_style 1)
@@ -13218,7 +13218,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 281.94 127 0)
 		(unit 1)
 		(body_style 1)
@@ -13297,7 +13297,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 161.29 153.67 0)
 		(unit 1)
 		(body_style 1)
@@ -13376,7 +13376,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 256.54 134.62 270)
 		(unit 1)
 		(body_style 1)
@@ -13406,7 +13406,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 248.92 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -13496,7 +13496,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 110.49 85.09 270)
 		(unit 1)
 		(body_style 1)
@@ -13526,7 +13526,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 102.87 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -13616,7 +13616,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 256.54 142.24 0)
 		(unit 1)
 		(body_style 1)
@@ -13695,7 +13695,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 85.09 194.31 0)
 		(unit 1)
 		(body_style 1)
@@ -13774,7 +13774,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 110.49 128.27 0)
 		(unit 1)
 		(body_style 1)
@@ -13853,7 +13853,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 256.54 193.04 0)
 		(unit 1)
 		(body_style 1)
@@ -13932,7 +13932,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 332.74 91.44 0)
 		(unit 1)
 		(body_style 1)
@@ -14011,7 +14011,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 110.49 92.71 0)
 		(unit 1)
 		(body_style 1)
@@ -14090,7 +14090,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 110.49 194.31 0)
 		(unit 1)
 		(body_style 1)
@@ -14169,7 +14169,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 85.09 186.69 270)
 		(unit 1)
 		(body_style 1)
@@ -14199,7 +14199,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 77.47 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -14289,7 +14289,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 148.59 205.74 0)
 		(unit 1)
 		(body_style 1)
@@ -14368,7 +14368,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 256.54 127 0)
 		(unit 1)
 		(body_style 1)
@@ -14447,7 +14447,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 256.54 116.84 0)
 		(unit 1)
 		(body_style 1)
@@ -14526,7 +14526,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 256.54 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -14605,7 +14605,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 212.09 66.04 0)
 		(unit 1)
 		(body_style 1)
@@ -14684,7 +14684,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 332.74 185.42 270)
 		(unit 1)
 		(body_style 1)
@@ -14714,7 +14714,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 325.12 186.69 0)
 			(hide yes)
 			(show_name no)
@@ -14804,7 +14804,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 256.54 177.8 0)
 		(unit 1)
 		(body_style 1)
@@ -14883,7 +14883,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 307.34 127 0)
 		(unit 1)
 		(body_style 1)
@@ -14962,7 +14962,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 186.69 110.49 270)
 		(unit 1)
 		(body_style 1)
@@ -14992,7 +14992,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 179.07 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -15082,7 +15082,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 332.74 142.24 0)
 		(unit 1)
 		(body_style 1)
@@ -15161,7 +15161,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 85.09 102.87 0)
 		(unit 1)
 		(body_style 1)
@@ -15240,7 +15240,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 110.49 143.51 0)
 		(unit 1)
 		(body_style 1)
@@ -15319,7 +15319,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 85.09 168.91 0)
 		(unit 1)
 		(body_style 1)
@@ -15398,7 +15398,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 123.19 220.98 0)
 		(unit 1)
 		(body_style 1)
@@ -15477,7 +15477,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 135.89 110.49 270)
 		(unit 1)
 		(body_style 1)
@@ -15507,7 +15507,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 128.27 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -15597,7 +15597,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 186.69 77.47 0)
 		(unit 1)
 		(body_style 1)
@@ -15676,7 +15676,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 85.09 66.04 0)
 		(unit 1)
 		(body_style 1)
@@ -15755,7 +15755,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 307.34 213.36 270)
 		(unit 1)
 		(body_style 1)
@@ -15785,7 +15785,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000_Underglow"
 			(at 299.72 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -15875,7 +15875,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 307.34 109.22 270)
 		(unit 1)
 		(body_style 1)
@@ -15905,7 +15905,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 299.72 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -15995,7 +15995,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 332.74 58.42 270)
 		(unit 1)
 		(body_style 1)
@@ -16025,7 +16025,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 325.12 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -16115,7 +16115,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 173.99 213.36 270)
 		(unit 1)
 		(body_style 1)
@@ -16145,7 +16145,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000_Underglow"
 			(at 166.37 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -16235,7 +16235,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 173.99 220.98 0)
 		(unit 1)
 		(body_style 1)
@@ -16314,7 +16314,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 281.94 134.62 270)
 		(unit 1)
 		(body_style 1)
@@ -16344,7 +16344,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 274.32 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -16434,7 +16434,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 186.69 161.29 270)
 		(unit 1)
 		(body_style 1)
@@ -16464,7 +16464,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 179.07 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -16554,7 +16554,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 256.54 160.02 270)
 		(unit 1)
 		(body_style 1)
@@ -16584,7 +16584,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 248.92 161.29 0)
 			(hide yes)
 			(show_name no)
@@ -16674,7 +16674,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 186.69 85.09 270)
 		(unit 1)
 		(body_style 1)
@@ -16704,7 +16704,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 179.07 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -16794,7 +16794,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 135.89 168.91 0)
 		(unit 1)
 		(body_style 1)
@@ -16873,7 +16873,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 332.74 66.04 0)
 		(unit 1)
 		(body_style 1)
@@ -16952,7 +16952,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 110.49 168.91 0)
 		(unit 1)
 		(body_style 1)
@@ -17031,7 +17031,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 281.94 213.36 270)
 		(unit 1)
 		(body_style 1)
@@ -17061,7 +17061,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000_Underglow"
 			(at 274.32 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -17151,7 +17151,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 281.94 76.2 0)
 		(unit 1)
 		(body_style 1)
@@ -17230,7 +17230,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 161.29 179.07 0)
 		(unit 1)
 		(body_style 1)
@@ -17309,7 +17309,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 161.29 85.09 270)
 		(unit 1)
 		(body_style 1)
@@ -17339,7 +17339,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 153.67 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -17429,7 +17429,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x01")
+		(lib_id "BFS9000:Conn_01x01")
 		(at 184.15 219.71 270)
 		(unit 1)
 		(body_style 1)
@@ -17462,7 +17462,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
+		(property "Footprint" "BFS9000:PinHeader_1x01_P2.54mm"
 			(at 184.15 219.71 0)
 			(hide yes)
 			(show_name no)
@@ -17541,7 +17541,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 110.49 135.89 270)
 		(unit 1)
 		(body_style 1)
@@ -17571,7 +17571,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 102.87 137.16 0)
 			(hide yes)
 			(show_name no)
@@ -17661,7 +17661,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 135.89 143.51 0)
 		(unit 1)
 		(body_style 1)
@@ -17740,7 +17740,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 85.09 92.71 0)
 		(unit 1)
 		(body_style 1)
@@ -17819,7 +17819,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 135.89 186.69 270)
 		(unit 1)
 		(body_style 1)
@@ -17849,7 +17849,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 128.27 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -17939,7 +17939,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 135.89 161.29 270)
 		(unit 1)
 		(body_style 1)
@@ -17969,7 +17969,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 128.27 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -18059,7 +18059,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 85.09 118.11 0)
 		(unit 1)
 		(body_style 1)
@@ -18138,7 +18138,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 135.89 194.31 0)
 		(unit 1)
 		(body_style 1)
@@ -18217,7 +18217,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 186.69 66.04 0)
 		(unit 1)
 		(body_style 1)
@@ -18296,7 +18296,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 110.49 102.87 0)
 		(unit 1)
 		(body_style 1)
@@ -18375,7 +18375,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 161.29 77.47 0)
 		(unit 1)
 		(body_style 1)
@@ -18454,7 +18454,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 161.29 186.69 270)
 		(unit 1)
 		(body_style 1)
@@ -18484,7 +18484,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 153.67 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -18574,7 +18574,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 85.09 110.49 270)
 		(unit 1)
 		(body_style 1)
@@ -18604,7 +18604,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 77.47 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -18694,7 +18694,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 256.54 167.64 0)
 		(unit 1)
 		(body_style 1)
@@ -18773,7 +18773,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 281.94 193.04 0)
 		(unit 1)
 		(body_style 1)
@@ -18852,7 +18852,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 85.09 85.09 270)
 		(unit 1)
 		(body_style 1)
@@ -18882,7 +18882,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 77.47 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -18972,7 +18972,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 161.29 161.29 270)
 		(unit 1)
 		(body_style 1)
@@ -19002,7 +19002,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 153.67 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -19092,7 +19092,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 161.29 102.87 0)
 		(unit 1)
 		(body_style 1)
@@ -19171,7 +19171,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 256.54 66.04 0)
 		(unit 1)
 		(body_style 1)
@@ -19250,7 +19250,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 161.29 118.11 0)
 		(unit 1)
 		(body_style 1)
@@ -19329,7 +19329,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 85.09 161.29 270)
 		(unit 1)
 		(body_style 1)
@@ -19359,7 +19359,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 77.47 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -19449,7 +19449,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 135.89 102.87 0)
 		(unit 1)
 		(body_style 1)
@@ -19528,7 +19528,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 186.69 102.87 0)
 		(unit 1)
 		(body_style 1)
@@ -19607,7 +19607,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 85.09 143.51 0)
 		(unit 1)
 		(body_style 1)
@@ -19686,7 +19686,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 256.54 58.42 270)
 		(unit 1)
 		(body_style 1)
@@ -19716,7 +19716,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 248.92 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -19806,7 +19806,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 186.69 186.69 270)
 		(unit 1)
 		(body_style 1)
@@ -19836,7 +19836,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 179.07 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -19926,7 +19926,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 332.74 127 0)
 		(unit 1)
 		(body_style 1)
@@ -20005,7 +20005,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 307.34 116.84 0)
 		(unit 1)
 		(body_style 1)
@@ -20084,7 +20084,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 307.34 160.02 270)
 		(unit 1)
 		(body_style 1)
@@ -20114,7 +20114,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 299.72 161.29 0)
 			(hide yes)
 			(show_name no)
@@ -20204,7 +20204,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Temp:SK6803MINIE_V2_COMPAT_N")
+		(lib_id "BFS9000:LED_SK6803MINI_E")
 		(at 110.49 186.69 270)
 		(unit 1)
 		(body_style 1)
@@ -20234,7 +20234,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_v3.5.5"
+		(property "Footprint" "BFS9000:Cust_SK6803_MINI-E_BFS9000"
 			(at 102.87 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -20324,7 +20324,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "BFS9000:GND-power")
 		(at 307.34 91.44 0)
 		(unit 1)
 		(body_style 1)
@@ -20403,7 +20403,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 281.94 101.6 0)
 		(unit 1)
 		(body_style 1)
@@ -20482,7 +20482,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 212.09 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -20561,7 +20561,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 186.69 153.67 0)
 		(unit 1)
 		(body_style 1)
@@ -20640,7 +20640,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VDC")
+		(lib_id "BFS9000:VDC")
 		(at 212.09 128.27 0)
 		(unit 1)
 		(body_style 1)

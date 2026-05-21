@@ -3,7 +3,7 @@
 	(generator "eeschema")
 	(generator_version "10.0")
 	(uuid "2cab8728-8d64-4ef1-a4ab-530d52a07d2a")
-	(paper "A4")
+	(paper "A3")
 	(title_block
 		(title "BSF9000")
 		(date "2026-05-01")
@@ -15,105 +15,6 @@
 	)
 	(lib_symbols
 		(symbol "BFS9000:MountingHole"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TH"
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "HOLE"
-				(at 0 3.175 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Mounting Hole without connection"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "mounting hole"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "MountingHole*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "MountingHole_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 1.27)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Mechanical:MountingHole"
 			(pin_names
 				(offset 1.016)
 			)
@@ -241,7 +142,7 @@
 					)
 				)
 			)
-			(property "Footprint" "BFS9000:Tenting_Puck.kicad_mod_nocenter_v2"
+			(property "Footprint" "BFS9000:Mount_Tenting_Puck"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -393,7 +294,7 @@
 					)
 				)
 			)
-			(property "Footprint" "BFS9000:Tenting_Puck.kicad_mod_nocenter_v2"
+			(property "Footprint" "BFS9000:Mount_Tenting_Puck"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -572,7 +473,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer narrow-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Narrow"
 			(at 189.23 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -678,7 +579,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer narrow-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Narrow"
 			(at 199.39 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -784,7 +685,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 208.28 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -890,7 +791,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 208.28 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -996,7 +897,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer narrow-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Narrow"
 			(at 226.06 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -1102,7 +1003,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 189.23 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -1178,7 +1079,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 27.94 27.94 0)
 		(unit 1)
 		(body_style 1)
@@ -1211,7 +1112,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 27.94 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -1309,7 +1210,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 80.01 35.56 0)
 		(unit 1)
 		(body_style 1)
@@ -1342,7 +1243,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 80.01 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -1470,7 +1371,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 270.51 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -1576,7 +1477,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 234.95 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -1652,7 +1553,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 27.94 43.18 0)
 		(unit 1)
 		(body_style 1)
@@ -1685,7 +1586,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 27.94 43.18 0)
 			(hide yes)
 			(show_name no)
@@ -1783,7 +1684,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 54.61 43.18 0)
 		(unit 1)
 		(body_style 1)
@@ -1816,7 +1717,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 54.61 43.18 0)
 			(hide yes)
 			(show_name no)
@@ -1944,7 +1845,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 243.84 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -2020,7 +1921,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 80.01 27.94 0)
 		(unit 1)
 		(body_style 1)
@@ -2053,7 +1954,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 80.01 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -2181,7 +2082,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 226.06 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -2287,7 +2188,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 270.51 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -2394,7 +2295,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Tenting_Puck.kicad_mod_nocenter_v2"
+		(property "Footprint" "BFS9000:Mount_Tenting_Puck"
 			(at 252.73 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -2503,7 +2404,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 261.62 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -2609,7 +2510,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 217.17 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -2685,7 +2586,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 54.61 35.56 0)
 		(unit 1)
 		(body_style 1)
@@ -2718,7 +2619,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 54.61 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -2846,7 +2747,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 243.84 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -2922,7 +2823,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 54.61 27.94 0)
 		(unit 1)
 		(body_style 1)
@@ -2955,7 +2856,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 54.61 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -3053,7 +2954,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 54.61 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -3086,7 +2987,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 54.61 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -3184,7 +3085,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 80.01 43.18 0)
 		(unit 1)
 		(body_style 1)
@@ -3217,7 +3118,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 80.01 43.18 0)
 			(hide yes)
 			(show_name no)
@@ -3345,7 +3246,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer narrow-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Narrow"
 			(at 217.17 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -3421,7 +3322,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 105.41 43.18 0)
 		(unit 1)
 		(body_style 1)
@@ -3454,7 +3355,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 105.41 43.18 0)
 			(hide yes)
 			(show_name no)
@@ -3552,7 +3453,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 105.41 27.94 0)
 		(unit 1)
 		(body_style 1)
@@ -3585,7 +3486,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 105.41 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -3683,7 +3584,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 27.94 50.8 0)
 		(unit 1)
 		(body_style 1)
@@ -3716,7 +3617,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 27.94 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -3844,7 +3745,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 234.95 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -3950,7 +3851,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 199.39 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -4026,7 +3927,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 27.94 35.56 0)
 		(unit 1)
 		(body_style 1)
@@ -4059,7 +3960,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 27.94 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -4157,7 +4058,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
+		(lib_id "BFS9000:MountingHole")
 		(at 105.41 35.56 0)
 		(unit 1)
 		(body_style 1)
@@ -4190,7 +4091,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "BFS9000:LongOvalCut"
+		(property "Footprint" "BFS9000:Cutout_Long_Oval"
 			(at 105.41 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -4319,7 +4220,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Tenting_Puck.kicad_mod_nocenter_v2"
+		(property "Footprint" "BFS9000:Mount_Tenting_Puck"
 			(at 252.73 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -4428,7 +4329,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BFS9000:Hole from sofle for M2 posts gold rimmer wide-keyplate-hole"
+		(property "Footprint" "BFS9000:Mount_M2_Post_Hole_Keyplate_Wide"
 			(at 261.62 30.48 0)
 			(hide yes)
 			(show_name no)

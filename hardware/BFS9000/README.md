@@ -1,6 +1,6 @@
-# BFS9000 � Hardware
+﻿# BFS9000 — Hardware
 
-> ???? **�Prefieres leer esto en espa�ol?** ? [README.es.md](README.es.md)
+> 🇪🇸 **¿Prefieres leer esto en español?** ? [README.es.md](README.es.md)
 
 Hardware directory for the **BFS9000** keyboard.
 

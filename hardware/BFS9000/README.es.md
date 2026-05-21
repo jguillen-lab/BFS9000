@@ -1,33 +1,33 @@
-# BFS9000 ó Hardware
+Ôªø# BFS9000 ‚Äî Hardware
 
-> ???? **Prefer to read this in English?** ? [README.md](README.md)
+> üá™üá≥ **Prefer to read this in English?** ? [README.md](README.md)
 
 Directorio de hardware del teclado **BFS9000**.
 
 > **Trabajo en curso**
 >
-> Este hardware est· actualmente en desarrollo activo y **todavÌa no es funcional**.
-> La versiÛn `0.4` debe considerarse un prototipo temprano, pensado solo para validaciÛn e iteraciÛn.
+> Este hardware est√° actualmente en desarrollo activo y **todav√≠a no es funcional**.
+> La versi√≥n `0.4` debe considerarse un prototipo temprano, pensado solo para validaci√≥n e iteraci√≥n.
 >
-> **No** debes considerar el diseÒo actual, la PCB, los esquem·ticos, las huellas, la BOM ni la documentaciÛn como algo final o listo para producciÛn.
-> Cabe esperar cambios incompatibles, funciones ausentes, errores de diseÒo y documentaciÛn incompleta.
+> **No** debes considerar el dise√±o actual, la PCB, los esquem√°ticos, las huellas, la BOM ni la documentaci√≥n como algo final o listo para producci√≥n.
+> Cabe esperar cambios incompatibles, funciones ausentes, errores de dise√±o y documentaci√≥n incompleta.
 
 ## Estado
 
-- VersiÛn actual: `0.4`
+- Versi√≥n actual: `0.4`
 - Fase de desarrollo: prototipo / WIP
-- Estado funcional: **todavÌa no funciona**
+- Estado funcional: **todav√≠a no funciona**
 
 ## Notas
 
-Este directorio est· pensado para seguir el desarrollo en curso del hardware BFS9000.
+Este directorio est√° pensado para seguir el desarrollo en curso del hardware BFS9000.
 En esta fase, el proyecto sigue evolucionando y es de esperar que haya cambios importantes antes de que llegue a ser utilizable.
 
-## Licencia y atribuciÛn
+## Licencia y atribuci√≥n
 
 Este directorio de hardware se publica bajo licencia MIT salvo que se indique lo contrario.
 
-BFS9000 contiene trabajo original, adem·s de ficheros, ideas, referencias o trabajo derivado de otros proyectos de teclados open-source y librerÌas de componentes.
+BFS9000 contiene trabajo original, adem√°s de ficheros, ideas, referencias o trabajo derivado de otros proyectos de teclados open-source y librer√≠as de componentes.
 
 Consulta:
 

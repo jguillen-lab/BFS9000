@@ -7,14 +7,14 @@ Hardware directory for the **BFS9000** keyboard.
 > **Work in progress**
 >
 > This hardware is currently under active development and is **not functional yet**.
-> Version `0.1` should be considered an early prototype intended only for validation and iteration.
+> Version `0.4` should be considered an early prototype intended only for validation and iteration.
 >
 > Do **not** treat the current design, PCB, schematics, footprints, BOM, or documentation as final or production-ready.
 > Expect breaking changes, missing features, design errors, and incomplete documentation.
 
 ## Status
 
-- Current version: `0.1`
+- Current version: `0.4`
 - Development stage: prototype / WIP
 - Functional status: **not working yet**
 

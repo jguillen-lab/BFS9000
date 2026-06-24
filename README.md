@@ -5,6 +5,15 @@
 
 Main repository that groups several subprojects around the **BFS9000** keyboard (hardware) and its ecosystem of **QMK/Vial firmware** and **PC software** to control lighting over the network (Home Assistant via MQTT, with a local agent that talks to the keyboard over USB).
 
+<p align="center">
+  <img src="media/kbpic/001_BFS9000_full.jpg" alt="BFS9000 full keyboard" width="100%">
+</p>
+
+<p align="center">
+  <img src="media/kbpic/001_BFS9000_full_tps65_magnet_a.jpg" alt="BFS9000 TPS65 magnet view A" width="49%">
+  <img src="media/kbpic/001_BFS9000_full_tps65_magnet_b.jpg" alt="BFS9000 TPS65 magnet view B" width="49%">
+</p>
+
 ## Repository structure
 
 - [`hardware/`](./hardware/) — keyboard/PCB design (BFS9000) and related documentation.
@@ -28,6 +37,18 @@ Over time I’ve had other keyboards based on Sofle with small modifications and
 Even so, although I set up layers and learned to use them comfortably, I’m not the kind of person who “lives” in layers. After ~8 years using the Sofle I decided to try a **[BFO9000](https://docs.keeb.io/bfo-9000-build-guide)** (de **Keebio**) in its full configuration. Ergonomically I like it much less, but it solved my day-to-day better.
 
 I thought that missing the Sofle would fade with time… but it didn’t. That’s why I’m in the process of creating a **BFS9000**, based on JellyTitan’s latest iteration called **[Sofle-Pico](https://github.com/JellyTitan/Sofle-Pico)**:
+
+## Variants and combinations
+
+One of the main goals of BFS9000 is flexibility.
+
+The same PCB can be used to build multiple physical configurations, allowing different combinations of enclosures, plates and trackpad-related parts.
+
+In total, the current design supports **16 different combinations** from the same PCB base.
+
+<p align="center">
+  <img src="media/layouts/combinations_colour.png" alt="BFS9000 combinations overview" width="100%">
+</p>
 
 ## Subprojects (quick links)
 

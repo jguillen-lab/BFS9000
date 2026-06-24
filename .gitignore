@@ -88,3 +88,6 @@ desktop.ini
 
 
 .scripts/
+
+# --- Source Images ---
+*.psd

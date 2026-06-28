@@ -55,6 +55,12 @@ static const char *help_kc_desc(uint16_t kc);
 // Shared pin: same hardware layout on both halves.
 #define WS2812_PIN      GP23
 
+// Physical USR button on the RP2040 controller. It is not part of the matrix;
+// it is polled locally on each half and jumps that MCU to the bootloader.
+//
+// The switch is wired active-low, so the pin uses the internal pull-up.
+#define USR_BOOT_PIN    GP24
+
 // Caps Lock — left half (master)
 #define CAPS_WS2812_R   20
 #define CAPS_WS2812_G    0
@@ -65,9 +71,10 @@ static const char *help_kc_desc(uint16_t kc);
 #define NUMS_WS2812_G    0
 #define NUMS_WS2812_B    0
 
-static bool     caps_last = false;
-static bool     nums_last = false;
-static uint32_t led_timer = 0;
+static bool     caps_last     = false;
+static bool     nums_last     = false;
+static bool     usr_boot_last = false;
+static uint32_t led_timer     = 0;
 
 // Timings calibrated for WS2812 on RP2040 @ 125 MHz: 1 cycle = 8 ns.
 // The macros expand to NOP sequences to control T0H/T1H. Better way?!
@@ -122,6 +129,17 @@ static void caps_led_off(void) { _ws2812_set(0, 0, 0); }
 // Internal API — Num Lock.
 static void nums_led_on(void)  { _ws2812_set(NUMS_WS2812_R, NUMS_WS2812_G, NUMS_WS2812_B); }
 static void nums_led_off(void) { _ws2812_set(0, 0, 0); }
+
+// Internal API — controller USR button.
+static void usr_boot_task(void) {
+    bool usr_boot_now = !readPin(USR_BOOT_PIN);
+
+    if (usr_boot_now && !usr_boot_last) {
+        reset_keyboard();
+    }
+
+    usr_boot_last = usr_boot_now;
+}
 
 // ============================================================================
 // Help system — HELP_KEY + key → information on slave OLED (128×64)
@@ -419,6 +437,7 @@ static void help_populate(uint8_t row, uint8_t col) {
 void keyboard_pre_init_user(void) {
     setPinOutput(WS2812_PIN);
     writePinLow(WS2812_PIN);
+	setPinInputHigh(USR_BOOT_PIN);
 }
 
 // Post-init: register the split help channel and synchronise the initial
@@ -447,8 +466,9 @@ void keyboard_post_init_user(void) {
 
 // Periodic user task.
 //
-// Used for two lightweight jobs:
+// Used for three lightweight jobs:
 //   • send pending HELP data from master to slave,
+//   • poll the controller USR button for bootloader entry,
 //   • refresh Caps/Num indicators with simple time-based debounce.
 void housekeeping_task_user(void) {
     // Help sync outside the timer: send as soon as something changes.
@@ -458,6 +478,9 @@ void housekeeping_task_user(void) {
             help_dirty = false;
         }
     }
+
+    // USR boot check outside the timer: catch the physical button immediately.
+    usr_boot_task();
 
     if (timer_elapsed32(led_timer) < 50) return;
     led_timer = timer_read32();

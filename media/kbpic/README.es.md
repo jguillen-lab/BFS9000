@@ -12,14 +12,26 @@
 
 2. Añade tus fotos dentro de esa carpeta (JPG o PNG, a ser posible de pocos MB cada una). Puedes nombrarlas como quieras, por ejemplo `01.jpg`, `02.jpg`...
 
-3. Añade una fila para tu montaje a la tabla **Galería de la comunidad** en [`README.es.md`](../../README.es.md) (o en [`README.md`](../../README.md), si prefieres escribir el pie de foto en inglés), usando esta plantilla:
+3. Copia el archivo [`_template/README.es.md`](_template/README.es.md) dentro de tu carpeta y rellénalo con tus fotos y una nota breve sobre tu montaje.
+
+4. Añade tu montaje a la galería completa, [`media/GALLERY.es.md`](../GALLERY.es.md) (o [`media/GALLERY.md`](../GALLERY.md), si prefieres escribir el pie de foto en inglés), usando esta plantilla:
 
    ```markdown
-   | <img src="media/kbpic/<tu-nombre>/01.jpg" width="220"> | **Tu Nombre** — [GitHub](https://github.com/tu-usuario) |
+   ## Tu Nombre
+
+   <p align="center">
+     <img src="kbpic/<tu-nombre>/01.jpg" width="32%">
+     <img src="kbpic/<tu-nombre>/02.jpg" width="32%">
+     <img src="kbpic/<tu-nombre>/03.jpg" width="32%">
+   </p>
+
+   [Ver todas las fotos →](kbpic/<tu-nombre>/README.es.md)
    ```
 
-   Cambia el nombre de la carpeta, la ruta de la imagen, tu nombre y (opcionalmente) un enlace a tu GitHub o redes. El enlace es opcional, puedes quitarlo si prefieres no incluirlo.
+   Cambia el nombre de la carpeta, las rutas de las imágenes y tu nombre. Si quieres, añade también un enlace a tu GitHub o redes junto a tu nombre.
 
-4. Abre una pull request con las fotos nuevas y el cambio en el README.
+5. Si además quieres que tu montaje aparezca como destacado en el [`README.es.md`](../../README.es.md) principal, añade también una pequeña entrada en el apartado **Galería de la comunidad** de ahí — con una foto o dos es suficiente, el conjunto completo va en la galería.
+
+6. Abre una pull request con tus fotos nuevas y los cambios en el README.
 
 ¡Eso es todo — gracias por participar!

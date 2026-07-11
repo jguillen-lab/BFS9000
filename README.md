@@ -25,6 +25,16 @@ Main repository that groups several subprojects around the **BFS9000** keyboard 
 
 > Each folder should (or will eventually) have its own README with specific instructions.
 
+## Community builds
+
+Built your own BFS9000? Show it off here! Instructions and a ready-to-use template: [`media/kbpic/README.md`](media/kbpic/README.md). See the full gallery: [`media/GALLERY.md`](media/GALLERY.md).
+
+<p align="center">
+  <img src="media/kbpic/isabel_love/BFS9000_01.jpg" width="49%">
+  <img src="media/kbpic/isabel_love/BFS9000_02.jpg" width="49%">
+</p>
+
+<p align="center"><i>Isabel Love — <a href="media/kbpic/isabel_love/README.md">more photos</a></i></p>
 
 ## Motivation
 

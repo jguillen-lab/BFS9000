@@ -25,6 +25,16 @@ Repositorio principal que engloba varios subproyectos alrededor del teclado **BF
 
 > Cada carpeta debería tener (o acabará teniendo) su propio README con instrucciones específicas.
 
+## Galería de la comunidad
+
+¿Te has montado tu propio BFS9000? ¡Enséñalo aquí! Instrucciones y plantilla lista para usar: [`media/kbpic/README.es.md`](media/kbpic/README.es.md). Mira la galería completa: [`media/GALLERY.es.md`](media/GALLERY.es.md).
+
+<p align="center">
+  <img src="media/kbpic/isabel_love/BFS9000_01.jpg" width="49%">
+  <img src="media/kbpic/isabel_love/BFS9000_02.jpg" width="49%">
+</p>
+
+<p align="center"><i>Isabel Love — <a href="media/kbpic/isabel_love/README.md">más fotos</a></i></p>
 
 ## Motivación
 

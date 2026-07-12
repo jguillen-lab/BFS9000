@@ -60,6 +60,9 @@ hardware/**/*.map
 hardware/**/*.pos
 hardware/**/*.rpt
 hardware/**/*.step
+!hardware/BFS9000/BFS9000.3dshapes/
+!hardware/BFS9000/BFS9000.3dshapes/*.step
+!hardware/BFS9000/BFS9000.3dshapes/*.STEP
 hardware/**/*.stp
 hardware/**/*.wrl
 

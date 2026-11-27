@@ -11,7 +11,7 @@ This directory contains the firmware source tree. Compiled firmware ready to fla
 Compiled firmware is attached to each firmware release:
 
 - All firmware releases: <https://github.com/jguillen-lab/BFS9000/releases?q=firmware>
-- Current stable release: [`firmware/bfs9000-v1.0.0`](https://github.com/jguillen-lab/BFS9000/releases/tag/firmware/bfs9000-v1.0.0)
+- Current stable release: [`firmware/bfs9000-v1.1.0`](https://github.com/jguillen-lab/BFS9000/releases/tag/firmware/bfs9000-v1.1.0)
 
 Each release includes:
 
@@ -102,7 +102,18 @@ Each release notes the exact vial-qmk commit used to build it, so any release ca
 3. It will appear as a USB mass-storage drive.
 4. Copy the `.uf2` file to the RP2040 drive.
 5. The controller will reboot automatically with the new firmware.
-6. Repeat for the other half.
+6. Repeat for the other half. Both halves must always run the same release.
+
+### Keeping your Vial configuration
+
+Since `v1.1.0`, flashing a new release keeps the configuration saved with Vial (keymap, macros, combos, tap dances, key overrides and QMK settings), including when upgrading from `v1.0.0`.
+
+The configuration is reset to the firmware defaults only when the EEPROM layout changes, for example after a change in the number of layers or combos. The release notes say so when that happens. Keep a backup of your layout with **File → Save current layout** in Vial before flashing.
+
+## Lighting
+
+- **Typing Heatmap:** cold keys and the underglow show the colour selected in **RGB Color**. Keys warm up towards red as you type, and **RGB Speed** sets how fast they cool down.
+- **Idle timeout:** the lighting turns off after 10 minutes without using keys, encoder or trackpad, on both halves at once, and turns back on with any input.
 
 ## Versioning
 

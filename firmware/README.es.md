@@ -11,7 +11,7 @@ Este directorio contiene el árbol fuente del firmware. El firmware compilado, l
 El firmware compilado va adjunto a cada release de firmware:
 
 - Todas las releases de firmware: <https://github.com/jguillen-lab/BFS9000/releases?q=firmware>
-- Versión estable actual: [`firmware/bfs9000-v1.0.0`](https://github.com/jguillen-lab/BFS9000/releases/tag/firmware/bfs9000-v1.0.0)
+- Versión estable actual: [`firmware/bfs9000-v1.1.0`](https://github.com/jguillen-lab/BFS9000/releases/tag/firmware/bfs9000-v1.1.0)
 
 Cada release incluye:
 
@@ -102,7 +102,18 @@ Cada release indica el commit exacto de vial-qmk con el que se compiló, para po
 3. Aparecerá como una unidad USB.
 4. Copia el archivo `.uf2` a la unidad del RP2040.
 5. El controlador se reiniciará automáticamente con el nuevo firmware.
-6. Repite con la otra mitad.
+6. Repite con la otra mitad. Las dos mitades deben llevar siempre la misma versión.
+
+### Conservar la configuración de Vial
+
+Desde la `v1.1.0`, flashear una versión nueva conserva la configuración guardada con Vial (keymap, macros, combos, tap dance, key overrides y QMK settings), también al actualizar desde la `v1.0.0`.
+
+La configuración solo vuelve a los valores por defecto del firmware cuando cambia la estructura de la EEPROM, por ejemplo al cambiar el número de capas o de combos. Las notas de la release lo indican cuando ocurre. Guarda una copia de tu layout con **File → Save current layout** en Vial antes de flashear.
+
+## Iluminación
+
+- **Typing Heatmap:** las teclas frías y la iluminación inferior muestran el color elegido en **RGB Color**. Las teclas se calientan hacia el rojo al escribir, y **RGB Speed** define lo rápido que se enfrían.
+- **Apagado por inactividad:** la iluminación se apaga tras 10 minutos sin usar teclas, encoder ni trackpad, en las dos mitades a la vez, y se enciende con cualquier pulsación.
 
 ## Versionado
 

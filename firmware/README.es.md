@@ -40,6 +40,8 @@ firmware/
                     │   └── keymap.c
                     └── vial/
                         ├── config.h
+                        ├── help_text_en.h
+                        ├── help_text_es.h
                         ├── keymap.c
                         ├── kle_raw.json
                         ├── rules.mk
@@ -92,6 +94,14 @@ qmk compile -kb jguillen_lab/bfs9000 -km vial
 ```
 
 El firmware generado para RP2040 será un archivo `.uf2`.
+
+Los textos de la tecla de ayuda en la OLED están en inglés por defecto. Para compilarlos en español:
+
+```bash
+qmk compile -kb jguillen_lab/bfs9000 -km vial -e BFS_HELP_LANG=es
+```
+
+Las releases publicadas usan inglés. Los textos están en `keymaps/vial/help_text_en.h` y `help_text_es.h`.
 
 Cada release indica el commit exacto de vial-qmk con el que se compiló, para poder recompilar cualquier versión con el mismo código upstream.
 
@@ -204,6 +214,7 @@ Este keymap contiene el comportamiento personalizado del BFS9000 y debe consider
 
 * Firmware basado en QMK + Vial.
 * Controlador objetivo: RP2040.
+* El trackpad TPS65 es opcional: el mismo firmware funciona con él o sin él.
 * Las builds publicadas se adjuntan a las GitHub Releases como archivos `.uf2`.
 
 ## Keymap personal de Vial

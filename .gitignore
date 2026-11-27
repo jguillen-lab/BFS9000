@@ -70,6 +70,7 @@ hardware/**/*.wrl
 hardware/**/*.pdf
 hardware/**/*.svg
 hardware/**/*.png
+!hardware/production/**/*-settings.png
 hardware/**/*.jpg
 hardware/**/*.jpeg
 

@@ -68,12 +68,10 @@ hardware/production/rev0.4/pcb/
 
 This archive contains the Gerber and drill files for the main BFS9000 PCB.
 
-The following preview images are also included:
+The KiCad export settings used to generate these files are included as screenshots (KiCad in Spanish):
 
-```text
-BFS9000-rev0.4-gerber-preview.png
-BFS9000-rev0.4-drill-preview.png
-```
+- [`BFS9000-rev0.4-gerber-settings.png`](production/rev0.4/BFS9000-rev0.4-gerber-settings.png): **Plot** dialog (Gerber layers and options).
+- [`BFS9000-rev0.4-drill-settings.png`](production/rev0.4/BFS9000-rev0.4-drill-settings.png): **Generate Drill Files** dialog (Excellon, millimetres, absolute origin).
 
 ### Optional plates
 

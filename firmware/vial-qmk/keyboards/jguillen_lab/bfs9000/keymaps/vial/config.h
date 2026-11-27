@@ -89,6 +89,34 @@
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR
 
 /* ─────────────────────────────────────────────────────────────────────────────
+ * RGB MATRIX — IDLE TIMEOUT
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ * RGB_MATRIX_TIMEOUT turns the lighting off after 10 minutes (600000 ms)
+ * without input activity: keys, encoder or trackpad. Any input turns it back
+ * on. It applies to every effect.
+ *
+ * SPLIT_ACTIVITY_ENABLE syncs the last input activity from the master half to
+ * the secondary half, so both halves switch off and on together.
+ */
+#define RGB_MATRIX_TIMEOUT 600000
+#define SPLIT_ACTIVITY_ENABLE
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * RGB MATRIX — TYPING HEATMAP COOL-DOWN
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ * The stock Typing Heatmap cools every key by one heat step every 25 ms and
+ * ignores the speed setting. Here the delay follows "RGB Speed":
+ *   speed   0 → 80 ms per step (keys stay hot longer),
+ *   speed 255 →  5 ms per step (keys cool down quickly).
+ *
+ * The macro is evaluated at runtime inside QMK's RGB Matrix code, where
+ * rgb_matrix_config is available.
+ */
+#define RGB_MATRIX_TYPING_HEATMAP_DECREASE_DELAY_MS (5 + ((255 - rgb_matrix_config.speed) * 75) / 255)
+
+/* ─────────────────────────────────────────────────────────────────────────────
  * RGB MATRIX — EFFECT SUPPORT
  * ─────────────────────────────────────────────────────────────────────────────
  *

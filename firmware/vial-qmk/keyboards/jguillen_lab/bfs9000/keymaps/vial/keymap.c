@@ -21,7 +21,8 @@
 //   • Caps Lock / Num Lock indicators using one dedicated WS2812 per half,
 //   • HELP_KEY system for contextual help on the slave OLED,
 //   • layers and keymap generated from Vial,
-//   • encoder, RGB Matrix LED map and OLED rendering.
+//   • encoder, RGB Matrix LED map and OLED rendering,
+//   • keeping the Vial configuration in EEPROM across firmware builds.
 //
 // Maintenance intent:
 //   • do not move the Vial-generated block when regenerating the layout,
@@ -105,7 +106,10 @@ static __attribute__((always_inline)) inline void _caps_bit0(void) {
 // 24-bit transmission from SRAM to avoid flash XIP cache misses.
 // WS2812 order: G, R, B. Interrupts are disabled during the frame so the
 // protocol timing is not disturbed.
-static __attribute__((noinline, used, section(".data._capsled_frame")))
+//
+// `.time_critical.*` is the RP2040 section for code that must run from RAM:
+// the RP2040_FLASH_TIMECRIT linker script copies it to SRAM at startup.
+static __attribute__((noinline, used, section(".time_critical._capsled_frame")))
 void _capsled_frame(uint8_t r, uint8_t g, uint8_t b) {
     uint32_t primask = __get_PRIMASK();
     __disable_irq();
@@ -429,6 +433,122 @@ static void help_populate(uint8_t row, uint8_t col) {
 }
 
 // ============================================================================
+// Vial EEPROM persistence across firmware builds
+// ============================================================================
+//
+// Vial stamps the EEPROM with a random BUILD_ID on every compilation
+// (util/build_id.py). When that stamp does not match the running firmware,
+// VIA/Vial resets the dynamic keymap, macros, tap dances, combos, key
+// overrides and QMK settings. This protects against reading data written with
+// a different EEPROM layout, but it also wipes the user configuration on every
+// reflash, even when the layout has not changed.
+//
+// BFS9000 keeps its own stamp in the 32-bit user EEPROM block:
+//   • bits 31..24 — BFS_EEPROM_FORMAT, bumped by hand,
+//   • bits 23..0  — fingerprint of the sizes that define the Vial EEPROM
+//                   layout (layers, matrix, encoders, QMK settings, tap dance,
+//                   combos, key overrides, alt repeat keys, macros).
+//
+// via_init_kb() runs right before VIA checks its own stamp. If the stored
+// BFS9000 stamp matches the running firmware, the VIA stamp is refreshed and
+// the existing configuration is kept. Blank or incompatible EEPROM is still
+// initialised normally.
+//
+// Bump BFS_EEPROM_FORMAT when moving vial-qmk to a new upstream QMK merge, or
+// for any change that could alter the EEPROM layout in a way the fingerprint
+// does not cover.
+
+#include "nvm_eeprom_eeconfig_internal.h"
+#include "nvm_eeprom_via_internal.h"
+#ifdef QMK_SETTINGS
+#    include "qmk_settings.h"
+#endif
+
+#define BFS_EEPROM_FORMAT 1
+
+// VIA stamp written by the published v1.0.0 firmware (BUILD_ID 0x074C1A).
+// v1.0.0 uses the same EEPROM layout as BFS_EEPROM_FORMAT 1, so upgrading from
+// it keeps the configuration too.
+#if BFS_EEPROM_FORMAT == 1
+static const uint8_t bfs_v1_0_0_via_stamp[3] = {0x1A, 0x4C, 0x07};
+#endif
+
+static uint32_t bfs_eeprom_stamp(void) {
+    const uint32_t parts[] = {
+        DYNAMIC_KEYMAP_LAYER_COUNT,
+        MATRIX_ROWS,
+        MATRIX_COLS,
+        NUM_ENCODERS,
+        VIA_EEPROM_MAGIC_ADDR,
+        VIA_EEPROM_LAYOUT_OPTIONS_SIZE,
+        VIA_EEPROM_CUSTOM_CONFIG_SIZE,
+        DYNAMIC_KEYMAP_MACRO_COUNT,
+#ifdef QMK_SETTINGS
+        sizeof(qmk_settings_t),
+#endif
+#ifdef VIAL_TAP_DANCE_ENABLE
+        sizeof(vial_tap_dance_entry_t) * VIAL_TAP_DANCE_ENTRIES,
+#endif
+#ifdef VIAL_COMBO_ENABLE
+        sizeof(vial_combo_entry_t) * VIAL_COMBO_ENTRIES,
+#endif
+#ifdef VIAL_KEY_OVERRIDE_ENABLE
+        sizeof(vial_key_override_entry_t) * VIAL_KEY_OVERRIDE_ENTRIES,
+#endif
+#ifdef VIAL_ALT_REPEAT_KEY_ENABLE
+        sizeof(vial_alt_repeat_key_entry_t) * VIAL_ALT_REPEAT_KEY_ENTRIES,
+#endif
+    };
+
+    // FNV-1a over the layout sizes, folded to 24 bits.
+    uint32_t hash = 2166136261u;
+    for (size_t i = 0; i < sizeof(parts) / sizeof(parts[0]); ++i) {
+        for (uint8_t shift = 0; shift < 32; shift += 8) {
+            hash ^= (parts[i] >> shift) & 0xFF;
+            hash *= 16777619u;
+        }
+    }
+    hash = (hash >> 24) ^ (hash & 0xFFFFFF);
+
+    return ((uint32_t)BFS_EEPROM_FORMAT << 24) | hash;
+}
+
+static bool bfs_via_stamp_is(const uint8_t stamp[3]) {
+    for (uint8_t i = 0; i < 3; ++i) {
+        if (eeprom_read_byte((const uint8_t *)VIA_EEPROM_MAGIC_ADDR + i) != stamp[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Called by VIA before it validates its own EEPROM stamp.
+void via_init_kb(void) {
+    if (via_eeprom_is_valid()) return;
+
+    // 0xFF FF FF means blank EEPROM or an interrupted reset: never keep it.
+    static const uint8_t blank[3] = {0xFF, 0xFF, 0xFF};
+    if (bfs_via_stamp_is(blank)) return;
+
+    bool compatible = eeconfig_read_user() == bfs_eeprom_stamp();
+#if BFS_EEPROM_FORMAT == 1
+    compatible = compatible || bfs_via_stamp_is(bfs_v1_0_0_via_stamp);
+#endif
+
+    if (compatible) {
+        via_eeprom_set_valid(true);
+    }
+}
+
+// Called after VIA has validated or initialised the EEPROM.
+static void bfs_eeprom_stamp_save(void) {
+    uint32_t stamp = bfs_eeprom_stamp();
+    if (eeconfig_read_user() != stamp) {
+        eeconfig_update_user(stamp);
+    }
+}
+
+// ============================================================================
 // QMK lifecycle hooks
 // ============================================================================
 
@@ -440,9 +560,12 @@ void keyboard_pre_init_user(void) {
 	setPinInputHigh(USR_BOOT_PIN);
 }
 
-// Post-init: register the split help channel and synchronise the initial
-// Caps/Num state so the indicator does not start out of sync.
+// Post-init: save the BFS9000 EEPROM stamp, register the split help channel
+// and synchronise the initial Caps/Num state so the indicator does not start
+// out of sync.
 void keyboard_post_init_user(void) {
+    bfs_eeprom_stamp_save();
+
     transaction_register_rpc(USER_HELP_SYNC, help_slave_rx);
 
     caps_last = host_keyboard_led_state().caps_lock;
@@ -926,6 +1049,81 @@ led_config_t g_led_config = {
         [123] = LED_FLAG_UNDERGLOW, // R SULED2
     }
 };
+
+// ============================================================================
+// RGB Matrix — Typing Heatmap over the selected colour
+// ============================================================================
+//
+// QMK's stock Typing Heatmap turns cold keys off. On BFS9000, while that effect
+// is active, every LED is repainted from the same heat buffer:
+//   • cold keys and LEDs without a key (underglow) show the colour selected in
+//     Vial ("RGB Color"), slightly dimmed so hot keys stand out,
+//   • as a key heats up:
+//       – its hue moves from the selected hue towards red, in the same
+//         direction as the stock ramp (… → cyan → green → yellow → red),
+//       – its saturation rises to the maximum, so hot colours look solid,
+//       – its brightness rises to the selected "RGB Brightness".
+//
+// "RGB Speed" sets how fast keys cool down (see
+// RGB_MATRIX_TYPING_HEATMAP_DECREASE_DELAY_MS in config.h).
+//
+// The effect keeps its stock identity, so it is still selected as
+// "Typing Heatmap" from Vial or MARCOntroller.
+#if defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS) && defined(ENABLE_RGB_MATRIX_TYPING_HEATMAP)
+
+// Background brightness, as a fraction of "RGB Brightness" (0-255 = 0-100 %).
+#define BFS_HEATMAP_BACKGROUND_VAL 179 // ~70 %
+
+// Heat at which a key reaches red (the stock effect reaches red at 255).
+#define BFS_HEATMAP_RED_HEAT 170
+
+static uint8_t bfs_lerp8(uint8_t from, uint8_t to, uint8_t weight) {
+    return (uint8_t)(from + (((int16_t)to - (int16_t)from) * (int16_t)weight) / 255);
+}
+
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    if (rgb_matrix_get_mode() != RGB_MATRIX_TYPING_HEATMAP) return true;
+
+    const uint8_t flags    = rgb_matrix_get_flags();
+    const hsv_t   base_hsv = rgb_matrix_get_hsv();
+    const uint8_t bg_val   = ((uint16_t)base_hsv.v * BFS_HEATMAP_BACKGROUND_VAL) / 255;
+    const rgb_t   bg       = hsv_to_rgb((hsv_t){base_hsv.h, base_hsv.s, bg_val});
+
+    // Background: every enabled LED in this render slice.
+    for (uint8_t i = led_min; i < led_max; ++i) {
+        if (!HAS_ANY_FLAGS(g_led_config.flags[i], flags)) continue;
+        rgb_matrix_set_color(i, bg.r, bg.g, bg.b);
+    }
+
+    // Keys with heat.
+    for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
+        for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
+            const uint8_t led = g_led_config.matrix_co[row][col];
+            if (led == NO_LED || led < led_min || led >= led_max) continue;
+            if (!HAS_ANY_FLAGS(g_led_config.flags[led], flags)) continue;
+
+            const uint8_t heat = g_rgb_frame_buffer[row][col];
+            if (heat == 0) continue;
+
+            // Hue: selected hue → red (0), descending like the stock ramp.
+            const uint8_t hue_progress = (uint16_t)(heat > BFS_HEATMAP_RED_HEAT ? BFS_HEATMAP_RED_HEAT : heat) * 255 / BFS_HEATMAP_RED_HEAT;
+            const uint8_t hue          = bfs_lerp8(base_hsv.h, 0, hue_progress);
+
+            // Saturation and brightness: same ramp as the stock brightness,
+            // fully reached at heat 85.
+            const uint8_t weight = (heat > 85 ? 85 : heat) * 3;
+            const uint8_t sat    = bfs_lerp8(base_hsv.s, 255, weight);
+            const uint8_t val    = bfs_lerp8(bg_val, base_hsv.v, weight);
+
+            const rgb_t rgb = hsv_to_rgb((hsv_t){hue, sat, val});
+            rgb_matrix_set_color(led, rgb.r, rgb.g, rgb.b);
+        }
+    }
+
+    return true;
+}
+
+#endif // RGB_MATRIX_FRAMEBUFFER_EFFECTS && ENABLE_RGB_MATRIX_TYPING_HEATMAP
 
 #endif
 

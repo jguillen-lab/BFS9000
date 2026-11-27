@@ -34,4 +34,8 @@
 
 6. Abre una pull request con tus fotos nuevas y los cambios en el README.
 
+## Licencia de tus fotos
+
+Tus fotos siguen siendo tuyas. Al abrir la pull request aceptas publicarlas bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es), con el crédito del nombre que pongas en tu README, salvo que indiques otra licencia allí.
+
 ¡Eso es todo — gracias por participar!

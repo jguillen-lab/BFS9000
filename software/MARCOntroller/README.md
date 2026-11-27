@@ -229,15 +229,17 @@ cargo run -- config show
 Defaults:
 
 - VID: `FEED`
-- PID: `0000`
+- PID: `9000` (BFS9000)
 - Preferred RAW HID interface: usagePage `FF60`, usage `0061`
 - Fallback: `interface_number == 1` or `MI_01` in the path
 
 All commands optionally accept:
 
 ```bat
---vid FEED --pid 0000 --serial "vial:f64c2b3c" --lang es
+--vid FEED --pid 9000 --serial "vial:f64c2b3c" --lang es
 ```
+
+For the Marquichuelo, use `--pid 0000`. An existing `config.toml` keeps the PID it already has.
 
 If you have multiple identical keyboards, filter by serial:
 

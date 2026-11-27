@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       base_ref:
-        description: "Commit/branch/tag base (antes). Ej: main~1 o un SHA"
+        description: "Base commit/branch/tag (before). E.g. main~1 or a SHA"
         required: true
         default: "main~1"
       head_ref:
-        description: "Commit/branch/tag nuevo (después). Ej: main o un SHA"
+        description: "New commit/branch/tag (after). E.g. main or a SHA"
         required: true
         default: "main"
 
@@ -27,12 +27,12 @@ jobs:
       PCB_PATH: hardware/BFS9000/BFS9000.kicad_pcb
 
     steps:
-      - name: Checkout completo
+      - name: Full checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Instalar KiCad 9 oficial
+      - name: Install official KiCad 9
         run: |
           set -euo pipefail
           sudo add-apt-repository --yes ppa:kicad/kicad-9.0-releases
@@ -40,7 +40,7 @@ jobs:
           sudo apt-get install -y --install-recommends kicad
           kicad-cli version
 
-      - name: Resolver refs
+      - name: Resolve refs
         id: refs
         run: |
           set -euo pipefail
@@ -66,7 +66,7 @@ jobs:
             echo "HEAD_SHA=$HEAD_SHA"
           } | tee out/meta/compare.txt
 
-      - name: Crear worktrees
+      - name: Create worktrees
         run: |
           set -euo pipefail
 
@@ -170,21 +170,21 @@ jobs:
             --include-zones \
             "$PCB"
 
-      - name: Subir artefacto base
+      - name: Upload base artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pcb-base-render
           path: out/base
 
-      - name: Subir artefacto head
+      - name: Upload head artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pcb-head-render
           path: out/head
 
-      - name: Subir metadatos
+      - name: Upload metadata
         if: always()
         uses: actions/upload-artifact@v4
         with:

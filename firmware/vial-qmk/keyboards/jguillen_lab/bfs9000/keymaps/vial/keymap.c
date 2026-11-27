@@ -105,7 +105,10 @@ static __attribute__((always_inline)) inline void _caps_bit0(void) {
 // 24-bit transmission from SRAM to avoid flash XIP cache misses.
 // WS2812 order: G, R, B. Interrupts are disabled during the frame so the
 // protocol timing is not disturbed.
-static __attribute__((noinline, used, section(".data._capsled_frame")))
+//
+// `.time_critical.*` is the RP2040 section for code that must run from RAM:
+// the RP2040_FLASH_TIMECRIT linker script copies it to SRAM at startup.
+static __attribute__((noinline, used, section(".time_critical._capsled_frame")))
 void _capsled_frame(uint8_t r, uint8_t g, uint8_t b) {
     uint32_t primask = __get_PRIMASK();
     __disable_irq();

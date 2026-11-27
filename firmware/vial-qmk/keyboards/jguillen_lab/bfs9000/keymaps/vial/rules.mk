@@ -55,3 +55,16 @@ TAP_DANCE_ENABLE = yes
 
 POINTING_DEVICE_ENABLE = yes
 POINTING_DEVICE_DRIVER = azoteq_iqs5xx
+
+# ─────────────────────────────────────────────────────────────────────────────
+# HELP KEY LANGUAGE
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Language of the HELP_KEY texts on the slave OLED: en (default) or es.
+# Choose it at build time without editing this file:
+#   qmk compile -kb jguillen_lab/bfs9000 -km vial -e BFS_HELP_LANG=es
+
+BFS_HELP_LANG ?= en
+ifeq ($(strip $(BFS_HELP_LANG)), es)
+    OPT_DEFS += -DBFS_HELP_LANG_ES
+endif

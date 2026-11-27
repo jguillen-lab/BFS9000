@@ -34,8 +34,8 @@ pub struct Cli {
     #[arg(long, default_value = "FEED")]
     pub vid: String,
 
-    /// Product ID (hex). Default: 0000
-    #[arg(long, default_value = "0000")]
+    /// Product ID (hex). Default: 9000 (BFS9000)
+    #[arg(long, default_value = "9000")]
     pub pid: String,
 
     /// Filter by serial number when multiple identical keyboards are connected

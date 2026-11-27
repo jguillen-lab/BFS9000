@@ -23,7 +23,7 @@ pub struct AppConfig {
 pub struct HidConfig {
     /// Vendor ID as hex string (e.g. "FEED")
     pub vid: String,
-    /// Product ID as hex string (e.g. "0000")
+    /// Product ID as hex string (e.g. "9000" for the BFS9000)
     pub pid: String,
     /// Optional serial filter (useful when multiple identical keyboards exist)
     pub serial: Option<String>,
@@ -61,7 +61,7 @@ impl Default for AppConfig {
         Self {
             hid: HidConfig {
                 vid: "FEED".to_owned(),
-                pid: "0000".to_owned(),
+                pid: "9000".to_owned(),
                 serial: None,
             },
             mqtt: MqttConfig {

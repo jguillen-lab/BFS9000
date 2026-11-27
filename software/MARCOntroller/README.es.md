@@ -229,15 +229,17 @@ cargo run -- config show
 Por defecto usa:
 
 - VID: `FEED`
-- PID: `0000`
+- PID: `9000` (BFS9000)
 - Interfaz RAW HID preferida: usagePage `FF60`, usage `0061`
 - Fallback: `interface_number == 1` o `MI_01` en la ruta
 
 Todos los comandos aceptan opcionalmente:
 
 ```bat
---vid FEED --pid 0000 --serial "vial:f64c2b3c" --lang es
+--vid FEED --pid 9000 --serial "vial:f64c2b3c" --lang es
 ```
+
+Para el Marquichuelo, usa `--pid 0000`. Un `config.toml` existente conserva el PID que ya tenga.
 
 Si tienes varios teclados iguales, filtra por serial:
 

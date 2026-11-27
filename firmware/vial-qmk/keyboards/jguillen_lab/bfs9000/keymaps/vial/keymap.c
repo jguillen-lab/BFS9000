@@ -21,7 +21,8 @@
 //   • Caps Lock / Num Lock indicators using one dedicated WS2812 per half,
 //   • HELP_KEY system for contextual help on the slave OLED,
 //   • layers and keymap generated from Vial,
-//   • encoder, RGB Matrix LED map and OLED rendering.
+//   • encoder, RGB Matrix LED map and OLED rendering,
+//   • keeping the Vial configuration in EEPROM across firmware builds.
 //
 // Maintenance intent:
 //   • do not move the Vial-generated block when regenerating the layout,
@@ -432,6 +433,122 @@ static void help_populate(uint8_t row, uint8_t col) {
 }
 
 // ============================================================================
+// Vial EEPROM persistence across firmware builds
+// ============================================================================
+//
+// Vial stamps the EEPROM with a random BUILD_ID on every compilation
+// (util/build_id.py). When that stamp does not match the running firmware,
+// VIA/Vial resets the dynamic keymap, macros, tap dances, combos, key
+// overrides and QMK settings. This protects against reading data written with
+// a different EEPROM layout, but it also wipes the user configuration on every
+// reflash, even when the layout has not changed.
+//
+// BFS9000 keeps its own stamp in the 32-bit user EEPROM block:
+//   • bits 31..24 — BFS_EEPROM_FORMAT, bumped by hand,
+//   • bits 23..0  — fingerprint of the sizes that define the Vial EEPROM
+//                   layout (layers, matrix, encoders, QMK settings, tap dance,
+//                   combos, key overrides, alt repeat keys, macros).
+//
+// via_init_kb() runs right before VIA checks its own stamp. If the stored
+// BFS9000 stamp matches the running firmware, the VIA stamp is refreshed and
+// the existing configuration is kept. Blank or incompatible EEPROM is still
+// initialised normally.
+//
+// Bump BFS_EEPROM_FORMAT when moving vial-qmk to a new upstream QMK merge, or
+// for any change that could alter the EEPROM layout in a way the fingerprint
+// does not cover.
+
+#include "nvm_eeprom_eeconfig_internal.h"
+#include "nvm_eeprom_via_internal.h"
+#ifdef QMK_SETTINGS
+#    include "qmk_settings.h"
+#endif
+
+#define BFS_EEPROM_FORMAT 1
+
+// VIA stamp written by the published v1.0.0 firmware (BUILD_ID 0x074C1A).
+// v1.0.0 uses the same EEPROM layout as BFS_EEPROM_FORMAT 1, so upgrading from
+// it keeps the configuration too.
+#if BFS_EEPROM_FORMAT == 1
+static const uint8_t bfs_v1_0_0_via_stamp[3] = {0x1A, 0x4C, 0x07};
+#endif
+
+static uint32_t bfs_eeprom_stamp(void) {
+    const uint32_t parts[] = {
+        DYNAMIC_KEYMAP_LAYER_COUNT,
+        MATRIX_ROWS,
+        MATRIX_COLS,
+        NUM_ENCODERS,
+        VIA_EEPROM_MAGIC_ADDR,
+        VIA_EEPROM_LAYOUT_OPTIONS_SIZE,
+        VIA_EEPROM_CUSTOM_CONFIG_SIZE,
+        DYNAMIC_KEYMAP_MACRO_COUNT,
+#ifdef QMK_SETTINGS
+        sizeof(qmk_settings_t),
+#endif
+#ifdef VIAL_TAP_DANCE_ENABLE
+        sizeof(vial_tap_dance_entry_t) * VIAL_TAP_DANCE_ENTRIES,
+#endif
+#ifdef VIAL_COMBO_ENABLE
+        sizeof(vial_combo_entry_t) * VIAL_COMBO_ENTRIES,
+#endif
+#ifdef VIAL_KEY_OVERRIDE_ENABLE
+        sizeof(vial_key_override_entry_t) * VIAL_KEY_OVERRIDE_ENTRIES,
+#endif
+#ifdef VIAL_ALT_REPEAT_KEY_ENABLE
+        sizeof(vial_alt_repeat_key_entry_t) * VIAL_ALT_REPEAT_KEY_ENTRIES,
+#endif
+    };
+
+    // FNV-1a over the layout sizes, folded to 24 bits.
+    uint32_t hash = 2166136261u;
+    for (size_t i = 0; i < sizeof(parts) / sizeof(parts[0]); ++i) {
+        for (uint8_t shift = 0; shift < 32; shift += 8) {
+            hash ^= (parts[i] >> shift) & 0xFF;
+            hash *= 16777619u;
+        }
+    }
+    hash = (hash >> 24) ^ (hash & 0xFFFFFF);
+
+    return ((uint32_t)BFS_EEPROM_FORMAT << 24) | hash;
+}
+
+static bool bfs_via_stamp_is(const uint8_t stamp[3]) {
+    for (uint8_t i = 0; i < 3; ++i) {
+        if (eeprom_read_byte((const uint8_t *)VIA_EEPROM_MAGIC_ADDR + i) != stamp[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Called by VIA before it validates its own EEPROM stamp.
+void via_init_kb(void) {
+    if (via_eeprom_is_valid()) return;
+
+    // 0xFF FF FF means blank EEPROM or an interrupted reset: never keep it.
+    static const uint8_t blank[3] = {0xFF, 0xFF, 0xFF};
+    if (bfs_via_stamp_is(blank)) return;
+
+    bool compatible = eeconfig_read_user() == bfs_eeprom_stamp();
+#if BFS_EEPROM_FORMAT == 1
+    compatible = compatible || bfs_via_stamp_is(bfs_v1_0_0_via_stamp);
+#endif
+
+    if (compatible) {
+        via_eeprom_set_valid(true);
+    }
+}
+
+// Called after VIA has validated or initialised the EEPROM.
+static void bfs_eeprom_stamp_save(void) {
+    uint32_t stamp = bfs_eeprom_stamp();
+    if (eeconfig_read_user() != stamp) {
+        eeconfig_update_user(stamp);
+    }
+}
+
+// ============================================================================
 // QMK lifecycle hooks
 // ============================================================================
 
@@ -443,9 +560,12 @@ void keyboard_pre_init_user(void) {
 	setPinInputHigh(USR_BOOT_PIN);
 }
 
-// Post-init: register the split help channel and synchronise the initial
-// Caps/Num state so the indicator does not start out of sync.
+// Post-init: save the BFS9000 EEPROM stamp, register the split help channel
+// and synchronise the initial Caps/Num state so the indicator does not start
+// out of sync.
 void keyboard_post_init_user(void) {
+    bfs_eeprom_stamp_save();
+
     transaction_register_rpc(USER_HELP_SYNC, help_slave_rx);
 
     caps_last = host_keyboard_led_state().caps_lock;

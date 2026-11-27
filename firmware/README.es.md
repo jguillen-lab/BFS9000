@@ -4,7 +4,21 @@
 
 Firmware QMK + Vial para el teclado **BFS9000**.
 
-Este directorio contiene tanto el árbol fuente del firmware como las versiones compiladas listas para flashear en el controlador RP2040.
+Este directorio contiene el árbol fuente del firmware. El firmware compilado, listo para flashear en el controlador RP2040, se publica como **GitHub Releases**.
+
+## Descarga
+
+El firmware compilado va adjunto a cada release de firmware:
+
+- Todas las releases de firmware: <https://github.com/jguillen-lab/BFS9000/releases?q=firmware>
+- Versión estable actual: [`firmware/bfs9000-v1.0.0`](https://github.com/jguillen-lab/BFS9000/releases/tag/firmware/bfs9000-v1.0.0)
+
+Cada release incluye:
+
+| Archivo | Uso |
+| --- | --- |
+| `jguillen_lab_bfs9000_vial_vX.Y.Z.uf2` | Firmware para flashear en el RP2040. Es el archivo que normalmente necesitas. |
+| `jguillen_lab_bfs9000_vial_vX.Y.Z.elf` | Artefacto de depuración/compilación (símbolos, análisis de tamaño, depuración). No hace falta para flashear. |
 
 ## Estructura del directorio
 
@@ -12,9 +26,7 @@ Este directorio contiene tanto el árbol fuente del firmware como las versiones 
 firmware/
 ├── README.md
 ├── README.es.md
-├── releases/
-│   ├── jguillen_lab_bfs9000_vial_v0.1.0.elf
-│   └── jguillen_lab_bfs9000_vial_v0.1.0.uf2
+├── jguillen.vil
 └── vial-qmk/
     └── keyboards/
         └── jguillen_lab/
@@ -33,25 +45,6 @@ firmware/
                         ├── rules.mk
                         └── vial.json
 ```
-
-## Carpetas principales
-
-### `releases/`
-
-Contiene las versiones publicadas del firmware.
-
-Archivos actuales:
-
-```text
-jguillen_lab_bfs9000_vial_v0.1.0.uf2
-jguillen_lab_bfs9000_vial_v0.1.0.elf
-```
-
-El archivo `.uf2` es el que normalmente se usa para flashear el controlador RP2040.
-
-El archivo `.elf` se conserva como artefacto de depuración/compilación. Puede ser útil para inspección de símbolos, análisis de tamaño o depuración, pero no es necesario para flashear el teclado en uso normal.
-
-Esta carpeta debe contener solo artefactos finales de release. No debe contener temporales, objetos intermedios ni carpetas de compilación.
 
 ### `vial-qmk/`
 
@@ -90,7 +83,9 @@ vial.json
 
 ## Compilación
 
-Desde el directorio `vial-qmk/`:
+1. Clona [vial-qmk](https://github.com/vial-kb/vial-qmk) y prepara el entorno de compilación de QMK.
+2. Copia `vial-qmk/keyboards/jguillen_lab/` de este repositorio dentro del directorio `keyboards/` de tu clon de vial-qmk.
+3. Desde la raíz de vial-qmk, ejecuta:
 
 ```bash
 qmk compile -kb jguillen_lab/bfs9000 -km vial
@@ -98,69 +93,83 @@ qmk compile -kb jguillen_lab/bfs9000 -km vial
 
 El firmware generado para RP2040 será un archivo `.uf2`.
 
+Cada release indica el commit exacto de vial-qmk con el que se compiló, para poder recompilar cualquier versión con el mismo código upstream.
+
 ## Flasheo
 
-1. Pon el controlador RP2040 en modo bootloader.
-2. Aparecerá como una unidad USB.
-3. Copia el archivo `.uf2` de `releases/` a la unidad del RP2040.
-4. El controlador se reiniciará automáticamente con el nuevo firmware.
-
-Archivo recomendado para flashear la versión actual:
-
-```text
-releases/jguillen_lab_bfs9000_vial_v0.1.0.uf2
-```
+1. Descarga el archivo `.uf2` de la [release](#descarga) que quieras instalar.
+2. Pon el controlador RP2040 en modo bootloader.
+3. Aparecerá como una unidad USB.
+4. Copia el archivo `.uf2` a la unidad del RP2040.
+5. El controlador se reiniciará automáticamente con el nuevo firmware.
+6. Repite con la otra mitad.
 
 ## Versionado
 
-Las versiones publicadas del firmware usan este formato:
+Las versiones del firmware usan este formato:
 
 ```text
 vMAJOR.MINOR.PATCH
 ```
 
-Ejemplo:
+Significado:
 
 ```text
-v0.1.0
+v1.0.1  → correcciones pequeñas o actualizaciones de upstream (Vial/QMK) sin cambios funcionales
+v1.1.0  → cambios funcionales
+v2.0.0  → cambios incompatibles (por ejemplo, una matriz o un layout nuevos)
 ```
 
-Criterio recomendado:
+`v1.0.0` es la primera versión estable del firmware. Las builds publicadas antes como `v0.1.0` contienen el mismo código.
+
+La versión del firmware es independiente de la revisión de hardware de la PCB:
 
 ```text
-v0.1.1  → correcciones pequeñas
-v0.2.0  → cambios funcionales
-v1.0.0  → primera versión estable
-```
-
-La versión publicada del firmware es independiente de la revisión de hardware de la PCB.
-
-Distinción recomendada:
-
-```text
-Firmware release: v0.1.0
+Firmware release: v1.0.0
 Hardware revision: rev0.4
 ```
 
-En `keyboard.json`, el campo `usb.device_version` debe usar tres partes numéricas, por ejemplo:
+En `keyboard.json`, el campo `usb.device_version` sigue la revisión de hardware y debe usar tres partes numéricas, por ejemplo:
 
 ```json
 "device_version": "0.4.0"
 ```
 
-## Qué se debe guardar
+## Proceso de release
 
-Guardar:
+Las releases del firmware se identifican con tags de Git con este formato:
 
 ```text
-releases/*.uf2
-releases/*.elf
-vial-qmk/keyboards/jguillen_lab/bfs9000/
+firmware/bfs9000-vX.Y.Z
 ```
 
-No guardar:
+Sigue la misma convención que los tags de hardware (`hardware/bfs9000-rev0.4`).
+
+Para publicar una release:
+
+1. Compila el firmware como se describe en [Compilación](#compilación).
+2. Renombra los resultados a `jguillen_lab_bfs9000_vial_vX.Y.Z.uf2` y `.elf`.
+3. Crea un tag anotado sobre el commit que contiene el código publicado:
+
+   ```bash
+   git tag -a firmware/bfs9000-vX.Y.Z -m "BFS9000 firmware vX.Y.Z"
+   git push origin firmware/bfs9000-vX.Y.Z
+   ```
+
+4. Crea la GitHub Release de ese tag, adjunta los archivos `.uf2` y `.elf` e indica el commit de vial-qmk usado:
+
+   ```bash
+   gh release create firmware/bfs9000-vX.Y.Z \
+     jguillen_lab_bfs9000_vial_vX.Y.Z.uf2 \
+     jguillen_lab_bfs9000_vial_vX.Y.Z.elf \
+     --title "BFS9000 firmware vX.Y.Z" --notes-file notes.md
+   ```
+
+Los binarios compilados y los objetos intermedios no se suben al repositorio:
 
 ```text
+*.uf2
+*.elf
 .build/
 compiled/
 obj_*/
@@ -169,8 +178,6 @@ obj_*/
 *.a
 *.tmp
 ```
-
-Los objetos intermedios de compilación pueden regenerarse en cualquier momento y no deben formar parte de una release.
 
 ## Keymap principal
 
@@ -186,8 +193,7 @@ Este keymap contiene el comportamiento personalizado del BFS9000 y debe consider
 
 * Firmware basado en QMK + Vial.
 * Controlador objetivo: RP2040.
-* Las builds publicadas se guardan como archivos `.uf2`.
-* El directorio `releases/` debe contener solo artefactos finales.
+* Las builds publicadas se adjuntan a las GitHub Releases como archivos `.uf2`.
 
 ## Keymap personal de Vial
 
@@ -200,5 +206,3 @@ jguillen.vil
 Este fichero contiene el keymap de Vial que uso actualmente.
 
 Se puede cargar en el teclado utilizando la **aplicación de escritorio de Vial** o la **aplicación web de Vial**.
-
-

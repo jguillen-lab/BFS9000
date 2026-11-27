@@ -94,3 +94,7 @@ desktop.ini
 
 # --- Source Images ---
 *.psd
+
+# Firmware binaries (published as GitHub Releases)
+/firmware/**/*.uf2
+/firmware/**/*.elf

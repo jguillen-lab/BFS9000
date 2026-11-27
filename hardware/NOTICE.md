@@ -14,16 +14,16 @@ This hardware project contains original BFS9000 work as well as files, ideas, re
 BFS9000 is based on the Sofle keyboard family.
 
 - Project: SofleKeyboard
-- Original author: Josef Adamc�k
+- Original author: Josef Adamčík
 - Repository: https://github.com/josefadamcik/SofleKeyboard
 - Hardware license: MIT
 
 ## Sofle-Pico
 
-Several hardware assets, layout ideas, KiCad resources, footprints, and 3D model references in this directory are based on, copied from, or derived from Sofle-Pico.
+Several hardware assets, layout ideas, KiCad resources, footprints, and 3D model references in `hardware/` are based on, copied from, or derived from Sofle-Pico.
 
 - Project: Sofle-Pico
-- Author / maintainer: JellyTitan
+- Author / maintainer: JellyTitan (Ryan Neff)
 - Repository: https://github.com/JellyTitan/Sofle-Pico
 - Website / documentation: https://www.soflepico.com/
 - License: MIT
@@ -37,6 +37,17 @@ The BFS9000 concept also takes layout inspiration from the BFO-9000.
 - Documentation: https://docs.keeb.io/bfo-9000-build-guide
 - PCB repository: https://github.com/keebio/bfo9000-pcb
 - License: MIT
+
+## Upstream MIT notices
+
+Sofle-Pico, SofleKeyboard and the projects they derive from are distributed under the MIT License, with the same terms as [LICENSE](LICENSE). Their copyright notices are kept here as the license requires:
+
+- Sofle-Pico — Copyright (c) 2023 Ryan Neff — https://github.com/JellyTitan/Sofle-Pico
+- SofleKeyboard — Copyright (c) 2019 Josef Adamčík — https://github.com/josefadamcik/SofleKeyboard
+- Lily58 — Copyright (c) 2018 Naoki Katahira — https://github.com/kata0510/Lily58
+- Helix — Copyright (c) 2018 MakotoKurauchi — https://github.com/MakotoKurauchi/helix
+- crkbd — Copyright (c) 2018 foostan — https://github.com/foostan/crkbd
+- Ergo42 — Copyright (c) 2017 Biacco42 — https://github.com/Biacco42/Ergo42
 
 ## KiCad libraries and generated footprints
 
@@ -53,4 +64,4 @@ References to Cherry MX, Kailh, SK6803 / SK6812, Raspberry Pi Pico, SSD1306, Pim
 
 ## Notes
 
-This notice is intended to preserve attribution for upstream projects and third-party resources. If a file in this directory has a more specific license or attribution notice, that notice takes precedence for that file.
+This notice is intended to preserve attribution for upstream projects and third-party resources. If a file in `hardware/` has a more specific license or attribution notice, that notice takes precedence for that file.

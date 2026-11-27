@@ -52,8 +52,8 @@
 //
 //
 static const char *get_layer_name(void);
-static void help_kc_name(uint16_t kc, char *buf);
-static const char *help_kc_desc(uint16_t kc);
+static void help_kc_name(uint16_t kc, uint8_t mods, char *buf);
+static const char *help_kc_desc(uint16_t kc, uint8_t mods);
 
 // ── Caps Lock / Num Lock indicators over WS2812 ─────────────────────────────
 //
@@ -175,7 +175,7 @@ static void usr_boot_task(void) {
 
 // Compact split-RPC payload.
 //
-// Current size: 21 bytes, below the practical 32-byte limit of the channel used
+// Current size: 22 bytes, below the practical 32-byte limit of the channel used
 // for split transactions.
 typedef struct {
     uint8_t  mode;        //  1
@@ -184,11 +184,16 @@ typedef struct {
     char     layer[5];    //  5  max 4 chars + null terminator
     uint8_t  row;         //  1  physical matrix row
     uint8_t  col;         //  1  physical matrix column
+    uint8_t  mods;        //  1  HELP_MOD_* applied to the names
 } __attribute__((packed)) help_data_t;
 
 static help_data_t help_data  = {0};
 static bool        help_mode  = false;
 static bool        help_dirty = false;
+
+// Modifiers held while HELP_KEY is held. The help mode swallows those presses,
+// so QMK does not see them in get_mods().
+static uint8_t     help_mods_held = 0;
 
 // Callback executed on the slave half when a HELP update arrives.
 // The response is unused, so `out_sz` and `out_buf` are left untouched.
@@ -211,27 +216,257 @@ static uint16_t help_resolve(uint8_t row, uint8_t col) {
     return KC_NO;
 }
 
+// ── Characters on the host layout ───────────────────────────────────────────
+//
+// The help shows what a key types with Shift or AltGr held. The ES build
+// assumes the Spanish ISO layout and the EN build the US layout.
+//
+// Characters outside ASCII use the codes HC_* below; the large font draws them
+// and help_ascii_name() replaces them for the normal font.
+
+#define HELP_MOD_SHIFT 0x01
+#define HELP_MOD_ALTGR 0x02
+
+#define HC_MIDDOT  '\x01'  // ·
+#define HC_IEXCL   '\x02'  // ¡
+#define HC_IQUEST  '\x03'  // ¿
+#define HC_NTILDE  '\x04'  // Ñ
+#define HC_CCEDIL  '\x05'  // Ç
+#define HC_ACUTE   '\x06'  // ´
+#define HC_DIAER   '\x07'  // ¨
+#define HC_MORD    '\x08'  // º
+#define HC_FORD    '\x09'  // ª
+#define HC_EURO    '\x0A'  // €
+#define HC_NOT     '\x0B'  // ¬
+#define HC_LAST    HC_NOT
+
+typedef struct {
+    uint8_t kc;     // basic keycode
+    char    base;   // without modifiers
+    char    shift;  // with Shift
+    char    altgr;  // with AltGr, 0 = nothing
+} help_layout_t;
+
+#if defined(BFS_HELP_LANG_ES)
+#    define HELP_LAYOUT_ALTGR  // Spanish uses AltGr for @ # [ ] { } and more.
+static const help_layout_t help_layout[] = {
+    { KC_GRV,  HC_MORD,   HC_FORD,   '\\'     },
+    { KC_1,    '1',       '!',       '|'      },
+    { KC_2,    '2',       '"',       '@'      },
+    { KC_3,    '3',       HC_MIDDOT, '#'      },
+    { KC_4,    '4',       '$',       '~'      },
+    { KC_5,    '5',       '%',       HC_EURO  },
+    { KC_6,    '6',       '&',       HC_NOT   },
+    { KC_7,    '7',       '/',       0        },
+    { KC_8,    '8',       '(',       0        },
+    { KC_9,    '9',       ')',       0        },
+    { KC_0,    '0',       '=',       0        },
+    { KC_MINS, '\'',      '?',       0        },
+    { KC_EQL,  HC_IEXCL,  HC_IQUEST, 0        },
+    { KC_LBRC, '`',       '^',       '['      },
+    { KC_RBRC, '+',       '*',       ']'      },
+    { KC_SCLN, HC_NTILDE, HC_NTILDE, 0        },
+    { KC_QUOT, HC_ACUTE,  HC_DIAER,  '{'      },
+    { KC_NUHS, HC_CCEDIL, HC_CCEDIL, '}'      },
+    { KC_BSLS, HC_CCEDIL, HC_CCEDIL, '}'      },  // same key as NUHS on ISO
+    { KC_NUBS, '<',       '>',       0        },
+    { KC_COMM, ',',       ';',       0        },
+    { KC_DOT,  '.',       ':',       0        },
+    { KC_SLSH, '-',       '_',       0        },
+    { KC_E,    'E',       'E',       HC_EURO  },
+};
+#else
+static const help_layout_t help_layout[] = {
+    { KC_GRV,  '`',  '~', 0 },
+    { KC_1,    '1',  '!', 0 },
+    { KC_2,    '2',  '@', 0 },
+    { KC_3,    '3',  '#', 0 },
+    { KC_4,    '4',  '$', 0 },
+    { KC_5,    '5',  '%', 0 },
+    { KC_6,    '6',  '^', 0 },
+    { KC_7,    '7',  '&', 0 },
+    { KC_8,    '8',  '*', 0 },
+    { KC_9,    '9',  '(', 0 },
+    { KC_0,    '0',  ')', 0 },
+    { KC_MINS, '-',  '_', 0 },
+    { KC_EQL,  '=',  '+', 0 },
+    { KC_LBRC, '[',  '{', 0 },
+    { KC_RBRC, ']',  '}', 0 },
+    { KC_BSLS, '\\', '|', 0 },
+    { KC_NUHS, '#',  '~', 0 },
+    { KC_SCLN, ';',  ':', 0 },
+    { KC_QUOT, '\'', '"', 0 },
+    { KC_COMM, ',',  '<', 0 },
+    { KC_DOT,  '.',  '>', 0 },
+    { KC_SLSH, '/',  '?', 0 },
+    { KC_NUBS, '\\', '|', 0 },
+};
+#endif
+
+// HELP_MOD_* bits a held key adds: Shift, and AltGr on layouts that use it.
+// Covers plain modifiers, mod-tap keys and Vial tap dances whose tap or hold
+// action is one of them.
+static uint8_t help_mod_bits(uint16_t kc) {
+    if (kc == KC_LSFT || kc == KC_RSFT) return HELP_MOD_SHIFT;
+#if defined(HELP_LAYOUT_ALTGR)
+    if (kc == KC_RALT) return HELP_MOD_ALTGR;
+#endif
+    if (IS_QK_MOD_TAP(kc)) {
+        uint8_t m    = QK_MOD_TAP_GET_MODS(kc);
+        uint8_t bits = (m & MOD_LSFT) ? HELP_MOD_SHIFT : 0;
+#if defined(HELP_LAYOUT_ALTGR)
+        if ((m & MOD_RALT) == MOD_RALT) bits |= HELP_MOD_ALTGR;
+#endif
+        return bits;
+    }
+    return 0;
+}
+
+static uint8_t help_key_mods(uint16_t kc) {
+#if defined(VIAL_TAP_DANCE_ENABLE)
+    if (IS_QK_TAP_DANCE(kc)) {
+        vial_tap_dance_entry_t td;
+        if (dynamic_keymap_get_tap_dance(QK_TAP_DANCE_GET_INDEX(kc), &td) == 0) {
+            return help_mod_bits(td.on_tap) | help_mod_bits(td.on_hold);
+        }
+        return 0;
+    }
+#endif
+    return help_mod_bits(kc);
+}
+
+// Modifiers already held when HELP_KEY was pressed.
+static uint8_t help_host_mods(void) {
+    uint8_t m    = get_mods();
+    uint8_t bits = (m & MOD_MASK_SHIFT) ? HELP_MOD_SHIFT : 0;
+#if defined(HELP_LAYOUT_ALTGR)
+    if (m & MOD_BIT(KC_RALT)) bits |= HELP_MOD_ALTGR;
+#endif
+    return bits;
+}
+
+// Character a key types with `mods` on the host layout.
+// Returns -1 when the key is not a character key, 0 when it types nothing
+// with those modifiers. Keys such as S(KC_1) carry their own Shift/AltGr.
+static int16_t help_key_char(uint16_t kc, uint8_t mods) {
+    if (IS_QK_MODS(kc)) {
+        uint8_t m     = QK_MODS_GET_MODS(kc);
+        bool    altgr = (m & MOD_RALT) == MOD_RALT;
+        if (m & (MOD_LCTL | MOD_LGUI)) return -1;  // Ctrl or GUI shortcut
+        if ((m & MOD_LALT) && !altgr)  return -1;  // left Alt shortcut
+        if (m & MOD_LSFT) mods |= HELP_MOD_SHIFT;
+        if (altgr) mods |= HELP_MOD_ALTGR;
+        kc = QK_MODS_GET_BASIC_KEYCODE(kc);
+    }
+#if !defined(HELP_LAYOUT_ALTGR)
+    mods &= ~HELP_MOD_ALTGR;
+#endif
+
+    for (uint8_t i = 0; i < sizeof(help_layout) / sizeof(help_layout[0]); i++) {
+        if (help_layout[i].kc != kc) continue;
+        if (mods & HELP_MOD_ALTGR) return (uint8_t)help_layout[i].altgr;
+        if (mods & HELP_MOD_SHIFT) return (uint8_t)help_layout[i].shift;
+        return (uint8_t)help_layout[i].base;
+    }
+
+    if (kc >= KC_A && kc <= KC_Z) {
+        return (mods & HELP_MOD_ALTGR) ? 0 : 'A' + (kc - KC_A);
+    }
+    return -1;
+}
+
+// Description of a character returned by help_key_char().
+static const char *help_char_desc(char c) {
+    if (c >= 'A' && c <= 'Z') return HT_LETTER;
+    if (c >= '0' && c <= '9') return HT_NUMBER;
+
+    switch (c) {
+        case '!':        return HT_SYM_EXCL;
+        case '"':        return HT_SYM_DQUO;
+        case '#':        return HT_SYM_HASH;
+        case '$':        return HT_SYM_DLR;
+        case '%':        return HT_SYM_PERC;
+        case '&':        return HT_SYM_AMPR;
+        case '\'':       return HT_SYM_QUOT;
+        case '(':        return HT_SYM_LPRN;
+        case ')':        return HT_SYM_RPRN;
+        case '*':        return HT_SYM_ASTR;
+        case '+':        return HT_SYM_PLUS;
+        case ',':        return HT_SYM_COMM;
+        case '-':        return HT_SYM_MINS;
+        case '.':        return HT_SYM_DOT;
+        case '/':        return HT_SYM_SLSH;
+        case ':':        return HT_SYM_COLN;
+        case ';':        return HT_SYM_SCLN;
+        case '<':        return HT_SYM_LABK;
+        case '=':        return HT_SYM_EQL;
+        case '>':        return HT_SYM_RABK;
+        case '?':        return HT_SYM_QUES;
+        case '@':        return HT_SYM_AT;
+        case '[':        return HT_SYM_LBRC;
+        case '\\':       return HT_SYM_BSLS;
+        case ']':        return HT_SYM_RBRC;
+        case '^':        return HT_SYM_CIRC;
+        case '_':        return HT_SYM_UNDS;
+        case '`':        return HT_SYM_GRV;
+        case '{':        return HT_SYM_LCBR;
+        case '|':        return HT_SYM_PIPE;
+        case '}':        return HT_SYM_RCBR;
+        case '~':        return HT_SYM_TILD;
+        case HC_MIDDOT:  return HT_SYM_MIDDOT;
+        case HC_IEXCL:   return HT_SYM_IEXCL;
+        case HC_IQUEST:  return HT_SYM_IQUEST;
+        case HC_NTILDE:  return HT_SYM_NTILDE;
+        case HC_CCEDIL:  return HT_SYM_CCEDIL;
+        case HC_ACUTE:   return HT_SYM_ACUTE;
+        case HC_DIAER:   return HT_SYM_DIAER;
+        case HC_MORD:    return HT_SYM_MORD;
+        case HC_FORD:    return HT_SYM_FORD;
+        case HC_EURO:    return HT_SYM_EURO;
+        case HC_NOT:     return HT_SYM_NOT;
+        default:         return HT_DEFAULT;
+    }
+}
+
+// Replace the HC_* codes with ASCII for the normal OLED font.
+static void help_ascii_name(char *buf) {
+    static const char fallback[] = ".!?NC'\"oaE-";  // HC_MIDDOT .. HC_NOT
+    for (; *buf; buf++) {
+        if (*buf >= 1 && *buf <= HC_LAST) *buf = fallback[*buf - 1];
+    }
+}
+
+// Lighting keys: Vial's RGB_* keys use the underglow codes, QMK's RM_* keys
+// the RGB Matrix codes. Both map to the same help entry.
+// Returns 0-10 in the order toggle, effect +/-, hue +/-, saturation +/-,
+// brightness +/-, speed +/-; 11/12 for RM_ON/RM_OFF; -1 for other keys.
+static int8_t help_rgb_action(uint16_t kc) {
+    if (kc >= QK_UNDERGLOW_TOGGLE && kc <= QK_UNDERGLOW_SPEED_DOWN) {
+        return kc - QK_UNDERGLOW_TOGGLE;
+    }
+    if (kc >= QK_RGB_MATRIX_TOGGLE && kc <= QK_RGB_MATRIX_SPEED_DOWN) {
+        return kc - QK_RGB_MATRIX_TOGGLE;
+    }
+    if (kc == QK_RGB_MATRIX_ON)  return 11;
+    if (kc == QK_RGB_MATRIX_OFF) return 12;
+    return -1;
+}
+
 // Short name to draw with the large font.
 //
 // `buf` must hold at least 6 bytes: up to 5 useful characters + NUL.
-static void help_kc_name(uint16_t kc, char *buf) {
+static void help_kc_name(uint16_t kc, uint8_t mods, char *buf) {
     if (kc == KC_NO)   { strcpy(buf, "---");  return; }
     if (kc == KC_TRNS) { strcpy(buf, "TRNS"); return; }
 
-    if (kc >= KC_A && kc <= KC_Z) {
-        buf[0] = 'A' + (kc - KC_A);
-        buf[1] = 0;
+    int16_t ch = help_key_char(kc, mods);
+    if (ch == 0) {
+        strcpy(buf, "---");
         return;
     }
-
-    if (kc >= KC_1 && kc <= KC_9) {
-        buf[0] = '1' + (kc - KC_1);
+    if (ch > 0) {
+        buf[0] = (char)ch;
         buf[1] = 0;
-        return;
-    }
-
-    if (kc == KC_0) {
-        strcpy(buf, "0");
         return;
     }
 
@@ -284,24 +519,12 @@ static void help_kc_name(uint16_t kc, char *buf) {
         case KC_VOLD:  strcpy(buf, "VOL-"); return;
         case KC_CALC:  strcpy(buf, "CALC"); return;
 
-        case KC_GRV:   strcpy(buf, "`");    return;
-        case KC_MINUS: strcpy(buf, "-");    return;
-        case KC_EQL:   strcpy(buf, "=");    return;
-        case KC_LBRC:  strcpy(buf, "[");    return;
-        case KC_RBRC:  strcpy(buf, "]");    return;
-        case KC_BSLS:  strcpy(buf, "\\");   return;
-        case KC_SCLN:  strcpy(buf, ";");    return;
-        case KC_QUOT:  strcpy(buf, "'");    return;
-        case KC_COMM:  strcpy(buf, ",");    return;
-        case KC_DOT:   strcpy(buf, ".");    return;
-        case KC_SLSH:  strcpy(buf, "/");    return;
-
         case KC_P0:    strcpy(buf, "KP0");  return;
         case KC_PDOT:  strcpy(buf, "KP.");  return;
         case KC_PENT:  strcpy(buf, "KPEn"); return;
         case KC_PPLS:  strcpy(buf, "KP+");  return;
         case KC_PMNS:  strcpy(buf, "KP-");  return;
-        case KC_PAST:  strcpy(buf, "KP*");  return;
+        case KC_PAST:  strcpy(buf, "KPAST"); return;
         case KC_PSLS:  strcpy(buf, "KP/");  return;
 
         case QK_BOOT:  strcpy(buf, "BOOT"); return;
@@ -310,26 +533,47 @@ static void help_kc_name(uint16_t kc, char *buf) {
         case MO(2):    strcpy(buf, "[NV]"); return;
         case MO(3):    strcpy(buf, "[AJ]"); return;
 
-        case TD(0):    strcpy(buf, "TD0");  return;
-        case TD(1):    strcpy(buf, "TD1");  return;
-        case TD(2):    strcpy(buf, "TD2");  return;
-        case TD(3):    strcpy(buf, "TD3");  return;
+        case QK_KB_0:  strcpy(buf, "HELP"); return;  // HELP_KEY
 
         default:
-            snprintf(buf, 6, "%04X", kc);
-            return;
+            break;
+    }
+
+    if (IS_QK_MACRO(kc)) {
+        snprintf(buf, 6, "M%u", (unsigned)(kc - QK_MACRO));
+    } else if (IS_QK_TAP_DANCE(kc)) {
+        snprintf(buf, 6, "TD%u", (unsigned)QK_TAP_DANCE_GET_INDEX(kc));
+    } else if (IS_QK_MOMENTARY(kc)) {
+        snprintf(buf, 6, "MO%u", (unsigned)QK_MOMENTARY_GET_LAYER(kc));
+    } else if (IS_QK_TOGGLE_LAYER(kc)) {
+        snprintf(buf, 6, "TG%u", (unsigned)QK_TOGGLE_LAYER_GET_LAYER(kc));
+    } else if (IS_QK_TO(kc)) {
+        snprintf(buf, 6, "TO%u", (unsigned)QK_TO_GET_LAYER(kc));
+    } else if (IS_QK_ONE_SHOT_LAYER(kc)) {
+        snprintf(buf, 6, "OSL%u", (unsigned)QK_ONE_SHOT_LAYER_GET_LAYER(kc));
+    } else if (IS_QK_LAYER_TAP(kc)) {
+        snprintf(buf, 6, "LT%u", (unsigned)QK_LAYER_TAP_GET_LAYER(kc));
+    } else if (IS_QK_MOD_TAP(kc)) {
+        strcpy(buf, "MT");
+    } else if (help_rgb_action(kc) >= 0) {
+        // Same order as HELP_RGB_*: on/off, effect, hue, saturation, brightness, speed.
+        static const char rgb_names[][6] = {
+            "RGB", "MOD+", "MOD-", "HUE+", "HUE-", "SAT+",
+            "SAT-", "BRI+", "BRI-", "SPD+", "SPD-", "RGB1", "RGB0",
+        };
+        strcpy(buf, rgb_names[help_rgb_action(kc)]);
+    } else {
+        snprintf(buf, 6, "%04X", kc);
     }
 }
 
 // Short description for the lower area of the help OLED.
 // The texts live in help_text_en.h / help_text_es.h (see "Help texts" above).
-static const char *help_kc_desc(uint16_t kc) {
-    if (kc >= KC_A && kc <= KC_Z) {
-        return HT_LETTER;
-    }
-
-    if (kc >= KC_1 && kc <= KC_0) {
-        return HT_NUMBER;
+static const char *help_kc_desc(uint16_t kc, uint8_t mods) {
+    if (kc != KC_NO && kc != KC_TRNS) {
+        int16_t ch = help_key_char(kc, mods);
+        if (ch == 0) return HT_NO_SYMBOL;
+        if (ch > 0)  return help_char_desc((char)ch);
     }
 
     if (kc >= KC_F1 && kc <= KC_F12) {
@@ -382,18 +626,6 @@ static const char *help_kc_desc(uint16_t kc) {
         case KC_VOLD:  return HT_VOLD;
         case KC_CALC:  return HT_CALC;
 
-        case KC_GRV:   return HT_GRV;
-        case KC_MINUS: return HT_MINUS;
-        case KC_EQL:   return HT_EQL;
-        case KC_LBRC:  return HT_LBRC;
-        case KC_RBRC:  return HT_RBRC;
-        case KC_BSLS:  return HT_BSLS;
-        case KC_SCLN:  return HT_SCLN;
-        case KC_QUOT:  return HT_QUOT;
-        case KC_COMM:  return HT_COMM;
-        case KC_DOT:   return HT_DOT;
-        case KC_SLSH:  return HT_SLSH;
-
         case KC_P0:    return HT_P0;
         case KC_PDOT:  return HT_PDOT;
         case KC_PENT:  return HT_PENT;
@@ -408,12 +640,35 @@ static const char *help_kc_desc(uint16_t kc) {
         case MO(2):    return HT_MO2;
         case MO(3):    return HT_MO3;
 
-        case TD(0):    return HT_TD0;
-        case TD(1):    return HT_TD1;
-        case TD(2):    return HT_TD2;
-        case TD(3):    return HT_TD3;
+        case QK_KB_0:  return HT_HELP;  // HELP_KEY
 
-        default:       return HT_DEFAULT;
+        default:       break;
+    }
+
+    if (IS_QK_MACRO(kc))          return HT_MACRO;
+    if (IS_QK_TAP_DANCE(kc))      return HT_TAPDANCE;
+    if (IS_QK_MOMENTARY(kc))      return HT_LAYER_MO;
+    if (IS_QK_TOGGLE_LAYER(kc))   return HT_LAYER_TG;
+    if (IS_QK_TO(kc))             return HT_LAYER_TO;
+    if (IS_QK_ONE_SHOT_LAYER(kc)) return HT_LAYER_OSL;
+    if (IS_QK_LAYER_TAP(kc))      return HT_LAYER_LT;
+    if (IS_QK_MOD_TAP(kc))        return HT_MOD_TAP;
+
+    switch (help_rgb_action(kc)) {
+        case 0:  return HT_RGB_TOG;
+        case 1:  return HT_RGB_MOD;
+        case 2:  return HT_RGB_RMOD;
+        case 3:  return HT_RGB_HUI;
+        case 4:  return HT_RGB_HUD;
+        case 5:  return HT_RGB_SAI;
+        case 6:  return HT_RGB_SAD;
+        case 7:  return HT_RGB_VAI;
+        case 8:  return HT_RGB_VAD;
+        case 9:  return HT_RGB_SPI;
+        case 10: return HT_RGB_SPD;
+        case 11: return HT_RGB_ON;
+        case 12: return HT_RGB_OFF;
+        default: return HT_DEFAULT;
     }
 }
 
@@ -438,6 +693,7 @@ static void help_populate(uint8_t row, uint8_t col) {
 
     help_data.row  = row;
     help_data.col  = col;
+    help_data.mods = help_mods_held | help_host_mods();
     help_data.mode = HELP_SHOW;
     help_dirty     = true;
 }
@@ -664,13 +920,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case HELP_KEY:
             help_mode = record->event.pressed;
             help_data.mode = help_mode ? HELP_WAIT : HELP_OFF;
+            help_mods_held = 0;
             help_dirty = true;
             return false;
 
         default:
-            if (help_mode && record->event.pressed) {
-                help_populate(record->event.key.row, record->event.key.col);
-                return false;  // Suppress the keypress while querying.
+            if (help_mode) {
+                // Shift and AltGr change what the queried keys show: hold one
+                // and press a key to see the character it types with it.
+                uint8_t mod = help_key_mods(keycode);
+
+                if (record->event.pressed) {
+                    help_mods_held |= mod;
+                    help_populate(record->event.key.row, record->event.key.col);
+                    return false;  // Suppress the keypress while querying.
+                }
+
+                if (mod) {
+                    help_mods_held &= ~mod;
+                    if (help_data.mode == HELP_SHOW) {
+                        help_populate(help_data.row, help_data.col);
+                    }
+                }
             }
             break;
     }
@@ -1668,10 +1939,28 @@ static const unsigned char PROGMEM bfs9000_logo[] = {
 
 #define HELP_BIG_SCALE 2
 
-// Minimal 5×7 font for scaled-up text on the help OLED.
-// Limited to the symbols used by help_kc_name().
+// 5×7 font for scaled-up text on the help OLED.
+//
+// Index 0-64:  ASCII ' ' .. '`' (lowercase letters use the uppercase glyphs).
+// Index 65-68: ASCII '{' .. '~'.
+// Index 69-79: HC_MIDDOT .. HC_NOT, the characters outside ASCII.
 static const uint8_t PROGMEM help_font_5x7[][5] = {
-    // 0-9
+    {0x00,0x00,0x00,0x00,0x00}, // Space
+    {0x00,0x00,0x5F,0x00,0x00}, // !
+    {0x00,0x07,0x00,0x07,0x00}, // "
+    {0x14,0x7F,0x14,0x7F,0x14}, // #
+    {0x24,0x2A,0x7F,0x2A,0x12}, // $
+    {0x23,0x13,0x08,0x64,0x62}, // %
+    {0x36,0x49,0x56,0x20,0x50}, // &
+    {0x00,0x08,0x07,0x03,0x00}, // '
+    {0x00,0x1C,0x22,0x41,0x00}, // (
+    {0x00,0x41,0x22,0x1C,0x00}, // )
+    {0x2A,0x1C,0x7F,0x1C,0x2A}, // *
+    {0x08,0x08,0x3E,0x08,0x08}, // +
+    {0x00,0x50,0x30,0x00,0x00}, // ,
+    {0x08,0x08,0x08,0x08,0x08}, // -
+    {0x00,0x60,0x60,0x00,0x00}, // .
+    {0x20,0x10,0x08,0x04,0x02}, // /
     {0x3E,0x51,0x49,0x45,0x3E}, // 0
     {0x00,0x42,0x7F,0x40,0x00}, // 1
     {0x42,0x61,0x51,0x49,0x46}, // 2
@@ -1682,8 +1971,13 @@ static const uint8_t PROGMEM help_font_5x7[][5] = {
     {0x01,0x71,0x09,0x05,0x03}, // 7
     {0x36,0x49,0x49,0x49,0x36}, // 8
     {0x06,0x49,0x49,0x29,0x1E}, // 9
-
-    // A-Z
+    {0x00,0x00,0x14,0x00,0x00}, // :
+    {0x00,0x40,0x34,0x00,0x00}, // ;
+    {0x00,0x08,0x14,0x22,0x41}, // <
+    {0x14,0x14,0x14,0x14,0x14}, // =
+    {0x00,0x41,0x22,0x14,0x08}, // >
+    {0x02,0x01,0x51,0x09,0x06}, // ?
+    {0x3E,0x41,0x5D,0x59,0x4E}, // @
     {0x7E,0x11,0x11,0x11,0x7E}, // A
     {0x7F,0x49,0x49,0x49,0x36}, // B
     {0x3E,0x41,0x41,0x41,0x22}, // C
@@ -1710,42 +2004,51 @@ static const uint8_t PROGMEM help_font_5x7[][5] = {
     {0x63,0x14,0x08,0x14,0x63}, // X
     {0x07,0x08,0x70,0x08,0x07}, // Y
     {0x61,0x51,0x49,0x45,0x43}, // Z
-
-    {0x00,0x00,0x00,0x00,0x00}, // Space
-    {0x08,0x08,0x08,0x08,0x08}, // -
-    {0x08,0x08,0x3E,0x08,0x08}, // +
-    {0x00,0x60,0x60,0x00,0x00}, // .
-    {0x20,0x10,0x08,0x04,0x02}, // /
     {0x00,0x7F,0x41,0x41,0x00}, // [
+    {0x02,0x04,0x08,0x10,0x20}, // Backslash
     {0x00,0x41,0x41,0x7F,0x00}, // ]
-    {0x02,0x01,0x51,0x09,0x06}, // ?
+    {0x04,0x02,0x01,0x02,0x04}, // ^
+    {0x40,0x40,0x40,0x40,0x40}, // _
+    {0x00,0x03,0x07,0x08,0x00}, // `
+    {0x00,0x08,0x36,0x41,0x00}, // {
+    {0x00,0x00,0x7F,0x00,0x00}, // |
+    {0x00,0x41,0x36,0x08,0x00}, // }
+    {0x02,0x01,0x02,0x04,0x02}, // ~
+    {0x00,0x00,0x08,0x00,0x00}, // · HC_MIDDOT
+    {0x00,0x00,0x7D,0x00,0x00}, // ¡ HC_IEXCL
+    {0x30,0x48,0x45,0x40,0x20}, // ¿ HC_IQUEST
+    {0x7E,0x09,0x13,0x22,0x7D}, // Ñ HC_NTILDE
+    {0x0E,0x51,0x71,0x11,0x0A}, // Ç HC_CCEDIL
+    {0x00,0x00,0x02,0x01,0x00}, // ´ HC_ACUTE
+    {0x00,0x01,0x00,0x01,0x00}, // ¨ HC_DIAER
+    {0x4E,0x51,0x51,0x51,0x4E}, // º HC_MORD
+    {0x48,0x55,0x55,0x55,0x5E}, // ª HC_FORD
+    {0x14,0x3E,0x55,0x55,0x41}, // € HC_EURO
+    {0x04,0x04,0x04,0x04,0x1C}, // ¬ HC_NOT
 };
 
-// Return the 5×7 glyph associated with a printable character.
+// Return the 5×7 glyph associated with a character.
 // Unsupported characters are drawn as '?'.
 static const uint8_t *help_big_glyph(char c) {
-    if (c >= 'a' && c <= 'z') {
-        c -= 32;
+    uint8_t u = (uint8_t)c;
+
+    if (u >= 'a' && u <= 'z') {
+        u -= 32;
     }
 
-    if (c >= '0' && c <= '9') {
-        return help_font_5x7[c - '0'];
+    if (u >= ' ' && u <= '`') {
+        return help_font_5x7[u - ' '];
     }
 
-    if (c >= 'A' && c <= 'Z') {
-        return help_font_5x7[10 + (c - 'A')];
+    if (u >= '{' && u <= '~') {
+        return help_font_5x7[65 + (u - '{')];
     }
 
-    switch (c) {
-        case ' ': return help_font_5x7[36];
-        case '-': return help_font_5x7[37];
-        case '+': return help_font_5x7[38];
-        case '.': return help_font_5x7[39];
-        case '/': return help_font_5x7[40];
-        case '[': return help_font_5x7[41];
-        case ']': return help_font_5x7[42];
-        default:  return help_font_5x7[43];
+    if (u >= 1 && u <= (uint8_t)HC_LAST) {
+        return help_font_5x7[69 + (u - 1)];
     }
+
+    return help_font_5x7['?' - ' '];
 }
 
 // Maximum drawable length for the large renderer: 5 characters.
@@ -1853,7 +2156,7 @@ bool oled_task_user(void) {
 					// Each large line is 14 px tall.
 					// Positions: 0, 15, 30, 45, 60, 75.
 					for (uint8_t i = 0; i < 6; i++) {
-						help_kc_name(help_data.col_kc[i], name);
+						help_kc_name(help_data.col_kc[i], help_data.mods, name);
 
 						bool selected = (i == help_data.selected);
 
@@ -1869,12 +2172,13 @@ bool oled_task_user(void) {
 					oled_set_cursor(0, 12);
 					oled_write_ln_P(PSTR("--------"), false);
 
-					help_kc_name(help_data.col_kc[help_data.selected], name);
+					help_kc_name(help_data.col_kc[help_data.selected], help_data.mods, name);
+					help_ascii_name(name);
 
 					oled_write_P(PSTR("KEY: "), false);
 					oled_write_ln(name, true);
 
-					oled_write_ln(help_kc_desc(help_data.col_kc[help_data.selected]), false);
+					oled_write_ln(help_kc_desc(help_data.col_kc[help_data.selected], help_data.mods), false);
 
 					return false;
 				}

@@ -101,7 +101,7 @@ Los textos de la tecla de ayuda en la OLED están en inglés por defecto. Para c
 qmk compile -kb jguillen_lab/bfs9000 -km vial -e BFS_HELP_LANG=es
 ```
 
-Las releases publicadas usan inglés. Los textos están en `keymaps/vial/help_text_en.h` y `help_text_es.h`.
+El idioma también fija la distribución de teclado del ordenador que la ayuda supone al mostrar lo que escribe una tecla con Shift o AltGr pulsado: US para inglés y española para español. Las releases publicadas usan inglés. Los textos están en `keymaps/vial/help_text_en.h` y `help_text_es.h`.
 
 Cada release indica el commit exacto de vial-qmk con el que se compiló, para poder recompilar cualquier versión con el mismo código upstream.
 

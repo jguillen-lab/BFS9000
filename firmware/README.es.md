@@ -17,8 +17,11 @@ Cada release incluye:
 
 | Archivo | Uso |
 | --- | --- |
-| `jguillen_lab_bfs9000_vial_vX.Y.Z.uf2` | Firmware para flashear en el RP2040. Es el archivo que normalmente necesitas. |
-| `jguillen_lab_bfs9000_vial_vX.Y.Z.elf` | Artefacto de depuración/compilación (símbolos, análisis de tamaño, depuración). No hace falta para flashear. |
+| `jguillen_lab_bfs9000_vial_vX.Y.Z_en.uf2` | Firmware para flashear en el RP2040, con los textos de ayuda en inglés (distribución US). |
+| `jguillen_lab_bfs9000_vial_vX.Y.Z_es.uf2` | Firmware para flashear en el RP2040, con los textos de ayuda en español (distribución española). |
+| `jguillen_lab_bfs9000_vial_vX.Y.Z_en.elf`, `..._es.elf` | Artefactos de depuración/compilación (símbolos, análisis de tamaño, depuración). No hacen falta para flashear. |
+
+Elige el `.uf2` del idioma que quieras. Las releases anteriores a la `v1.2.0` tienen un solo `.uf2`, en español.
 
 ## Estructura del directorio
 
@@ -95,24 +98,32 @@ qmk compile -kb jguillen_lab/bfs9000 -km vial
 
 El firmware generado para RP2040 será un archivo `.uf2`.
 
+La sintaxis clásica con `make` da el mismo resultado:
+
+```bash
+make jguillen_lab/bfs9000:vial
+```
+
 Los textos de la tecla de ayuda en la OLED están en inglés por defecto. Para compilarlos en español:
 
 ```bash
 qmk compile -kb jguillen_lab/bfs9000 -km vial -e BFS_HELP_LANG=es
+# o bien
+make jguillen_lab/bfs9000:vial BFS_HELP_LANG=es
 ```
 
-El idioma también fija la distribución de teclado del ordenador que la ayuda supone al mostrar lo que escribe una tecla con Shift o AltGr pulsado: US para inglés y española para español. Las releases publicadas usan inglés. Los textos están en `keymaps/vial/help_text_en.h` y `help_text_es.h`.
+El idioma también fija la distribución de teclado del ordenador que la ayuda supone al mostrar lo que escribe una tecla con Shift o AltGr pulsado: US para inglés y española para español. Las releases publicadas incluyen los dos builds. Los textos están en `keymaps/vial/help_text_en.h` y `help_text_es.h`.
 
 Cada release indica el commit exacto de vial-qmk con el que se compiló, para poder recompilar cualquier versión con el mismo código upstream.
 
 ## Flasheo
 
-1. Descarga el archivo `.uf2` de la [release](#descarga) que quieras instalar.
+1. Descarga el archivo `.uf2` de tu idioma (`_en` o `_es`) de la [release](#descarga) que quieras instalar.
 2. Pon el controlador RP2040 en modo bootloader.
 3. Aparecerá como una unidad USB.
 4. Copia el archivo `.uf2` a la unidad del RP2040.
 5. El controlador se reiniciará automáticamente con el nuevo firmware.
-6. Repite con la otra mitad. Las dos mitades deben llevar siempre la misma versión.
+6. Repite con la otra mitad. Las dos mitades deben llevar siempre la misma versión e idioma.
 
 ### Conservar la configuración de Vial
 
@@ -168,8 +179,8 @@ Sigue la misma convención que los tags de hardware (`hardware/bfs9000-rev0.4`).
 
 Para publicar una release:
 
-1. Compila el firmware como se describe en [Compilación](#compilación).
-2. Renombra los resultados a `jguillen_lab_bfs9000_vial_vX.Y.Z.uf2` y `.elf`.
+1. Compila el firmware en los dos idiomas como se describe en [Compilación](#compilación).
+2. Renombra los resultados a `jguillen_lab_bfs9000_vial_vX.Y.Z_en.uf2`, `_es.uf2`, `_en.elf` y `_es.elf`.
 3. Crea un tag anotado sobre el commit que contiene el código publicado:
 
    ```bash
@@ -177,12 +188,12 @@ Para publicar una release:
    git push origin firmware/bfs9000-vX.Y.Z
    ```
 
-4. Crea la GitHub Release de ese tag, adjunta los archivos `.uf2` y `.elf` e indica el commit de vial-qmk usado:
+4. Crea la GitHub Release de ese tag, adjunta los archivos `.uf2` y `.elf` de los dos idiomas e indica el commit de vial-qmk usado:
 
    ```bash
    gh release create firmware/bfs9000-vX.Y.Z \
-     jguillen_lab_bfs9000_vial_vX.Y.Z.uf2 \
-     jguillen_lab_bfs9000_vial_vX.Y.Z.elf \
+     jguillen_lab_bfs9000_vial_vX.Y.Z_en.uf2 jguillen_lab_bfs9000_vial_vX.Y.Z_es.uf2 \
+     jguillen_lab_bfs9000_vial_vX.Y.Z_en.elf jguillen_lab_bfs9000_vial_vX.Y.Z_es.elf \
      --title "BFS9000 firmware vX.Y.Z" --notes-file notes.md
    ```
 

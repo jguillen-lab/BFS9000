@@ -101,7 +101,7 @@ The texts of the help key on the OLED are in English by default. To build them i
 qmk compile -kb jguillen_lab/bfs9000 -km vial -e BFS_HELP_LANG=es
 ```
 
-Published releases use English. The texts are in `keymaps/vial/help_text_en.h` and `help_text_es.h`.
+The language also sets the host keyboard layout the help assumes when it shows what a key types with Shift or AltGr held: US for English, Spanish for Spanish. Published releases use English. The texts are in `keymaps/vial/help_text_en.h` and `help_text_es.h`.
 
 Each release notes the exact vial-qmk commit used to build it, so any release can be rebuilt with the same upstream code.
 

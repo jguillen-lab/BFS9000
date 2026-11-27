@@ -217,3 +217,7 @@ jguillen.vil
 Este fichero contiene el keymap de Vial que uso actualmente.
 
 Se puede cargar en el teclado utilizando la **aplicación de escritorio de Vial** o la **aplicación web de Vial**.
+
+## Licencia
+
+El firmware del BFS9000 (`vial-qmk/keyboards/jguillen_lab/bfs9000/`) forma parte de QMK/Vial y se publica bajo la **GNU General Public License v2.0 o posterior** (`GPL-2.0-or-later`), como indica la cabecera SPDX de cada fichero fuente. Consulta [LICENSE](LICENSE) (texto oficial en inglés).

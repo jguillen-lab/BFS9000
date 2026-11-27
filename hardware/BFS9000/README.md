@@ -14,11 +14,11 @@ Revision history, production files and enclosures are described in the [hardware
 
 ## License and attribution
 
-This hardware directory is licensed under the MIT License unless otherwise stated.
+The BFS9000 hardware is licensed under the MIT License unless otherwise stated.
 
 BFS9000 contains original work as well as files, ideas, references, or derived work from other open-source keyboard projects and component libraries.
 
 See:
 
-- [LICENSE](LICENSE)
-- [NOTICE.md](NOTICE.md)
+- [LICENSE](../LICENSE)
+- [NOTICE.md](../NOTICE.md)

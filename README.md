@@ -83,4 +83,4 @@ In total, the current design supports **16 different combinations** from the sam
 
 ## License
 
-**EN:** This repository uses **multiple licenses**. The applicable license(s) for each component are included in a `LICENSE` file within the **relevant directory**.
+This repository uses **multiple licences**: MIT for the hardware and MARCOntroller, GPL-2.0-or-later for the firmware and CC BY 4.0 for photos and documentation. See [LICENSES.md](LICENSES.md) for the full table and the `LICENSE` file in each directory.

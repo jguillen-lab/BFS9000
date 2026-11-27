@@ -14,11 +14,11 @@ El historial de revisiones, los ficheros de fabricación y las carcasas se descr
 
 ## Licencia y atribución
 
-Este directorio de hardware se publica bajo licencia MIT salvo que se indique lo contrario.
+El hardware del BFS9000 se publica bajo licencia MIT salvo que se indique lo contrario.
 
 BFS9000 contiene trabajo original, además de ficheros, ideas, referencias o trabajo derivado de otros proyectos de teclados open-source y librerías de componentes.
 
 Consulta:
 
-- [LICENSE.es.md](LICENSE.es.md)
-- [NOTICE.es.md](NOTICE.es.md)
+- [LICENSE.es.md](../LICENSE.es.md)
+- [NOTICE.es.md](../NOTICE.es.md)

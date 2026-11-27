@@ -34,4 +34,8 @@ Thanks for wanting to share your BFS9000 build! Here's how:
 
 6. Open a pull request with your new photos and the README changes.
 
+## Licence of your photos
+
+Your photos stay yours. By opening the pull request you agree to publish them under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), credited to the name in your README, unless you state another licence there.
+
 That's it — thanks for contributing!

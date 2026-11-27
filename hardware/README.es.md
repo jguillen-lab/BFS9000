@@ -215,6 +215,9 @@ git push origin hardware/bfs9000-rev0.4
 
 ## 7) Licencia
 
-Salvo que se indique lo contrario, los ficheros de esta carpeta se distribuyen bajo la licencia del repositorio.
+Salvo que se indique lo contrario, todo lo que hay en `hardware/` (fuentes de KiCad, ficheros de fabricación y carcasas) se publica bajo licencia MIT.
 
-Consulta el fichero [LICENSE](../LICENSE) en la raíz del repositorio para más detalles.
+BFS9000 deriva de Sofle-Pico y SofleKeyboard, ambos MIT. Sus avisos de copyright y el resto de atribuciones están en [NOTICE.es.md](NOTICE.es.md).
+
+- [LICENSE.es.md](LICENSE.es.md)
+- [NOTICE.es.md](NOTICE.es.md)

@@ -103,6 +103,20 @@
 #define SPLIT_ACTIVITY_ENABLE
 
 /* ─────────────────────────────────────────────────────────────────────────────
+ * RGB MATRIX — TYPING HEATMAP COOL-DOWN
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ * The stock Typing Heatmap cools every key by one heat step every 25 ms and
+ * ignores the speed setting. Here the delay follows "RGB Speed":
+ *   speed   0 → 80 ms per step (keys stay hot longer),
+ *   speed 255 →  5 ms per step (keys cool down quickly).
+ *
+ * The macro is evaluated at runtime inside QMK's RGB Matrix code, where
+ * rgb_matrix_config is available.
+ */
+#define RGB_MATRIX_TYPING_HEATMAP_DECREASE_DELAY_MS (5 + ((255 - rgb_matrix_config.speed) * 75) / 255)
+
+/* ─────────────────────────────────────────────────────────────────────────────
  * RGB MATRIX — EFFECT SUPPORT
  * ─────────────────────────────────────────────────────────────────────────────
  *

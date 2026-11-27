@@ -1050,6 +1050,81 @@ led_config_t g_led_config = {
     }
 };
 
+// ============================================================================
+// RGB Matrix — Typing Heatmap over the selected colour
+// ============================================================================
+//
+// QMK's stock Typing Heatmap turns cold keys off. On BFS9000, while that effect
+// is active, every LED is repainted from the same heat buffer:
+//   • cold keys and LEDs without a key (underglow) show the colour selected in
+//     Vial ("RGB Color"), slightly dimmed so hot keys stand out,
+//   • as a key heats up:
+//       – its hue moves from the selected hue towards red, in the same
+//         direction as the stock ramp (… → cyan → green → yellow → red),
+//       – its saturation rises to the maximum, so hot colours look solid,
+//       – its brightness rises to the selected "RGB Brightness".
+//
+// "RGB Speed" sets how fast keys cool down (see
+// RGB_MATRIX_TYPING_HEATMAP_DECREASE_DELAY_MS in config.h).
+//
+// The effect keeps its stock identity, so it is still selected as
+// "Typing Heatmap" from Vial or MARCOntroller.
+#if defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS) && defined(ENABLE_RGB_MATRIX_TYPING_HEATMAP)
+
+// Background brightness, as a fraction of "RGB Brightness" (0-255 = 0-100 %).
+#define BFS_HEATMAP_BACKGROUND_VAL 179 // ~70 %
+
+// Heat at which a key reaches red (the stock effect reaches red at 255).
+#define BFS_HEATMAP_RED_HEAT 170
+
+static uint8_t bfs_lerp8(uint8_t from, uint8_t to, uint8_t weight) {
+    return (uint8_t)(from + (((int16_t)to - (int16_t)from) * (int16_t)weight) / 255);
+}
+
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    if (rgb_matrix_get_mode() != RGB_MATRIX_TYPING_HEATMAP) return true;
+
+    const uint8_t flags    = rgb_matrix_get_flags();
+    const hsv_t   base_hsv = rgb_matrix_get_hsv();
+    const uint8_t bg_val   = ((uint16_t)base_hsv.v * BFS_HEATMAP_BACKGROUND_VAL) / 255;
+    const rgb_t   bg       = hsv_to_rgb((hsv_t){base_hsv.h, base_hsv.s, bg_val});
+
+    // Background: every enabled LED in this render slice.
+    for (uint8_t i = led_min; i < led_max; ++i) {
+        if (!HAS_ANY_FLAGS(g_led_config.flags[i], flags)) continue;
+        rgb_matrix_set_color(i, bg.r, bg.g, bg.b);
+    }
+
+    // Keys with heat.
+    for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
+        for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
+            const uint8_t led = g_led_config.matrix_co[row][col];
+            if (led == NO_LED || led < led_min || led >= led_max) continue;
+            if (!HAS_ANY_FLAGS(g_led_config.flags[led], flags)) continue;
+
+            const uint8_t heat = g_rgb_frame_buffer[row][col];
+            if (heat == 0) continue;
+
+            // Hue: selected hue → red (0), descending like the stock ramp.
+            const uint8_t hue_progress = (uint16_t)(heat > BFS_HEATMAP_RED_HEAT ? BFS_HEATMAP_RED_HEAT : heat) * 255 / BFS_HEATMAP_RED_HEAT;
+            const uint8_t hue          = bfs_lerp8(base_hsv.h, 0, hue_progress);
+
+            // Saturation and brightness: same ramp as the stock brightness,
+            // fully reached at heat 85.
+            const uint8_t weight = (heat > 85 ? 85 : heat) * 3;
+            const uint8_t sat    = bfs_lerp8(base_hsv.s, 255, weight);
+            const uint8_t val    = bfs_lerp8(bg_val, base_hsv.v, weight);
+
+            const rgb_t rgb = hsv_to_rgb((hsv_t){hue, sat, val});
+            rgb_matrix_set_color(led, rgb.r, rgb.g, rgb.b);
+        }
+    }
+
+    return true;
+}
+
+#endif // RGB_MATRIX_FRAMEBUFFER_EFFECTS && ENABLE_RGB_MATRIX_TYPING_HEATMAP
+
 #endif
 
 #ifdef OLED_ENABLE

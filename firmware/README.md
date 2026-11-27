@@ -11,7 +11,7 @@ This directory contains the firmware source tree. Compiled firmware ready to fla
 Compiled firmware is attached to each firmware release:
 
 - All firmware releases: <https://github.com/jguillen-lab/BFS9000/releases?q=firmware>
-- Current stable release: [`firmware/bfs9000-v1.1.0`](https://github.com/jguillen-lab/BFS9000/releases/tag/firmware/bfs9000-v1.1.0)
+- Current stable release: [`firmware/bfs9000-v1.2.0`](https://github.com/jguillen-lab/BFS9000/releases/tag/firmware/bfs9000-v1.2.0)
 
 Each release includes:
 

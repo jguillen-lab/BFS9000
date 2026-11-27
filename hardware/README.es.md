@@ -68,12 +68,10 @@ hardware/production/rev0.4/pcb/
 
 Este archivo contiene los Gerbers y taladros de la PCB principal de BFS9000.
 
-También se incluyen estas imágenes de previsualización:
+La configuración de exportación de KiCad usada para generar estos ficheros se incluye como capturas:
 
-```text
-BFS9000-rev0.4-gerber-preview.png
-BFS9000-rev0.4-drill-preview.png
-```
+- [`BFS9000-rev0.4-gerber-settings.png`](production/rev0.4/BFS9000-rev0.4-gerber-settings.png): diálogo **Trazar** (capas y opciones de Gerber).
+- [`BFS9000-rev0.4-drill-settings.png`](production/rev0.4/BFS9000-rev0.4-drill-settings.png): diálogo **Generar archivo de taladrado** (Excellon, milímetros, origen absoluto).
 
 ### Placas opcionales
 

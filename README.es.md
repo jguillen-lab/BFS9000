@@ -23,7 +23,7 @@ Repositorio principal que engloba varios subproyectos alrededor del teclado **BF
 - [`hodgepodge/`](./hodgepodge/) — pruebas, experimentos y material auxiliar.
 - [Wiki](https://github.com/jguillen-lab/BFS9000/wiki) — documentación ampliada del proyecto, guías y material de referencia adicional.
 
-> Cada carpeta debería tener (o acabará teniendo) su propio README con instrucciones específicas.
+> Las carpetas `hardware/`, `firmware/` y `software/` tienen su propio README con instrucciones específicas.
 
 ## Galería de la comunidad
 
@@ -46,9 +46,11 @@ El segundo Sofle fue un **Sofle RGB** de **[KeyHive](https://keyhive.xyz/shop/so
 
 Con el tiempo he tenido otros teclados con ligeras modificaciones basados en Sofle e incluso he llegado a mandar fabricar PCBs propias. El cambio se notó de verdad: mis dedos mejoraron e incluso mi velocidad aumentó; de hecho, ahora cuando vuelvo a un teclado escalonado me siento torpísimo.
 
-Aun así, aunque configuré capas y aprendí a usarlas con soltura, no soy de “vivir” en capas, y tras unos ~8 años usando Sofle decidí probar un **[BFO9000](https://docs.keeb.io/bfo-9000-build-guide)** (de **Keebio**) en su configuración completa. En ergonomía me gusta bastante menos, pero para el día a día me resolvía mejor:
+Aun así, aunque configuré capas y aprendí a usarlas con soltura, no soy de “vivir” en capas, y tras unos ~8 años usando Sofle decidí probar un **[BFO9000](https://docs.keeb.io/bfo-9000-build-guide)** (de **Keebio**) en su configuración completa. En ergonomía me gusta bastante menos, pero para el día a día me resolvía mejor.
 
-Con el tiempo pensé que esa sensación de “echar de menos” el Sofle se me pasaría… pero no fue así. Por eso estoy en el proceso de crear un **BFS9000**, basado en la última iteración de JellyTitan llamada **[Sofle-Pico](https://github.com/JellyTitan/Sofle-Pico)**:
+![Sofle y BFO9000](media/sofle_n_bfo9000.png)
+
+Con el tiempo pensé que esa sensación de “echar de menos” el Sofle se me pasaría… pero no fue así. Por eso creé el **BFS9000**, basado en la última iteración de JellyTitan llamada **[Sofle-Pico](https://github.com/JellyTitan/Sofle-Pico)**: la ergonomía del Sofle con las teclas extra de una distribución completa.
 
 ## Variantes y combinaciones
 
@@ -61,13 +63,6 @@ En total, el diseño actual permite **16 combinaciones diferentes** a partir de 
 <p align="center">
   <img src="media/layouts/combinations_colour.png" alt="Resumen de combinaciones BFS9000" width="100%">
 </p>
-
-## Subproyectos (enlaces rápidos)
-
-- Hardware BFS9000: [`hardware/`](./hardware/)
-- Firmware (QMK/Vial): [`firmware/`](./firmware/)
-- Software (agente PC / MQTT / HA): [`software/`](./software/)
-- Material auxiliar: [`hodgepodge/`](./hodgepodge/)
 
 ## Referencias
 
@@ -89,5 +84,3 @@ En total, el diseño actual permite **16 combinaciones diferentes** a partir de 
 ## Licencia
 
 **ES:** Este repositorio utiliza **múltiples licencias**. La(s) licencia(s) aplicable(s) a cada componente se incluyen en un fichero `LICENSE` dentro del **directorio correspondiente**.
-
-![Sofle y BFO9000](media/sofle_n_bfo9000.png)

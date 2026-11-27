@@ -83,4 +83,4 @@ En total, el diseño actual permite **16 combinaciones diferentes** a partir de 
 
 ## Licencia
 
-**ES:** Este repositorio utiliza **múltiples licencias**. La(s) licencia(s) aplicable(s) a cada componente se incluyen en un fichero `LICENSE` dentro del **directorio correspondiente**.
+Este repositorio usa **varias licencias**: MIT para el hardware y MARCOntroller, GPL-2.0-or-later para el firmware y CC BY 4.0 para las fotos y la documentación. Consulta [LICENSES.es.md](LICENSES.es.md) para ver la tabla completa y el fichero `LICENSE` de cada directorio.

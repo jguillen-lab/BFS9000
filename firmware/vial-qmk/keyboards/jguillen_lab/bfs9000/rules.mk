@@ -8,17 +8,6 @@
 # version 2 or later.
 
 # ─────────────────────────────────────────────────────────────────────────────
-# MCU / BOOTLOADER
-# ─────────────────────────────────────────────────────────────────────────────
-#
-# Target microcontroller and bootloader family.
-# QMK uses these values to select the RP2040 platform support, compiler flags,
-# linker script and bootloader integration.
-
-MCU = RP2040
-BOOTLOADER = rp2040
-
-# ─────────────────────────────────────────────────────────────────────────────
 # SPLIT SERIAL TRANSPORT
 # ─────────────────────────────────────────────────────────────────────────────
 #

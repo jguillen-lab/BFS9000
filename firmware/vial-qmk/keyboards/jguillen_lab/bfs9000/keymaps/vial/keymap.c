@@ -35,6 +35,16 @@
 #include "transactions.h"
 #include <string.h>
 
+// ── Help texts ──────────────────────────────────────────────────────────────
+//
+// HELP_KEY shows its texts on the slave OLED in English by default. Build with
+// BFS_HELP_LANG=es to show them in Spanish (see rules.mk).
+#if defined(BFS_HELP_LANG_ES)
+#    include "help_text_es.h"
+#else
+#    include "help_text_en.h"
+#endif
+
 // ── Forward declarations ───────────────────────────────────────────────────
 //
 // Several functions are used before their actual implementation because this
@@ -312,98 +322,98 @@ static void help_kc_name(uint16_t kc, char *buf) {
 }
 
 // Short description for the lower area of the help OLED.
-// TODO English translation :)
+// The texts live in help_text_en.h / help_text_es.h (see "Help texts" above).
 static const char *help_kc_desc(uint16_t kc) {
     if (kc >= KC_A && kc <= KC_Z) {
-        return "Letra";
+        return HT_LETTER;
     }
 
     if (kc >= KC_1 && kc <= KC_0) {
-        return "Numero";
+        return HT_NUMBER;
     }
 
     if (kc >= KC_F1 && kc <= KC_F12) {
-        return "Funcion";
+        return HT_FUNCTION;
     }
 
     if (kc >= KC_P1 && kc <= KC_P9) {
-        return "Numpad";
+        return HT_NUMPAD;
     }
 
     switch (kc) {
-        case KC_NO:    return "Sin tecla";
-        case KC_TRNS:  return "Transp.";
+        case KC_NO:    return HT_NO;
+        case KC_TRNS:  return HT_TRNS;
 
-        case KC_ESC:   return "Escape";
-        case KC_ENTER: return "Enter";
-        case KC_BSPC:  return "Retroceso";
-        case KC_DEL:   return "Suprimir";
-        case KC_TAB:   return "Tabulador";
-        case KC_SPACE: return "Espacio";
+        case KC_ESC:   return HT_ESC;
+        case KC_ENTER: return HT_ENTER;
+        case KC_BSPC:  return HT_BSPC;
+        case KC_DEL:   return HT_DEL;
+        case KC_TAB:   return HT_TAB;
+        case KC_SPACE: return HT_SPACE;
 
-        case KC_LSFT:  return "Shift izq.";
-        case KC_RSFT:  return "Shift der.";
-        case KC_LCTL:  return "Ctrl izq.";
-        case KC_RCTL:  return "Ctrl der.";
-        case KC_LALT:  return "Alt izq.";
-        case KC_RALT:  return "Alt der.";
-        case KC_LGUI:  return "GUI izq.";
-        case KC_RGUI:  return "GUI der.";
+        case KC_LSFT:  return HT_LSFT;
+        case KC_RSFT:  return HT_RSFT;
+        case KC_LCTL:  return HT_LCTL;
+        case KC_RCTL:  return HT_RCTL;
+        case KC_LALT:  return HT_LALT;
+        case KC_RALT:  return HT_RALT;
+        case KC_LGUI:  return HT_LGUI;
+        case KC_RGUI:  return HT_RGUI;
 
-        case KC_CAPS:  return "Caps Lock";
-        case KC_NUM:   return "Num Lock";
-        case KC_SCRL:  return "Scroll Lk";
-        case KC_PSCR:  return "Impr Pant";
-        case KC_PAUS:  return "Pausa";
+        case KC_CAPS:  return HT_CAPS;
+        case KC_NUM:   return HT_NUM;
+        case KC_SCRL:  return HT_SCRL;
+        case KC_PSCR:  return HT_PSCR;
+        case KC_PAUS:  return HT_PAUS;
 
-        case KC_INS:   return "Insertar";
-        case KC_HOME:  return "Inicio";
-        case KC_END:   return "Fin";
-        case KC_PGUP:  return "Página +";
-        case KC_PGDN:  return "Página -";
+        case KC_INS:   return HT_INS;
+        case KC_HOME:  return HT_HOME;
+        case KC_END:   return HT_END;
+        case KC_PGUP:  return HT_PGUP;
+        case KC_PGDN:  return HT_PGDN;
 
-        case KC_UP:    return "Arriba";
-        case KC_DOWN:  return "Abajo";
-        case KC_LEFT:  return "Izquierda";
-        case KC_RIGHT: return "Derecha";
+        case KC_UP:    return HT_UP;
+        case KC_DOWN:  return HT_DOWN;
+        case KC_LEFT:  return HT_LEFT;
+        case KC_RIGHT: return HT_RIGHT;
 
-        case KC_MUTE:  return "Mute";
-        case KC_VOLU:  return "Volumen +";
-        case KC_VOLD:  return "Volumen -";
-        case KC_CALC:  return "Calc";
+        case KC_MUTE:  return HT_MUTE;
+        case KC_VOLU:  return HT_VOLU;
+        case KC_VOLD:  return HT_VOLD;
+        case KC_CALC:  return HT_CALC;
 
-        case KC_GRV:   return "Grave";
-        case KC_MINUS: return "Guion";
-        case KC_EQL:   return "Igual";
-        case KC_LBRC:  return "Corch izq.";
-        case KC_RBRC:  return "Corch der.";
-        case KC_BSLS:  return "Barra inv.";
-        case KC_SCLN:  return "Punto coma";
-        case KC_QUOT:  return "Comilla";
-        case KC_COMM:  return "Coma";
-        case KC_DOT:   return "Punto";
-        case KC_SLSH:  return "Barra";
+        case KC_GRV:   return HT_GRV;
+        case KC_MINUS: return HT_MINUS;
+        case KC_EQL:   return HT_EQL;
+        case KC_LBRC:  return HT_LBRC;
+        case KC_RBRC:  return HT_RBRC;
+        case KC_BSLS:  return HT_BSLS;
+        case KC_SCLN:  return HT_SCLN;
+        case KC_QUOT:  return HT_QUOT;
+        case KC_COMM:  return HT_COMM;
+        case KC_DOT:   return HT_DOT;
+        case KC_SLSH:  return HT_SLSH;
 
-        case KC_P0:    return "Numpad 0";
-        case KC_PDOT:  return "NP punto";
-        case KC_PENT:  return "NP Enter";
-        case KC_PPLS:  return "Numpad +";
-        case KC_PMNS:  return "Numpad -";
-        case KC_PAST:  return "Numpad *";
-        case KC_PSLS:  return "Numpad /";
+        case KC_P0:    return HT_P0;
+        case KC_PDOT:  return HT_PDOT;
+        case KC_PENT:  return HT_PENT;
+        case KC_PPLS:  return HT_PPLS;
+        case KC_PMNS:  return HT_PMNS;
+        case KC_PAST:  return HT_PAST;
+        case KC_PSLS:  return HT_PSLS;
 
-        case QK_BOOT:  return "Bootloader";
+        case QK_BOOT:  return HT_BOOT;
 
-        case MO(1):    return "Capa FN";
-        case MO(2):    return "Capa NAV";
-        case MO(3):    return "Capa ADJ";
+        case MO(1):    return HT_MO1;
+        case MO(2):    return HT_MO2;
+        case MO(3):    return HT_MO3;
 
-        case TD(0):    return "TapDance 0";
-        case TD(1):    return "TapDance 1";
-        case TD(2):    return "TapDance 2";
-        case TD(3):    return "TapDance 3";
+        case TD(0):    return HT_TD0;
+        case TD(1):    return HT_TD1;
+        case TD(2):    return HT_TD2;
+        case TD(3):    return HT_TD3;
 
-        default:       return "Keycode";
+        default:       return HT_DEFAULT;
     }
 }
 
@@ -1828,9 +1838,9 @@ bool oled_task_user(void) {
 			case HELP_WAIT:
 				oled_clear();
 
-				help_oled_big_text(3,  2, "AYUDA", true);
-				help_oled_big_text(3, 24, "PULSA", false);
-				help_oled_big_text(3, 44, "TECLA", false);
+				help_oled_big_text(3,  2, HT_WAIT_1, true);
+				help_oled_big_text(3, 24, HT_WAIT_2, false);
+				help_oled_big_text(3, 44, HT_WAIT_3, false);
 
 				return false;
 

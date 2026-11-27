@@ -20,10 +20,10 @@ Main repository that groups several subprojects around the **BFS9000** keyboard 
 - [`firmware/`](./firmware/) — firmware based on QMK/Vial, including configuration, keymaps, and related files.
 - [`software/`](./software/) — PC agent/CLI for USB, MQTT, and Home Assistant integration.
 - [`media/`](./media/) — general multimedia assets used throughout the project, such as images, videos, and other shared resources.
-- [`hodgepodge/`](./hodgepodge/) — tests, experiments, and auxiliary material.
+- [`hodgepodge/`](./hodgepodge/) — historical and experimental material (not maintained).
 - [Wiki](https://github.com/jguillen-lab/BFS9000/wiki) — extended project documentation, guides, and additional reference material.
 
-> The `hardware/`, `firmware/` and `software/` folders have their own README with specific instructions.
+> The `hardware/`, `firmware/`, `software/` and `hodgepodge/` folders have their own README with specific instructions.
 
 ## Community builds
 

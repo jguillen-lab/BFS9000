@@ -2,6 +2,8 @@
 
 > 🇪🇸 **¿Prefieres leer esto en español?** → [README.es.md](README.es.md)
 
+> **Historical firmware.** Marquichuelo was the first name of the BFS9000. This folder is no longer maintained: for the BFS9000, use [`firmware/`](../../firmware/). MARCOntroller still supports this firmware with `--pid 0000`.
+
 This guide lets you control and query **VialRGB** lighting on the **Marquichuelo** keyboard from Windows using **hidapitester** (HIDAPI), **without touching firmware**.
 
 ## Confirmed firmware facts

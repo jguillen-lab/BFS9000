@@ -17,8 +17,11 @@ Each release includes:
 
 | File | Purpose |
 | --- | --- |
-| `jguillen_lab_bfs9000_vial_vX.Y.Z.uf2` | Firmware to flash on the RP2040. This is the file you normally need. |
-| `jguillen_lab_bfs9000_vial_vX.Y.Z.elf` | Debug/build artefact (symbols, size analysis, debugging). Not needed for flashing. |
+| `jguillen_lab_bfs9000_vial_vX.Y.Z_en.uf2` | Firmware to flash on the RP2040, with the help texts in English (US layout). |
+| `jguillen_lab_bfs9000_vial_vX.Y.Z_es.uf2` | Firmware to flash on the RP2040, with the help texts in Spanish (Spanish layout). |
+| `jguillen_lab_bfs9000_vial_vX.Y.Z_en.elf`, `..._es.elf` | Debug/build artefacts (symbols, size analysis, debugging). Not needed for flashing. |
+
+Choose the `.uf2` in the language you want. Releases before `v1.2.0` have a single `.uf2` file, in Spanish.
 
 ## Directory structure
 
@@ -95,24 +98,32 @@ qmk compile -kb jguillen_lab/bfs9000 -km vial
 
 The generated RP2040 firmware will be a `.uf2` file.
 
+The classic `make` syntax gives the same result:
+
+```bash
+make jguillen_lab/bfs9000:vial
+```
+
 The texts of the help key on the OLED are in English by default. To build them in Spanish:
 
 ```bash
 qmk compile -kb jguillen_lab/bfs9000 -km vial -e BFS_HELP_LANG=es
+# or
+make jguillen_lab/bfs9000:vial BFS_HELP_LANG=es
 ```
 
-The language also sets the host keyboard layout the help assumes when it shows what a key types with Shift or AltGr held: US for English, Spanish for Spanish. Published releases use English. The texts are in `keymaps/vial/help_text_en.h` and `help_text_es.h`.
+The language also sets the host keyboard layout the help assumes when it shows what a key types with Shift or AltGr held: US for English, Spanish for Spanish. Published releases include both builds. The texts are in `keymaps/vial/help_text_en.h` and `help_text_es.h`.
 
 Each release notes the exact vial-qmk commit used to build it, so any release can be rebuilt with the same upstream code.
 
 ## Flashing
 
-1. Download the `.uf2` file from the [release](#download) you want to install.
+1. Download the `.uf2` file in your language (`_en` or `_es`) from the [release](#download) you want to install.
 2. Put the RP2040 controller into bootloader mode.
 3. It will appear as a USB mass-storage drive.
 4. Copy the `.uf2` file to the RP2040 drive.
 5. The controller will reboot automatically with the new firmware.
-6. Repeat for the other half. Both halves must always run the same release.
+6. Repeat for the other half. Both halves must always run the same release and language.
 
 ### Keeping your Vial configuration
 
@@ -168,8 +179,8 @@ This follows the same convention as the hardware tags (`hardware/bfs9000-rev0.4`
 
 To publish a release:
 
-1. Build the firmware as described in [Build](#build).
-2. Rename the outputs to `jguillen_lab_bfs9000_vial_vX.Y.Z.uf2` and `.elf`.
+1. Build the firmware in both languages as described in [Build](#build).
+2. Rename the outputs to `jguillen_lab_bfs9000_vial_vX.Y.Z_en.uf2`, `_es.uf2`, `_en.elf` and `_es.elf`.
 3. Create an annotated tag on the commit that contains the released source:
 
    ```bash
@@ -177,12 +188,12 @@ To publish a release:
    git push origin firmware/bfs9000-vX.Y.Z
    ```
 
-4. Create the GitHub Release for that tag, attach the `.uf2` and `.elf` files, and note the vial-qmk commit used:
+4. Create the GitHub Release for that tag, attach the `.uf2` and `.elf` files of both languages, and note the vial-qmk commit used:
 
    ```bash
    gh release create firmware/bfs9000-vX.Y.Z \
-     jguillen_lab_bfs9000_vial_vX.Y.Z.uf2 \
-     jguillen_lab_bfs9000_vial_vX.Y.Z.elf \
+     jguillen_lab_bfs9000_vial_vX.Y.Z_en.uf2 jguillen_lab_bfs9000_vial_vX.Y.Z_es.uf2 \
+     jguillen_lab_bfs9000_vial_vX.Y.Z_en.elf jguillen_lab_bfs9000_vial_vX.Y.Z_es.elf \
      --title "BFS9000 firmware vX.Y.Z" --notes-file notes.md
    ```
 

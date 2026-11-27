@@ -89,6 +89,20 @@
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR
 
 /* ─────────────────────────────────────────────────────────────────────────────
+ * RGB MATRIX — IDLE TIMEOUT
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ * RGB_MATRIX_TIMEOUT turns the lighting off after 10 minutes (600000 ms)
+ * without input activity: keys, encoder or trackpad. Any input turns it back
+ * on. It applies to every effect.
+ *
+ * SPLIT_ACTIVITY_ENABLE syncs the last input activity from the master half to
+ * the secondary half, so both halves switch off and on together.
+ */
+#define RGB_MATRIX_TIMEOUT 600000
+#define SPLIT_ACTIVITY_ENABLE
+
+/* ─────────────────────────────────────────────────────────────────────────────
  * RGB MATRIX — EFFECT SUPPORT
  * ─────────────────────────────────────────────────────────────────────────────
  *

@@ -1,27 +1,16 @@
 ﻿# BFS9000 — Hardware
 
-> 🇪🇳 **Prefer to read this in English?** ? [README.md](README.md)
+> 🇬🇧 **Prefer to read this in English?** → [README.md](README.md)
 
-Directorio de hardware del teclado **BFS9000**.
-
-> **Trabajo en curso**
->
-> Este hardware está actualmente en desarrollo activo y **todavía no es funcional**.
-> La versión `0.4` debe considerarse un prototipo temprano, pensado solo para validación e iteración.
->
-> **No** debes considerar el diseño actual, la PCB, los esquemáticos, las huellas, la BOM ni la documentación como algo final o listo para producción.
-> Cabe esperar cambios incompatibles, funciones ausentes, errores de diseño y documentación incompleta.
+Ficheros fuente de KiCad de la PCB principal del **BFS9000**.
 
 ## Estado
 
-- Versión actual: `0.4`
-- Fase de desarrollo: prototipo / WIP
-- Estado funcional: **todavía no funciona**
+- Revisión actual: `0.4` (estable)
+- Etiqueta git: [`hardware/bfs9000-rev0.4`](https://github.com/jguillen-lab/BFS9000/tree/hardware/bfs9000-rev0.4)
+- Ficheros de fabricación: [`../production/rev0.4/`](../production/rev0.4/)
 
-## Notas
-
-Este directorio está pensado para seguir el desarrollo en curso del hardware BFS9000.
-En esta fase, el proyecto sigue evolucionando y es de esperar que haya cambios importantes antes de que llegue a ser utilizable.
+El historial de revisiones, los ficheros de fabricación y las carcasas se describen en el [README de hardware](../README.es.md). El proceso de montaje está en la [Guía de montaje](https://github.com/jguillen-lab/BFS9000/wiki/es-Build-Guide).
 
 ## Licencia y atribución
 

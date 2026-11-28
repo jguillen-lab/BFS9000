@@ -17,7 +17,7 @@ Repositorio principal que engloba varios subproyectos alrededor del teclado **BF
 ## Estructura del repositorio
 
 - [`hardware/`](./hardware/) — diseño del teclado/PCB (BFS9000) y documentación asociada.
-- [`firmware/`](./firmware/) — firmware basado en QMK/Vial, incluyendo configuración, keymaps y archivos relacionados.
+- [`firmware/`](./firmware/) — firmware basado en QMK/Vial, incluyendo configuración, keymaps y archivos relacionados, además de un build VIA experimental.
 - [`software/`](./software/) — agente/CLI en PC para la integración con USB, MQTT y Home Assistant.
 - [`media/`](./media/) — recursos multimedia generales usados en el proyecto, como imágenes, vídeos y otros archivos compartidos.
 - [`hodgepodge/`](./hodgepodge/) — material histórico y experimental (no se mantiene).
@@ -78,6 +78,7 @@ En total, el diseño actual permite **16 combinaciones diferentes** a partir de 
 
 ### Firmware / HA
 - Vial (manual): https://get.vial.today/manual/
+- VIA: https://usevia.app/
 - Home Assistant MQTT: https://www.home-assistant.io/integrations/mqtt/
 - Home Assistant MQTT Light: https://www.home-assistant.io/integrations/light.mqtt/
 

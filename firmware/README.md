@@ -2,7 +2,7 @@
 
 > 🇪🇸 **¿Prefieres leer esto en español?** → [README.es.md](README.es.md)
 
-QMK + Vial firmware for the **BFS9000** keyboard.
+QMK firmware for the **BFS9000** keyboard, with a Vial keymap (the main one) and a VIA keymap.
 
 This directory contains the firmware source tree. Compiled firmware ready to flash on the RP2040 controller is published as **GitHub Releases**.
 
@@ -30,25 +30,49 @@ firmware/
 ├── README.md
 ├── README.es.md
 ├── jguillen.vil
-└── vial-qmk/
-    └── keyboards/
-        └── jguillen_lab/
-            └── bfs9000/
-                ├── config.h
-                ├── keyboard.json
-                ├── readme.md
-                ├── rules.mk
-                └── keymaps/
-                    ├── default/
-                    │   └── keymap.c
-                    └── vial/
-                        ├── config.h
-                        ├── help_text_en.h
-                        ├── help_text_es.h
-                        ├── keymap.c
-                        ├── kle_raw.json
-                        ├── rules.mk
-                        └── vial.json
+├── vial-qmk/
+│   └── keyboards/
+│       └── jguillen_lab/
+│           └── bfs9000/
+│               ├── config.h
+│               ├── keyboard.json
+│               ├── readme.md
+│               ├── rules.mk
+│               └── keymaps/
+│                   ├── default/
+│                   │   └── keymap.c
+│                   └── vial/
+│                       ├── config.h
+│                       ├── help_text_en.h
+│                       ├── help_text_es.h
+│                       ├── keymap.c
+│                       ├── kle_raw.json
+│                       ├── rules.mk
+│                       └── vial.json
+└── via/
+    ├── bfs9000.json
+    ├── keyboards/
+    │   └── jguillen_lab/
+    │       └── bfs9000/
+    │           ├── config.h
+    │           ├── keyboard.json
+    │           ├── readme.md
+    │           ├── rules.mk
+    │           └── keymaps/
+    │               └── default/
+    │                   └── keymap.c
+    └── userspace/
+        ├── qmk.json
+        └── keyboards/
+            └── jguillen_lab/
+                └── bfs9000/
+                    └── keymaps/
+                        └── via/
+                            ├── config.h
+                            ├── help_text_en.h
+                            ├── help_text_es.h
+                            ├── keymap.c
+                            └── rules.mk
 ```
 
 ### `vial-qmk/`
@@ -86,6 +110,16 @@ rules.mk
 vial.json
 ```
 
+### `via/`
+
+Contains the experimental VIA firmware, built with [QMK](https://github.com/qmk/qmk_firmware). It is kept apart from `vial-qmk/`, which does not change:
+
+- `via/keyboards/jguillen_lab/bfs9000/`: the keyboard definition for QMK and the `default` keymap. The hardware settings (LED map, WS2812 driver and pin, trackpad) are at keyboard level, so every keymap can use them.
+- `via/userspace/`: a QMK userspace with the `via` keymap. Its `keymap.c` is a copy of the Vial keymap, with the tap dances fixed in the firmware.
+- `via/bfs9000.json`: the keyboard definition for the VIA app.
+
+The two folders are kept separately: a change in `vial-qmk/` does not reach `via/`, or the other way round.
+
 ## Build
 
 1. Clone [vial-qmk](https://github.com/vial-kb/vial-qmk) and set up the QMK build environment.
@@ -116,6 +150,20 @@ The language also sets the host keyboard layout the help assumes when it shows w
 
 Each release notes the exact vial-qmk commit used to build it, so any release can be rebuilt with the same upstream code.
 
+### VIA firmware
+
+> **Experimental:** the VIA firmware builds, but it has not been tested on the keyboard yet.
+
+1. Clone [QMK](https://github.com/qmk/qmk_firmware) and set up the QMK build environment.
+2. Copy `via/keyboards/jguillen_lab/` from this repository into the `keyboards/` directory of your QMK clone.
+3. From the QMK root directory, run:
+
+```bash
+make jguillen_lab/bfs9000:via QMK_USERSPACE=/path/to/BFS9000/firmware/via/userspace
+```
+
+Add `BFS_HELP_LANG=es` for the Spanish help texts, as with Vial. The VIA firmware is not attached to the releases yet.
+
 ## Flashing
 
 1. Download the `.uf2` file in your language (`_en` or `_es`) from the [release](#download) you want to install.
@@ -130,6 +178,23 @@ Each release notes the exact vial-qmk commit used to build it, so any release ca
 Since `v1.1.0`, flashing a new release keeps the configuration saved with Vial (keymap, macros, combos, tap dances, key overrides and QMK settings), including when upgrading from `v1.0.0`.
 
 The configuration is reset to the firmware defaults only when the EEPROM layout changes, for example after a change in the number of layers or combos. The release notes say so when that happens. Keep a backup of your layout with **File → Save current layout** in Vial before flashing.
+
+## Using VIA
+
+> **Experimental:** the VIA firmware builds, but it has not been tested on the keyboard yet.
+
+The VIA app does not include the BFS9000 yet. To load its definition:
+
+1. Open [usevia.app](https://usevia.app).
+2. In **Settings**, turn on **Show Design tab**.
+3. In **Design**, load `via/bfs9000.json`.
+
+The VIA firmware has the same keymap, help key, OLED displays, lighting and trackpad as the Vial firmware, with these differences:
+
+- Tap dances are fixed in the firmware: `TD(0)` is `KC_LSFT` / `KC_CAPS`, `TD(1)` `KC_LBRC` / `KC_RBRC`, `TD(2)` `KC_QUOT` / `KC_BSLS` and `TD(3)` `KC_NUBS` / `S(KC_NUBS)`. Tap for the first key, double tap for the second one.
+- VIA has no editor for combos, key overrides or QMK settings.
+- MARCOntroller needs the Vial firmware, because it uses VialRGB.
+- VIA resets its configuration when you flash a firmware built on a different day. Switching between the Vial and the VIA firmware also resets the configuration.
 
 ## Lighting
 
@@ -219,11 +284,11 @@ The maintained keymap for normal Vial use is:
 vial-qmk/keyboards/jguillen_lab/bfs9000/keymaps/vial/keymap.c
 ```
 
-This keymap contains the BFS9000 custom behaviour and should be considered the main source used for published firmware releases.
+This keymap contains the BFS9000 custom behaviour and should be considered the main source used for published firmware releases. The VIA keymap is a copy of it, kept separately.
 
 ## Notes
 
-* Firmware based on QMK + Vial.
+* Firmware based on QMK, with Vial and VIA keymaps.
 * Target controller: RP2040.
 * The TPS65 trackpad is optional: the same firmware works with or without it.
 * Published builds are attached to GitHub Releases as `.uf2` files.
@@ -242,4 +307,4 @@ It can be loaded onto the keyboard using either the **Vial desktop application**
 
 ## License
 
-The BFS9000 firmware (`vial-qmk/keyboards/jguillen_lab/bfs9000/`) is part of QMK/Vial and is licensed under the **GNU General Public License v2.0 or later** (`GPL-2.0-or-later`), as stated in the SPDX header of each source file. See [LICENSE](LICENSE).
+The BFS9000 firmware (`vial-qmk/` and `via/`) is part of QMK/Vial and is licensed under the **GNU General Public License v2.0 or later** (`GPL-2.0-or-later`), as stated in the SPDX header of each source file. See [LICENSE](LICENSE).
